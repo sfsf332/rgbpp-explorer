@@ -3,7 +3,6 @@ import '@/styles/globals.css'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import type { PropsWithChildren } from 'react'
 
 import { Footer } from '@/components/footer'
 import { Navbar } from '@/components/navbar'

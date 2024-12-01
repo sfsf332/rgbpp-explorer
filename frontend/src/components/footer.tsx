@@ -7,8 +7,8 @@ import GithubSVG from '@/assets/social-medias/github.svg'
 import MediumIcon from '@/assets/social-medias/medium.svg'
 import TwitterSVG from '@/assets/social-medias/x.svg'
 import { Heading, Text } from '@/components/ui'
-import Link from '@/components/ui/link'
 import { LanguageSelector } from '@/components/ui/language-selector'
+import Link from '@/components/ui/link'
 import { env } from '@/constants/env'
 
 export function Footer({ lang }: { lang: string }) {
