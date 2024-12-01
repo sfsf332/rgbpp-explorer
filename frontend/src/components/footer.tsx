@@ -8,6 +8,7 @@ import MediumIcon from '@/assets/social-medias/medium.svg'
 import TwitterSVG from '@/assets/social-medias/x.svg'
 import { Heading, Text } from '@/components/ui'
 import Link from '@/components/ui/link'
+import { LanguageSelector } from '@/components/ui/language-selector'
 import { env } from '@/constants/env'
 
 export function Footer({ lang }: { lang: string }) {
@@ -118,6 +119,9 @@ export function Footer({ lang }: { lang: string }) {
               <Link href={env.public.UTXO_STACK_URL} _hover={{ textDecoration: 'underline' }}>
                 {t(i18n)`UTXO Stack`}
               </Link>
+              <VStack alignItems="flex-start" gap="12px">
+                <LanguageSelector />
+              </VStack>
             </VStack>
           </VStack>
         </HStack>

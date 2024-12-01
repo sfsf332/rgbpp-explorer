@@ -33,6 +33,7 @@ export const BtcTransactionCardInAddress = forwardRef<
         confirmations={tx.confirmations}
         feeRate={tx.feeRate}
         feeUnit={<Trans>sats</Trans>}
+        sizeUnit={<Trans>vB</Trans>}
         address={address}
         btcUtxo={{ vin: tx.vin as BitcoinInput[], vout: tx.vout as BitcoinOutput[] }}
         ckbCell={ckbCell}

@@ -18,6 +18,7 @@ export function UtxoOrCellFooter({
   ckbCell,
   btcUtxo,
   feeUnit,
+  sizeUnit,
   address,
   children,
   txid,
@@ -32,6 +33,7 @@ export function UtxoOrCellFooter({
     vout?: BitcoinOutput[]
   }
   feeUnit?: ReactNode
+  sizeUnit?: ReactNode
   children?: ReactNode
   txid?: string
 }) {
@@ -52,7 +54,7 @@ export function UtxoOrCellFooter({
         {isNumber(fee) ? (
           <Text as="span" fontSize="14px" color="text.third">
             <Trans>
-              Txn fee:
+              Txn Fee:
               <Text as="span" color="text.primary" fontWeight="semibold" mx="4px">
                 {formatNumber(fee)}{' '}
               </Text>
@@ -63,11 +65,11 @@ export function UtxoOrCellFooter({
         {isNumber(feeRate) ? (
           <Text as="span" fontSize="14px" color="text.third">
             <Trans>
-              Fee rate:
+              Fee Rate:
               <Text as="span" color="text.primary" fontWeight="semibold" mx="4px">
                 {formatNumber(feeRate)}
               </Text>
-              {feeUnit}/vB
+              {feeUnit}/{sizeUnit}
             </Trans>
           </Text>
         ) : null}

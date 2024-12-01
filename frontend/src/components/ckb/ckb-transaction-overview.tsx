@@ -54,7 +54,7 @@ export function CkbTransactionOverview({ ckbTransaction, i18n }: { i18n: I18n; c
           <OverviewInfoItem label={t(i18n)`Fee`}>
             <OverflowAmount amount={formatNumber(shannonToCKB(ckbTransaction.fee))} symbol={t(i18n)`CKB`} />
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`Size`}>
+          <OverviewInfoItem label={t(i18n)`Fee Rate`}>
             <OverflowAmount amount={formatNumber(ckbTransaction.feeRate)} symbol={t(i18n)`shannons/kB`} />
           </OverviewInfoItem>
         </OverviewInfo>

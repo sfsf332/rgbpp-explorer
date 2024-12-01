@@ -17,7 +17,7 @@ export function CkbTransactionCardWithQueryInBlock({ hash, timestamp }: { hash: 
           <VStack w="100%" gap={0} bg="bg.card" rounded="8px" key={tx.hash}>
             <TransactionHeaderInAddress time={timestamp} txid={tx.hash} />
             <CkbCellTables inputs={tx.inputs} outputs={tx.outputs} isCellbase={tx.isCellbase} />
-            <UtxoOrCellFooter fee={tx.fee} feeRate={tx.feeRate} feeUnit={<Trans>sats</Trans>}>
+            <UtxoOrCellFooter fee={tx.fee} feeRate={tx.feeRate} feeUnit={<Trans>shannons</Trans>} sizeUnit={<Trans>kB</Trans>}>
               <HStack gap="16px" flexWrap="wrap" justify={{ base: 'start', lg: 'end' }}>
                 <CkbOutputsSum outputs={tx.outputs} />
               </HStack>

@@ -22,6 +22,7 @@ export function CkbTransactionCardWithQueryInAddress({ hash, address }: { addres
               feeRate={data.feeRate}
               ckbCell={data}
               feeUnit={<Trans>shannons</Trans>}
+              sizeUnit={<Trans>kB</Trans>}
               address={address}
             />
           </VStack>

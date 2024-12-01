@@ -64,7 +64,7 @@ export function BtcBlockOverview({
                 <Text whiteSpace="nowrap">
                   {t(
                     i18n,
-                  )`${formatNumber(block.feeRateRange?.min ?? 0)} sats/VB ~ ${formatNumber(BigNumber(block.feeRateRange?.max ?? 0))} sats/VB`}
+                  )`${formatNumber(block.feeRateRange?.min ?? 0)} sats/vB ~ ${formatNumber(BigNumber(block.feeRateRange?.max ?? 0))} sats/vB`}
                 </Text>
               }
               contentProps={{ maxW: 'unset' }}
@@ -81,12 +81,12 @@ export function BtcBlockOverview({
               >
                 {formatNumber(block.feeRateRange?.min ?? 0)}
                 <Text as="span" fontSize="14px" ml="4px">
-                  {t(i18n)`sats/VB`}
+                  {t(i18n)`sats/vB`}
                 </Text>
                 {' ~ '}
                 {formatNumber(BigNumber(block.feeRateRange?.max ?? 0))}{' '}
                 <Text as="span" fontSize="14px">
-                  {t(i18n)`sats/VB`}
+                  {t(i18n)`sats/vB`}
                 </Text>
               </Box>
             </TextOverflowTooltip>

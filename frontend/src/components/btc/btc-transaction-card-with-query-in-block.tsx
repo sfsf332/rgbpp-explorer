@@ -17,7 +17,7 @@ export function BtcTransactionCardWithQueryInBlock({ txid }: { txid: string }) {
         <VStack w="100%" gap={0} bg="bg.card" rounded="8px" key={tx.txid}>
           <TransactionHeaderInAddress time={tx.transactionTime} txid={tx.txid} btcTime />
           <BtcUtxoTables txid={tx.txid} vin={tx.vin as BitcoinInput[]} vout={tx.vout as BitcoinOutput[]} />
-          <UtxoOrCellFooter fee={tx.fee} feeRate={tx.feeRate} feeUnit={<Trans>sats</Trans>}>
+          <UtxoOrCellFooter fee={tx.fee} feeRate={tx.feeRate} feeUnit={<Trans>sats</Trans>} sizeUnit={<Trans>vB</Trans>}>
             <HStack gap="16px" flexWrap="wrap" justify={{ base: 'start', lg: 'end' }}>
               <BtcOutputsSum vout={tx.vout as BitcoinOutput[]} />
             </HStack>

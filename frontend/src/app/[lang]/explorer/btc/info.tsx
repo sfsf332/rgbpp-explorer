@@ -80,7 +80,7 @@ export async function Info({ i18n }: { i18n: I18n }) {
         >
           <OverviewInfoItem
             formatNumber
-            unit={t(i18n)`sats/kB`}
+            unit={t(i18n)`sats/vB`}
             direction="column"
             label={
               <OverviewInfoTagLabel bg="danger.a10" color="danger" icon={<SpeedHighIcon />} mx="auto">
@@ -93,7 +93,7 @@ export async function Info({ i18n }: { i18n: I18n }) {
           <OverviewInfoItem
             formatNumber
             direction="column"
-            unit={t(i18n)`sats/kB`}
+            unit={t(i18n)`sats/vB`}
             label={
               <OverviewInfoTagLabel bg="warning.a10" color="warning" icon={<SpeedMediumIcon />} mx="auto">
                 {t(i18n)`Medium`}
@@ -104,7 +104,7 @@ export async function Info({ i18n }: { i18n: I18n }) {
           </OverviewInfoItem>
           <OverviewInfoItem
             formatNumber
-            unit={t(i18n)`sats/kB`}
+            unit={t(i18n)`sats/vB`}
             direction="column"
             label={
               <OverviewInfoTagLabel bg="success.a10" color="success" icon={<SpeedLowIcon />} mx="auto">
@@ -116,7 +116,7 @@ export async function Info({ i18n }: { i18n: I18n }) {
           </OverviewInfoItem>
           <OverviewInfoItem
             formatNumber
-            unit={t(i18n)`sats/kB`}
+            unit={t(i18n)`sats/vB`}
             direction="column"
             label={
               <OverviewInfoTagLabel bg="brand.a10" color="brand" icon={<SpeedDropIcon />} mx="auto">

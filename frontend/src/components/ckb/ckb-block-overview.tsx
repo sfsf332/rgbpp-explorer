@@ -63,7 +63,7 @@ export function CkbBlockOverview({
             )}
           </OverviewInfoItem>
           <OverviewInfoItem label={t(i18n)`Miner Reward`} formatNumber>
-            <OverflowAmount amount={formatNumber(block.reward)} symbol={t(i18n)`CKB`} />
+            <OverflowAmount amount={formatNumber(block.reward, 8)} symbol={t(i18n)`CKB`} />
           </OverviewInfoItem>
         </OverviewInfo>
       </Grid>

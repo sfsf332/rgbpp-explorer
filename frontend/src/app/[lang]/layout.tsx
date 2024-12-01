@@ -24,8 +24,15 @@ export const metadata: Metadata = {
   icons: '/logo.svg',
 }
 
-export default function RootLayout({ children }: PropsWithChildren) {
-  const locale = getLocaleFromHeaders()
+type Props = {
+  params: {
+    lang: string;
+  };
+  children: React.ReactNode;
+};
+
+export default function RootLayout({ params: { lang }, children }: Props) {
+  const locale = lang || getLocaleFromHeaders()
   return (
     <html lang={locale}>
       <body className={`${montserrat.variable}`}>

@@ -1,6 +1,6 @@
 /** @type {import('@lingui/conf').LinguiConfig} */
 const linguiConfig = {
-  locales: ['en'],
+  locales: ['en', 'zh'],
   sourceLocale: 'en',
   catalogs: [
     {

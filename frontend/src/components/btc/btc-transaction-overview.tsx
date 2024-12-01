@@ -57,7 +57,7 @@ export function BtcTransactionOverview({ btcTransaction, i18n }: { btcTransactio
             <OverflowAmount amount={formatNumber(btcTransaction.fee)} symbol={t(i18n)`sats`} />
           </OverviewInfoItem>
           <OverviewInfoItem label={t(i18n)`Fee rate`}>
-            <OverflowAmount amount={formatNumber(btcTransaction.feeRate)} symbol={t(i18n)`sat/VB`} />
+            <OverflowAmount amount={formatNumber(btcTransaction.feeRate)} symbol={t(i18n)`sat/vB`} />
           </OverviewInfoItem>
         </OverviewInfo>
       </Grid>
