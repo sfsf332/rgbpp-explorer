@@ -8,7 +8,7 @@ export function Loading(props: CenterProps) {
     <Center {...props}>
       <Box pos="relative" w="80px" h="80px" overflow="hidden">
         <Image
-          minW="1752px"
+          minW="1680px"
           h="100%"
           pos="absolute"
           top="0"
@@ -16,7 +16,7 @@ export function Loading(props: CenterProps) {
           animation="steps-x 800ms steps(21) infinite"
           style={
             {
-              '--steps-offset-x': '-1752px',
+              '--steps-offset-x': '-1680px',
             } as any
           }
           alt="loading"

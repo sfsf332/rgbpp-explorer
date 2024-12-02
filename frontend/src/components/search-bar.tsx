@@ -13,6 +13,7 @@ import SearchFailedSVG from '@/assets/search-failed.svg'
 import { Loading } from '@/components/loading'
 import { HoverCard, Text } from '@/components/ui'
 import { graphql } from '@/gql'
+import { useBreakpoints } from '@/hooks/useBreakpoints'
 import { graphQLClient } from '@/lib/graphql'
 
 import { SystemProperties } from '../../styled-system/types'
@@ -30,21 +31,24 @@ function SearchResult({
   children: ReactNode
   maxW?: SystemProperties['maxW']
 }) {
+
+  const isMd = useBreakpoints('md')
+
   return (
     <HoverCard.Root open={open ? error || isLoading : false} positioning={{ placement: 'bottom', sameWidth: true }}>
       <HoverCard.Trigger asChild>{children}</HoverCard.Trigger>
       <HoverCard.Positioner>
-        <HoverCard.Content w="100vw" maxW={maxW} py="50px" zIndex={10}>
+        <HoverCard.Content maxW={maxW} pb={`${isMd && !isLoading ? '50px' : '0px'}`} zIndex={60}>
           <HoverCard.Arrow>
             <HoverCard.ArrowTip />
           </HoverCard.Arrow>
           {isLoading ? (
-            <Center w="100%" h="220px">
+            <Center w="100%" h={`${isMd ? '220px' : '50px'}`}>
               <Loading />
             </Center>
           ) : (
             <VStack>
-              <SearchFailedSVG w="200px" />
+              {isMd ? <SearchFailedSVG w="200px" /> : null}
               <Text fontSize="14px" h="20px" fontWeight="medium" color="text.third">
                 <Trans>Oops! Your search did not match any record.</Trans>
               </Text>
@@ -129,7 +133,7 @@ export function SearchBar(props: FlexProps) {
           pl="20px"
           color="bg.primary"
           fontWeight="medium"
-          fontSize={{ base: '12px', md: '14px', lg: '16px' }}
+          fontSize={{ base: '16px', md: '14px', lg: '16px' }}
           _placeholder={{
             color: 'text.third',
           }}
@@ -171,7 +175,7 @@ export function SearchBarInNav(props: FlexProps) {
         <styled.input
           flex={1}
           placeholder={t(i18n)`Search by Address/Tx Hash/Block Hash/AssetID`}
-          fontSize={{ base: '12px', sm: '14px' }}
+          fontSize={{ base: '16px', sm: '14px' }}
           pl={{ base: '16px', lg: '20px' }}
           color="text.primary"
           fontWeight="medium"

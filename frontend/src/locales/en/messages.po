@@ -99,8 +99,8 @@ msgid "Back to Home"
 msgstr "Back to Home"
 
 #: src/app/[lang]/explorer/btc/info.tsx:50
-#: src/components/footer.tsx:92
-#: src/components/navbar/index.tsx:34
+#: src/components/footer.tsx:91
+#: src/components/navbar/index.tsx:35
 #: src/components/network-cards.tsx:74
 msgid "Bitcoin"
 msgstr "Bitcoin"
@@ -146,6 +146,15 @@ msgstr "BTC Txn"
 msgid "bytes"
 msgstr "bytes"
 
+#: src/components/navbar/index.tsx:133
+msgid "Chains"
+msgstr "Chains"
+
+#: src/components/navbar/index.tsx:165
+#: src/components/navbar/index.tsx:242
+msgid "Charts"
+msgstr "Charts"
+
 #: src/app/[lang]/explorer/ckb/info.tsx:38
 #: src/components/ckb/ckb-address-overview.tsx:39
 #: src/components/ckb/ckb-address-overview.tsx:42
@@ -153,8 +162,8 @@ msgstr "bytes"
 #: src/components/ckb/ckb-block-overview.tsx:66
 #: src/components/ckb/ckb-cell-tables.tsx:131
 #: src/components/ckb/ckb-transaction-overview.tsx:55
-#: src/components/footer.tsx:95
-#: src/components/navbar/index.tsx:39
+#: src/components/footer.tsx:94
+#: src/components/navbar/index.tsx:40
 #: src/components/network-cards.tsx:107
 msgid "CKB"
 msgstr "CKB"
@@ -189,6 +198,7 @@ msgid "Coming Soon"
 msgstr "Coming Soon"
 
 #: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:14
+#: src/app/[lang]/charts/page.tsx:14
 #: src/components/coming-soon.tsx:14
 msgid "Coming soon, please stay tuned"
 msgstr "Coming soon, please stay tuned"
@@ -231,8 +241,8 @@ msgstr "DOBs"
 msgid "Drop"
 msgstr "Drop"
 
-#: src/components/footer.tsx:89
-#: src/components/navbar/index.tsx:113
+#: src/components/footer.tsx:88
+#: src/components/navbar/index.tsx:213
 msgid "Explorer"
 msgstr "Explorer"
 
@@ -242,9 +252,6 @@ msgid "Fee"
 msgstr "Fee"
 
 #: src/components/btc/btc-transaction-overview.tsx:59
-msgid "Fee rate"
-msgstr "Fee rate"
-
 #: src/components/ckb/ckb-transaction-overview.tsx:57
 msgid "Fee Rate"
 msgstr "Fee Rate"
@@ -314,8 +321,8 @@ msgid "L2 RGB++ Txns(24H)"
 msgstr "L2 RGB++ Txns(24H)"
 
 #: src/components/ui/language-selector.tsx:47
-msgid "Language"
-msgstr "Language"
+#~ msgid "Language"
+#~ msgstr "Language"
 
 #: src/app/[lang]/explorer/btc/page.tsx:62
 msgid "Latest L1 RGB++ transaction"
@@ -338,7 +345,7 @@ msgstr "Load failed, Please wait a moment"
 msgid "Low"
 msgstr "Low"
 
-#: src/components/network-switcher.tsx:34
+#: src/components/network-switcher.tsx:35
 msgid "Mainnet"
 msgstr "Mainnet"
 
@@ -356,11 +363,11 @@ msgstr "Miner"
 msgid "Miner Reward"
 msgstr "Miner Reward"
 
-#: src/components/footer.tsx:114
+#: src/components/footer.tsx:113
 msgid "More Info"
 msgstr "More Info"
 
-#: src/components/footer.tsx:117
+#: src/components/footer.tsx:116
 msgid "Nervos CKB"
 msgstr "Nervos CKB"
 
@@ -381,7 +388,7 @@ msgstr "No Transaction"
 msgid "Occupied"
 msgstr "Occupied"
 
-#: src/components/search-bar.tsx:49
+#: src/components/search-bar.tsx:53
 msgid "Oops! Your search did not match any record."
 msgstr "Oops! Your search did not match any record."
 
@@ -403,13 +410,13 @@ msgstr "Outputs ({0})"
 msgid "Overview"
 msgstr "Overview"
 
-#: src/components/footer.tsx:100
+#: src/components/footer.tsx:99
 msgid "RGB++"
 msgstr "RGB++"
 
 #: src/app/[lang]/address/[address]/layout.tsx:107
-#: src/components/navbar/index.tsx:136
-#: src/components/navbar/index.tsx:196
+#: src/components/navbar/index.tsx:157
+#: src/components/navbar/index.tsx:229
 msgid "RGB++ Assets"
 msgstr "RGB++ Assets"
 
@@ -426,8 +433,8 @@ msgstr "RGB++ Binding Txn on BTC"
 msgid "RGB++ Binding Txn on CKB"
 msgstr "RGB++ Binding Txn on CKB"
 
-#: src/components/footer.tsx:55
-#: src/components/navbar/index.tsx:94
+#: src/components/footer.tsx:54
+#: src/components/navbar/index.tsx:104
 msgid "RGB++ Explorer"
 msgstr "RGB++ Explorer"
 
@@ -462,16 +469,16 @@ msgstr "sats"
 msgid "sats/vB"
 msgstr "sats/vB"
 
-#: src/components/footer.tsx:106
+#: src/components/footer.tsx:105
 msgid "Script"
 msgstr "Script"
 
-#: src/components/footer.tsx:109
+#: src/components/footer.tsx:108
 msgid "SDK"
 msgstr "SDK"
 
-#: src/components/search-bar.tsx:128
-#: src/components/search-bar.tsx:173
+#: src/components/search-bar.tsx:132
+#: src/components/search-bar.tsx:177
 msgid "Search by Address/Tx Hash/Block Hash/AssetID"
 msgstr "Search by Address/Tx Hash/Block Hash/AssetID"
 
@@ -505,7 +512,7 @@ msgstr "Sorry, the page you visited does not exist"
 msgid "Supply"
 msgstr "Supply"
 
-#: src/components/network-switcher.tsx:39
+#: src/components/network-switcher.tsx:40
 msgid "Testnet"
 msgstr "Testnet"
 
@@ -567,7 +574,7 @@ msgstr "Type"
 msgid "Unconfirmed"
 msgstr "Unconfirmed"
 
-#: src/components/footer.tsx:120
+#: src/components/footer.tsx:119
 msgid "UTXO Stack"
 msgstr "UTXO Stack"
 
@@ -584,6 +591,6 @@ msgstr "View Details in CKB"
 msgid "View Details in Mempool"
 msgstr "View Details in Mempool"
 
-#: src/components/footer.tsx:103
+#: src/components/footer.tsx:102
 msgid "Whitepaper"
 msgstr "Whitepaper"

@@ -7,7 +7,6 @@ import GithubSVG from '@/assets/social-medias/github.svg'
 import MediumIcon from '@/assets/social-medias/medium.svg'
 import TwitterSVG from '@/assets/social-medias/x.svg'
 import { Heading, Text } from '@/components/ui'
-import { LanguageSelector } from '@/components/ui/language-selector'
 import Link from '@/components/ui/link'
 import { env } from '@/constants/env'
 
@@ -119,9 +118,6 @@ export function Footer({ lang }: { lang: string }) {
               <Link href={env.public.UTXO_STACK_URL} _hover={{ textDecoration: 'underline' }}>
                 {t(i18n)`UTXO Stack`}
               </Link>
-              <VStack alignItems="flex-start" gap="12px">
-                <LanguageSelector />
-              </VStack>
             </VStack>
           </VStack>
         </HStack>

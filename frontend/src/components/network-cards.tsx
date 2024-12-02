@@ -7,9 +7,9 @@ import { Box, Grid, HStack, VStack } from 'styled-system/jsx'
 
 import ArrowIcon from '@/assets/arrow.svg'
 import BchIcon from '@/assets/chains/bch.svg'
-import BsvIcon from '@/assets/chains/bsv.svg'
 import BtcIcon from '@/assets/chains/btc.svg'
 import CkbIcon from '@/assets/chains/ckb.svg'
+import DogeIcon from '@/assets/chains/doge.svg'
 import UtxoStackIcon from '@/assets/chains/utxo-stack.svg'
 import Link from '@/components/ui/link'
 import { Text } from '@/components/ui/primitives/text'
@@ -132,8 +132,8 @@ export function NetworkCards() {
       >
         <HStack gap="24px" fontWeight="semibold" w="100%" justify="center">
           <HStack>
-            <BsvIcon w="32px" h="32px" />
-            <Text>BSV</Text>
+            <DogeIcon w="32px" h="32px" />
+            <Text>DOGE</Text>
           </HStack>
           <HStack>
             <BchIcon w="32px" h="32px" />

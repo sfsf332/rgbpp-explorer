@@ -2,7 +2,7 @@
 
 import { Trans } from '@lingui/macro'
 import { memo } from 'react'
-import { Box, styled, VStack } from 'styled-system/jsx'
+import { Box, HStack, styled, VStack } from 'styled-system/jsx'
 
 import ArrowDownIcon from '@/assets/arrow-down.svg'
 import MainnetSVG from '@/assets/mainnet.svg'
@@ -10,6 +10,7 @@ import TestnetSVG from '@/assets/testnet.svg'
 import { HoverCard, Text } from '@/components/ui'
 import Link from '@/components/ui/link'
 import { env } from '@/constants/env'
+import { useBreakpoints } from '@/hooks/useBreakpoints'
 
 const TESTNET_SYMBOL = 'testnet.'
 
@@ -42,6 +43,42 @@ export const NetworkSwitcher = memo(function NetworkSwitcher() {
   ]
 
   const network = env.public.IS_MAINNET ? networks[0] : networks[1]
+
+  const isMd = useBreakpoints('md')
+
+  if (!isMd) {
+    return (<HStack gap="16px" w="100%" px="8px">
+      {networks.map((x, i) => {
+        return (
+          <Link
+            href={x.href}
+            p="6px"
+            key={i}
+            gap="8px"
+            display="flex"
+            alignItems="center"
+            rounded="100px"
+            w="100%"
+            border="1px solid"
+            borderColor="transparent"
+            transition="100ms"
+            _hover={{
+              bg: 'bg.input',
+              borderColor: 'border.light',
+            }}
+          >
+            <Text as="span" color={network === x ? 'brand' : 'text.primary'}>
+              {x.icon}
+            </Text>
+            {x.label}
+            {network === x ? (
+              <Box w="8px" h="8px" my="auto" mr="6px" ml="auto" bg="#2FE000" rounded="100%" />
+            ) : null}
+          </Link>
+        )
+      })}
+    </HStack>)
+  }
 
   return (
     <HoverCard.Root unmountOnExit openDelay={0} closeDelay={200}>

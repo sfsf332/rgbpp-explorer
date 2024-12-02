@@ -99,8 +99,8 @@ msgid "Back to Home"
 msgstr "返回首页"
 
 #: src/app/[lang]/explorer/btc/info.tsx:50
-#: src/components/footer.tsx:92
-#: src/components/navbar/index.tsx:34
+#: src/components/footer.tsx:91
+#: src/components/navbar/index.tsx:35
 #: src/components/network-cards.tsx:74
 msgid "Bitcoin"
 msgstr "Bitcoin"
@@ -146,6 +146,15 @@ msgstr "BTC 交易"
 msgid "bytes"
 msgstr "字节"
 
+#: src/components/navbar/index.tsx:133
+msgid "Chains"
+msgstr "浏览器"
+
+#: src/components/navbar/index.tsx:165
+#: src/components/navbar/index.tsx:242
+msgid "Charts"
+msgstr "图表"
+
 #: src/app/[lang]/explorer/ckb/info.tsx:38
 #: src/components/ckb/ckb-address-overview.tsx:39
 #: src/components/ckb/ckb-address-overview.tsx:42
@@ -153,8 +162,8 @@ msgstr "字节"
 #: src/components/ckb/ckb-block-overview.tsx:66
 #: src/components/ckb/ckb-cell-tables.tsx:131
 #: src/components/ckb/ckb-transaction-overview.tsx:55
-#: src/components/footer.tsx:95
-#: src/components/navbar/index.tsx:39
+#: src/components/footer.tsx:94
+#: src/components/navbar/index.tsx:40
 #: src/components/network-cards.tsx:107
 msgid "CKB"
 msgstr "CKB"
@@ -189,6 +198,7 @@ msgid "Coming Soon"
 msgstr "即将推出"
 
 #: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:14
+#: src/app/[lang]/charts/page.tsx:14
 #: src/components/coming-soon.tsx:14
 msgid "Coming soon, please stay tuned"
 msgstr "即将推出，敬请期待"
@@ -231,8 +241,8 @@ msgstr "DOBs"
 msgid "Drop"
 msgstr "丢弃"
 
-#: src/components/footer.tsx:89
-#: src/components/navbar/index.tsx:113
+#: src/components/footer.tsx:88
+#: src/components/navbar/index.tsx:213
 msgid "Explorer"
 msgstr "浏览器"
 
@@ -242,9 +252,6 @@ msgid "Fee"
 msgstr "费用"
 
 #: src/components/btc/btc-transaction-overview.tsx:59
-msgid "Fee rate"
-msgstr ""
-
 #: src/components/ckb/ckb-transaction-overview.tsx:57
 msgid "Fee Rate"
 msgstr "费率"
@@ -314,8 +321,8 @@ msgid "L2 RGB++ Txns(24H)"
 msgstr "L2 RGB++ 交易(24小时)"
 
 #: src/components/ui/language-selector.tsx:47
-msgid "Language"
-msgstr "语言"
+#~ msgid "Language"
+#~ msgstr "语言"
 
 #: src/app/[lang]/explorer/btc/page.tsx:62
 msgid "Latest L1 RGB++ transaction"
@@ -338,7 +345,7 @@ msgstr "加载失败，请稍候"
 msgid "Low"
 msgstr "低优先级"
 
-#: src/components/network-switcher.tsx:34
+#: src/components/network-switcher.tsx:35
 msgid "Mainnet"
 msgstr "主网"
 
@@ -356,11 +363,11 @@ msgstr "矿工"
 msgid "Miner Reward"
 msgstr "矿工奖励"
 
-#: src/components/footer.tsx:114
+#: src/components/footer.tsx:113
 msgid "More Info"
 msgstr "更多信息"
 
-#: src/components/footer.tsx:117
+#: src/components/footer.tsx:116
 msgid "Nervos CKB"
 msgstr "Nervos CKB"
 
@@ -381,7 +388,7 @@ msgstr "无交易"
 msgid "Occupied"
 msgstr "已占用"
 
-#: src/components/search-bar.tsx:49
+#: src/components/search-bar.tsx:53
 msgid "Oops! Your search did not match any record."
 msgstr "抱歉！未找到匹配的记录。"
 
@@ -403,13 +410,13 @@ msgstr "输出 ({0})"
 msgid "Overview"
 msgstr "概览"
 
-#: src/components/footer.tsx:100
+#: src/components/footer.tsx:99
 msgid "RGB++"
 msgstr "RGB++"
 
 #: src/app/[lang]/address/[address]/layout.tsx:107
-#: src/components/navbar/index.tsx:136
-#: src/components/navbar/index.tsx:196
+#: src/components/navbar/index.tsx:157
+#: src/components/navbar/index.tsx:229
 msgid "RGB++ Assets"
 msgstr "RGB++ 资产"
 
@@ -426,8 +433,8 @@ msgstr "在 BTC 上的 RGB++ 同构绑定交易"
 msgid "RGB++ Binding Txn on CKB"
 msgstr "在 CKB 上的 RGB++ 同构绑定交易"
 
-#: src/components/footer.tsx:55
-#: src/components/navbar/index.tsx:94
+#: src/components/footer.tsx:54
+#: src/components/navbar/index.tsx:104
 msgid "RGB++ Explorer"
 msgstr "RGB++ 浏览器"
 
@@ -462,16 +469,16 @@ msgstr "聪"
 msgid "sats/vB"
 msgstr "聪/字节"
 
-#: src/components/footer.tsx:106
+#: src/components/footer.tsx:105
 msgid "Script"
 msgstr "脚本"
 
-#: src/components/footer.tsx:109
+#: src/components/footer.tsx:108
 msgid "SDK"
 msgstr "SDK"
 
-#: src/components/search-bar.tsx:128
-#: src/components/search-bar.tsx:173
+#: src/components/search-bar.tsx:132
+#: src/components/search-bar.tsx:177
 msgid "Search by Address/Tx Hash/Block Hash/AssetID"
 msgstr "搜索地址/交易哈希/区块哈希/资产ID"
 
@@ -505,7 +512,7 @@ msgstr "抱歉，您访问的页面不存在"
 msgid "Supply"
 msgstr "发行量"
 
-#: src/components/network-switcher.tsx:39
+#: src/components/network-switcher.tsx:40
 msgid "Testnet"
 msgstr "测试网"
 
@@ -563,7 +570,7 @@ msgstr "类型"
 msgid "Unconfirmed"
 msgstr "未确认"
 
-#: src/components/footer.tsx:120
+#: src/components/footer.tsx:119
 msgid "UTXO Stack"
 msgstr "UTXO Stack"
 
@@ -580,6 +587,6 @@ msgstr "在 CKB 浏览器中查看详情"
 msgid "View Details in Mempool"
 msgstr "在 Mempool 中查看详情"
 
-#: src/components/footer.tsx:103
+#: src/components/footer.tsx:102
 msgid "Whitepaper"
 msgstr "白皮书"

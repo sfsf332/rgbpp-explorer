@@ -8,13 +8,14 @@ import { useState } from 'react'
 import { Box, Center, Flex, HStack, styled, VStack } from 'styled-system/jsx'
 
 import ArrowIcon from '@/assets/arrow.svg'
-import ArrowDownIcon from '@/assets/arrow-down.svg'
+import CaretDownIcon from '@/assets/caret-down.svg'
 import BtcIcon from '@/assets/chains/btc.svg'
 import CkbIcon from '@/assets/chains/ckb.svg'
 import LogoSVG from '@/assets/logo.svg'
 import MenuIcon from '@/assets/menu.svg'
 import ClientOnly from '@/components/client-only'
 import { IfPathname } from '@/components/if-pathname'
+import { LanguageSelector } from '@/components/language-selector'
 import { NetworkSwitcher } from '@/components/network-switcher'
 import { SearchBarInNav } from '@/components/search-bar'
 import { Heading, HoverCard, Popover, Text } from '@/components/ui'
@@ -41,6 +42,14 @@ export function Navbar() {
       href: '/explorer/ckb',
     },
   ]
+
+  const getCurrentChain = () => {
+    if (pathname === `/${locale}/`) return null
+    return explorers.find(explorer => pathname.includes(explorer.href)) || null
+  }
+
+  const currentChain = getCurrentChain()
+
   const explorerLinks = explorers.map((x, i) => {
     return (
       <Link
@@ -55,6 +64,7 @@ export function Navbar() {
         border="1px solid"
         borderColor="transparent"
         transition="100ms"
+        color={currentChain?.href === x.href ? 'brand' : 'text.third'}
         _hover={{
           bg: 'bg.input',
           borderColor: 'border.light',
@@ -87,7 +97,7 @@ export function Navbar() {
     >
       <ProgressBar height="4px" color="var(--colors-brand)" options={{ showSpinner: false }} shallowRouting />
       <Flex maxW="1280px" w="100%" h={{ base: '64px', lg: '80px' }} alignItems="center" justifyContent="space-between">
-        <HStack fontWeight="medium" gap={{ base: '40px', xl: '80px' }} flex={1} pr={{ base: 0, lg: '24px' }}>
+        <HStack fontWeight="medium" gap={{ base: '40px', xl: '40px' }} flex={1} pr={{ base: 0, lg: '24px' }}>
           <Link display="flex" href="/" gap="8px" alignItems="center">
             <LogoSVG w="40px" h="40px" />
             <Text fontWeight="semibold" fontSize={{ base: '16px', lg: '20px' }} whiteSpace="nowrap">
@@ -95,7 +105,7 @@ export function Navbar() {
             </Text>
           </Link>
           <HStack
-            gap={{ base: '24px', lg: '48px' }}
+            gap={{ base: '24px', lg: '24px', xl: '48px' }}
             fontSize={{ base: '14px', lg: '16px' }}
             display={{ base: 'none', md: 'flex' }}
             ml={{ base: 'auto', lg: 0 }}
@@ -107,11 +117,22 @@ export function Navbar() {
                   alignItems="center"
                   gap="12px"
                   cursor="default"
-                  color={pathname.startsWith(`/${locale}/explorer`) ? 'brand' : 'text.primary'}
+                  _hover={{ color: 'brand' }}
                   whiteSpace="nowrap"
+                  rounded="8px"
+                  bg="bg.input"
+                  px="12px"
+                  py="8px"
                 >
-                  <Trans>Explorer</Trans>
-                  <ArrowDownIcon w="16px" h="16px" />
+                  {currentChain ? (
+                    <>
+                      {currentChain.icon}
+                      {currentChain.label}
+                    </>
+                  ) : (
+                    <Text><Trans>Chains</Trans></Text>
+                  )}
+                  <CaretDownIcon w="10px" h="6px" />
                 </styled.button>
               </HoverCard.Trigger>
 
@@ -129,11 +150,19 @@ export function Navbar() {
 
             <Link
               href="/assets"
-              _hover={{ textDecoration: 'underline' }}
+              _hover={{ color: 'brand' }}
               color={pathname.startsWith(`/${locale}/assets`) ? 'brand' : 'text.primary'}
               whiteSpace="nowrap"
             >
               <Trans>RGB++ Assets</Trans>
+            </Link>
+            <Link
+              href="/charts"
+              _hover={{ color: 'brand' }}
+              color={pathname.startsWith(`/${locale}/charts`) ? 'brand' : 'text.primary'}
+              whiteSpace="nowrap"
+            >
+              <Trans>Charts</Trans>
             </Link>
           </HStack>
         </HStack>
@@ -142,11 +171,14 @@ export function Navbar() {
             <IfPathname isNotOneOf={['/']} exact>
               {isLg ? <SearchBarInNav ml="auto" /> : null}
             </IfPathname>
-            <IfPathname isOneOf={['/']} exact>
-              <Box pl="24px">
-                <NetworkSwitcher />
-              </Box>
-            </IfPathname>
+            
+            {isMd ? <Box pl={`${isMd && !isLg ? '20px' : 'auto'}`}>
+              <NetworkSwitcher />
+            </Box> : null}
+            
+            <HStack gap="20px" pl={`${isMd && !isLg ? '0px' : 'auto'}`}>
+              <LanguageSelector />
+            </HStack>
             {!isMd ? (
               <Popover.Root
                 open={isOpen}
@@ -178,7 +210,7 @@ export function Navbar() {
                       px="16px"
                       color={pathname.startsWith(`/${locale}/explorer`) ? 'brand' : 'text.primary'}
                     >
-                      Explorer
+                      <Trans>Explorer</Trans>
                     </Heading>
                     <VStack gap="4px" w="100%" pl="24px">
                       {explorerLinks}
@@ -190,11 +222,35 @@ export function Navbar() {
                       fontSize="14px"
                       fontWeight="medium"
                       px="16px"
+                      _hover={{ color: 'brand' }}
                       onClick={() => setIsOpen(false)}
                       color={pathname.startsWith(`/${locale}/assets`) ? 'brand' : 'text.primary'}
                     >
                       <Trans>RGB++ Assets</Trans>
                     </Link>
+                    <Link
+                      href="/charts"
+                      h="48px"
+                      lineHeight="48px"
+                      fontSize="14px"
+                      fontWeight="medium"
+                      px="16px"
+                      _hover={{ color: 'brand' }}
+                      onClick={() => setIsOpen(false)}
+                      color={pathname.startsWith(`/${locale}/charts`) ? 'brand' : 'text.primary'}
+                    >
+                      <Trans>Charts</Trans>
+                    </Link>
+                    <Flex
+                      justifyContent="space-between"
+                      w="100%"
+                      py="8px"
+                      alignItems="center"
+                      borderTop="1px solid"
+                      borderTopColor="border.primary"
+                    >
+                      <NetworkSwitcher/>
+                    </Flex>
                   </Popover.Content>
                 </Popover.Positioner>
               </Popover.Root>
