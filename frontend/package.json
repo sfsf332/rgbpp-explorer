@@ -6,12 +6,12 @@
   "scripts": {
     "prepare": "panda codegen && graphql-codegen",
     "dev": "next dev",
-    "build": "npm run lingui && next build",
+    "build": "pnpm run lingui && next build",
     "start": "next start",
     "lint": "next lint",
     "lingui:extract": "lingui extract",
     "lingui:compile": "lingui compile",
-    "lingui": "npm run lingui:extract && npm run lingui:compile",
+    "lingui": "pnpm run lingui:extract && pnpm run lingui:compile",
     "cspell": "cspell \"**/*\""
   },
   "dependencies": {
