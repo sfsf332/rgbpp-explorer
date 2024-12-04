@@ -22,13 +22,11 @@ const publicEnvSchema = z.object({
   UTXO_STACK_TWITTER_URL: z.string().default('https://x.com/utxostack'),
   CKB_CELL_GITHUB_URL: z.string().default('https://github.com/utxostack'),
   UTXO_STACK_MEDIUM_URL: z.string().default('https://medium.com/@utxostack'),
-  RGBPP_EXPLORER_TESTNET_URL: z.string().default('https://testnet.explorer.utxostack.network'),
-  RGBPP_EXPLORER_MAINNET_URL: z.string().default('https://explorer.utxostack.network'),
+  RGBPP_EXPLORER_TESTNET_URL: z.string().default('https://testnet.explorer.rgbpp.io'),
+  RGBPP_EXPLORER_MAINNET_URL: z.string().default('https://explorer.rgbpp.io'),
   RGBPP_DOMAINS: z
     .string()
-    .default(
-      'explorer.utxostack.network,testnet.explorer.utxostack.network,explorer.rgbpp.io,testnet.explorer.rgbpp.io',
-    ),
+    .default('explorer.rgbpp.io,testnet.explorer.rgbpp.io'),
 })
 
 const sharedEnvSchema = z.object({
