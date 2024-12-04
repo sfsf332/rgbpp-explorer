@@ -6,7 +6,8 @@ import { Box, type BoxProps, HStack } from 'styled-system/jsx'
 import { useCopyToClipboard } from 'usehooks-ts'
 
 import CopyIcon from '@/assets/copy.svg'
-import { HoverCard, Text } from '@/components/ui'
+import { ResponsivePopover } from '@/components/responsive-hover-card'
+import { Text } from '@/components/ui'
 import { delay } from '@/lib/delay'
 
 export interface CopierProps extends BoxProps {
@@ -27,11 +28,34 @@ export function Copier({ value = '', children, onlyIcon = false, ...props }: Cop
     },
   })
 
+  const handleCopy = async () => {
+    await onCopy()
+  }
+
   if (onlyIcon) {
     return (
-      <HStack gap="12px" fontSize="14px" lineHeight="16px" color="text.third" onClick={() => onCopy()} {...props}>
+      <HStack gap="12px" fontSize="14px" lineHeight="16px" color="text.third" {...props}>
         <Text>{children ?? value}</Text>
-        <HoverCard.Root
+        <ResponsivePopover
+          trigger={
+            <CopyIcon
+              cursor="pointer"
+              w="16px"
+              h="16px"
+              onClick={handleCopy}
+            />
+          }
+          content={
+            <Box py="0px" color="text.primary">
+              <Text fontSize="12px" lineHeight="16px">
+                {isPending ? (
+                  <Trans>Copied</Trans>
+                ) : (
+                  <Trans>Copy</Trans>
+                )}
+              </Text>
+            </Box>
+          }
           openDelay={0}
           closeDelay={0}
           positioning={{ placement: 'top' }}
@@ -41,57 +65,41 @@ export function Copier({ value = '', children, onlyIcon = false, ...props }: Cop
               reset()
             }
           }}
-        >
-          <HoverCard.Trigger>
-            <CopyIcon cursor="pointer" w="16px" h="16px" />
-          </HoverCard.Trigger>
-          <HoverCard.Positioner>
-            <HoverCard.Content py="8px" color="text.primary">
-              <HoverCard.Arrow>
-                <HoverCard.ArrowTip />
-              </HoverCard.Arrow>
-              {isPending ? <Trans>Copied</Trans> : <Trans>Copy</Trans>}
-            </HoverCard.Content>
-          </HoverCard.Positioner>
-        </HoverCard.Root>
+        />
       </HStack>
     )
   }
 
   return (
-    <HoverCard.Root
-      openDelay={0}
-      closeDelay={0}
-      positioning={{ placement: 'top' }}
-      onOpenChange={async (details) => {
-        if (!details.open) {
-          await delay(300)
-          reset()
+    <Box display="inline-block" cursor="pointer" onClick={handleCopy} {...props}>
+      <ResponsivePopover
+        trigger={
+          <HStack gap="12px" fontSize="14px" lineHeight="16px" color="text.third">
+            <Box>{children ?? value}</Box>
+            <CopyIcon w="16px" h="16px" flexShrink={0} />
+          </HStack>
         }
-      }}
-    >
-      <HoverCard.Trigger>
-        <HStack
-          gap="12px"
-          fontSize="14px"
-          lineHeight="16px"
-          color="text.third"
-          onClick={() => onCopy()}
-          cursor="pointer"
-          {...props}
-        >
-          <Box>{children ?? value}</Box>
-          <CopyIcon w="16px" h="16px" flexShrink={0} />
-        </HStack>
-      </HoverCard.Trigger>
-      <HoverCard.Positioner>
-        <HoverCard.Content py="8px" color="text.primary" pointerEvents="none">
-          <HoverCard.Arrow>
-            <HoverCard.ArrowTip />
-          </HoverCard.Arrow>
-          {isPending ? <Trans>Copied</Trans> : <Trans>Copy</Trans>}
-        </HoverCard.Content>
-      </HoverCard.Positioner>
-    </HoverCard.Root>
+        content={
+          <Box py="0px" color="text.primary">
+            <Text fontSize="12px" lineHeight="16px">
+              {isPending ? (
+                <Trans>Copied</Trans>
+              ) : (
+                <Trans>Copy</Trans>
+              )}
+            </Text>
+          </Box>
+        }
+        openDelay={0}
+        closeDelay={0}
+        positioning={{ placement: 'top' }}
+        onOpenChange={async (details) => {
+          if (!details.open) {
+            await delay(300)
+            reset()
+          }
+        }}
+      />
+    </Box>
   )
 }

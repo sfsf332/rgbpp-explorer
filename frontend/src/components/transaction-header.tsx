@@ -42,7 +42,7 @@ export function TransactionHeader({
         lineHeight="24px"
         fontWeight="semibold"
       >
-        {t(i18n)`Transactions`}
+        {t(i18n)`Transaction`}
         <IfBreakpoint breakpoint="lg" fallback={layerType} />
       </Heading>
       <Box gridRow={{ base: '2/3', lg: 'auto' }} gridColumn={{ base: '1/3', lg: 'auto' }}>

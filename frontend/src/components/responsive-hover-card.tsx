@@ -37,6 +37,13 @@ export function ResponsivePopover({
     onOpenChange?.({ open })
   }
 
+  const defaultContentProps = {
+    outline: 'none',
+    boxShadow: 'none',
+    _focus: { outline: 'none', boxShadow: 'none' },
+    ...contentProps,
+  }
+
   if (isMd) {
     return (
       <HoverCard.Root
@@ -46,10 +53,10 @@ export function ResponsivePopover({
         onOpenChange={({ open }) => handleOpenChange(open)}
       >
         <HoverCard.Trigger asChild>
-            {trigger}
+          {trigger}
         </HoverCard.Trigger>
         <HoverCard.Positioner>
-          <HoverCard.Content {...contentProps}>
+          <HoverCard.Content {...defaultContentProps}>
             <HoverCard.Arrow>
               <HoverCard.ArrowTip />
             </HoverCard.Arrow>
@@ -66,7 +73,7 @@ export function ResponsivePopover({
         {trigger}
       </Popover.Trigger>
       <Popover.Positioner>
-        <Popover.Content {...contentProps}>
+        <Popover.Content {...defaultContentProps}>
           <Popover.Arrow>
             <Popover.ArrowTip />
           </Popover.Arrow>

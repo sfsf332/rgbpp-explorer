@@ -212,13 +212,13 @@ msgstr "确认数"
 msgid "Confirmed"
 msgstr "已确认"
 
-#: src/components/copier.tsx:53
-#: src/components/copier.tsx:92
+#: src/components/copier.tsx:52
+#: src/components/copier.tsx:86
 msgid "Copied"
 msgstr "已复制"
 
-#: src/components/copier.tsx:53
-#: src/components/copier.tsx:92
+#: src/components/copier.tsx:54
+#: src/components/copier.tsx:88
 msgid "Copy"
 msgstr "复制"
 
@@ -527,6 +527,7 @@ msgstr "总计 {0} 项"
 
 #: src/components/btc/btc-block-overview.tsx:56
 #: src/components/ckb/ckb-block-overview.tsx:43
+#: src/components/transaction-header.tsx:45
 msgid "Transaction"
 msgstr "交易"
 
@@ -534,7 +535,6 @@ msgstr "交易"
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:76
 #: src/app/[lang]/block/btc/[hashOrHeight]/layout.tsx:67
 #: src/app/[lang]/block/ckb/[hashOrHeight]/layout.tsx:59
-#: src/components/transaction-header.tsx:45
 msgid "Transactions"
 msgstr "交易记录"
 

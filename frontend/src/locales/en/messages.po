@@ -212,13 +212,13 @@ msgstr "Confirmations"
 msgid "Confirmed"
 msgstr "Confirmed"
 
-#: src/components/copier.tsx:53
-#: src/components/copier.tsx:92
+#: src/components/copier.tsx:52
+#: src/components/copier.tsx:86
 msgid "Copied"
 msgstr "Copied"
 
-#: src/components/copier.tsx:53
-#: src/components/copier.tsx:92
+#: src/components/copier.tsx:54
+#: src/components/copier.tsx:88
 msgid "Copy"
 msgstr "Copy"
 
@@ -527,6 +527,7 @@ msgstr "Total {0} Items"
 
 #: src/components/btc/btc-block-overview.tsx:56
 #: src/components/ckb/ckb-block-overview.tsx:43
+#: src/components/transaction-header.tsx:45
 msgid "Transaction"
 msgstr "Transaction"
 
@@ -534,7 +535,6 @@ msgstr "Transaction"
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:76
 #: src/app/[lang]/block/btc/[hashOrHeight]/layout.tsx:67
 #: src/app/[lang]/block/ckb/[hashOrHeight]/layout.tsx:59
-#: src/components/transaction-header.tsx:45
 msgid "Transactions"
 msgstr "Transactions"
 
