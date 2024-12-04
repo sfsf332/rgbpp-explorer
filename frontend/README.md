@@ -27,6 +27,23 @@ npm install -g pnpm
 ```bash
 pnpm install
 ```
+### Configure environment variables
+
+Create a `.env.local` file in the `frontend` directory and add the following content:
+
+```env
+# Mainnet configuration
+#NEXT_PUBLIC_IS_MAINNET=true
+#NEXT_PUBLIC_RGBPP_EXPLORER_API_URL=https://api-explorer.utxostack.network/graphql
+#NEXT_PUBLIC_CKB_EXPLORER_URL=https://explorer.nervos.org
+#NEXT_PUBLIC_RGBPP_EXPLORER_MAINNET_URL=https://explorer.rgbpp.io
+
+# Testnet configuration
+NEXT_PUBLIC_IS_MAINNET=false
+NEXT_PUBLIC_RGBPP_EXPLORER_API_URL=https://testnet-api.explorer.utxostack.network/graphql
+NEXT_PUBLIC_CKB_EXPLORER_URL=https://testnet.explorer.nervos.org
+NEXT_PUBLIC_RGBPP_EXPLORER_TESTNET_URL=https://testnet.explorer.rgbpp.io
+```
 
 ### Startup Instructions
 To start the development server, run:
