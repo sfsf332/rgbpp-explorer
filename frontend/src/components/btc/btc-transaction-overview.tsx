@@ -43,7 +43,10 @@ export function BtcTransactionOverview({ btcTransaction, i18n }: { btcTransactio
             <Link
               href={`/block/btc/${btcTransaction.blockHash}`}
               color="brand"
-              _hover={{ textDecoration: 'underline' }}
+              _hover={{ 
+                textDecoration: 'underline',
+                textUnderlineOffset: '3px',
+              }}
             >
               {formatNumber(btcTransaction?.blockHeight)}
             </Link>

@@ -41,7 +41,10 @@ export function CkbTransactionOverview({ ckbTransaction, i18n }: { i18n: I18n; c
             <Link
               href={`/block/ckb/${ckbTransaction.block?.hash || ckbTransaction.blockNumber}`}
               color="brand"
-              _hover={{ textDecoration: 'underline' }}
+              _hover={{ 
+                textDecoration: 'underline',
+                textUnderlineOffset: '3px',
+              }}
             >
               {formatNumber(ckbTransaction.blockNumber)}
             </Link>

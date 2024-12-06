@@ -101,6 +101,7 @@ export function BtcBlockOverview({
                     textAlign={{ base: 'right', md: 'center' }}
                     _hover={{
                       textDecoration: 'underline',
+                      textUnderlineOffset: '4px',
                     }}
                   >
                     {truncateMiddle(block.miner.address, 5, 5)}

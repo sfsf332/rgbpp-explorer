@@ -53,7 +53,10 @@ export function CkbBlockOverview({
                 maxW="250px"
                 truncate
                 color="brand"
-                _hover={{ textDecoration: 'underline' }}
+                _hover={{ 
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '4px',
+                }}
                 cursor="pointer"
               >
                 {formatCkbAddress(block.miner.address)}
