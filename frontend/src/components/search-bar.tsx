@@ -154,6 +154,7 @@ export function SearchBar(props: FlexProps) {
           display="flex"
           justifyContent="center"
           alignItems="center"
+          _hover={{ bg: 'brand' }}
         >
           <SearchIcon w={{ base: '24px', md: '32px', lg: '38px' }} h={{ base: '24px', md: '32px', lg: '38px' }} />
         </styled.button>

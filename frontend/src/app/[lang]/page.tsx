@@ -8,6 +8,7 @@ import HomeBgSVG from '@/assets/home-bg.svg'
 // import { HomeQuickInfo } from '@/components/home-quick-info'
 import { HomeTitle } from '@/components/home-title'
 import { NetworkCards } from '@/components/network-cards'
+import { RgbppStatisticsOverview } from '@/components/rgbpp-statistics-overview'
 import { SearchBar } from '@/components/search-bar'
 import { Heading } from '@/components/ui'
 
@@ -23,14 +24,14 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
   return (
     <>
       <Center flexDir="column" w="100%" position="relative" px={{ base: '20px', xl: '30px' }}>
-        <HomeBgSVG w="100%" pos="absolute" top="50px" left="0" />
+        <HomeBgSVG w="100%" pos="absolute" top={{ base: '100px', sm: "50px", lg: '50px' }} left="0" />
         <Flex
           w="100%"
           direction="column"
           pos="relative"
-          aspectRatio={{ base: 1440 / 1100, lg: 1440 / 900, xl: 1440 / 800, '2xl': 1440 / 680 }}
+          aspectRatio={{ base: 1440 / 1100, sm: 1440 / 800, lg: 1440 / 700, xl: 1440 / 700, '2xl': 1440 / 680 }}
         >
-          <Flex w="100%" direction="column" textAlign="center" align="center" justify="start" gap="54px" pb="40px">
+          <Flex w="100%" direction="column" textAlign="center" align="center" justify="start" gap={{ base:'54px', sm: '80px', lg: '100px'}} pb="40px">
             <HomeTitle />
             {/* <HomeQuickInfo />*/}
             <SearchBar />
@@ -45,6 +46,18 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
             fontWeight="semibold"
           >{t(i18n)`RGB++ Networks`}</Heading>
           <NetworkCards />
+          <Heading
+            fontSize={{ base: '22px', sm: '32px', xl: '40px' }}
+            fontWeight="semibold"
+            mb={{ base: '50px', xl: '60px' }}
+            mt={{ base: '80px', xl: '100px' }}
+          >{t(i18n)`RGB++ Statistics`}</Heading>
+          <RgbppStatisticsOverview
+            marketCap="$49.8M"
+            totalAssets="56K"
+            totalHolders="98K"
+            totalOccupiedCkb="39.7M"
+          />
           <Heading
             fontSize={{ base: '22px', sm: '32px', xl: '40px' }}
             fontWeight="semibold"

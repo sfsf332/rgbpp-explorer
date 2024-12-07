@@ -35,11 +35,11 @@ export function LanguageSelector() {
       alignItems="center"
       gap="8px"
       cursor="pointer"
-      color="text.third"
+      color="text.primary"
       whiteSpace="nowrap"
       _hover={{ color: 'text.primary' }}
     >
-      <LanguageIcon w="22px" h="22px" />
+      <LanguageIcon w="22px" h="22px" color="text.primary" _hover={{ color: 'brand' }}/>
     </styled.button>
   )
 
