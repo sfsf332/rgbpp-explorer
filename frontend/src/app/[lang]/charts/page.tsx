@@ -1,18 +1,35 @@
 'use client'
 
-import { Trans } from '@lingui/macro'
-import { VStack } from 'styled-system/jsx'
+import { Grid, VStack } from 'styled-system/jsx'
 
-import ComingSoonSVG from '@/assets/coming-soon.svg'
+import { chartCategories } from '@/app/[lang]/charts/charts'
+import { ChartCard } from '@/components/charts/chart-card'
 import { Text } from '@/components/ui'
 
-export default function Page() {
+export default function ChartsPage() {
   return (
-    <VStack gap="10px" w="100%" maxW="content" p="30px" rounded="8px" pt="74px" pb="260px">
-      <ComingSoonSVG w="200px" h="200px" />
-      <Text color="text.third" fontSize="14px">
-        <Trans>Coming soon, please stay tuned</Trans>
-      </Text>
+    <VStack w="100%" maxW="1200px" mx="auto" gap={30} py="40px" px={{ base: '20px', md: '30px' }}>
+      {chartCategories.map(category => (
+        <VStack key={category.id} w="100%" gap={4} bg="bg.card" rounded="8px" p="30px">
+          <Text fontSize="2xl" fontWeight="bold">
+            {category.title}
+          </Text>
+          <Grid
+            w="100%"
+            gridTemplateColumns={{
+              base: '1fr',
+              md: 'repeat(2, 1fr)',
+              lg: 'repeat(3, 1fr)',
+            }}
+            gap={5}
+            justifyContent="start"
+          >
+            {category.charts.map(chart => (
+              <ChartCard key={chart.id} id={chart.id} title={chart.title} Component={chart.Component} />
+            ))}
+          </Grid>
+        </VStack>
+      ))}
     </VStack>
   )
 }
