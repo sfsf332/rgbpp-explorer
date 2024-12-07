@@ -1,6 +1,7 @@
 'use client'
 
 import { Box, Grid, VStack } from 'styled-system/jsx'
+
 import { Text } from '@/components/ui'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
 
