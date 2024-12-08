@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import linguiConfig from 'lingui.config.mjs'
-import { LastRgbppTxnsTable } from 'src/components/latest-tx-list'
-import { Box, Center, Flex } from 'styled-system/jsx'
+import { HomeRgbppTxnsOverview } from 'src/components/latest-tx-list'
+import { Center, Flex } from 'styled-system/jsx'
 
 import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
 import HomeBgSVG from '@/assets/home-bg.svg'
@@ -61,12 +61,10 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
           <Heading
             fontSize={{ base: '22px', sm: '32px', xl: '40px' }}
             fontWeight="semibold"
-            mb={{ base: '50px', xl: '60px' }}
+            mb={{ base: '0px', lg: '30px' }}
             mt={{ base: '80px', xl: '100px' }}
-          >{t(i18n)`Latest RGB++ Txns`}</Heading>
-          <Box w="100%" bg="bg.card" pt={{ base: '10px', md: '30px' }} pb={{ base: '10px', md: '20px' }} rounded="8px">
-            <LastRgbppTxnsTable />
-          </Box>
+          >{t(i18n)`RGB++ Transactions`}</Heading>
+          <HomeRgbppTxnsOverview />
         </Flex>
       </Center>
     </>

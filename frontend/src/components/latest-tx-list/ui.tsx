@@ -13,14 +13,16 @@ import type { CkbTransaction, RgbppTransaction } from '@/gql/graphql'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
 import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-from-rgbpp-transaction'
 import { resolveRGBppTxHash } from '@/lib/resolve-rgbpp-tx-hash'
+import { formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
 
 import { Box, HStack, VStack } from '../../../styled-system/jsx'
 
 export function LatestTxnListUI<
-  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'timestamp' | 'leapDirection' | 'btcTxid' | 'ckbTxHash'>,
+  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'blockNumber' | 'timestamp' | 'leapDirection' | 'btcTxid' | 'ckbTxHash'>,
 >({ txs }: { txs: T[] }) {
   const isMd = useBreakpoints('md')
+  const isLg = useBreakpoints('lg')
 
   if (!isMd) {
     return txs.map((tx) => {
@@ -74,13 +76,16 @@ export function LatestTxnListUI<
           <Table.Header w={{ base: '200px', lg: '254px' }}>
             <Trans>Tx hash</Trans>
           </Table.Header>
+          {isLg ? <Table.Header w="140px">
+              <Trans>Block Height</Trans>
+            </Table.Header> : null}
           <Table.Header w="160px">
             <Trans>Type</Trans>
           </Table.Header>
-          <Table.Header w="200px">
+          <Table.Header w="190px">
             <Trans>Amount</Trans>
           </Table.Header>
-          <Table.Header w="140px">
+          <Table.Header w="135px">
             <Trans>Time</Trans>
           </Table.Header>
         </Table.Row>
@@ -89,7 +94,7 @@ export function LatestTxnListUI<
         {txs.map((tx) => {
           const txHash = resolveRGBppTxHash(tx)
           return (
-            <Table.Row key={txHash}>
+            <Table.Row key={txHash} >
               <Table.Cell>
                 <Link href={`/transaction/${txHash}`} display="flex" alignItems="center" gap={3} color="text.link">
                   <LinkOutlineIcon w="36px" h="36px" />
@@ -98,13 +103,16 @@ export function LatestTxnListUI<
                   </IfBreakpoint>
                 </Link>
               </Table.Cell>
+              {isLg ? <Table.Cell>
+                  {formatNumber(tx.blockNumber)}
+                </Table.Cell> : null}
               <Table.Cell>
                 <LayerType type={resolveLayerTypeFromRGBppTransaction(tx)} />
               </Table.Cell>
               <Table.Cell>
                 <Amount ckbTransaction={tx.ckbTransaction as CkbTransaction} />
               </Table.Cell>
-              <Table.Cell w="165px">
+              <Table.Cell>
                 <AgoTimeFormatter time={tx.timestamp} tooltip />
               </Table.Cell>
             </Table.Row>
