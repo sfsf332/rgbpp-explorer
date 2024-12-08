@@ -1,18 +1,20 @@
 'use client'
 
+import { Trans } from '@lingui/macro'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { notFound, useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Box, VStack } from 'styled-system/jsx'
 
-import { getChartById } from '@/app/[lang]/charts/charts'
+import { useCharts } from '@/app/[lang]/charts/charts'
 import { Text } from '@/components/ui'
 
 export default function ChartDetailPage() {
   const params = useParams()
   const chartId = params.chartId as string
+  const { getChartById } = useCharts()
   const chart = getChartById(chartId)
-  console.log(chartId);
+  
   const [data, setData] = useState<any>(null)
 
   useEffect(() => {
@@ -22,12 +24,7 @@ export default function ChartDetailPage() {
   }, [chart])
 
   if (!chart) {
-    return (
-      <VStack w="100%" maxW="1200px" mx="auto" py="40px" px={{ base: '20px', md: '30px' }}>
-        <Text>Chart not found</Text>
-        <Link href="/charts">Back to Charts</Link>
-      </VStack>
-    )
+    return notFound()
   }
 
   return (
@@ -35,7 +32,9 @@ export default function ChartDetailPage() {
       <VStack gap="24px" w="100%">
         <Box w="100%">
           <Link href="/charts" style={{ textDecoration: 'none' }}>
-            <Text color="text.secondary">← Back to Charts</Text>
+            <Text color="text.secondary">
+              <Trans>← Back to Charts</Trans>
+            </Text>
           </Link>
         </Box>
 

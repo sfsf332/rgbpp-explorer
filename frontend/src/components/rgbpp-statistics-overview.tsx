@@ -1,5 +1,7 @@
 'use client'
 
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 import { Box, Grid, VStack } from 'styled-system/jsx'
 
 import { Text } from '@/components/ui'
@@ -55,12 +57,13 @@ export function RgbppStatisticsOverview({
 }: RgbppStatisticsOverviewProps) {
   const isTablet = useBreakpoints('sm')
   const isDesktop = useBreakpoints('lg')
+  const { i18n } = useLingui()
 
   const items = [
-    { value: marketCap, label: "Market Cap (USD)" },
-    { value: totalAssets, label: "Total Number of Assets" },
-    { value: totalHolders, label: "Total Holders" },
-    { value: totalOccupiedCkb, label: "Total Occupied CKB" }
+    { value: marketCap, label: t(i18n)`Market Cap (USD)` },
+    { value: totalAssets, label: t(i18n)`Total Number of Assets` },
+    { value: totalHolders, label: t(i18n)`Total Holders` },
+    { value: totalOccupiedCkb, label: t(i18n)`Total Occupied CKB` }
   ];
 
   const shouldShowDivider = (index: number) => {

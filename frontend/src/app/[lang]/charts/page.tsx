@@ -2,11 +2,13 @@
 
 import { Grid, VStack } from 'styled-system/jsx'
 
-import { chartCategories } from '@/app/[lang]/charts/charts'
+import { useCharts } from '@/app/[lang]/charts/charts'
 import { ChartCard } from '@/components/charts/chart-card'
 import { Text } from '@/components/ui'
 
 export default function ChartsPage() {
+  const { chartCategories } = useCharts()
+  
   return (
     <VStack w="100%" maxW="1200px" mx="auto" gap={30} py="40px" px={{ base: '20px', md: '30px' }}>
       {chartCategories.map(category => (

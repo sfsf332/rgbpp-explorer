@@ -1,51 +1,62 @@
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
+
 import { assetsOverviewChart } from '@/app/[lang]/charts/charts/AssetsOverview'
 import { ChartCategory, ChartDefinition } from '@/app/[lang]/charts/types'
 
 // charts, todo
-const charts: ChartDefinition[] = [
-  {
-    ...assetsOverviewChart,
-    category: 'overview',
-  },
-  {
-    id: 'holders-overview',
-    title: 'Total Holders of RGB++ Asset',
-    description: 'The number of unique addresses that hold at least one RGB++ asset',
-    category: 'overview',
-    Component: assetsOverviewChart.Component, 
-    fetchData: assetsOverviewChart.fetchData,
-  },
-  {
-    id: 'transactions-overview',
-    title: 'Total RGB++ Assets Transactions',
-    description: 'The number of transactions related to RGB++ assets',
-    category: 'overview',
-    Component: assetsOverviewChart.Component,
-    fetchData: assetsOverviewChart.fetchData,
-  },
-  {
-    id: 'occupied-ckb',
-    title: 'Total Occupied CKB',
-    description: 'The total amount of CKB occupied by RGB++ assets',  
-    category: 'utilization',
-    Component: assetsOverviewChart.Component,
-    fetchData: assetsOverviewChart.fetchData,
-  },
-]
+export function useCharts() {
+  const { i18n } = useLingui()
+  
+  const charts: ChartDefinition[] = [
+    {
+      id: 'total-assets',
+      title: t(i18n)`Total Count of RGB++ Asset `,
+      description: t(i18n)`The total number of RGB++ assets`,
+      category: 'overview',
+      Component: assetsOverviewChart.Component, 
+      fetchData: assetsOverviewChart.fetchData,
+    },
+    {
+      id: 'total-holders',
+      title: t(i18n)`Total Holders of RGB++ Asset`,
+      description: t(i18n)`The number of unique addresses that hold at least one RGB++ asset`,
+      category: 'overview',
+      Component: assetsOverviewChart.Component, 
+      fetchData: assetsOverviewChart.fetchData,
+    },
+    {
+      id: 'total-transactions',
+      title: t(i18n)`Total RGB++ Assets Transactions`,
+      description: t(i18n)`The number of transactions related to RGB++ assets`,
+      category: 'overview',
+      Component: assetsOverviewChart.Component,
+      fetchData: assetsOverviewChart.fetchData,
+    },
+    {
+      id: 'occupied-ckb',
+      title: t(i18n)`Total Occupied CKB`,
+      description: t(i18n)`The total amount of CKB occupied by RGB++ assets`,  
+      category: 'utilization',
+      Component: assetsOverviewChart.Component,
+      fetchData: assetsOverviewChart.fetchData,
+    },
+  ]
 
-export const chartCategories: ChartCategory[] = [
-  {
-    id: 'overview',
-    title: 'RGB++ Assets Overview & Activity',
-    charts: charts.filter(chart => chart.category === 'overview'),
-  },
-  {
-    id: 'utilization',
-    title: 'RGB++ Assets Utilization',
-    charts: charts.filter(chart => chart.category === 'utilization'),
-  },
-]
+  const chartCategories: ChartCategory[] = [
+    {
+      id: 'overview',
+      title: t(i18n)`RGB++ Assets Overview & Activity`,
+      charts: charts.filter(chart => chart.category === 'overview'),
+    },
+    {
+      id: 'utilization',
+      title: t(i18n)`RGB++ Assets Utilization`,
+      charts: charts.filter(chart => chart.category === 'utilization'),
+    },
+  ]
 
-export function getChartById(id: string): ChartDefinition | undefined {
-  return charts.find(chart => chart.id === id)
+  const getChartById = (id: string) => charts.find(chart => chart.id === id)
+
+  return { charts, chartCategories, getChartById }
 }
