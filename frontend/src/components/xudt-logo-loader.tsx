@@ -39,10 +39,9 @@ export function XudtLogoLoader({ symbol, size }: Props) {
         display="flex"
         alignItems="center"
         justifyContent="center"
+        style={{ fontSize, flexShrink: 0 }}
       >
-        <Box lineHeight="1" style={{ fontSize }}>
-          {symbol.charAt(0).toUpperCase()}
-        </Box>
+        {symbol.charAt(0).toUpperCase()}
       </Box>
     )
   }

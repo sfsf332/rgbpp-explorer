@@ -181,6 +181,8 @@ msgid "Charts"
 msgstr "Charts"
 
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:113
+#: src/components/coin-list.tsx:61
+#: src/components/coin-list.tsx:162
 msgid "Circulating Supply"
 msgstr "Circulating Supply"
 
@@ -209,7 +211,7 @@ msgstr "CKB Chain Holders"
 msgid "CKB Txn"
 msgstr "CKB Txn"
 
-#: src/components/coin-list.tsx:38
+#: src/components/coin-list.tsx:46
 msgid "Coin"
 msgstr "Coin"
 
@@ -257,8 +259,7 @@ msgstr "Copied"
 msgid "Copy"
 msgstr "Copy"
 
-#: src/components/coin-list.tsx:50
-#: src/components/coin-list.tsx:137
+#: src/components/coin-list.tsx:174
 msgid "Deploy Time"
 msgstr "Deploy Time"
 
@@ -313,6 +314,8 @@ msgid "High"
 msgstr "High"
 
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:130
+#: src/components/coin-list.tsx:49
+#: src/components/coin-list.tsx:146
 msgid "Holders"
 msgstr "Holders"
 
@@ -331,11 +334,6 @@ msgstr "kB"
 #: src/components/layer-type.tsx:63
 msgid "L1"
 msgstr "L1"
-
-#: src/components/coin-list.tsx:41
-#: src/components/coin-list.tsx:125
-msgid "L1 and L2 Holders"
-msgstr "L1 and L2 Holders"
 
 #: src/components/btc/btc-address-overview.tsx:55
 msgid "L1 RGB++ Assets"
@@ -385,6 +383,8 @@ msgid "Mainnet"
 msgstr "Mainnet"
 
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:101
+#: src/components/coin-list.tsx:67
+#: src/components/coin-list.tsx:170
 msgid "Market Cap"
 msgstr "Market Cap"
 
@@ -459,6 +459,8 @@ msgid "Position Ratio"
 msgstr "Position Ratio"
 
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:89
+#: src/components/coin-list.tsx:52
+#: src/components/coin-list.tsx:150
 msgid "Price"
 msgstr "Price"
 
@@ -579,11 +581,6 @@ msgstr "Something wrong. Error code: {0}"
 msgid "Sorry, the page you visited does not exist"
 msgstr "Sorry, the page you visited does not exist"
 
-#: src/components/coin-list.tsx:47
-#: src/components/coin-list.tsx:133
-msgid "Supply"
-msgstr "Supply"
-
 #: src/components/network-switcher.tsx:40
 msgid "Testnet"
 msgstr "Testnet"
@@ -609,7 +606,7 @@ msgid "Time"
 msgstr "Time"
 
 #: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:106
-#: src/app/[lang]/assets/coins/page.tsx:54
+#: src/app/[lang]/assets/coins/page.tsx:57
 msgid "Total {0} Items"
 msgstr "Total {0} Items"
 
@@ -640,12 +637,18 @@ msgid "Total RGB++ Assets Transactions"
 msgstr "Total RGB++ Assets Transactions"
 
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:119
+#: src/components/coin-list.tsx:64
+#: src/components/coin-list.tsx:166
 msgid "Total Supply"
 msgstr "Total Supply"
 
 #: src/components/latest-tx-list/index.tsx:102
 msgid "Total Transactions"
 msgstr "Total Transactions"
+
+#: src/app/[lang]/assets/coins/page.tsx:51
+msgid "Total: {0} Coins"
+msgstr "Total: {0} Coins"
 
 #: src/components/btc/btc-block-overview.tsx:56
 #: src/components/ckb/ckb-block-overview.tsx:43
@@ -681,8 +684,8 @@ msgstr "Txn Fee:<0>{0} </0>{feeUnit}"
 msgid "Txns"
 msgstr "Txns"
 
-#: src/components/coin-list.tsx:44
-#: src/components/coin-list.tsx:129
+#: src/components/coin-list.tsx:55
+#: src/components/coin-list.tsx:154
 #: src/components/network-cards.tsx:85
 #: src/components/network-cards.tsx:118
 msgid "Txns(24H)"
@@ -716,6 +719,11 @@ msgstr "View Details in CKB"
 #: src/components/view-mempool.tsx:27
 msgid "View Details in Mempool"
 msgstr "View Details in Mempool"
+
+#: src/components/coin-list.tsx:58
+#: src/components/coin-list.tsx:158
+msgid "Volume(24H)"
+msgstr "Volume(24H)"
 
 #: src/components/footer.tsx:102
 msgid "Whitepaper"

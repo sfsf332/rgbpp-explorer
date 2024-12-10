@@ -27,26 +27,44 @@ type PickedCoin = Pick<
   | 'deployedAt'
 >
 
+// TestData todo
+const testData = {
+  marketCap: 0,
+  volume24h: 0,
+  circulatingSupply: 0,
+  totalSupply: 0,
+  price: 0,
+}
+
 export function CoinList<T extends PickedCoin>({ coins }: { coins: T[] }) {
   return (
     <IfBreakpoint breakpoint="lg" fallback={<CoinListGrid coins={coins} />}>
       <Table.Root w="100%" tableLayout="fixed">
-        <Table.Head>
+        <Table.Head backgroundColor={'bg.input'}>
           <Table.Row>
-            <Table.Header>
+            <Table.Header w="200px">
               <Trans>Coin</Trans>
             </Table.Header>
-            <Table.Header>
-              <Trans>L1 and L2 Holders</Trans>
+            <Table.Header w="100px">
+              <Trans>Holders</Trans>
             </Table.Header>
-            <Table.Header>
+            <Table.Header w="100px">
+              <Trans>Price</Trans>
+            </Table.Header>
+            <Table.Header w="120px">
               <Trans>Txns(24H)</Trans>
             </Table.Header>
-            <Table.Header>
-              <Trans>Supply</Trans>
+            <Table.Header w="120px">
+              <Trans>Volume(24H)</Trans>
             </Table.Header>
-            <Table.Header>
-              <Trans>Deploy Time</Trans>
+            <Table.Header w="140px">
+              <Trans>Circulating Supply</Trans>
+            </Table.Header>
+            <Table.Header w="140px">
+              <Trans>Total Supply</Trans>
+            </Table.Header>
+            <Table.Header w="160px">
+              <Trans>Market Cap</Trans>
             </Table.Header>
           </Table.Row>
         </Table.Head>
@@ -76,9 +94,13 @@ export function CoinList<T extends PickedCoin>({ coins }: { coins: T[] }) {
                   </Link>
                 </Table.Cell>
                 <Table.Cell>{formatNumber(sum([coin.l1HoldersCount, coin.l2HoldersCount]))}</Table.Cell>
+                <Table.Cell>${formatNumber(testData.price)}</Table.Cell>
                 <Table.Cell>{formatNumber(coin.h24CkbTransactionsCount)}</Table.Cell>
+                <Table.Cell>${formatNumber(testData.volume24h)}</Table.Cell>
                 <Table.Cell>{formatNumber(coin.totalAmount, coin.decimal)}</Table.Cell>
-                <Table.Cell>{coin.deployedAt ? dayjs(coin.deployedAt).format(DATE_TEMPLATE) : '-'}</Table.Cell>
+                <Table.Cell>{formatNumber(coin.totalAmount, coin.decimal)}</Table.Cell>
+                <Table.Cell>${formatNumber(testData.marketCap)}</Table.Cell>
+                {/* <Table.Cell>{coin.deployedAt ? dayjs(coin.deployedAt).format(DATE_TEMPLATE) : '-'}</Table.Cell>*/}
               </Table.Row>
             )
           })}
@@ -121,16 +143,32 @@ export function CoinListGrid<T extends PickedCoin>({ coins }: { coins: T[] }) {
             </HStack>
             {[
               {
-                label: <Trans>L1 and L2 Holders</Trans>,
+                label: <Trans>Holders</Trans>,
                 value: formatNumber(sum([coin.l1HoldersCount, coin.l2HoldersCount])),
+              },
+              {
+                label: <Trans>Price</Trans>,
+                value: '$' + formatNumber(testData.price),
               },
               {
                 label: <Trans>Txns(24H)</Trans>,
                 value: formatNumber(coin.h24CkbTransactionsCount),
               },
               {
-                label: <Trans>Supply</Trans>,
+                label: <Trans>Volume(24H)</Trans>,
+                value: '$' + formatNumber(testData.volume24h),
+              },
+              {
+                label: <Trans>Circulating Supply</Trans>,
                 value: formatNumber(coin.totalAmount, coin.decimal),
+              },
+              {
+                label: <Trans>Total Supply</Trans>,
+                value: formatNumber(coin.totalAmount, coin.decimal),
+              },
+              {
+                label: <Trans>Market Cap</Trans>,
+                value: '$' + formatNumber(testData.marketCap),
               },
               {
                 label: <Trans>Deploy Time</Trans>,

@@ -46,7 +46,10 @@ export default async function Page({
 
   return (
     <VStack w="100%" maxW="content" flex={1} gap="32px">
-      <Box bg="bg.card" w="100%" rounded="8px" pt={{ base: '10px', lg: '30px' }} pb="10px">
+      <Box bg="bg.card" w="100%" rounded="8px" pb="10px" overflow={'hidden'}>
+        <Text fontSize={{ base: '18px', lg: '20px' }} fontWeight="semibold" p={{ base: '20px', lg: '30px' }}>
+          {t(i18n)`Total: ${formatNumber(response.rgbppCoins.total)} Coins`}
+        </Text>
         <CoinList coins={response.rgbppCoins.coins} />
       </Box>
       <HStack gap="16px">
