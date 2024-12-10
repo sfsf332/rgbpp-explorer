@@ -5,5 +5,5 @@ import { getLocaleFromHeaders } from '@/lib/get-locale-from-headers'
 
 export function GET(request: NextRequest, { params: { typeHash } }: { params: { typeHash: string } }) {
   const locale = getLocaleFromHeaders()
-  return redirect(`/${locale}/assets/coins/${typeHash}/transactions`)
+  return redirect(`/${locale}/assets/coins/${typeHash}/holders`)
 }

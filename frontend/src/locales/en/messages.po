@@ -90,6 +90,10 @@ msgstr "<0>{0}</0><1>DOB</1>"
 msgid "<0>Explore the<1><2/></1></0><3>Ecosystem</3>"
 msgstr "<0>Explore the<1><2/></1></0><3>Ecosystem</3>"
 
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:107
+msgid "24H Volume"
+msgstr "24H Volume"
+
 #: src/app/[lang]/address/[address]/layout.tsx:83
 #: src/components/holder-list/coin-holder-list.tsx:144
 msgid "Address"
@@ -176,6 +180,10 @@ msgstr "Chains"
 msgid "Charts"
 msgstr "Charts"
 
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:113
+msgid "Circulating Supply"
+msgstr "Circulating Supply"
+
 #: src/app/[lang]/explorer/ckb/info.tsx:38
 #: src/components/ckb/ckb-address-overview.tsx:39
 #: src/components/ckb/ckb-address-overview.tsx:42
@@ -201,7 +209,7 @@ msgstr "CKB Chain Holders"
 msgid "CKB Txn"
 msgstr "CKB Txn"
 
-#: src/components/coin-list.tsx:37
+#: src/components/coin-list.tsx:38
 msgid "Coin"
 msgstr "Coin"
 
@@ -235,6 +243,10 @@ msgstr "Confirmations"
 msgid "Confirmed"
 msgstr "Confirmed"
 
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:79
+msgid "Contract:"
+msgstr "Contract:"
+
 #: src/components/copier.tsx:52
 #: src/components/copier.tsx:86
 msgid "Copied"
@@ -245,8 +257,8 @@ msgstr "Copied"
 msgid "Copy"
 msgstr "Copy"
 
-#: src/components/coin-list.tsx:49
-#: src/components/coin-list.tsx:136
+#: src/components/coin-list.tsx:50
+#: src/components/coin-list.tsx:137
 msgid "Deploy Time"
 msgstr "Deploy Time"
 
@@ -300,7 +312,7 @@ msgstr "Go"
 msgid "High"
 msgstr "High"
 
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:72
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:130
 msgid "Holders"
 msgstr "Holders"
 
@@ -320,8 +332,8 @@ msgstr "kB"
 msgid "L1"
 msgstr "L1"
 
-#: src/components/coin-list.tsx:40
-#: src/components/coin-list.tsx:124
+#: src/components/coin-list.tsx:41
+#: src/components/coin-list.tsx:125
 msgid "L1 and L2 Holders"
 msgstr "L1 and L2 Holders"
 
@@ -371,6 +383,10 @@ msgstr "Low"
 #: src/components/network-switcher.tsx:35
 msgid "Mainnet"
 msgstr "Mainnet"
+
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:101
+msgid "Market Cap"
+msgstr "Market Cap"
 
 #: src/components/rgbpp-statistics-overview.tsx:63
 msgid "Market Cap (USD)"
@@ -441,6 +457,10 @@ msgstr "Overview"
 #: src/components/holder-list/coin-holder-list.tsx:153
 msgid "Position Ratio"
 msgstr "Position Ratio"
+
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:89
+msgid "Price"
+msgstr "Price"
 
 #: src/components/holder-list/coin-holder-list.tsx:141
 msgid "Rank"
@@ -559,8 +579,8 @@ msgstr "Something wrong. Error code: {0}"
 msgid "Sorry, the page you visited does not exist"
 msgstr "Sorry, the page you visited does not exist"
 
-#: src/components/coin-list.tsx:46
-#: src/components/coin-list.tsx:132
+#: src/components/coin-list.tsx:47
+#: src/components/coin-list.tsx:133
 msgid "Supply"
 msgstr "Supply"
 
@@ -619,6 +639,10 @@ msgstr "Total Occupied CKB"
 msgid "Total RGB++ Assets Transactions"
 msgstr "Total RGB++ Assets Transactions"
 
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:119
+msgid "Total Supply"
+msgstr "Total Supply"
+
 #: src/components/latest-tx-list/index.tsx:102
 msgid "Total Transactions"
 msgstr "Total Transactions"
@@ -630,7 +654,7 @@ msgid "Transaction"
 msgstr "Transaction"
 
 #: src/app/[lang]/address/[address]/layout.tsx:103
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:76
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:134
 #: src/app/[lang]/block/btc/[hashOrHeight]/layout.tsx:67
 #: src/app/[lang]/block/ckb/[hashOrHeight]/layout.tsx:59
 msgid "Transactions"
@@ -657,8 +681,8 @@ msgstr "Txn Fee:<0>{0} </0>{feeUnit}"
 msgid "Txns"
 msgstr "Txns"
 
-#: src/components/coin-list.tsx:43
-#: src/components/coin-list.tsx:128
+#: src/components/coin-list.tsx:44
+#: src/components/coin-list.tsx:129
 #: src/components/network-cards.tsx:85
 #: src/components/network-cards.tsx:118
 msgid "Txns(24H)"

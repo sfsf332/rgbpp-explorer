@@ -4,12 +4,14 @@ import { PropsWithChildren } from 'react'
 import { Box, Flex, Grid, styled } from 'styled-system/jsx'
 
 import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
-import BtcIcon from '@/assets/chains/btc.svg'
 import { Copier } from '@/components/copier'
 import { LinkTabs } from '@/components/link-tabs'
 import { Text } from '@/components/ui'
+import { XudtLogoLoader } from '@/components/xudt-logo-loader'
 import { graphql } from '@/gql'
 import { graphQLClient } from '@/lib/graphql'
+import { formatNumber } from '@/lib/string/format-number'
+import { truncateMiddle } from '@/lib/string/truncate-middle'
 
 const query = graphql(`
   query RgbppCoin($typeHash: String!) {
@@ -21,6 +23,7 @@ const query = graphql(`
   }
 `)
 
+
 export default async function AssetDetail({
   children,
   params: { typeHash, lang },
@@ -28,42 +31,97 @@ export default async function AssetDetail({
   const i18n = getI18nInstance(lang)
   const response = await graphQLClient.request(query, { typeHash })
   if (!response.rgbppCoin) notFound()
+
+  // todo 
+  const testData = {
+    marketCap: 0,
+    volume24h: 0,
+    circulatingSupply: 0,
+    totalSupply: 0,
+    price: 0,
+  }
+
   return (
     <>
       <Grid
-        gridTemplateColumns="56px 1fr"
-        columnGap="16px"
-        rowGap={{ base: '16px', md: 0 }}
+        gridTemplateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }}
+        columnGap="20px"
+        rowGap="20px"
         w="100%"
         maxW="content"
-        py="20px"
-        px={{ base: '20px', xl: '30px' }}
+        p={{ base: '20px', lg: '30px' }}
         bg="bg.card"
         rounded="8px"
-        alignItems="center"
       >
-        <Box w="56px" h="56px" gridRow={{ base: '1/2', md: '1/3' }}>
-          {response.rgbppCoin.icon ? (
-            <styled.img w="100%" h="100%" src={response.rgbppCoin.icon} rounded="100%" />
-          ) : (
-            <BtcIcon w="100%" h="100%" />
-          )}
-        </Box>
-        <Flex gap="12px" flexDirection={{ base: 'column', md: 'row' }}>
-          <Text fontSize="20px" lineHeight="24px">
-            {response.rgbppCoin.symbol}
-          </Text>
-          <Text as="span" fontSize="14px" color="text.third" lineHeight="18px">
-            {response.rgbppCoin.name}
-          </Text>
+
+        <Flex flexDirection="row" gap="16px" id="info" alignItems="center">
+          <Box w="120px" h="120px" gridRow={{ base: '1/2', md: '1/3' }}>
+            {response.rgbppCoin.icon ? (
+              <styled.img w="100%" h="100%" src={response.rgbppCoin.icon} rounded="100%" />
+            ) : (
+              <XudtLogoLoader
+                symbol={response.rgbppCoin.symbol}
+                size={{ width: '120px', height: '120px', fontSize: '80px' }}
+              />
+            )}
+          </Box>
+          <Flex flexDirection="column" gap="12px" >
+            <Flex gap="12px" alignItems="center">
+              <Text fontSize={{ base: '18px', md: '20px', lg: '22px' }} fontWeight="600" lineHeight="1">
+                {response.rgbppCoin.symbol}
+              </Text>
+              <Text color="text.third">
+                {response.rgbppCoin.name}
+              </Text>
+            </Flex>
+            <Flex gap="12px" alignItems="center">
+              <Text fontSize="14px" color="text.secondary" lineHeight="24px" wordBreak="keep-all">
+                {t(i18n)`Contract:`}
+              </Text>
+              <Copier value={typeHash}>
+                <Text fontSize="14px" color="text.secondary" lineHeight="24px" wordBreak="break-all">
+                  {truncateMiddle(typeHash, 10, 8)}
+                </Text>
+              </Copier>
+            </Flex>
+            <Flex alignItems="center" gap="8px">
+              <Text fontSize={{ base: '18px', md: '20px', lg: '22px' }} fontWeight="600" color="brand">
+                {t(i18n)`Price`}: ${formatNumber(testData.price)}
+              </Text>
+            </Flex>
+          </Flex>
         </Flex>
-        <Box gridColumn={{ base: '1/3', md: '2/3' }}>
-          <Copier value={typeHash}>
-            <Text fontSize="14px" color="text.secondary" lineHeight="24px" wordBreak="break-all" textAlign="left">
-              {typeHash}
+
+        <Grid id="overview"
+          gridTemplateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }}
+          gap={{ base: '16px', md: '20px' }}
+          textAlign={{ base: 'left', lg: 'right' }}
+        >
+          <Flex flexDirection="column" gap="8px">
+            <Text fontSize="14px" color="text.secondary">{t(i18n)`Market Cap`}</Text>
+            <Text fontSize={{ base: '14px', md: '18px', lg: '20px' }} fontWeight="600">
+              ${formatNumber(testData.marketCap)}
             </Text>
-          </Copier>
-        </Box>
+          </Flex>
+          <Flex flexDirection="column" gap="8px">
+            <Text fontSize="14px"  color="text.secondary">{t(i18n)`24H Volume`}</Text>
+            <Text fontSize={{ base: '14px', md: '18px', lg: '20px' }} fontWeight="600">
+              {formatNumber(testData.volume24h)}
+            </Text>
+          </Flex>
+          <Flex flexDirection="column" gap="8px">
+            <Text fontSize="14px" color="text.secondary">{t(i18n)`Circulating Supply`}</Text>
+            <Text fontSize={{ base: '14px', md: '18px', lg: '20px' }} fontWeight="600">
+              {formatNumber(testData.circulatingSupply)}
+            </Text>
+          </Flex>
+          <Flex flexDirection="column" gap="8px">
+            <Text fontSize="14px" color="text.secondary">{t(i18n)`Total Supply`}</Text>
+            <Text fontSize={{ base: '14px', md: '18px', lg: '20px' }} fontWeight="600">
+              {formatNumber(testData.totalSupply)}
+            </Text>
+          </Flex>
+        </Grid>
       </Grid>
       <LinkTabs
         links={[
