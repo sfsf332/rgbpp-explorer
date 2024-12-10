@@ -22,7 +22,7 @@ export function XudtLogoLoader({ symbol, size }: Props) {
   const defaultSize = {
     width: '120px',
     height: '120px',
-    fontSize: '80px'
+    fontSize: '48px'
   }
 
   const { width, height, fontSize } = size || defaultSize
@@ -36,12 +36,13 @@ export function XudtLogoLoader({ symbol, size }: Props) {
         bg="brand"
         color="white"
         fontWeight="bold"
-        fontSize={fontSize}
         display="flex"
         alignItems="center"
         justifyContent="center"
       >
-        {symbol.charAt(0).toUpperCase()}
+        <Box lineHeight="1" style={{ fontSize }}>
+          {symbol.charAt(0).toUpperCase()}
+        </Box>
       </Box>
     )
   }
@@ -53,7 +54,7 @@ export function XudtLogoLoader({ symbol, size }: Props) {
         h="100%"
         rounded="100%"
         src={`https://xudtlogos.cc/logos/${symbol}-logo.png`}
-        alt={`xudt-${symbol}-logo`}
+        alt={`${symbol}-logo`}
         onError={handleLoadError}
       />
     </Box>

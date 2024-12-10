@@ -5,7 +5,6 @@ import dayjs from 'dayjs'
 import { sum } from 'lodash-es'
 import { Box, HStack, styled, VStack } from 'styled-system/jsx'
 
-import BtcIcon from '@/assets/chains/btc.svg'
 import { IfBreakpoint } from '@/components/if-breakpoint'
 import { TextOverflowTooltip } from '@/components/text-overflow-tooltip'
 import { Table, Text } from '@/components/ui'
@@ -112,7 +111,7 @@ export function CoinListGrid<T extends PickedCoin>({ coins }: { coins: T[] }) {
               {coin.icon ? (
                 <styled.img w="32px" h="32px" src={coin.icon} rounded="100%" />
               ) : (
-                <BtcIcon w="32px" h="32px" />
+                <XudtLogoLoader symbol={coin.symbol} size={{ width: '32px', height: '32px',fontSize: '14px' }} />
               )}
               <TextOverflowTooltip label={coin.symbol}>
                 <Text maxW="200px" truncate cursor="pointer">

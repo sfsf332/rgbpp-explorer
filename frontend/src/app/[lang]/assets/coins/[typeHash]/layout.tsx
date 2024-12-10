@@ -61,7 +61,7 @@ export default async function AssetDetail({
             ) : (
               <XudtLogoLoader
                 symbol={response.rgbppCoin.symbol}
-                size={{ width: '120px', height: '120px', fontSize: '80px' }}
+                size={{ width: '120px', height: '120px', fontSize: '48px' }}
               />
             )}
           </Box>
