@@ -13,6 +13,7 @@ import Link from '@/components/ui/link'
 import { DATE_TEMPLATE } from '@/constants'
 import { RgbppCoinsQuery } from '@/gql/graphql'
 import { formatNumber } from '@/lib/string/format-number'
+import { XudtLogoLoader } from './xudt-logo-loader'
 
 type PickedCoin = Pick<
   RgbppCoinsQuery['rgbppCoins']['coins'][number],
@@ -66,7 +67,7 @@ export function CoinList<T extends PickedCoin>({ coins }: { coins: T[] }) {
                     {coin.icon ? (
                       <styled.img w="32px" h="32px" src={coin.icon} rounded="100%" />
                     ) : (
-                      <BtcIcon w="32px" h="32px" />
+                      <XudtLogoLoader symbol={coin.symbol} size={{ width: '32px', height: '32px',fontSize: '14px' }} />
                     )}
                     <TextOverflowTooltip label={coin.symbol}>
                       <Text maxW="200px" truncate cursor="pointer">
