@@ -41,6 +41,10 @@ msgstr "{0} 已确认"
 msgid "{0} DOB"
 msgstr "{0} DOB"
 
+#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:60
+msgid "{0} Holders"
+msgstr "{0} 个持有人"
+
 #: src/components/btc/btc-block-overview.tsx:65
 msgid "{0} sats/vB ~ {1} sats/vB"
 msgstr "{0} 聪/字节 ~ {1} 聪/字节"
@@ -87,9 +91,12 @@ msgid "<0>Explore the<1><2/></1></0><3>Ecosystem</3>"
 msgstr "<0>探索<1><2/></1></0><3>生态系统</3>"
 
 #: src/app/[lang]/address/[address]/layout.tsx:83
+#: src/components/holder-list/coin-holder-list.tsx:144
 msgid "Address"
 msgstr "地址"
 
+#: src/components/holder-list/coin-holder-list.tsx:124
+#: src/components/holder-list/coin-holder-list.tsx:150
 #: src/components/latest-tx-list/ui.tsx:86
 msgid "Amount"
 msgstr "数量"
@@ -140,6 +147,10 @@ msgstr "BTC"
 msgid "BTC Balance"
 msgstr "BTC 余额"
 
+#: src/components/holder-list/holder-summary.tsx:26
+msgid "BTC Chain Holders"
+msgstr "BTC 链持有人"
+
 #: src/components/btc/btc-utxos.tsx:52
 msgid "BTC Txn"
 msgstr "BTC 交易"
@@ -150,6 +161,11 @@ msgstr "BTC 交易"
 #: src/components/ckb/ckb-transaction-overview.tsx:52
 msgid "bytes"
 msgstr "字节"
+
+#: src/components/holder-list/coin-holder-list.tsx:108
+#: src/components/holder-list/coin-holder-list.tsx:147
+msgid "Chain"
+msgstr "链"
 
 #: src/components/navbar/index.tsx:133
 msgid "Chains"
@@ -177,6 +193,10 @@ msgstr "CKB"
 msgid "CKB Balance"
 msgstr "CKB 余额"
 
+#: src/components/holder-list/holder-summary.tsx:31
+msgid "CKB Chain Holders"
+msgstr "CKB 链持有人"
+
 #: src/components/ckb/ckb-cells.tsx:55
 msgid "CKB Txn"
 msgstr "CKB 交易"
@@ -202,7 +222,6 @@ msgstr "即将推出"
 msgid "Coming Soon"
 msgstr "即将推出"
 
-#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:14
 #: src/components/coming-soon.tsx:14
 msgid "Coming soon, please stay tuned"
 msgstr "即将推出，敬请期待"
@@ -240,6 +259,10 @@ msgstr "DOB"
 #: src/app/[lang]/assets/layout.tsx:25
 msgid "DOBs"
 msgstr "DOBs"
+
+#: src/components/holder-list/holder-summary.tsx:36
+msgid "Doge Chain Holders"
+msgstr "Doge 链持有人"
 
 #: src/app/[lang]/explorer/btc/info.tsx:123
 msgid "Drop"
@@ -414,6 +437,15 @@ msgstr "输出 ({0})"
 msgid "Overview"
 msgstr "概览"
 
+#: src/components/holder-list/coin-holder-list.tsx:116
+#: src/components/holder-list/coin-holder-list.tsx:153
+msgid "Position Ratio"
+msgstr "持有比例"
+
+#: src/components/holder-list/coin-holder-list.tsx:141
+msgid "Rank"
+msgstr "排名"
+
 #: src/components/footer.tsx:99
 msgid "RGB++"
 msgstr "RGB++"
@@ -427,7 +459,7 @@ msgstr "RGB++ 资产"
 #: src/app/[lang]/explorer/btc/info.tsx:60
 #: src/app/[lang]/explorer/ckb/info.tsx:48
 msgid "RGB++ Assets Holders"
-msgstr "RGB++ 资产持有者"
+msgstr "RGB++ 资产持有人"
 
 #: src/app/[lang]/charts/charts/index.ts:49
 msgid "RGB++ Assets Overview & Activity"
@@ -452,7 +484,7 @@ msgstr "RGB++ 浏览器"
 
 #: src/components/home-quick-info.tsx:74
 msgid "RGB++ Holders"
-msgstr "RGB++ 持有者"
+msgstr "RGB++ 持有人"
 
 #: src/app/[lang]/page.tsx:47
 msgid "RGB++ Networks"
@@ -565,6 +597,7 @@ msgstr "总计 {0} 项"
 msgid "Total Count of RGB++ Asset"
 msgstr "RGB++ 资产总数"
 
+#: src/components/holder-list/holder-summary.tsx:19
 #: src/components/rgbpp-statistics-overview.tsx:65
 msgid "Total Holders"
 msgstr "总持有人数"

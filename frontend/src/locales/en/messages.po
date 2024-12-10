@@ -41,6 +41,10 @@ msgstr "{0} confirmed"
 msgid "{0} DOB"
 msgstr "{0} DOB"
 
+#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:60
+msgid "{0} Holders"
+msgstr "{0} Holders"
+
 #: src/components/btc/btc-block-overview.tsx:65
 msgid "{0} sats/vB ~ {1} sats/vB"
 msgstr "{0} sats/vB ~ {1} sats/vB"
@@ -87,9 +91,12 @@ msgid "<0>Explore the<1><2/></1></0><3>Ecosystem</3>"
 msgstr "<0>Explore the<1><2/></1></0><3>Ecosystem</3>"
 
 #: src/app/[lang]/address/[address]/layout.tsx:83
+#: src/components/holder-list/coin-holder-list.tsx:144
 msgid "Address"
 msgstr "Address"
 
+#: src/components/holder-list/coin-holder-list.tsx:124
+#: src/components/holder-list/coin-holder-list.tsx:150
 #: src/components/latest-tx-list/ui.tsx:86
 msgid "Amount"
 msgstr "Amount"
@@ -140,6 +147,10 @@ msgstr "BTC"
 msgid "BTC Balance"
 msgstr "BTC Balance"
 
+#: src/components/holder-list/holder-summary.tsx:26
+msgid "BTC Chain Holders"
+msgstr "BTC Chain Holders"
+
 #: src/components/btc/btc-utxos.tsx:52
 msgid "BTC Txn"
 msgstr "BTC Txn"
@@ -150,6 +161,11 @@ msgstr "BTC Txn"
 #: src/components/ckb/ckb-transaction-overview.tsx:52
 msgid "bytes"
 msgstr "bytes"
+
+#: src/components/holder-list/coin-holder-list.tsx:108
+#: src/components/holder-list/coin-holder-list.tsx:147
+msgid "Chain"
+msgstr "Chain"
 
 #: src/components/navbar/index.tsx:133
 msgid "Chains"
@@ -177,6 +193,10 @@ msgstr "CKB"
 msgid "CKB Balance"
 msgstr "CKB Balance"
 
+#: src/components/holder-list/holder-summary.tsx:31
+msgid "CKB Chain Holders"
+msgstr "CKB Chain Holders"
+
 #: src/components/ckb/ckb-cells.tsx:55
 msgid "CKB Txn"
 msgstr "CKB Txn"
@@ -202,7 +222,6 @@ msgstr "Coming"
 msgid "Coming Soon"
 msgstr "Coming Soon"
 
-#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:14
 #: src/components/coming-soon.tsx:14
 msgid "Coming soon, please stay tuned"
 msgstr "Coming soon, please stay tuned"
@@ -240,6 +259,10 @@ msgstr "DOB"
 #: src/app/[lang]/assets/layout.tsx:25
 msgid "DOBs"
 msgstr "DOBs"
+
+#: src/components/holder-list/holder-summary.tsx:36
+msgid "Doge Chain Holders"
+msgstr "Doge Chain Holders"
 
 #: src/app/[lang]/explorer/btc/info.tsx:123
 msgid "Drop"
@@ -414,6 +437,15 @@ msgstr "Outputs ({0})"
 msgid "Overview"
 msgstr "Overview"
 
+#: src/components/holder-list/coin-holder-list.tsx:116
+#: src/components/holder-list/coin-holder-list.tsx:153
+msgid "Position Ratio"
+msgstr "Position Ratio"
+
+#: src/components/holder-list/coin-holder-list.tsx:141
+msgid "Rank"
+msgstr "Rank"
+
 #: src/components/footer.tsx:99
 msgid "RGB++"
 msgstr "RGB++"
@@ -565,6 +597,7 @@ msgstr "Total {0} Items"
 msgid "Total Count of RGB++ Asset"
 msgstr "Total Count of RGB++ Asset"
 
+#: src/components/holder-list/holder-summary.tsx:19
 #: src/components/rgbpp-statistics-overview.tsx:65
 msgid "Total Holders"
 msgstr "Total Holders"
