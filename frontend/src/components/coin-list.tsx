@@ -10,10 +10,10 @@ import { IfBreakpoint } from '@/components/if-breakpoint'
 import { TextOverflowTooltip } from '@/components/text-overflow-tooltip'
 import { Table, Text } from '@/components/ui'
 import Link from '@/components/ui/link'
+import { XudtLogoLoader } from '@/components/xudt-logo-loader'
 import { DATE_TEMPLATE } from '@/constants'
 import { RgbppCoinsQuery } from '@/gql/graphql'
 import { formatNumber } from '@/lib/string/format-number'
-import { XudtLogoLoader } from './xudt-logo-loader'
 
 type PickedCoin = Pick<
   RgbppCoinsQuery['rgbppCoins']['coins'][number],
