@@ -11,7 +11,7 @@ import {
 } from 'recharts'
 import { Box } from 'styled-system/jsx'
 
-import { ChartProps } from '@/app/[lang]/charts/types'
+import { ChartProps } from '@/components/charts/types'
 
 const mockData = [
   { time: '6', all: 10000, ft: 5000, dob: 5000 },

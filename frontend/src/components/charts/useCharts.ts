@@ -1,8 +1,8 @@
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 
-import { assetsOverviewChart } from '@/app/[lang]/charts/charts/AssetsOverview'
-import { ChartCategory, ChartDefinition } from '@/app/[lang]/charts/types'
+import { assetsOverviewChart } from '@/components/charts/asset-overview-chart'
+import { ChartCategory, ChartDefinition } from '@/components/charts/types'
 
 // charts, todo
 export function useCharts() {

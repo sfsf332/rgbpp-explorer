@@ -6,7 +6,7 @@ import { notFound, useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Box, VStack } from 'styled-system/jsx'
 
-import { useCharts } from '@/app/[lang]/charts/charts'
+import { useCharts } from '@/components/charts/useCharts'
 import { Text } from '@/components/ui'
 
 export default function ChartDetailPage() {

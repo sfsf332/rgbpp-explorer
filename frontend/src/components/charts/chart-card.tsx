@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Box } from 'styled-system/jsx'
 
-import { ChartComponent } from '@/app/[lang]/charts/types'
+import { ChartComponent } from '@/components/charts/types'
 import { Text } from '@/components/ui'
 
 interface ChartCardProps extends ChartComponent {

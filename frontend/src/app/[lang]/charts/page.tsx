@@ -2,8 +2,8 @@
 
 import { Grid, VStack } from 'styled-system/jsx'
 
-import { useCharts } from '@/app/[lang]/charts/charts'
 import { ChartCard } from '@/components/charts/chart-card'
+import { useCharts } from '@/components/charts/useCharts'
 import { Text } from '@/components/ui'
 
 export default function ChartsPage() {
