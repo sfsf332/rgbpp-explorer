@@ -138,6 +138,9 @@ export default defineConfig({
             input: {
               value: '#292C44',
             },
+            tooltip: {
+              value: '#292C44',
+            },
           },
         },
       },
