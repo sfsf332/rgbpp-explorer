@@ -6,7 +6,14 @@ export interface ChartProps {
 }
 
 export interface ChartComponent {
-  Component: ComponentType<ChartProps>
+  chartRender: ComponentType<ChartProps>
+  statsRender?: ComponentType<ChartProps>
+}
+
+export interface ChartDownloadData {
+  filename: string
+  headers: string[]
+  rows: any[][]
 }
 
 export interface ChartDefinition extends ChartComponent {
@@ -14,11 +21,19 @@ export interface ChartDefinition extends ChartComponent {
   title: string
   category: 'overview' | 'utilization'
   description: string
-  fetchData?: () => Promise<any>
+  fetchData: () => Promise<any>
+  prepareDownloadData?: (data: any) => ChartDownloadData
 }
 
 export interface ChartCategory {
   id: 'overview' | 'utilization'
   title: string
   charts: ChartDefinition[]
+}
+
+export interface IssueCountChartDataPoint {
+  timestamp: number;
+  xudt: number;
+  dob: number;
+  total: number;
 }

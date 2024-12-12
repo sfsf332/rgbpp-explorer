@@ -2,8 +2,8 @@
 
 import { Grid, VStack } from 'styled-system/jsx'
 
-import { useCharts } from '@/app/[lang]/charts/charts'
 import { ChartCard } from '@/components/charts/chart-card'
+import { useCharts } from '@/components/charts/useCharts'
 import { Text } from '@/components/ui'
 
 export default function ChartsPage() {
@@ -27,7 +27,13 @@ export default function ChartsPage() {
             justifyContent="start"
           >
             {category.charts.map(chart => (
-              <ChartCard key={chart.id} id={chart.id} title={chart.title} Component={chart.Component} />
+              <ChartCard
+                key={chart.id}
+                id={chart.id}
+                title={chart.title}
+                chartRender={chart.chartRender}
+                fetchData={chart.fetchData}
+              />
             ))}
           </Grid>
         </VStack>
