@@ -3,7 +3,7 @@ import { useLingui } from '@lingui/react'
 import dayjs from 'dayjs'
 
 import { AssetsCountChart, AssetsCountStats } from '@/components/charts/assets-count-chart'
-import { ChartCategory, ChartDefinition } from '@/components/charts/types'
+import { ChartCategory, ChartDefinition, IssueCountChartDataPoint } from '@/components/charts/types'
 import { DATE_TEMPLATE } from '@/constants'
 import { mockIssueCountRecords } from '@/mocks/issue-count-records'
 
@@ -26,11 +26,11 @@ export function useCharts() {
         return {
           filename: 'rgbpp-assets-transactions',
           headers: ['Date', 'xUDT(FT)', 'DOB(NFT)', 'Total'],
-          rows: data?.map(item => [
+          rows: data?.map((item: IssueCountChartDataPoint) => [
             dayjs(item.timestamp).format(DATE_TEMPLATE),
             item.xudt,
             item.dob,
-            item.xudt + item.dob
+            item.total
           ])
         }
       },
@@ -48,12 +48,12 @@ export function useCharts() {
       prepareDownloadData: (data) => {
         return {
           filename: 'rgb-assets-transactions',
-          headers: ['Time', 'All', 'FT', 'DOB'],
-          rows: data.map(item => [
-            item.time,
-            item.all,
-            item.ft,
-            item.dob
+          headers: ['Date', 'xUDT(FT)', 'DOB(NFT)', 'Total'],
+          rows: data?.map((item: IssueCountChartDataPoint) => [
+            dayjs(item.timestamp).format(DATE_TEMPLATE),
+            item.xudt,
+            item.dob,
+            item.total
           ])
         }
       },
@@ -71,12 +71,12 @@ export function useCharts() {
       prepareDownloadData: (data) => {
         return {
           filename: 'rgb-assets-transactions',
-          headers: ['Time', 'All', 'FT', 'DOB'],
-          rows: data.map(item => [
-            item.time,
-            item.all,
-            item.ft,
-            item.dob
+          headers: ['Date', 'xUDT(FT)', 'DOB(NFT)', 'Total'],
+          rows: data?.map((item: IssueCountChartDataPoint) => [
+            dayjs(item.timestamp).format(DATE_TEMPLATE),
+            item.xudt,
+            item.dob,
+            item.total
           ])
         }
       },
@@ -94,12 +94,12 @@ export function useCharts() {
       prepareDownloadData: (data) => {
         return {
           filename: 'rgb-assets-transactions',
-          headers: ['Time', 'All', 'FT', 'DOB'],
-          rows: data.map(item => [
-            item.time,
-            item.all,
-            item.ft,
-            item.dob
+          headers: ['Date', 'xUDT(FT)', 'DOB(NFT)', 'Total'],
+          rows: data?.map((item: IssueCountChartDataPoint) => [
+            dayjs(item.timestamp).format(DATE_TEMPLATE),
+            item.xudt,
+            item.dob,
+            item.total
           ])
         }
       },

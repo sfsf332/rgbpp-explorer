@@ -30,3 +30,10 @@ export interface ChartCategory {
   title: string
   charts: ChartDefinition[]
 }
+
+export interface IssueCountChartDataPoint {
+  timestamp: number;
+  xudt: number;
+  dob: number;
+  total: number;
+}
