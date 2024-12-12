@@ -116,7 +116,7 @@ msgstr "Back to Home"
 #: src/app/[lang]/explorer/btc/info.tsx:50
 #: src/components/footer.tsx:91
 #: src/components/navbar/index.tsx:35
-#: src/components/network-cards.tsx:74
+#: src/components/network-cards.tsx:82
 msgid "Bitcoin"
 msgstr "Bitcoin"
 
@@ -129,8 +129,8 @@ msgstr "Block {0}"
 #: src/components/btc/btc-transaction-overview.tsx:42
 #: src/components/ckb/ckb-transaction-overview.tsx:40
 #: src/components/latest-tx-list/ui.tsx:80
-#: src/components/network-cards.tsx:81
-#: src/components/network-cards.tsx:114
+#: src/components/network-cards.tsx:89
+#: src/components/network-cards.tsx:122
 msgid "Block Height"
 msgstr "Block Height"
 
@@ -195,7 +195,7 @@ msgstr "Circulating Supply"
 #: src/components/ckb/ckb-transaction-overview.tsx:58
 #: src/components/footer.tsx:94
 #: src/components/navbar/index.tsx:40
-#: src/components/network-cards.tsx:107
+#: src/components/network-cards.tsx:115
 msgid "CKB"
 msgstr "CKB"
 
@@ -224,7 +224,7 @@ msgstr "Coinbase"
 msgid "Coins"
 msgstr "Coins"
 
-#: src/components/network-cards.tsx:148
+#: src/components/network-cards.tsx:156
 msgid "Coming"
 msgstr "Coming"
 
@@ -686,8 +686,8 @@ msgstr "Txns"
 
 #: src/components/coin-list.tsx:55
 #: src/components/coin-list.tsx:154
-#: src/components/network-cards.tsx:85
-#: src/components/network-cards.tsx:118
+#: src/components/network-cards.tsx:93
+#: src/components/network-cards.tsx:126
 msgid "Txns(24H)"
 msgstr "Txns(24H)"
 

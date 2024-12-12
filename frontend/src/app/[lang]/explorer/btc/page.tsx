@@ -54,7 +54,6 @@ const query = graphql(`
 export default async function Page({ params: { lang } }: { params: { lang: string } }) {
   const i18n = getI18nInstance(lang)
   const { rgbppLatestL1Transactions } = await graphQLClient.request(query, { limit: 10 })
-
   return (
     <Grid gridTemplateColumns="repeat(2, 1fr)" w="100%" maxW="content" p={{ base: '20px', xl: '30px' }} gap="30px">
       <Info i18n={i18n} />

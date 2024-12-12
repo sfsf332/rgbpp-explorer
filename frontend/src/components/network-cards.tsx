@@ -17,6 +17,7 @@ import { QueryKey } from '@/constants/query-key'
 import { graphql } from '@/gql'
 import { graphQLClient } from '@/lib/graphql'
 import { formatNumber } from '@/lib/string/format-number'
+import { apiFetcher } from '@/services/fecthcer'
 
 function FieldGroup({ fields }: { fields: Array<{ label: ReactNode; value: ReactNode }> }) {
   return (
@@ -52,7 +53,14 @@ export function NetworkCards() {
     },
     refetchInterval: 10000,
   })
-
+  const { data:staticData} = useQuery({
+    queryKey: ['statics'],
+    queryFn: async () => {
+      return await apiFetcher.fetchStatistics()
+    },
+    refetchInterval: 10000,
+  })
+  console.log(staticData);
   return (
     <Grid w="100%" gridTemplateColumns={{ base: '100%', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}>
       <Link

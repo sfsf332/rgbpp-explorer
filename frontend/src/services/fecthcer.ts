@@ -1,10 +1,11 @@
 
 import { toCamelcase } from '@rgbpp-sdk/ckb'
 
-import { requesterV1 } from '@/services/requester'
+import { requesterV1, requesterV2 } from '@/services/requester'
 import {
   Response,
 } from '@/services/types'
+import { AxiosResponse } from 'axios'
 
 
 async function v1Get<T>(...args: Parameters<typeof requesterV1.get>) {
@@ -39,7 +40,26 @@ export const apiFetcher = {
       transactionsCountPerMinute: string
       reorgStartedAt: string | null
     }>(`statistics`),
- 
+    fetchRGBTransactions: async (page: number, size: number, sort?: string, leapDirection?: string) =>
+      requesterV2('/rgb_transactions', {
+        params: {
+          page,
+          page_size: size,
+          sort,
+          leap_direction: leapDirection,
+        },
+      }).then((res: AxiosResponse) =>
+        toCamelcase<{
+          data: {
+            ckbTransactions: RGBTransaction[]
+          }
+          meta: {
+            total: number
+            pageSize: number
+          }
+        }>(res.data),
+      ),
+  
 
 }
 
@@ -52,3 +72,12 @@ export type APIFetcher = typeof apiFetcher
 export type APIReturn<T extends keyof APIFetcher> = Awaited<ReturnType<APIFetcher[T]>>
 
 
+export interface RGBTransaction {
+  txHash: string
+  blockId: number
+  blockNumber: number
+  blockTimestamp: number
+  leapDirection: string
+  rgbCellChanges: number
+  rgbTxid: string
+}
