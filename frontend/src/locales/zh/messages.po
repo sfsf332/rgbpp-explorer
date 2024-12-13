@@ -221,8 +221,8 @@ msgid "Coinbase"
 msgstr "挖矿产出"
 
 #: src/app/[lang]/assets/layout.tsx:21
-#: src/components/charts/assets-count-chart.tsx:197
-#: src/components/charts/assets-count-chart.tsx:247
+#: src/components/charts/assets-count-chart.tsx:119
+#: src/components/charts/assets-count-chart.tsx:171
 msgid "Coins"
 msgstr "代币"
 
@@ -261,6 +261,10 @@ msgstr "已复制"
 msgid "Copy"
 msgstr "复制"
 
+#: src/components/charts/assets-count-chart.tsx:77
+msgid "Count"
+msgstr "数量"
+
 #: src/components/coin-list.tsx:174
 msgid "Deploy Time"
 msgstr "部署时间"
@@ -271,8 +275,8 @@ msgstr "部署时间"
 msgid "DOB"
 msgstr "DOB"
 
-#: src/components/charts/assets-count-chart.tsx:205
-#: src/components/charts/assets-count-chart.tsx:254
+#: src/components/charts/assets-count-chart.tsx:127
+#: src/components/charts/assets-count-chart.tsx:178
 msgid "DOB Collections"
 msgstr "DOB 合集"
 
@@ -592,6 +596,10 @@ msgstr "出错了。错误代码：{0}"
 msgid "Sorry, the page you visited does not exist"
 msgstr "抱歉，您访问的页面不存在"
 
+#: src/components/charts/assets-count-chart.tsx:156
+msgid "Statistic"
+msgstr "汇总信息"
+
 #: src/components/network-switcher.tsx:40
 msgid "Testnet"
 msgstr "测试网"
@@ -616,7 +624,7 @@ msgstr "使用 RGB++ 协议发行的资产总数，比如 SEAL、STB、Nervape �
 msgid "Time"
 msgstr "时间"
 
-#: src/components/charts/assets-count-chart.tsx:189
+#: src/components/charts/assets-count-chart.tsx:111
 msgid "Total"
 msgstr "总计"
 
@@ -647,7 +655,7 @@ msgstr "总资产数"
 msgid "Total Occupied CKB"
 msgstr "累计占用 CKB"
 
-#: src/components/charts/assets-count-chart.tsx:238
+#: src/components/charts/assets-count-chart.tsx:162
 msgid "Total RGB++ Assets"
 msgstr "RGB++ 资产总数"
 

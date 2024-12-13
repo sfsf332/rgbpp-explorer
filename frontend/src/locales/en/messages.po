@@ -221,8 +221,8 @@ msgid "Coinbase"
 msgstr "Coinbase"
 
 #: src/app/[lang]/assets/layout.tsx:21
-#: src/components/charts/assets-count-chart.tsx:197
-#: src/components/charts/assets-count-chart.tsx:247
+#: src/components/charts/assets-count-chart.tsx:119
+#: src/components/charts/assets-count-chart.tsx:171
 msgid "Coins"
 msgstr "Coins"
 
@@ -261,6 +261,10 @@ msgstr "Copied"
 msgid "Copy"
 msgstr "Copy"
 
+#: src/components/charts/assets-count-chart.tsx:77
+msgid "Count"
+msgstr "Count"
+
 #: src/components/coin-list.tsx:174
 msgid "Deploy Time"
 msgstr "Deploy Time"
@@ -271,8 +275,8 @@ msgstr "Deploy Time"
 msgid "DOB"
 msgstr "DOB"
 
-#: src/components/charts/assets-count-chart.tsx:205
-#: src/components/charts/assets-count-chart.tsx:254
+#: src/components/charts/assets-count-chart.tsx:127
+#: src/components/charts/assets-count-chart.tsx:178
 msgid "DOB Collections"
 msgstr "DOB Collections"
 
@@ -592,6 +596,10 @@ msgstr "Something wrong. Error code: {0}"
 msgid "Sorry, the page you visited does not exist"
 msgstr "Sorry, the page you visited does not exist"
 
+#: src/components/charts/assets-count-chart.tsx:156
+msgid "Statistic"
+msgstr "Statistic"
+
 #: src/components/network-switcher.tsx:40
 msgid "Testnet"
 msgstr "Testnet"
@@ -616,7 +624,7 @@ msgstr "The total number of assets issued by RGB++ protocol, such as SEAL, STB, 
 msgid "Time"
 msgstr "Time"
 
-#: src/components/charts/assets-count-chart.tsx:189
+#: src/components/charts/assets-count-chart.tsx:111
 msgid "Total"
 msgstr "Total"
 
@@ -647,7 +655,7 @@ msgstr "Total Number of Assets"
 msgid "Total Occupied CKB"
 msgstr "Total Occupied CKB"
 
-#: src/components/charts/assets-count-chart.tsx:238
+#: src/components/charts/assets-count-chart.tsx:162
 msgid "Total RGB++ Assets"
 msgstr "Total RGB++ Assets"
 

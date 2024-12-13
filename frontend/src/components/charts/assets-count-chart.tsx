@@ -2,7 +2,6 @@
 
 import { t, Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import dayjs from 'dayjs'
 import { useState } from 'react'
 import {
   Brush,
@@ -15,7 +14,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-import { Box, Grid, HStack, VStack } from 'styled-system/jsx'
+import { Grid, HStack, VStack } from 'styled-system/jsx'
 
 import { CHART_LINE_COLORS, ChartPeriod, filterDataByPeriod } from '@/components/charts/constants'
 import { PeriodSelector } from '@/components/charts/period-selector'
@@ -24,95 +23,7 @@ import { OverviewInfo, OverviewInfoItem } from '@/components/overview-info'
 import { Text } from '@/components/ui'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
 import { formatNumber } from '@/lib/string/format-number'
-
-const xAxisFormater = (timestamp: number) => {
-  return dayjs(timestamp).format('MM/DD');
-};
-
-const yAxisTickFormater = (value: number) => {
-  return `${formatNumber(value)}`;
-};
-
-interface CustomLegendProps {
-  payload?: Array<{
-    value: string
-    color: string
-    dataKey: string
-  }>
-  onToggle: (dataKey: string) => void
-  hiddenLines: Set<string>
-}
-
-function CustomLegend({ payload, onToggle, hiddenLines }: CustomLegendProps) {
-  return (
-    <HStack gap="24px" justify="center" py="20px">
-        {payload?.map((entry: any) => (
-          <HStack 
-            key={entry.value} 
-            gap="8px" 
-            cursor="pointer"
-            opacity={hiddenLines.has(entry.dataKey) ? 0.5 : 1}
-            onClick={() => onToggle(entry.dataKey)}
-          >
-            <Box
-              w="20px"
-              h="12px"
-              borderRadius="2px"
-              style={{ background: entry.color }}
-            />
-            <Text color="text.primary" fontSize="14px">
-              {entry.value}
-            </Text>
-          </HStack>
-        ))}
-      </HStack>
-  )
-}
-
-function CustomTooltip({ active, payload, label }: any) {
-  if (!active || !payload?.length) {
-    return null;
-  }
-
-  return (
-    <VStack
-      bg="bg.tooltip"
-      p="15px"
-      minW="240px"
-      borderRadius="8px"
-      fontSize="14px"
-      gap="15px"
-      alignItems="start"
-    >
-      <Text color="text.third" fontSize="12px">
-        {dayjs(label).format('YYYY-MM-DD')}
-      </Text>
-
-      {payload.map((item: any, index: number) => (
-        <HStack 
-          key={item.name}
-          w="100%" 
-          gap="20px" 
-          mb={index === payload.length - 1 ? 0 : "-10px"} 
-          justify={'space-between'}
-        >
-          <HStack gap="5px">
-            <Box
-              w="12px"
-              h="12px"
-              borderRadius="2px"
-              style={{ background: item.color }}
-            />
-            <Text color="text.primary">{item.name}:</Text>
-          </HStack>
-
-          <Text color="text.primary">{formatNumber(item.value)}</Text>
-        </HStack>
-      ))}
-    </VStack>
-  );
-}
-
+import { CustomLegend, CustomTooltip, xAxisFormater, yAxisTickFormater } from './common'
 
 export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
 
@@ -162,6 +73,17 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
             domain={['dataMin', 'dataMax']}
             tickFormatter={yAxisTickFormater}
             tick={{ fontSize: 14 }}
+            label={!preview && isMd ? {
+              value: t(i18n)`Count`,
+              angle: -90,
+              position: 'left',
+              style: {
+                fontSize: '14px',
+                fill: CHART_LINE_COLORS.axisStroke,
+                textAnchor: 'middle'
+              },
+              offset: -5
+            } : undefined}
           />
           {!preview &&<Legend 
             wrapperStyle={{
@@ -227,10 +149,12 @@ export function AssetsCountStats({ data = [] as IssueCountChartDataPoint[]}) {
   const latest = data[data.length - 1]
 
   if (!latest) return null
-  console.log(latest)
+
   return (
     <VStack w="100%" alignItems={'start'} bg="bg.card" rounded="8px" p={{ base: '20px', lg: '30px' }} gap={{ base: '20px', lg: '30px' }}>
-      <Text fontSize={{ base: '16px', md: '20px' }} fontWeight="bold">Statistic</Text>
+      <Text fontSize={{ base: '16px', md: '20px' }} fontWeight="bold">
+        <Trans>Statistic</Trans>
+      </Text>
       <Grid w="100%" gridTemplateColumns={{ base: '1fr', lg: '1fr 3fr' }} gap={{ base: '20px', md: '30px' }}>
         <OverviewInfo>
           <OverviewInfoItem label={
@@ -238,7 +162,7 @@ export function AssetsCountStats({ data = [] as IssueCountChartDataPoint[]}) {
               <Trans>Total RGB++ Assets</Trans>
             </Text>
           } formatNumber>
-            <Text color='text.link' fontWeight={600}>{latest.total}</Text>
+            <Text color='text.link' fontWeight={600}>{formatNumber(latest.total)}</Text>
           </OverviewInfoItem>
         </OverviewInfo>
         <OverviewInfo>
@@ -247,14 +171,14 @@ export function AssetsCountStats({ data = [] as IssueCountChartDataPoint[]}) {
               <Trans>Coins</Trans>
             </Text>
           } formatNumber>
-            <Text color='text.primary' fontWeight={600}>{latest.xudt}</Text>
+            <Text color='text.primary' fontWeight={600}>{formatNumber(latest.xudt)}</Text>
           </OverviewInfoItem>
           <OverviewInfoItem label={
             <Text color="text.third" fontSize="14px" fontWeight={500} lineHeight="24px" whiteSpace="nowrap">
               <Trans>DOB Collections</Trans>
             </Text>
           } formatNumber>
-            <Text color='text.primary' fontWeight={600}>{latest.dob}</Text>
+            <Text color='text.primary' fontWeight={600}>{formatNumber(latest.dob)}</Text>
           </OverviewInfoItem>
         </OverviewInfo>
       </Grid>
