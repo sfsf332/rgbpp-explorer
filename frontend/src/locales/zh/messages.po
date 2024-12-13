@@ -147,6 +147,11 @@ msgstr "BTC"
 msgid "BTC Balance"
 msgstr "BTC 余额"
 
+#: src/components/charts/holders-count-chart.tsx:127
+msgid "BTC chain"
+msgstr "BTC 链"
+
+#: src/components/charts/holders-count-chart.tsx:179
 #: src/components/holder-list/holder-summary.tsx:26
 msgid "BTC Chain Holders"
 msgstr "BTC 链持有人"
@@ -203,6 +208,11 @@ msgstr "CKB"
 msgid "CKB Balance"
 msgstr "CKB 余额"
 
+#: src/components/charts/holders-count-chart.tsx:119
+msgid "CKB chain"
+msgstr "CKB 链"
+
+#: src/components/charts/holders-count-chart.tsx:186
 #: src/components/holder-list/holder-summary.tsx:31
 msgid "CKB Chain Holders"
 msgstr "CKB 链持有人"
@@ -262,6 +272,7 @@ msgid "Copy"
 msgstr "复制"
 
 #: src/components/charts/assets-count-chart.tsx:77
+#: src/components/charts/holders-count-chart.tsx:77
 msgid "Count"
 msgstr "数量"
 
@@ -284,9 +295,17 @@ msgstr "DOB 合集"
 msgid "DOBs"
 msgstr "DOBs"
 
+#: src/components/charts/holders-count-chart.tsx:135
+msgid "DOGE chain"
+msgstr "DOGE 链"
+
 #: src/components/holder-list/holder-summary.tsx:36
 msgid "Doge Chain Holders"
 msgstr "Doge 链持有人"
+
+#: src/components/charts/holders-count-chart.tsx:193
+msgid "DOGE Chain Holders"
+msgstr "DOGE 链持有人"
 
 #: src/app/[lang]/charts/[chartId]/page.tsx:77
 msgid "Download Data"
@@ -498,11 +517,11 @@ msgstr "RGB++ 资产"
 msgid "RGB++ Assets Holders"
 msgstr "RGB++ 资产持有人"
 
-#: src/components/charts/useCharts.ts:112
+#: src/components/charts/useCharts.ts:115
 msgid "RGB++ Assets Overview & Activity"
 msgstr "RGB++ 资产概览和交易情况"
 
-#: src/components/charts/useCharts.ts:117
+#: src/components/charts/useCharts.ts:120
 msgid "RGB++ Assets Utilization"
 msgstr "RGB++ 资产利用情况"
 
@@ -597,6 +616,7 @@ msgid "Sorry, the page you visited does not exist"
 msgstr "抱歉，您访问的页面不存在"
 
 #: src/components/charts/assets-count-chart.tsx:156
+#: src/components/charts/holders-count-chart.tsx:164
 msgid "Statistic"
 msgstr "汇总信息"
 
@@ -604,19 +624,19 @@ msgstr "汇总信息"
 msgid "Testnet"
 msgstr "测试网"
 
-#: src/components/charts/useCharts.ts:64
+#: src/components/charts/useCharts.ts:67
 msgid "The number of transactions related to RGB++ assets"
 msgstr "与 RGB++ 资产相关的交易数量"
 
-#: src/components/charts/useCharts.ts:41
+#: src/components/charts/useCharts.ts:43
 msgid "The number of unique addresses that hold at least one RGB++ asset"
 msgstr "持有至少一种 RGB++ 资产的地址数量，同一地址若持有多种 RGB++ 资产，只会统计一次。"
 
-#: src/components/charts/useCharts.ts:87
+#: src/components/charts/useCharts.ts:90
 msgid "The total amount of CKB occupied by RGB++ assets"
 msgstr "每类 RGB++ 资产均占用 CKB，下图展示了所有 RGB++ 资产对 CKB 的占用情况。"
 
-#: src/components/charts/useCharts.ts:18
+#: src/components/charts/useCharts.ts:20
 msgid "The total number of RGB++ assets, including FT and DOB"
 msgstr "使用 RGB++ 协议发行的资产总数，比如 SEAL、STB、Nervape 等，每种资产只统计一次。"
 
@@ -625,6 +645,7 @@ msgid "Time"
 msgstr "时间"
 
 #: src/components/charts/assets-count-chart.tsx:111
+#: src/components/charts/holders-count-chart.tsx:111
 msgid "Total"
 msgstr "总计"
 
@@ -633,7 +654,7 @@ msgstr "总计"
 msgid "Total {0} Items"
 msgstr "总计 {0} 项"
 
-#: src/components/charts/useCharts.ts:17
+#: src/components/charts/useCharts.ts:19
 msgid "Total Count of RGB++ Asset"
 msgstr "RGB++ 资产总数"
 
@@ -642,7 +663,7 @@ msgstr "RGB++ 资产总数"
 msgid "Total Holders"
 msgstr "总持有人数"
 
-#: src/components/charts/useCharts.ts:40
+#: src/components/charts/useCharts.ts:42
 msgid "Total Holders of RGB++ Asset"
 msgstr "RGB++ 资产持有人总数"
 
@@ -650,7 +671,7 @@ msgstr "RGB++ 资产持有人总数"
 msgid "Total Number of Assets"
 msgstr "总资产数"
 
-#: src/components/charts/useCharts.ts:86
+#: src/components/charts/useCharts.ts:89
 #: src/components/rgbpp-statistics-overview.tsx:66
 msgid "Total Occupied CKB"
 msgstr "累计占用 CKB"
@@ -659,9 +680,13 @@ msgstr "累计占用 CKB"
 msgid "Total RGB++ Assets"
 msgstr "RGB++ 资产总数"
 
-#: src/components/charts/useCharts.ts:63
+#: src/components/charts/useCharts.ts:66
 msgid "Total RGB++ Assets Transactions"
 msgstr "RGB++ 资产交易总数"
+
+#: src/components/charts/holders-count-chart.tsx:170
+msgid "Total RGB++ Holders"
+msgstr "RGB++ 持有人总数"
 
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:119
 #: src/components/coin-list.tsx:64

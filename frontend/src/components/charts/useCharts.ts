@@ -3,8 +3,10 @@ import { useLingui } from '@lingui/react'
 import dayjs from 'dayjs'
 
 import { AssetsCountChart, AssetsCountStats } from '@/components/charts/assets-count-chart'
-import { ChartCategory, ChartDefinition, IssueCountChartDataPoint } from '@/components/charts/types'
+import { HoldersCountChart, HoldersCountStats } from '@/components/charts/holders-count-chart'
+import { ChartCategory, ChartDefinition, HoldersCountChartDataPoint, IssueCountChartDataPoint } from '@/components/charts/types'
 import { DATE_TEMPLATE } from '@/constants'
+import { mockHolderCountRecords } from '@/mocks/holder-count-records'
 import { mockIssueCountRecords } from '@/mocks/issue-count-records'
 
 // charts, todo
@@ -24,8 +26,8 @@ export function useCharts() {
       },
       prepareDownloadData: (data) => {
         return {
-          filename: 'rgbpp-assets-transactions',
-          headers: ['Date', 'xUDT(FT)', 'DOB(NFT)', 'Total'],
+          filename: 'rgbpp-assets-count',
+          headers: ['Date', 'Coins', 'DOB Collection', 'Total'],
           rows: data?.map((item: IssueCountChartDataPoint) => [
             dayjs(item.timestamp).format(DATE_TEMPLATE),
             item.xudt,
@@ -40,19 +42,20 @@ export function useCharts() {
       title: t(i18n)`Total Holders of RGB++ Asset`,
       description: t(i18n)`The number of unique addresses that hold at least one RGB++ asset`,
       category: 'overview',
-      chartRender: AssetsCountChart, 
-      statsRender: AssetsCountStats,
+      chartRender: HoldersCountChart, 
+      statsRender: HoldersCountStats,
       fetchData: async () => {
-        return mockIssueCountRecords
+        return mockHolderCountRecords
       },
       prepareDownloadData: (data) => {
         return {
-          filename: 'rgb-assets-transactions',
-          headers: ['Date', 'xUDT(FT)', 'DOB(NFT)', 'Total'],
-          rows: data?.map((item: IssueCountChartDataPoint) => [
+          filename: 'rgbpp-holders-count',
+          headers: ['Date', 'CKB chain holders', 'BTC chain holders', 'Doge chain holders', 'Total'],
+          rows: data?.map((item: HoldersCountChartDataPoint) => [
             dayjs(item.timestamp).format(DATE_TEMPLATE),
-            item.xudt,
-            item.dob,
+            item.ckb,
+            item.btc,
+            item.doge,
             item.total
           ])
         }

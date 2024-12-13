@@ -62,7 +62,7 @@ export function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
   if (!active || !payload?.length) {
     return null
   }
-  console.log(payload, label)
+
   return (
     <VStack
       bg="bg.tooltip"

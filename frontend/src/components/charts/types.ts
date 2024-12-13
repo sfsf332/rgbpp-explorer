@@ -37,3 +37,11 @@ export interface IssueCountChartDataPoint {
   dob: number;
   total: number;
 }
+
+export interface HoldersCountChartDataPoint {
+  timestamp: number;
+  ckb: number;
+  btc: number;
+  doge: number;
+  total: number;
+}
