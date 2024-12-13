@@ -7,7 +7,7 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import { memo, useMemo, useState } from 'react'
 import { useInterval } from 'usehooks-ts'
 
-import { Tooltip } from '@/components/ui'
+import { AppTooltip } from '@/components/app-tooltip'
 import { TIME_TEMPLATE } from '@/constants'
 
 dayjs.extend(relativeTime)
@@ -48,14 +48,9 @@ export const AgoTimeFormatter = memo<{ time: string | number; tooltip?: boolean 
   }
 
   return (
-    <Tooltip.Root openDelay={0} closeDelay={0}>
-      <Tooltip.Trigger>{text}</Tooltip.Trigger>
-      <Tooltip.Positioner>
-        <Tooltip.Arrow>
-          <Tooltip.ArrowTip />
-        </Tooltip.Arrow>
-        <Tooltip.Content>{time.format(TIME_TEMPLATE)}</Tooltip.Content>
-      </Tooltip.Positioner>
-    </Tooltip.Root>
+    <AppTooltip
+      trigger={text}
+      content={time.format(TIME_TEMPLATE)}
+    />
   )
 })

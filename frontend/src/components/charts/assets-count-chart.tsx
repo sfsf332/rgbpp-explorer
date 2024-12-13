@@ -1,5 +1,7 @@
 'use client'
 
+import { t, Trans } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 import dayjs from 'dayjs'
 import { useState } from 'react'
 import {
@@ -17,7 +19,7 @@ import { Box, Grid, HStack, VStack } from 'styled-system/jsx'
 
 import { CHART_LINE_COLORS, ChartPeriod, filterDataByPeriod } from '@/components/charts/constants'
 import { PeriodSelector } from '@/components/charts/period-selector'
-import { ChartProps } from '@/components/charts/types'
+import { ChartProps, IssueCountChartDataPoint } from '@/components/charts/types'
 import { OverviewInfo, OverviewInfoItem } from '@/components/overview-info'
 import { Text } from '@/components/ui'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
@@ -117,6 +119,7 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
   const [selectedPeriod, setSelectedPeriod] = useState<ChartPeriod>('1M')
   const [hiddenLines, setHiddenLines] = useState<Set<string>>(new Set())
   const isMd = useBreakpoints('md')
+  const { i18n } = useLingui()
 
   const toggleLine = (dataKey: string) => {
     const newHiddenLines = new Set(hiddenLines)
@@ -183,7 +186,7 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
             dot={false} 
             dataKey="total"
             stroke={CHART_LINE_COLORS.blue} 
-            name="Total" 
+            name={t(i18n)`Total`} 
             hide={hiddenLines.has('total')}
           />
           <Line 
@@ -191,7 +194,7 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
             dot={false} 
             dataKey="xudt" 
             stroke={CHART_LINE_COLORS.purple} 
-            name="XUDT" 
+            name={t(i18n)`Coins`} 
             hide={hiddenLines.has('xudt')}
           />
           <Line 
@@ -199,7 +202,7 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
             dot={false} 
             dataKey="dob" 
             stroke={CHART_LINE_COLORS.orange} 
-            name="DOB" 
+            name={t(i18n)`DOB Collections`} 
             hide={hiddenLines.has('dob')}
           />
           {!preview && <Brush
@@ -217,48 +220,41 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
 }
 
 
-export function AssetsCountStats({ data = [] }) {
+export function AssetsCountStats({ data = [] as IssueCountChartDataPoint[]}) {
 
   if (!data) return null
 
   const latest = data[data.length - 1]
 
   if (!latest) return null
-
+  console.log(latest)
   return (
     <VStack w="100%" alignItems={'start'} bg="bg.card" rounded="8px" p={{ base: '20px', lg: '30px' }} gap={{ base: '20px', lg: '30px' }}>
       <Text fontSize={{ base: '16px', md: '20px' }} fontWeight="bold">Statistic</Text>
       <Grid w="100%" gridTemplateColumns={{ base: '1fr', lg: '1fr 3fr' }} gap={{ base: '20px', md: '30px' }}>
         <OverviewInfo>
           <OverviewInfoItem label={
-            <Text color="text.third" fontSize="14px" lineHeight="24px" whiteSpace="nowrap">
-              Statistic.Label
+            <Text color="text.third" fontSize="14px" fontWeight={500} lineHeight="24px" whiteSpace="nowrap">
+              <Trans>Total RGB++ Assets</Trans>
             </Text>
           } formatNumber>
-            <Text color='text.link'>-</Text>
+            <Text color='text.link' fontWeight={600}>{latest.total}</Text>
           </OverviewInfoItem>
         </OverviewInfo>
         <OverviewInfo>
           <OverviewInfoItem label={
-            <Text color="text.third" fontSize="14px" lineHeight="24px" whiteSpace="nowrap">
-              Statistic.Label
+            <Text color="text.third" fontSize="14px" fontWeight={500} lineHeight="24px" whiteSpace="nowrap">
+              <Trans>Coins</Trans>
             </Text>
           } formatNumber>
-            <Text color='text.link'>-</Text>
+            <Text color='text.primary' fontWeight={600}>{latest.xudt}</Text>
           </OverviewInfoItem>
           <OverviewInfoItem label={
-            <Text color="text.third" fontSize="14px" lineHeight="24px" whiteSpace="nowrap">
-              Statistic.Label
+            <Text color="text.third" fontSize="14px" fontWeight={500} lineHeight="24px" whiteSpace="nowrap">
+              <Trans>DOB Collections</Trans>
             </Text>
           } formatNumber>
-            <Text color='text.link'>-</Text>
-          </OverviewInfoItem>
-          <OverviewInfoItem label={
-            <Text color="text.third" fontSize="14px" lineHeight="24px" whiteSpace="nowrap">
-              Statistic.Label
-            </Text>
-          } formatNumber>
-            <Text color='text.link'>-</Text>
+            <Text color='text.primary' fontWeight={600}>{latest.dob}</Text>
           </OverviewInfoItem>
         </OverviewInfo>
       </Grid>
