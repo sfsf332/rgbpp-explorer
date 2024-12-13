@@ -16,6 +16,7 @@ import {
 } from 'recharts'
 import { Grid, HStack, VStack } from 'styled-system/jsx'
 
+import { CustomLegend, CustomTooltip, xAxisFormater, yAxisTickFormater } from '@/components/charts/common'
 import { CHART_LINE_COLORS, ChartPeriod, filterDataByPeriod } from '@/components/charts/constants'
 import { PeriodSelector } from '@/components/charts/period-selector'
 import { ChartProps, IssueCountChartDataPoint } from '@/components/charts/types'
@@ -23,7 +24,6 @@ import { OverviewInfo, OverviewInfoItem } from '@/components/overview-info'
 import { Text } from '@/components/ui'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
 import { formatNumber } from '@/lib/string/format-number'
-import { CustomLegend, CustomTooltip, xAxisFormater, yAxisTickFormater } from './common'
 
 export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
 
