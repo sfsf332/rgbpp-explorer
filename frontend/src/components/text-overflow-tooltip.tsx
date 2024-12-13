@@ -21,7 +21,6 @@ export function TextOverflowTooltip({ children, label, contentProps, ...props }:
       openDelay={0} 
       closeDelay={0} 
       disabled={!isOverflow} 
-      mobileClickable
       {...props}
     >
       <Tooltip.Trigger asChild>{cloneElement(children, { ...children.props, ref })}</Tooltip.Trigger>

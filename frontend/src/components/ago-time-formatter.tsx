@@ -49,7 +49,7 @@ export const AgoTimeFormatter = memo<{ time: string | number; tooltip?: boolean 
 
   return (
     <AppTooltip
-      trigger={text}
+      trigger={<span>{text}</span>}
       content={time.format(TIME_TEMPLATE)}
     />
   )
