@@ -6,10 +6,11 @@ import { useEffect, useState } from 'react'
 import { Box, HStack, styled, VStack } from 'styled-system/jsx'
 
 import DownloadIcon from '@/assets/download.svg'
+import InfoIcon from '@/assets/info.svg'
+import { AppTooltip } from '@/components/app-tooltip'
 import { useCharts } from '@/components/charts/useCharts'
 import { Text } from '@/components/ui'
 import { downloadCSV } from '@/utils/download'
-
 
 export default function ChartDetailPage() {
   const params = useParams()
@@ -47,9 +48,15 @@ export default function ChartDetailPage() {
   return (
     <VStack w="100%" maxW="content" p={{ base: '20px', lg: '30px' }} gap={{ base: '20px', lg: '30px' }}>
       <VStack w="100%" alignItems={'start'} maxW="content" bg="bg.card" rounded="8px" p={{ base: '20px', xl: '30px' }} gap={{ base: '20px', lg: '20px' }}>
-        <Text fontSize="sm" color="brand" mb={{ base: '-10px', lg: '-20px' }}>chart</Text>
+        <Text fontSize="sm" color="brand" mb={{ base: '-10px', lg: '-20px' }}><Trans>chart</Trans></Text>
         <HStack justify="space-between" w="100%">
-          <Text fontSize={{ base: '16px', md: '20px' }} fontWeight="bold">{chart.title}</Text>
+          <HStack gap={{ base: '10px', md: '15px' }}>
+            <Text fontSize={{ base: '16px', md: '20px' }} fontWeight="bold">{chart.title}</Text>
+            <AppTooltip
+              trigger={<InfoIcon w="14px" h="14px" />}
+              content={chart.description}
+            />
+          </HStack>
           <styled.button
             px={{ base: '10px', lg: '15px' }}
             height="32px"
@@ -71,7 +78,7 @@ export default function ChartDetailPage() {
             </Text>
           </styled.button>
         </HStack>
-        <Box w="100%" h="590px">
+        <Box w="100%" h="590px" position="relative" zIndex={1}>
           <chart.chartRender data={data} />
         </Box>
       </VStack>

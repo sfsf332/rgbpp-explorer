@@ -4,11 +4,12 @@ import BigNumber from 'bignumber.js'
 import { Box, Grid, HStack, VStack } from 'styled-system/jsx'
 
 import OverviewSVG from '@/assets/overview.svg'
+import { AppTooltip } from '@/components/app-tooltip'
 import { OverflowAmount } from '@/components/overflow-amount'
 import { OverviewInfo, OverviewInfoItem } from '@/components/overview-info'
 import { TextOverflowTooltip } from '@/components/text-overflow-tooltip'
 import { TimeFormatter } from '@/components/time-formatter'
-import { Heading, Text, Tooltip } from '@/components/ui'
+import { Heading, Text } from '@/components/ui'
 import Link from '@/components/ui/link'
 import { BitcoinBlock } from '@/gql/graphql'
 import { resolveBtcTime } from '@/lib/btc/resolve-btc-time'
@@ -93,8 +94,8 @@ export function BtcBlockOverview({
           </OverviewInfoItem>
           <OverviewInfoItem label={t(i18n)`Miner`} formatNumber>
             {block.miner ? (
-              <Tooltip.Root openDelay={0} closeDelay={0}>
-                <Tooltip.Trigger asChild>
+              <AppTooltip
+                trigger={
                   <Link
                     href={`/address/${block.miner.address}`}
                     color="brand"
@@ -106,16 +107,9 @@ export function BtcBlockOverview({
                   >
                     {truncateMiddle(block.miner.address, 5, 5)}
                   </Link>
-                </Tooltip.Trigger>
-                <Tooltip.Positioner>
-                  <Tooltip.Arrow>
-                    <Tooltip.ArrowTip />
-                  </Tooltip.Arrow>
-                  <Tooltip.Content whiteSpace="nowrap" maxW="unset">
-                    {block.miner.address}
-                  </Tooltip.Content>
-                </Tooltip.Positioner>
-              </Tooltip.Root>
+                }
+                content={block.miner.address}
+              />
             ) : (
               <Text color="text.third">-</Text>
             )}

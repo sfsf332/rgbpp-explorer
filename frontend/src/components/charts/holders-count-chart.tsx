@@ -19,13 +19,13 @@ import { Grid, HStack, VStack } from 'styled-system/jsx'
 import { CustomLegend, CustomTooltip, xAxisFormater, yAxisTickFormater } from '@/components/charts/common'
 import { CHART_LINE_COLORS, ChartPeriod, filterDataByPeriod } from '@/components/charts/constants'
 import { PeriodSelector } from '@/components/charts/period-selector'
-import { ChartProps, IssueCountChartDataPoint } from '@/components/charts/types'
+import { ChartProps, HoldersCountChartDataPoint } from '@/components/charts/types'
 import { OverviewInfo, OverviewInfoItem } from '@/components/overview-info'
 import { Text } from '@/components/ui'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
 import { formatNumber } from '@/lib/string/format-number'
 
-export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
+export function HoldersCountChart({ preview = false, data = [] }: ChartProps) {
 
   const [selectedPeriod, setSelectedPeriod] = useState<ChartPeriod>('1M')
   const [hiddenLines, setHiddenLines] = useState<Set<string>>(new Set())
@@ -114,18 +114,26 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
           <Line 
             type="monotone" 
             dot={false} 
-            dataKey="xudt" 
+            dataKey="ckb" 
             stroke={CHART_LINE_COLORS.purple} 
-            name={t(i18n)`Coins`} 
-            hide={hiddenLines.has('xudt')}
+            name={t(i18n)`CKB chain`} 
+            hide={hiddenLines.has('ckb')}
           />
           <Line 
             type="monotone" 
             dot={false} 
-            dataKey="dob" 
+            dataKey="btc" 
             stroke={CHART_LINE_COLORS.orange} 
-            name={t(i18n)`DOB Collections`} 
-            hide={hiddenLines.has('dob')}
+            name={t(i18n)`BTC chain`} 
+            hide={hiddenLines.has('btc')}
+          />
+          <Line 
+            type="monotone" 
+            dot={false} 
+            dataKey="doge" 
+            stroke={CHART_LINE_COLORS.yellow} 
+            name={t(i18n)`DOGE chain`} 
+            hide={hiddenLines.has('doge')}
           />
           {!preview && <Brush
             dataKey='timestamp'
@@ -142,7 +150,7 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
 }
 
 
-export function AssetsCountStats({ data = [] as IssueCountChartDataPoint[]}) {
+export function HoldersCountStats({ data = [] as HoldersCountChartDataPoint[]}) {
 
   if (!data) return null
 
@@ -159,7 +167,7 @@ export function AssetsCountStats({ data = [] as IssueCountChartDataPoint[]}) {
         <OverviewInfo>
           <OverviewInfoItem label={
             <Text color="text.third" fontSize="14px" fontWeight={500} lineHeight="24px" whiteSpace="nowrap">
-              <Trans>Total RGB++ Assets</Trans>
+              <Trans>Total RGB++ Holders</Trans>
             </Text>
           } formatNumber>
             <Text color='text.link' fontWeight={600}>{formatNumber(latest.total)}</Text>
@@ -168,17 +176,24 @@ export function AssetsCountStats({ data = [] as IssueCountChartDataPoint[]}) {
         <OverviewInfo>
           <OverviewInfoItem label={
             <Text color="text.third" fontSize="14px" fontWeight={500} lineHeight="24px" whiteSpace="nowrap">
-              <Trans>Coins</Trans>
+              <Trans>BTC Chain Holders</Trans>
             </Text>
           } formatNumber>
-            <Text color='text.primary' fontWeight={600}>{formatNumber(latest.xudt)}</Text>
+            <Text color='text.primary' fontWeight={600}>{formatNumber(latest.btc)}</Text>
           </OverviewInfoItem>
           <OverviewInfoItem label={
             <Text color="text.third" fontSize="14px" fontWeight={500} lineHeight="24px" whiteSpace="nowrap">
-              <Trans>DOB Collections</Trans>
+              <Trans>CKB Chain Holders</Trans>
             </Text>
           } formatNumber>
-            <Text color='text.primary' fontWeight={600}>{formatNumber(latest.dob)}</Text>
+            <Text color='text.primary' fontWeight={600}>{formatNumber(latest.ckb)}</Text>
+          </OverviewInfoItem>
+          <OverviewInfoItem label={
+            <Text color="text.third" fontSize="14px" fontWeight={500} lineHeight="24px" whiteSpace="nowrap">
+              <Trans>DOGE Chain Holders</Trans>
+            </Text>
+          } formatNumber>
+            <Text color='text.primary' fontWeight={600}>{formatNumber(latest.doge)}</Text>
           </OverviewInfoItem>
         </OverviewInfo>
       </Grid>
