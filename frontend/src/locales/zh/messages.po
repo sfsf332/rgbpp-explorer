@@ -249,6 +249,7 @@ msgstr "代币"
 msgid "Coinbase"
 msgstr "挖矿产出"
 
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:67
 #: src/app/[lang]/assets/layout.tsx:21
 #: src/components/charts/assets-count-chart.tsx:119
 #: src/components/charts/assets-count-chart.tsx:171
@@ -310,6 +311,7 @@ msgstr "DOB"
 msgid "DOB Collections"
 msgstr "DOB 合集"
 
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:70
 #: src/app/[lang]/assets/layout.tsx:25
 msgid "DOBs"
 msgstr "DOBs"
@@ -804,10 +806,6 @@ msgstr "在 CKB 浏览器中查看详情"
 #: src/components/view-mempool.tsx:27
 msgid "View Details in Mempool"
 msgstr "在 Mempool 中查看详情"
-
-#: src/components/transaction-info.tsx:27
-#~ msgid "View Transaction Chart"
-#~ msgstr "查看交易图表"
 
 #: src/components/coin-list.tsx:58
 #: src/components/coin-list.tsx:158

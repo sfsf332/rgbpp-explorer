@@ -1,5 +1,6 @@
 'use client'
 
+import { Trans } from '@lingui/macro'
 import { VStack } from 'styled-system/jsx'
 
 import { CoinListUI } from '@/components/assets-list/coins-list'
@@ -62,8 +63,12 @@ export function CKBAssetsList({ address }: { address: string }) {
       >
         <Tabs.Root variant="line" defaultValue="Coins">
           <Tabs.List>
-            <Tabs.Trigger value="Coins">Coins</Tabs.Trigger>
-            <Tabs.Trigger value="Dobs">Dobs</Tabs.Trigger>
+            <Tabs.Trigger value="Coins">
+              <Trans>Coins</Trans>
+            </Tabs.Trigger>
+            <Tabs.Trigger value="Dobs">
+              <Trans>DOBs</Trans>
+            </Tabs.Trigger>
           </Tabs.List>
           <Tabs.Content value="Coins">
             <CoinListUI coinList={coinList as CoinList[]} />

@@ -249,6 +249,7 @@ msgstr "Coin"
 msgid "Coinbase"
 msgstr "Coinbase"
 
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:67
 #: src/app/[lang]/assets/layout.tsx:21
 #: src/components/charts/assets-count-chart.tsx:119
 #: src/components/charts/assets-count-chart.tsx:171
@@ -310,6 +311,7 @@ msgstr "DOB"
 msgid "DOB Collections"
 msgstr "DOB Collections"
 
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:70
 #: src/app/[lang]/assets/layout.tsx:25
 msgid "DOBs"
 msgstr "DOBs"
@@ -804,10 +806,6 @@ msgstr "View Details in CKB"
 #: src/components/view-mempool.tsx:27
 msgid "View Details in Mempool"
 msgstr "View Details in Mempool"
-
-#: src/components/transaction-info.tsx:27
-#~ msgid "View Transaction Chart"
-#~ msgstr "View Transaction Chart"
 
 #: src/components/coin-list.tsx:58
 #: src/components/coin-list.tsx:158

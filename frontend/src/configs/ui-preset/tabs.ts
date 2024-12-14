@@ -106,11 +106,12 @@ export const tabs = defineSlotRecipe({
       line: {
         list: {
           _horizontal: {
-            boxShadow: '0 -1px 0 0 inset var(--colors-border-default)',
+            alignItems: 'flex-start',
+            boxShadow: '0 -1px 0 0 inset var(--colors-border-light)',
             gap: '4',
           },
           _vertical: {
-            boxShadow: '1px 0 0 0 inset var(--colors-border-default)',
+            boxShadow: '1px 0 0 0 inset var(--colors-border-light)',
             gap: '1',
           },
         },
@@ -127,13 +128,26 @@ export const tabs = defineSlotRecipe({
             width: '2px',
           },
         },
-        content: {
-          pt: '4',
-        },
         trigger: {
+          position: 'relative',
           _horizontal: {
             pb: '2.5',
           },
+          _selected: {
+            color: 'brand',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              bottom: '-1px',
+              left: 0,
+              right: 0,
+              height: '3px',
+              backgroundColor: 'brand',
+            },
+          },
+        },
+        content: {
+          pt: '4',
         },
       },
       outline: {
