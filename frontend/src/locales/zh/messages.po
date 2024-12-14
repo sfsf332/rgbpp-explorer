@@ -322,16 +322,12 @@ msgstr "DOGE 链"
 msgid "Doge Chain Holders"
 msgstr "Doge 链持有人"
 
-<<<<<<< HEAD
-#: src/app/[lang]/charts/[chartId]/page.tsx:70
-#: src/app/[lang]/transaction/list/page.tsx:160
-=======
 #: src/components/charts/holders-count-chart.tsx:193
 msgid "DOGE Chain Holders"
 msgstr "DOGE 链持有人"
 
 #: src/app/[lang]/charts/[chartId]/page.tsx:77
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
+#: src/app/[lang]/transaction/list/page.tsx:160
 msgid "Download Data"
 msgstr "下载数据"
 
@@ -545,19 +541,11 @@ msgstr "RGB++ 资产"
 msgid "RGB++ Assets Holders"
 msgstr "RGB++ 资产持有人"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:112
-msgid "RGB++ Assets Overview & Activity"
-msgstr "RGB++ 资产概览和交易情况"
-
-#: src/components/charts/useCharts.ts:117
-=======
 #: src/components/charts/useCharts.ts:115
 msgid "RGB++ Assets Overview & Activity"
 msgstr "RGB++ 资产概览和交易情况"
 
 #: src/components/charts/useCharts.ts:120
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 msgid "RGB++ Assets Utilization"
 msgstr "RGB++ 资产利用情况"
 
@@ -660,23 +648,6 @@ msgstr "汇总信息"
 msgid "Testnet"
 msgstr "测试网"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:64
-msgid "The number of transactions related to RGB++ assets"
-msgstr "与 RGB++ 资产相关的交易数量"
-
-#: src/components/charts/useCharts.ts:41
-msgid "The number of unique addresses that hold at least one RGB++ asset"
-msgstr "持有至少一种 RGB++ 资产的地址数量，同一地址若持有多种 RGB++ 资产，只会统计一次。"
-
-#: src/components/charts/useCharts.ts:87
-msgid "The total amount of CKB occupied by RGB++ assets"
-msgstr "每类 RGB++ 资产均占用 CKB，下图展示了所有 RGB++ 资产对 CKB 的占用情况。"
-
-#: src/components/charts/useCharts.ts:18
-msgid "The total number of RGB++ assets, including FT and DOB"
-msgstr ""
-=======
 #: src/components/charts/useCharts.ts:67
 msgid "The number of transactions related to RGB++ assets"
 msgstr "与 RGB++ 资产相关的交易数量"
@@ -692,7 +663,6 @@ msgstr "每类 RGB++ 资产均占用 CKB，下图展示了所有 RGB++ 资产对
 #: src/components/charts/useCharts.ts:20
 msgid "The total number of RGB++ assets, including FT and DOB"
 msgstr "使用 RGB++ 协议发行的资产总数，比如 SEAL、STB、Nervape 等，每种资产只统计一次。"
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 
 #: src/components/latest-tx-list/rgb-tx-list.tsx:197
 #: src/components/latest-tx-list/ui.tsx:89
@@ -709,11 +679,7 @@ msgstr "总计"
 msgid "Total {0} Items"
 msgstr "总计 {0} 项"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:17
-=======
 #: src/components/charts/useCharts.ts:19
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 msgid "Total Count of RGB++ Asset"
 msgstr "RGB++ 资产总数"
 
@@ -722,11 +688,7 @@ msgstr "RGB++ 资产总数"
 msgid "Total Holders"
 msgstr "总持有人数"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:40
-=======
 #: src/components/charts/useCharts.ts:42
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 msgid "Total Holders of RGB++ Asset"
 msgstr "RGB++ 资产持有人总数"
 
@@ -734,24 +696,16 @@ msgstr "RGB++ 资产持有人总数"
 msgid "Total Number of Assets"
 msgstr "总资产数"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:86
-=======
 #: src/components/charts/useCharts.ts:89
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 #: src/components/rgbpp-statistics-overview.tsx:66
 msgid "Total Occupied CKB"
 msgstr "累计占用 CKB"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:63
-=======
 #: src/components/charts/assets-count-chart.tsx:162
 msgid "Total RGB++ Assets"
 msgstr "RGB++ 资产总数"
 
 #: src/components/charts/useCharts.ts:66
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 msgid "Total RGB++ Assets Transactions"
 msgstr "RGB++ 资产交易总数"
 

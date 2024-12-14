@@ -322,16 +322,12 @@ msgstr "DOGE chain"
 msgid "Doge Chain Holders"
 msgstr "Doge Chain Holders"
 
-<<<<<<< HEAD
-#: src/app/[lang]/charts/[chartId]/page.tsx:70
-#: src/app/[lang]/transaction/list/page.tsx:160
-=======
 #: src/components/charts/holders-count-chart.tsx:193
 msgid "DOGE Chain Holders"
 msgstr "DOGE Chain Holders"
 
 #: src/app/[lang]/charts/[chartId]/page.tsx:77
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
+#: src/app/[lang]/transaction/list/page.tsx:160
 msgid "Download Data"
 msgstr "Download Data"
 
@@ -545,19 +541,11 @@ msgstr "RGB++ Assets"
 msgid "RGB++ Assets Holders"
 msgstr "RGB++ Assets Holders"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:112
-msgid "RGB++ Assets Overview & Activity"
-msgstr "RGB++ Assets Overview & Activity"
-
-#: src/components/charts/useCharts.ts:117
-=======
 #: src/components/charts/useCharts.ts:115
 msgid "RGB++ Assets Overview & Activity"
 msgstr "RGB++ Assets Overview & Activity"
 
 #: src/components/charts/useCharts.ts:120
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 msgid "RGB++ Assets Utilization"
 msgstr "RGB++ Assets Utilization"
 
@@ -660,39 +648,21 @@ msgstr "Statistic"
 msgid "Testnet"
 msgstr "Testnet"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:64
-msgid "The number of transactions related to RGB++ assets"
-msgstr "The number of transactions related to RGB++ assets"
-
-#: src/components/charts/useCharts.ts:41
-=======
 #: src/components/charts/useCharts.ts:67
 msgid "The number of transactions related to RGB++ assets"
 msgstr "The number of transactions related to RGB++ assets"
 
 #: src/components/charts/useCharts.ts:43
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 msgid "The number of unique addresses that hold at least one RGB++ asset"
 msgstr "The number of addresses holding at least one RGB++ asset. If an address holds multiple RGB++ assets, it is only counted once."
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:87
-=======
 #: src/components/charts/useCharts.ts:90
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 msgid "The total amount of CKB occupied by RGB++ assets"
 msgstr "Each RGB++ asset type occupies CKB. The chart below illustrates the total CKB occupied by all RGB++ assets."
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:18
-msgid "The total number of RGB++ assets, including FT and DOB"
-msgstr "The total number of RGB++ assets, including FT and DOB"
-=======
 #: src/components/charts/useCharts.ts:20
 msgid "The total number of RGB++ assets, including FT and DOB"
 msgstr "The total number of assets issued by RGB++ protocol, such as SEAL, STB, and Nervape. Each asset type is counted only once."
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 
 #: src/components/latest-tx-list/rgb-tx-list.tsx:197
 #: src/components/latest-tx-list/ui.tsx:89
@@ -709,11 +679,7 @@ msgstr "Total"
 msgid "Total {0} Items"
 msgstr "Total {0} Items"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:17
-=======
 #: src/components/charts/useCharts.ts:19
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 msgid "Total Count of RGB++ Asset"
 msgstr "Total Count of RGB++ Asset"
 
@@ -722,11 +688,7 @@ msgstr "Total Count of RGB++ Asset"
 msgid "Total Holders"
 msgstr "Total Holders"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:40
-=======
 #: src/components/charts/useCharts.ts:42
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 msgid "Total Holders of RGB++ Asset"
 msgstr "Total Holders of RGB++ Asset"
 
@@ -734,24 +696,16 @@ msgstr "Total Holders of RGB++ Asset"
 msgid "Total Number of Assets"
 msgstr "Total Number of Assets"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:86
-=======
 #: src/components/charts/useCharts.ts:89
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 #: src/components/rgbpp-statistics-overview.tsx:66
 msgid "Total Occupied CKB"
 msgstr "Total Occupied CKB"
 
-<<<<<<< HEAD
-#: src/components/charts/useCharts.ts:63
-=======
 #: src/components/charts/assets-count-chart.tsx:162
 msgid "Total RGB++ Assets"
 msgstr "Total RGB++ Assets"
 
 #: src/components/charts/useCharts.ts:66
->>>>>>> 78c302cecabb25485c5eabd9213dfc4d9ec12a81
 msgid "Total RGB++ Assets Transactions"
 msgstr "Total RGB++ Assets Transactions"
 
