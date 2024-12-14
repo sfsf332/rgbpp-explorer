@@ -1,12 +1,8 @@
-
 import { toCamelcase } from '@rgbpp-sdk/ckb'
-
-import { requesterV1, requesterV2 } from '@/services/requester'
-import {
-  Response,
-} from '@/services/types'
 import { AxiosResponse } from 'axios'
 
+import { requesterV1, requesterV2 } from '@/services/requester'
+import { Response } from '@/services/types'
 
 async function v1Get<T>(...args: Parameters<typeof requesterV1.get>) {
   return requesterV1.get(...args).then((res) => toCamelcase<Response.Response<T>>(res.data))
@@ -15,15 +11,10 @@ async function v1Get<T>(...args: Parameters<typeof requesterV1.get>) {
 const v1GetWrapped = <T>(...args: Parameters<typeof v1Get>) =>
   v1Get<Response.Wrapper<T>>(...args).then((res) => res && res.data)
 
-
 const v1GetUnwrapped = <T>(...args: Parameters<typeof v1GetWrapped>) =>
   v1GetWrapped<T>(...args).then((wrapper) => wrapper && wrapper.attributes)
 
-
-
 export const apiFetcher = {
-  
-
   fetchStatistics: () =>
     v1GetUnwrapped<{
       tipBlockNumber: string
@@ -40,27 +31,25 @@ export const apiFetcher = {
       transactionsCountPerMinute: string
       reorgStartedAt: string | null
     }>(`statistics`),
-    fetchRGBTransactions: async (page: number, size: number, sort?: string, leapDirection?: string) =>
-      requesterV2('/rgb_transactions', {
-        params: {
-          page,
-          page_size: size,
-          sort,
-          leap_direction: leapDirection,
-        },
-      }).then((res: AxiosResponse) =>
-        toCamelcase<{
-          data: {
-            ckbTransactions: RGBTransaction[]
-          }
-          meta: {
-            total: number
-            pageSize: number
-          }
-        }>(res.data),
-      ),
-  
-
+  fetchRGBTransactions: async (page: number, size: number, sort?: string, leapDirection?: string) =>
+    requesterV2('/rgb_transactions', {
+      params: {
+        page,
+        page_size: size,
+        sort,
+        leap_direction: leapDirection,
+      },
+    }).then((res: AxiosResponse) =>
+      toCamelcase<{
+        data: {
+          ckbTransactions: RGBTransaction[]
+        }
+        meta: {
+          total: number
+          pageSize: number
+        }
+      }>(res.data),
+    ),
 }
 
 // ====================
@@ -71,8 +60,8 @@ export type APIFetcher = typeof apiFetcher
 
 export type APIReturn<T extends keyof APIFetcher> = Awaited<ReturnType<APIFetcher[T]>>
 
-
 export interface RGBTransaction {
+  ckbTransaction: any
   txHash: string
   blockId: number
   blockNumber: number
