@@ -1,16 +1,15 @@
 'use client'
 import { Trans } from '@lingui/macro'
+import { styled } from 'styled-system/jsx'
 
 import { Copier } from '@/components/copier'
 import { IfBreakpoint } from '@/components/if-breakpoint'
 import { TextOverflowTooltip } from '@/components/text-overflow-tooltip'
-import { Table , Text } from '@/components/ui'
+import { Table, Text } from '@/components/ui'
 import Link from '@/components/ui/link'
 import { XudtLogoLoader } from '@/components/xudt-logo-loader'
 import { formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
-
-import { styled } from '../../../styled-system/jsx'
 
 interface CoinList {
   icon?: string

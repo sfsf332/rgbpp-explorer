@@ -1,14 +1,13 @@
 import type { I18n } from '@lingui/core'
 import { t } from '@lingui/macro'
 import BigNumber from 'bignumber.js'
+import { Box, Grid } from 'styled-system/jsx'
 
 import { Copier } from '@/components/copier'
 import { IfBreakpoint } from '@/components/if-breakpoint'
 import { LayerType, LayerTypeProps } from '@/components/layer-type'
 import { Heading, Text } from '@/components/ui'
 import { formatNumber } from '@/lib/string/format-number'
-
-import { Box, Grid } from '../../styled-system/jsx'
 
 export function TransactionHeader({
   type,

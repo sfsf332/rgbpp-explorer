@@ -5,7 +5,6 @@ import { Grid, HStack, VStack } from 'styled-system/jsx'
 
 import { OverviewInfo, OverviewInfoItem } from '@/components/overview-info'
 import { Heading } from '@/components/ui'
-import Link from '@/components/ui/link'
 import { RGBTransaction } from '@/services/fecthcer'
 
 interface TxDataType {
@@ -24,9 +23,9 @@ export function TransactionInfo({ txData }: { txData: TxDataType }) {
     <VStack gridColumn="1/3" gap="20px" bg="bg.card" p={{ base: '20px', md: '30px' }} alignItems="start" rounded="8px">
       <HStack gap="16px" display={'flex'} alignItems={'center'} justifyContent="space-between" w="100%">
         <Heading fontSize="20px" fontWeight="bold">{t(i18n)`Transactions`}</Heading>
-        <Link color="text.link" href={'#'}>{t(i18n)`View Transaction Chart`}</Link>
+        {/* <Link color="text.link" href={'#'}>{t(i18n)`View Transaction Chart`}</Link> */}
       </HStack>
-      <Grid w="100%" gridTemplateColumns={{ base: '1fr', xl: 'repeat(2, 1fr)' }} gap={{ base: '20px', md: '30px' }}>
+      <Grid w="100%" gridTemplateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }} gap={{ base: '20px', md: '30px' }}>
         <OverviewInfo>
           <OverviewInfoItem label={t(i18n)`Total Transactions`} formatNumber>
             {txData?.meta.total}

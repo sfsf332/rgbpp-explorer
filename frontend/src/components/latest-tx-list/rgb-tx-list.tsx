@@ -1,20 +1,17 @@
 'use client'
-import { Checkbox } from '@ark-ui/react/checkbox'
 import { Trans } from '@lingui/macro'
 import { useState } from 'react'
+import { Box, HStack, VStack } from 'styled-system/jsx'
 
 import BtcIcon from '@/assets/chains/btc.svg'
 import CkbIcon from '@/assets/chains/ckb.svg'
 import DogeIcon from '@/assets/chains/doge.svg'
-import CheckIcon from '@/assets/check.svg'
-import Filtercon from '@/assets/filter.svg'
-import UnCheckIcon from '@/assets/uncheck.svg'
 import { AgoTimeFormatter } from '@/components/ago-time-formatter'
 import { Copier } from '@/components/copier'
 import { IfBreakpoint } from '@/components/if-breakpoint'
 import { Amount } from '@/components/latest-tx-list/amount'
 import { LayerType } from '@/components/layer-type'
-import { HoverCard,Table  } from '@/components/ui'
+import {Table  } from '@/components/ui'
 import Link from '@/components/ui/link'
 import type { CkbTransaction, RgbppTransaction } from '@/gql/graphql'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
@@ -22,8 +19,6 @@ import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-f
 import { resolveRGBppTxHash } from '@/lib/resolve-rgbpp-tx-hash'
 import { formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
-
-import { Box, HStack, styled, VStack } from '../../../styled-system/jsx'
 
 const filterType = [
   { label: 'BTC', value: 'BTC', icon: <BtcIcon w="18px" h="18px" mr="4px" /> },
@@ -51,7 +46,7 @@ export function LatestRGBTxnListUI<
           display="flex"
           alignItems="center"
           gap={5}
-          fontSize="12px"
+          fontSize="14px"
           fontWeight="semibold"
           p="20px"
           key={tx.ckbTxHash}
@@ -100,95 +95,7 @@ export function LatestRGBTxnListUI<
             </Table.Header>
           ) : null}
           <Table.Header w="160px">
-            <HoverCard.Root
-              unmountOnExit
-              openDelay={0}
-              closeDelay={200000}
-              positioning={{ placement: 'right', gutter: 6 }}
-            >
-              <HoverCard.Trigger asChild>
-                <styled.button
-                  display="flex"
-                  alignItems="center"
-                  gap="12px"
-                  cursor="default"
-                  _hover={{ color: 'brand' }}
-                  whiteSpace="nowrap"
-                  rounded="8px"
-                  px="12px"
-                  py="8px"
-                >
-                  <Trans>Type</Trans> <Filtercon w="16px" h="16px" ml="3px" />
-                  {/* <Text><Trans>Chains</Trans></Text> */}
-                </styled.button>
-              </HoverCard.Trigger>
-
-              <HoverCard.Positioner>
-                <HoverCard.Content w="200px" zIndex={999} textAlign={'left'}>
-                  <Checkbox.Group defaultValue={[]} onValueChange={(values) => setSelectedValues(values)}>
-                    {filterType.map((item) => (
-                      <Checkbox.Root
-                        key={item.value}
-                        value={item.value}
-                        style={{
-                          height:20,
-                          lineHeight:20,
-                          display: 'flex',
-                          alignItems: 'center',
-                          margin: '10px 0',
-                          justifyContent: 'space-between',
-                          overflow:'hidden'
-                        }}
-                      >
-                        <Checkbox.Label style={{ display: 'flex', alignItems: 'center',height:'20px', overflow:'hidden' }}>
-                          {item.icon ? item.icon : null} {item.label}
-                        </Checkbox.Label>
-                        <Checkbox.Control>
-                          {selectedValues.includes(item.value) ? (
-                            <CheckIcon
-                              style={{
-                                width: 18,
-                                height: 18,
-                                marginLeft: 5,
-                                fill: '#3483FF',
-                                color: '#ffffff',
-                              }}
-                            />
-                          ) : (
-                            <UnCheckIcon
-                              style={{
-                                width: 18,
-                                height: 18,
-                                marginLeft: 5,
-                                color: '#ffffff',
-                              }}
-                            />
-                          )}
-                        </Checkbox.Control>
-                        <Checkbox.HiddenInput style={{
-                          display:'none'
-                        }} />
-                      </Checkbox.Root>
-                    ))}
-                  </Checkbox.Group>
-
-                  <styled.button
-                    onClick={() => {
-                      setSelectedValues([])
-                    }}
-                    textAlign='center'
-                    w="100%"
-                    h="38px"
-                    lineHeight="38px"
-                    color="brand"
-                    cursor="pointer"
-                    overflow={'hidden'}
-                  >
-                    Reset Filter
-                  </styled.button>
-                </HoverCard.Content>
-              </HoverCard.Positioner>
-            </HoverCard.Root>
+            <Trans>Type</Trans>
           </Table.Header>
           <Table.Header w="190px">
             <Trans>Amount</Trans>
@@ -208,7 +115,7 @@ export function LatestRGBTxnListUI<
                   <Link
                     href={`/transaction/${txHash}`}
                     display="flex"
-                    fontSize="12px"
+                    fontSize="14px"
                     alignItems="center"
                     gap={3}
                     color="text.link"

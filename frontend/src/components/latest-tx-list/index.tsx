@@ -131,7 +131,7 @@ export function HomeRgbppTxnsOverview() {
         <LatestTxnListUI txs={data.rgbppLatestTransactions.txs as RgbppTransaction[]} />
       </Box>
       <Box p="20px" textAlign="center">
-        <Link href="/explorer/rgbpp/transactions" color="brand">
+        <Link href="/transaction/list" color="brand">
           <Trans>View All Transactions</Trans>
         </Link>
       </Box>

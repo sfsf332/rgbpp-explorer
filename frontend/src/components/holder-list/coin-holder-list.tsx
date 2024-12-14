@@ -1,6 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/macro'
+import { Box, HStack, VStack } from 'styled-system/jsx'
 
 import BTCIcon from '@/assets/chains/btc.svg'
 import CKBIcon from '@/assets/chains/ckb.svg'
@@ -15,8 +16,6 @@ import Link from '@/components/ui/link'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
 import { formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
-
-import { Box, HStack, VStack } from '../../../styled-system/jsx'
 
 
 export function CoinHolderList({

@@ -1,6 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/macro'
+import { Box, HStack, VStack } from 'styled-system/jsx'
 
 import LinkOutlineIcon from '@/assets/link-outline.svg'
 import { AgoTimeFormatter } from '@/components/ago-time-formatter'
@@ -15,8 +16,6 @@ import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-f
 import { resolveRGBppTxHash } from '@/lib/resolve-rgbpp-tx-hash'
 import { formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
-
-import { Box, HStack, VStack } from '../../../styled-system/jsx'
 
 export function LatestTxnListUI<
   T extends Pick<RgbppTransaction, 'ckbTransaction' | 'blockNumber' | 'timestamp' | 'leapDirection' | 'btcTxid' | 'ckbTxHash'>,

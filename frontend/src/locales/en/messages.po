@@ -90,7 +90,7 @@ msgstr "<0>{0}</0><1>DOB</1>"
 msgid "<0>Explore the<1><2/></1></0><3>Ecosystem</3>"
 msgstr "<0>Explore the<1><2/></1></0><3>Ecosystem</3>"
 
-#: src/components/transaction-info.tsx:34
+#: src/components/transaction-info.tsx:33
 msgid "24H Transactions"
 msgstr "24H Transactions"
 
@@ -99,15 +99,15 @@ msgid "24H Volume"
 msgstr "24H Volume"
 
 #: src/app/[lang]/address/[address]/layout.tsx:83
-#: src/components/holder-list/coin-holder-list.tsx:144
+#: src/components/holder-list/coin-holder-list.tsx:143
 msgid "Address"
 msgstr "Address"
 
-#: src/components/assets-list/coins-list.tsx:32
-#: src/components/holder-list/coin-holder-list.tsx:124
-#: src/components/holder-list/coin-holder-list.tsx:150
-#: src/components/latest-tx-list/rgb-tx-list.tsx:194
-#: src/components/latest-tx-list/ui.tsx:86
+#: src/components/assets-list/coins-list.tsx:31
+#: src/components/holder-list/coin-holder-list.tsx:123
+#: src/components/holder-list/coin-holder-list.tsx:149
+#: src/components/latest-tx-list/rgb-tx-list.tsx:101
+#: src/components/latest-tx-list/ui.tsx:85
 msgid "Amount"
 msgstr "Amount"
 
@@ -115,11 +115,11 @@ msgstr "Amount"
 msgid "Available"
 msgstr "Available"
 
-#: src/components/transaction-info.tsx:39
+#: src/components/transaction-info.tsx:38
 msgid "Avg. Confirmation Time"
 msgstr "Avg. Confirmation Time"
 
-#: src/components/transaction-info.tsx:40
+#: src/components/transaction-info.tsx:39
 msgid "Avg. Transaction Fee"
 msgstr "Avg. Transaction Fee"
 
@@ -134,7 +134,7 @@ msgstr "Back to Home"
 msgid "Bitcoin"
 msgstr "Bitcoin"
 
-#: src/components/block-header.tsx:40
+#: src/components/block-header.tsx:39
 msgid "Block {0}"
 msgstr "Block {0}"
 
@@ -142,8 +142,8 @@ msgstr "Block {0}"
 #: src/app/[lang]/explorer/ckb/info.tsx:42
 #: src/components/btc/btc-transaction-overview.tsx:42
 #: src/components/ckb/ckb-transaction-overview.tsx:40
-#: src/components/latest-tx-list/rgb-tx-list.tsx:99
-#: src/components/latest-tx-list/ui.tsx:80
+#: src/components/latest-tx-list/rgb-tx-list.tsx:94
+#: src/components/latest-tx-list/ui.tsx:79
 #: src/components/network-cards.tsx:89
 #: src/components/network-cards.tsx:122
 msgid "Block Height"
@@ -186,8 +186,8 @@ msgstr "BTC Txn"
 msgid "bytes"
 msgstr "bytes"
 
-#: src/components/holder-list/coin-holder-list.tsx:108
-#: src/components/holder-list/coin-holder-list.tsx:147
+#: src/components/holder-list/coin-holder-list.tsx:107
+#: src/components/holder-list/coin-holder-list.tsx:146
 msgid "Chain"
 msgstr "Chain"
 
@@ -267,8 +267,8 @@ msgstr "Coming Soon"
 msgid "Coming soon, please stay tuned"
 msgstr "Coming soon, please stay tuned"
 
-#: src/components/block-header.tsx:69
-#: src/components/transaction-header.tsx:72
+#: src/components/block-header.tsx:68
+#: src/components/transaction-header.tsx:71
 msgid "Confirmations"
 msgstr "Confirmations"
 
@@ -464,7 +464,7 @@ msgstr "Miner Reward"
 msgid "More Info"
 msgstr "More Info"
 
-#: src/components/assets-list/coins-list.tsx:29
+#: src/components/assets-list/coins-list.tsx:28
 msgid "Name"
 msgstr "Name"
 
@@ -511,8 +511,8 @@ msgstr "Outputs ({0})"
 msgid "Overview"
 msgstr "Overview"
 
-#: src/components/holder-list/coin-holder-list.tsx:116
-#: src/components/holder-list/coin-holder-list.tsx:153
+#: src/components/holder-list/coin-holder-list.tsx:115
+#: src/components/holder-list/coin-holder-list.tsx:152
 msgid "Position Ratio"
 msgstr "Position Ratio"
 
@@ -522,7 +522,7 @@ msgstr "Position Ratio"
 msgid "Price"
 msgstr "Price"
 
-#: src/components/holder-list/coin-holder-list.tsx:141
+#: src/components/holder-list/coin-holder-list.tsx:140
 msgid "Rank"
 msgstr "Rank"
 
@@ -664,8 +664,8 @@ msgstr "Each RGB++ asset type occupies CKB. The chart below illustrates the tota
 msgid "The total number of RGB++ assets, including FT and DOB"
 msgstr "The total number of assets issued by RGB++ protocol, such as SEAL, STB, and Nervape. Each asset type is counted only once."
 
-#: src/components/latest-tx-list/rgb-tx-list.tsx:197
-#: src/components/latest-tx-list/ui.tsx:89
+#: src/components/latest-tx-list/rgb-tx-list.tsx:104
+#: src/components/latest-tx-list/ui.tsx:88
 msgid "Time"
 msgstr "Time"
 
@@ -720,7 +720,7 @@ msgid "Total Supply"
 msgstr "Total Supply"
 
 #: src/components/latest-tx-list/index.tsx:102
-#: src/components/transaction-info.tsx:31
+#: src/components/transaction-info.tsx:30
 msgid "Total Transactions"
 msgstr "Total Transactions"
 
@@ -730,7 +730,7 @@ msgstr "Total: {0} Coins"
 
 #: src/components/btc/btc-block-overview.tsx:57
 #: src/components/ckb/ckb-block-overview.tsx:43
-#: src/components/transaction-header.tsx:45
+#: src/components/transaction-header.tsx:44
 msgid "Transaction"
 msgstr "Transaction"
 
@@ -738,7 +738,7 @@ msgstr "Transaction"
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:134
 #: src/app/[lang]/block/btc/[hashOrHeight]/layout.tsx:67
 #: src/app/[lang]/block/ckb/[hashOrHeight]/layout.tsx:59
-#: src/components/transaction-info.tsx:26
+#: src/components/transaction-info.tsx:25
 msgid "Transactions"
 msgstr "Transactions"
 
@@ -750,8 +750,8 @@ msgstr "Transactions (24H)"
 msgid "Try again"
 msgstr "Try again"
 
-#: src/components/latest-tx-list/rgb-tx-list.tsx:95
-#: src/components/latest-tx-list/ui.tsx:77
+#: src/components/latest-tx-list/rgb-tx-list.tsx:90
+#: src/components/latest-tx-list/ui.tsx:76
 msgid "Tx hash"
 msgstr "Tx hash"
 
@@ -771,8 +771,8 @@ msgstr "Txns"
 msgid "Txns(24H)"
 msgstr "Txns(24H)"
 
-#: src/components/latest-tx-list/rgb-tx-list.tsx:121
-#: src/components/latest-tx-list/ui.tsx:83
+#: src/components/latest-tx-list/rgb-tx-list.tsx:98
+#: src/components/latest-tx-list/ui.tsx:82
 msgid "Type"
 msgstr "Type"
 
@@ -784,7 +784,7 @@ msgstr "Unconfirmed"
 msgid "UTXO Stack"
 msgstr "UTXO Stack"
 
-#: src/components/assets-list/coins-list.tsx:35
+#: src/components/assets-list/coins-list.tsx:34
 msgid "Value"
 msgstr "Value"
 
@@ -806,8 +806,8 @@ msgid "View Details in Mempool"
 msgstr "View Details in Mempool"
 
 #: src/components/transaction-info.tsx:27
-msgid "View Transaction Chart"
-msgstr "View Transaction Chart"
+#~ msgid "View Transaction Chart"
+#~ msgstr "View Transaction Chart"
 
 #: src/components/coin-list.tsx:58
 #: src/components/coin-list.tsx:158
