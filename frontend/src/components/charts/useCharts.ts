@@ -3,6 +3,7 @@ import { useLingui } from '@lingui/react'
 import dayjs from 'dayjs'
 
 import { AssetsCountChart, AssetsCountStats } from '@/components/charts/assets-count-chart'
+import { ComingSoonChart } from '@/components/charts/coming-soon-chart'
 import { HoldersCountChart, HoldersCountStats } from '@/components/charts/holders-count-chart'
 import { ChartCategory, ChartDefinition, HoldersCountChartDataPoint, IssueCountChartDataPoint } from '@/components/charts/types'
 import { DATE_TEMPLATE } from '@/constants'
@@ -66,10 +67,10 @@ export function useCharts() {
       title: t(i18n)`Total RGB++ Assets Transactions`,
       description: t(i18n)`The number of transactions related to RGB++ assets`,
       category: 'overview',
-      chartRender: AssetsCountChart, 
-      statsRender: AssetsCountStats,
+      chartRender: ComingSoonChart, 
+      statsRender: undefined,
       fetchData: async () => {
-        return mockIssueCountRecords
+        return null
       },
       prepareDownloadData: (data) => {
         return {
@@ -89,10 +90,10 @@ export function useCharts() {
       title: t(i18n)`Total Occupied CKB`,
       description: t(i18n)`The total amount of CKB occupied by RGB++ assets`,  
       category: 'utilization',
-      chartRender: AssetsCountChart, 
-      statsRender: AssetsCountStats,
+      chartRender: ComingSoonChart, 
+      statsRender: undefined,
       fetchData: async () => {
-        return mockIssueCountRecords
+        return null
       },
       prepareDownloadData: (data) => {
         return {

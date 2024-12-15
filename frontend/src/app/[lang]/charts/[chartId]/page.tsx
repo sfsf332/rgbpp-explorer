@@ -63,7 +63,6 @@ export default function ChartDetailPage() {
             rounded="5px"
             gap="5px"
             cursor="pointer"
-            display="flex"
             border="1px solid"
             borderColor="border.light"
             justifyContent="center"
@@ -71,6 +70,7 @@ export default function ChartDetailPage() {
             _hover={{ bg: "RGB(255, 255, 255, 0.08)" }}
             onClick={handleDownload}
             disabled={loading || !data}
+            display={(loading || !data) ? 'none' : 'flex'}
           >
             <DownloadIcon w="18px" h="18px" />
             <Text display={{ base: 'none', md: 'block' }} fontSize={{ base: '14px'}} whiteSpace={'nowrap'}>

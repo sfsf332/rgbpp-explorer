@@ -79,7 +79,7 @@ export function RgbppStatisticsOverview({
     { value: marketCap, label: t(i18n)`Market Cap (USD)` },
     { value: totalAssets, label: t(i18n)`Total Number of Assets`, link: '/charts/total-assets' },
     { value: totalHolders, label: t(i18n)`Total Holders`, link: '/charts/total-holders' },
-    /*{ value: totalOccupiedCkb, label: t(i18n)`Total Occupied CKB` },*/
+    /* { value: totalOccupiedCkb, label: t(i18n)`Total Occupied CKB` },*/
   ];
 
   const shouldShowDivider = (index: number) => {

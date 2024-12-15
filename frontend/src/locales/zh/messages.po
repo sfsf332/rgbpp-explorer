@@ -260,10 +260,12 @@ msgstr "代币"
 msgid "Coming"
 msgstr "即将推出"
 
+#: src/components/charts/coming-soon-chart.tsx:17
 #: src/components/coming-soon-text.tsx:6
 msgid "Coming Soon"
 msgstr "即将推出"
 
+#: src/components/charts/coming-soon-chart.tsx:32
 #: src/components/coming-soon.tsx:14
 msgid "Coming soon, please stay tuned"
 msgstr "即将推出，敬请期待"
@@ -425,7 +427,7 @@ msgstr "最新 L1 RGB++ 交易"
 msgid "Latest L2 RGB++ transaction"
 msgstr "最新 L2 RGB++ 交易"
 
-#: src/components/latest-tx-list/index.tsx:128
+#: src/components/latest-tx-list/index.tsx:129
 msgid "Latest transactions"
 msgstr "最新交易"
 
@@ -448,7 +450,7 @@ msgstr "主网"
 msgid "Market Cap"
 msgstr "市值"
 
-#: src/components/rgbpp-statistics-overview.tsx:63
+#: src/components/rgbpp-statistics-overview.tsx:79
 msgid "Market Cap (USD)"
 msgstr "市值（美元）"
 
@@ -547,11 +549,11 @@ msgstr "RGB++ 资产"
 msgid "RGB++ Assets Holders"
 msgstr "RGB++ 资产持有人"
 
-#: src/components/charts/useCharts.ts:115
+#: src/components/charts/useCharts.ts:116
 msgid "RGB++ Assets Overview & Activity"
 msgstr "RGB++ 资产概览和交易情况"
 
-#: src/components/charts/useCharts.ts:120
+#: src/components/charts/useCharts.ts:121
 msgid "RGB++ Assets Utilization"
 msgstr "RGB++ 资产利用情况"
 
@@ -654,19 +656,19 @@ msgstr "汇总信息"
 msgid "Testnet"
 msgstr "测试网"
 
-#: src/components/charts/useCharts.ts:67
+#: src/components/charts/useCharts.ts:68
 msgid "The number of transactions related to RGB++ assets"
 msgstr "与 RGB++ 资产相关的交易数量"
 
-#: src/components/charts/useCharts.ts:43
+#: src/components/charts/useCharts.ts:44
 msgid "The number of unique addresses that hold at least one RGB++ asset"
 msgstr "持有至少一种 RGB++ 资产的地址数量，同一地址若持有多种 RGB++ 资产，只会统计一次。"
 
-#: src/components/charts/useCharts.ts:90
+#: src/components/charts/useCharts.ts:91
 msgid "The total amount of CKB occupied by RGB++ assets"
 msgstr "每类 RGB++ 资产均占用 CKB，下图展示了所有 RGB++ 资产对 CKB 的占用情况。"
 
-#: src/components/charts/useCharts.ts:20
+#: src/components/charts/useCharts.ts:21
 msgid "The total number of RGB++ assets, including FT and DOB"
 msgstr "使用 RGB++ 协议发行的资产总数，比如 SEAL、STB、Nervape 等，每种资产只统计一次。"
 
@@ -685,25 +687,24 @@ msgstr "总计"
 msgid "Total {0} Items"
 msgstr "总计 {0} 项"
 
-#: src/components/charts/useCharts.ts:19
+#: src/components/charts/useCharts.ts:20
 msgid "Total Count of RGB++ Asset"
 msgstr "RGB++ 资产总数"
 
 #: src/components/holder-list/holder-summary.tsx:19
-#: src/components/rgbpp-statistics-overview.tsx:65
+#: src/components/rgbpp-statistics-overview.tsx:81
 msgid "Total Holders"
 msgstr "总持有人数"
 
-#: src/components/charts/useCharts.ts:42
+#: src/components/charts/useCharts.ts:43
 msgid "Total Holders of RGB++ Asset"
 msgstr "RGB++ 资产持有人总数"
 
-#: src/components/rgbpp-statistics-overview.tsx:64
+#: src/components/rgbpp-statistics-overview.tsx:80
 msgid "Total Number of Assets"
 msgstr "总资产数"
 
-#: src/components/charts/useCharts.ts:89
-#: src/components/rgbpp-statistics-overview.tsx:66
+#: src/components/charts/useCharts.ts:90
 msgid "Total Occupied CKB"
 msgstr "累计占用 CKB"
 
@@ -711,7 +712,7 @@ msgstr "累计占用 CKB"
 msgid "Total RGB++ Assets"
 msgstr "RGB++ 资产总数"
 
-#: src/components/charts/useCharts.ts:66
+#: src/components/charts/useCharts.ts:67
 msgid "Total RGB++ Assets Transactions"
 msgstr "RGB++ 资产交易总数"
 
@@ -725,7 +726,7 @@ msgstr "RGB++ 持有人总数"
 msgid "Total Supply"
 msgstr "发行量"
 
-#: src/components/latest-tx-list/index.tsx:102
+#: src/components/latest-tx-list/index.tsx:103
 #: src/components/transaction-info.tsx:30
 msgid "Total Transactions"
 msgstr "总交易数"
@@ -748,7 +749,7 @@ msgstr "交易"
 msgid "Transactions"
 msgstr "交易记录"
 
-#: src/components/latest-tx-list/index.tsx:118
+#: src/components/latest-tx-list/index.tsx:119
 msgid "Transactions (24H)"
 msgstr "24小时交易数"
 
@@ -799,7 +800,7 @@ msgstr "价值"
 msgid "vB"
 msgstr "字节"
 
-#: src/components/latest-tx-list/index.tsx:135
+#: src/components/latest-tx-list/index.tsx:136
 msgid "View All Transactions"
 msgstr "查看所有交易"
 

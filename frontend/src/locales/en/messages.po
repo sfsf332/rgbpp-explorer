@@ -260,10 +260,12 @@ msgstr "Coins"
 msgid "Coming"
 msgstr "Coming"
 
+#: src/components/charts/coming-soon-chart.tsx:17
 #: src/components/coming-soon-text.tsx:6
 msgid "Coming Soon"
 msgstr "Coming Soon"
 
+#: src/components/charts/coming-soon-chart.tsx:32
 #: src/components/coming-soon.tsx:14
 msgid "Coming soon, please stay tuned"
 msgstr "Coming soon, please stay tuned"
@@ -425,7 +427,7 @@ msgstr "Latest L1 RGB++ transaction"
 msgid "Latest L2 RGB++ transaction"
 msgstr "Latest L2 RGB++ transaction"
 
-#: src/components/latest-tx-list/index.tsx:128
+#: src/components/latest-tx-list/index.tsx:129
 msgid "Latest transactions"
 msgstr "Latest transactions"
 
@@ -448,7 +450,7 @@ msgstr "Mainnet"
 msgid "Market Cap"
 msgstr "Market Cap"
 
-#: src/components/rgbpp-statistics-overview.tsx:63
+#: src/components/rgbpp-statistics-overview.tsx:79
 msgid "Market Cap (USD)"
 msgstr "Market Cap (USD)"
 
@@ -547,11 +549,11 @@ msgstr "RGB++ Assets"
 msgid "RGB++ Assets Holders"
 msgstr "RGB++ Assets Holders"
 
-#: src/components/charts/useCharts.ts:115
+#: src/components/charts/useCharts.ts:116
 msgid "RGB++ Assets Overview & Activity"
 msgstr "RGB++ Assets Overview & Activity"
 
-#: src/components/charts/useCharts.ts:120
+#: src/components/charts/useCharts.ts:121
 msgid "RGB++ Assets Utilization"
 msgstr "RGB++ Assets Utilization"
 
@@ -654,19 +656,19 @@ msgstr "Statistic"
 msgid "Testnet"
 msgstr "Testnet"
 
-#: src/components/charts/useCharts.ts:67
+#: src/components/charts/useCharts.ts:68
 msgid "The number of transactions related to RGB++ assets"
 msgstr "The number of transactions related to RGB++ assets"
 
-#: src/components/charts/useCharts.ts:43
+#: src/components/charts/useCharts.ts:44
 msgid "The number of unique addresses that hold at least one RGB++ asset"
 msgstr "The number of addresses holding at least one RGB++ asset. If an address holds multiple RGB++ assets, it is only counted once."
 
-#: src/components/charts/useCharts.ts:90
+#: src/components/charts/useCharts.ts:91
 msgid "The total amount of CKB occupied by RGB++ assets"
 msgstr "Each RGB++ asset type occupies CKB. The chart below illustrates the total CKB occupied by all RGB++ assets."
 
-#: src/components/charts/useCharts.ts:20
+#: src/components/charts/useCharts.ts:21
 msgid "The total number of RGB++ assets, including FT and DOB"
 msgstr "The total number of assets issued by RGB++ protocol, such as SEAL, STB, and Nervape. Each asset type is counted only once."
 
@@ -685,25 +687,24 @@ msgstr "Total"
 msgid "Total {0} Items"
 msgstr "Total {0} Items"
 
-#: src/components/charts/useCharts.ts:19
+#: src/components/charts/useCharts.ts:20
 msgid "Total Count of RGB++ Asset"
 msgstr "Total Count of RGB++ Asset"
 
 #: src/components/holder-list/holder-summary.tsx:19
-#: src/components/rgbpp-statistics-overview.tsx:65
+#: src/components/rgbpp-statistics-overview.tsx:81
 msgid "Total Holders"
 msgstr "Total Holders"
 
-#: src/components/charts/useCharts.ts:42
+#: src/components/charts/useCharts.ts:43
 msgid "Total Holders of RGB++ Asset"
 msgstr "Total Holders of RGB++ Asset"
 
-#: src/components/rgbpp-statistics-overview.tsx:64
+#: src/components/rgbpp-statistics-overview.tsx:80
 msgid "Total Number of Assets"
 msgstr "Total Number of Assets"
 
-#: src/components/charts/useCharts.ts:89
-#: src/components/rgbpp-statistics-overview.tsx:66
+#: src/components/charts/useCharts.ts:90
 msgid "Total Occupied CKB"
 msgstr "Total Occupied CKB"
 
@@ -711,7 +712,7 @@ msgstr "Total Occupied CKB"
 msgid "Total RGB++ Assets"
 msgstr "Total RGB++ Assets"
 
-#: src/components/charts/useCharts.ts:66
+#: src/components/charts/useCharts.ts:67
 msgid "Total RGB++ Assets Transactions"
 msgstr "Total RGB++ Assets Transactions"
 
@@ -725,7 +726,7 @@ msgstr "Total RGB++ Holders"
 msgid "Total Supply"
 msgstr "Total Supply"
 
-#: src/components/latest-tx-list/index.tsx:102
+#: src/components/latest-tx-list/index.tsx:103
 #: src/components/transaction-info.tsx:30
 msgid "Total Transactions"
 msgstr "Total Transactions"
@@ -748,7 +749,7 @@ msgstr "Transaction"
 msgid "Transactions"
 msgstr "Transactions"
 
-#: src/components/latest-tx-list/index.tsx:118
+#: src/components/latest-tx-list/index.tsx:119
 msgid "Transactions (24H)"
 msgstr "Transactions (24H)"
 
@@ -799,7 +800,7 @@ msgstr "Value"
 msgid "vB"
 msgstr "vB"
 
-#: src/components/latest-tx-list/index.tsx:135
+#: src/components/latest-tx-list/index.tsx:136
 msgid "View All Transactions"
 msgstr "View All Transactions"
 
