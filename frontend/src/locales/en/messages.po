@@ -103,7 +103,7 @@ msgstr "24H Volume"
 msgid "Address"
 msgstr "Address"
 
-#: src/components/assets-list/coins-list.tsx:31
+#: src/components/assets-list/coins-list.tsx:33
 #: src/components/holder-list/coin-holder-list.tsx:123
 #: src/components/holder-list/coin-holder-list.tsx:149
 #: src/components/latest-tx-list/rgb-tx-list.tsx:101
@@ -249,7 +249,7 @@ msgstr "Coin"
 msgid "Coinbase"
 msgstr "Coinbase"
 
-#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:67
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:66
 #: src/app/[lang]/assets/layout.tsx:21
 #: src/components/charts/assets-count-chart.tsx:119
 #: src/components/charts/assets-count-chart.tsx:171
@@ -276,6 +276,10 @@ msgstr "Confirmations"
 #: src/components/btc/btc-address-overview.tsx:41
 msgid "Confirmed"
 msgstr "Confirmed"
+
+#: src/components/assets-list/coins-list.tsx:39
+msgid "Contract"
+msgstr "Contract"
 
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:79
 msgid "Contract:"
@@ -311,7 +315,7 @@ msgstr "DOB"
 msgid "DOB Collections"
 msgstr "DOB Collections"
 
-#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:70
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:69
 #: src/app/[lang]/assets/layout.tsx:25
 msgid "DOBs"
 msgstr "DOBs"
@@ -466,7 +470,7 @@ msgstr "Miner Reward"
 msgid "More Info"
 msgstr "More Info"
 
-#: src/components/assets-list/coins-list.tsx:28
+#: src/components/assets-list/coins-list.tsx:30
 msgid "Name"
 msgstr "Name"
 
@@ -786,7 +790,7 @@ msgstr "Unconfirmed"
 msgid "UTXO Stack"
 msgstr "UTXO Stack"
 
-#: src/components/assets-list/coins-list.tsx:34
+#: src/components/assets-list/coins-list.tsx:36
 msgid "Value"
 msgstr "Value"
 

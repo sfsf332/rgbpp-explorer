@@ -79,16 +79,16 @@ export default async function Layout({
         bg="bg.card"
         rounded="8px"
       >
-        <Heading display="flex" alignItems="center" gap="16px" fontSize="20px" lineHeight="24px" fontWeight="semibold">
+        <Heading display="flex" alignItems="center" gap="16px" fontSize="20px" height="24px" fontWeight="semibold">
           {t(i18n)`Address`}
           <IfBreakpoint breakpoint="lg" fallback={<BtcAddressType address={address} />} />
         </Heading>
         <Copier value={address}>
-          <HStack maxW="calc(1160px - 100px - 24px)" truncate>
+          <HStack maxW="calc(1160px - 100px - 24px)" minH="24px" truncate alignItems={'center'}>
             <Text as="span" wordBreak="break-all" whiteSpace="wrap" textAlign="left">
               {address}
             </Text>
-            <IfBreakpoint breakpoint="lg">
+            <IfBreakpoint breakpoint="lg" >
               <BtcAddressType address={address} />
             </IfBreakpoint>
           </HStack>

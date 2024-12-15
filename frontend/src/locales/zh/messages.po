@@ -103,7 +103,7 @@ msgstr "24小时成交额"
 msgid "Address"
 msgstr "地址"
 
-#: src/components/assets-list/coins-list.tsx:31
+#: src/components/assets-list/coins-list.tsx:33
 #: src/components/holder-list/coin-holder-list.tsx:123
 #: src/components/holder-list/coin-holder-list.tsx:149
 #: src/components/latest-tx-list/rgb-tx-list.tsx:101
@@ -249,7 +249,7 @@ msgstr "代币"
 msgid "Coinbase"
 msgstr "挖矿产出"
 
-#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:67
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:66
 #: src/app/[lang]/assets/layout.tsx:21
 #: src/components/charts/assets-count-chart.tsx:119
 #: src/components/charts/assets-count-chart.tsx:171
@@ -276,6 +276,10 @@ msgstr "确认数"
 #: src/components/btc/btc-address-overview.tsx:41
 msgid "Confirmed"
 msgstr "已确认"
+
+#: src/components/assets-list/coins-list.tsx:39
+msgid "Contract"
+msgstr "合约地址"
 
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:79
 msgid "Contract:"
@@ -311,7 +315,7 @@ msgstr "DOB"
 msgid "DOB Collections"
 msgstr "DOB 合集"
 
-#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:70
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:69
 #: src/app/[lang]/assets/layout.tsx:25
 msgid "DOBs"
 msgstr "DOBs"
@@ -466,7 +470,7 @@ msgstr "矿工奖励"
 msgid "More Info"
 msgstr "更多信息"
 
-#: src/components/assets-list/coins-list.tsx:28
+#: src/components/assets-list/coins-list.tsx:30
 msgid "Name"
 msgstr "代币"
 
@@ -786,9 +790,9 @@ msgstr "未确认"
 msgid "UTXO Stack"
 msgstr "UTXO Stack"
 
-#: src/components/assets-list/coins-list.tsx:34
+#: src/components/assets-list/coins-list.tsx:36
 msgid "Value"
-msgstr "价格"
+msgstr "价值"
 
 #: src/components/btc/btc-transaction-card-in-address.tsx:36
 #: src/components/btc/btc-transaction-card-with-query-in-block.tsx:20
