@@ -89,6 +89,7 @@ export function HomeRgbppTxnsOverview() {
       w="100%"
       gridTemplateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }}
       gap={{ base: '20px', md: '30px' }}
+      display="none"
     >
       <Box
         bg="bg.card"
@@ -130,7 +131,7 @@ export function HomeRgbppTxnsOverview() {
       <Box p="0px">
         <LatestTxnListUI txs={data.rgbppLatestTransactions.txs as RgbppTransaction[]} />
       </Box>
-      <Box p="20px" textAlign="center">
+      <Box p="20px" textAlign="center" display="none">
         <Link href="/transaction/list" color="brand">
           <Trans>View All Transactions</Trans>
         </Link>

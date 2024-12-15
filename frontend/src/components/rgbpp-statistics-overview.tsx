@@ -2,7 +2,8 @@
 
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { Box, Grid, VStack } from 'styled-system/jsx'
+import Link from 'next/link'
+import { Box, Flex, VStack } from 'styled-system/jsx'
 
 import { Text } from '@/components/ui'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
@@ -11,15 +12,20 @@ interface StatItemProps {
   value: string
   label: string
   showDivider: boolean
+  link?: string
 }
 
-function StatItem({ value, label, showDivider }: StatItemProps) {
-  return (
+function StatItem({ value, label, showDivider, link }: StatItemProps) {
+  const Content = (
     <VStack
       gap={1}
       alignItems="center"
       position="relative"
       w="100%"
+      cursor={link ? 'pointer' : 'default'}
+      _hover={link ? {
+        '& > *': { color: 'brand' }
+      } : undefined}
       _after={{
         content: showDivider ? '""' : 'none',
         position: 'absolute',
@@ -32,14 +38,24 @@ function StatItem({ value, label, showDivider }: StatItemProps) {
         marginTop: { base: '20px', sm: '0', lg: '0' }
       }}
     >
-      <Text fontSize={{ base: '20px', sm: '30px', lg: '36px' }} fontWeight="600">
+      <Text fontSize={{ base: '20px', sm: '30px', lg: '36px' }} fontWeight="600" transition="color 0.2s">
         {value}
       </Text>
-      <Text fontSize={{ base: '14px', sm: '16px', lg: '16px' }} color="text.third">
+      <Text fontSize={{ base: '14px', sm: '16px', lg: '16px' }} color="text.third" transition="color 0.2s">
         {label}
       </Text>
     </VStack>
   )
+
+  if (link) {
+    return (
+      <Link href={link} style={{ width: '100%', display: 'block' }}>
+        {Content}
+      </Link>
+    )
+  }
+
+  return Content
 }
 
 interface RgbppStatisticsOverviewProps {
@@ -61,19 +77,19 @@ export function RgbppStatisticsOverview({
 
   const items = [
     { value: marketCap, label: t(i18n)`Market Cap (USD)` },
-    { value: totalAssets, label: t(i18n)`Total Number of Assets` },
-    { value: totalHolders, label: t(i18n)`Total Holders` },
-    { value: totalOccupiedCkb, label: t(i18n)`Total Occupied CKB` }
+    { value: totalAssets, label: t(i18n)`Total Number of Assets`, link: '/charts/total-assets' },
+    { value: totalHolders, label: t(i18n)`Total Holders`, link: '/charts/total-holders' },
+    /*{ value: totalOccupiedCkb, label: t(i18n)`Total Occupied CKB` },*/
   ];
 
   const shouldShowDivider = (index: number) => {
-    if (isDesktop) {
-      return index < items.length - 1
-    }
-    if (isTablet) {
-      return index % 2 === 0 && index < items.length - 1
-    }
-    return index < items.length - 1
+    const itemsPerRow = isDesktop ? 4 : isTablet ? 2 : 1;
+    const isLastInRow = (index + 1) % itemsPerRow === 0;
+    const isLastItem = index === items.length - 1;
+    
+    if (isLastItem) return false;
+    if (isDesktop || isTablet) return !isLastInRow;
+    return true;
   }
 
   return (
@@ -102,27 +118,29 @@ export function RgbppStatisticsOverview({
         px={{ base: '20px', sm: '30px', lg: '50px' }}
         py={{ base: '20px', sm: '20px', lg: '30px' }}
       >
-        <Grid
+        <Flex
           w="100%"
-          h="100%"
-          gridTemplateColumns={{
-            base: '1fr',
-            sm: 'repeat(2, 1fr)',
-            lg: 'repeat(4, 1fr)',
-          }}
-          gap={{ base: '40px', sm: '30px', lg: '0' }}
-          alignItems="center"
+          flexWrap="wrap"
+          justifyContent="center"
+          gap={{ base: '40px', sm: '30px', lg: '30px' }}
         >
           {items.map((item, index) => (
-            <StatItem
+            <Box
               key={index}
-              value={item.value}
-              label={item.label}
-              showDivider={shouldShowDivider(index)}
-            />
+              flex={{ base: '1 1 100%', sm: '1 1 calc(50% - 15px)', lg: '1 1 calc(25% - 22.5px)' }}
+              display="flex"
+              justifyContent="center"
+            >
+              <StatItem
+                value={item.value}
+                label={item.label}
+                link={item.link}
+                showDivider={shouldShowDivider(index)}
+              />
+            </Box>
           ))}
-        </Grid>
+        </Flex>
       </Box>
     </Box>
-  )
+  );
 }
