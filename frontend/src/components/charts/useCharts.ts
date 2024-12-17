@@ -7,13 +7,13 @@ import { ComingSoonChart } from '@/components/charts/coming-soon-chart'
 import { HoldersCountChart, HoldersCountStats } from '@/components/charts/holders-count-chart'
 import { ChartCategory, ChartDefinition, HoldersCountChartDataPoint, IssueCountChartDataPoint } from '@/components/charts/types'
 import { DATE_TEMPLATE } from '@/constants'
-import { mockHolderCountRecords } from '@/mocks/holder-count-records'
-import { mockIssueCountRecords } from '@/mocks/issue-count-records'
+import { useRgbppHolderCountRecords } from '@/hooks/trpc/useRgbppHolderCountRecords'
+import { useRgbppIssueCountRecords } from '@/hooks/trpc/useRgbppIssueCountRecords'
 
 // charts, todo
 export function useCharts() {
   const { i18n } = useLingui()
-  
+
   const charts: ChartDefinition[] = [
     {
       id: 'total-assets',
@@ -22,9 +22,7 @@ export function useCharts() {
       category: 'overview',
       chartRender: AssetsCountChart, 
       statsRender: AssetsCountStats,
-      fetchData: async () => {
-        return mockIssueCountRecords
-      },
+      useData: useRgbppIssueCountRecords,
       prepareDownloadData: (data) => {
         return {
           filename: 'rgbpp-assets-count',
@@ -45,9 +43,7 @@ export function useCharts() {
       category: 'overview',
       chartRender: HoldersCountChart, 
       statsRender: HoldersCountStats,
-      fetchData: async () => {
-        return mockHolderCountRecords
-      },
+      useData: useRgbppHolderCountRecords,
       prepareDownloadData: (data) => {
         return {
           filename: 'rgbpp-holders-count',
@@ -69,9 +65,7 @@ export function useCharts() {
       category: 'overview',
       chartRender: ComingSoonChart, 
       statsRender: undefined,
-      fetchData: async () => {
-        return null
-      },
+      useData: useRgbppIssueCountRecords,
       prepareDownloadData: (data) => {
         return {
           filename: 'rgb-assets-transactions',
@@ -92,9 +86,7 @@ export function useCharts() {
       category: 'utilization',
       chartRender: ComingSoonChart, 
       statsRender: undefined,
-      fetchData: async () => {
-        return null
-      },
+      useData: useRgbppIssueCountRecords,
       prepareDownloadData: (data) => {
         return {
           filename: 'rgb-assets-transactions',

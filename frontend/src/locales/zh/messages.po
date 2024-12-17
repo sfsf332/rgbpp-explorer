@@ -195,7 +195,7 @@ msgstr "链"
 msgid "Chains"
 msgstr "浏览器"
 
-#: src/app/[lang]/charts/[chartId]/page.tsx:51
+#: src/app/[lang]/charts/[chartId]/page.tsx:49
 msgid "chart"
 msgstr "图表详情"
 
@@ -334,7 +334,7 @@ msgstr "Doge 链持有人"
 msgid "DOGE Chain Holders"
 msgstr "DOGE 链持有人"
 
-#: src/app/[lang]/charts/[chartId]/page.tsx:77
+#: src/app/[lang]/charts/[chartId]/page.tsx:75
 #: src/app/[lang]/transaction/list/page.tsx:160
 msgid "Download Data"
 msgstr "下载数据"
@@ -549,11 +549,11 @@ msgstr "RGB++ 资产"
 msgid "RGB++ Assets Holders"
 msgstr "RGB++ 资产持有人"
 
-#: src/components/charts/useCharts.ts:116
+#: src/components/charts/useCharts.ts:108
 msgid "RGB++ Assets Overview & Activity"
 msgstr "RGB++ 资产概览和交易情况"
 
-#: src/components/charts/useCharts.ts:121
+#: src/components/charts/useCharts.ts:113
 msgid "RGB++ Assets Utilization"
 msgstr "RGB++ 资产利用情况"
 
@@ -656,15 +656,15 @@ msgstr "汇总信息"
 msgid "Testnet"
 msgstr "测试网"
 
-#: src/components/charts/useCharts.ts:68
+#: src/components/charts/useCharts.ts:64
 msgid "The number of transactions related to RGB++ assets"
 msgstr "与 RGB++ 资产相关的交易数量"
 
-#: src/components/charts/useCharts.ts:44
+#: src/components/charts/useCharts.ts:42
 msgid "The number of unique addresses that hold at least one RGB++ asset"
 msgstr "持有至少一种 RGB++ 资产的地址数量，同一地址若持有多种 RGB++ 资产，只会统计一次。"
 
-#: src/components/charts/useCharts.ts:91
+#: src/components/charts/useCharts.ts:85
 msgid "The total amount of CKB occupied by RGB++ assets"
 msgstr "每类 RGB++ 资产均占用 CKB，下图展示了所有 RGB++ 资产对 CKB 的占用情况。"
 
@@ -696,7 +696,7 @@ msgstr "RGB++ 资产总数"
 msgid "Total Holders"
 msgstr "总持有人数"
 
-#: src/components/charts/useCharts.ts:43
+#: src/components/charts/useCharts.ts:41
 msgid "Total Holders of RGB++ Asset"
 msgstr "RGB++ 资产持有人总数"
 
@@ -704,7 +704,7 @@ msgstr "RGB++ 资产持有人总数"
 msgid "Total Number of Assets"
 msgstr "总资产数"
 
-#: src/components/charts/useCharts.ts:90
+#: src/components/charts/useCharts.ts:84
 msgid "Total Occupied CKB"
 msgstr "累计占用 CKB"
 
@@ -712,7 +712,7 @@ msgstr "累计占用 CKB"
 msgid "Total RGB++ Assets"
 msgstr "RGB++ 资产总数"
 
-#: src/components/charts/useCharts.ts:67
+#: src/components/charts/useCharts.ts:63
 msgid "Total RGB++ Assets Transactions"
 msgstr "RGB++ 资产交易总数"
 

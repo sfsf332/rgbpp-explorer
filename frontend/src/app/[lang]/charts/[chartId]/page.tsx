@@ -8,6 +8,7 @@ import { Box, HStack, styled, VStack } from 'styled-system/jsx'
 import DownloadIcon from '@/assets/download.svg'
 import InfoIcon from '@/assets/info.svg'
 import { AppTooltip } from '@/components/app-tooltip'
+import { useChartData } from '@/components/charts/useChartData'
 import { useCharts } from '@/components/charts/useCharts'
 import { Text } from '@/components/ui'
 import { downloadCSV } from '@/utils/download'
@@ -15,20 +16,17 @@ import { downloadCSV } from '@/utils/download'
 export default function ChartDetailPage() {
   const params = useParams()
   const { charts } = useCharts()
-  const [data, setData] = useState<any>(null)
   const [loading, setLoading] = useState(true)
 
   const chartId = params.chartId as string
   const chart = charts.find((c) => c.id === chartId)
+  const { data, isLoading } = useChartData(chartId)
 
   useEffect(() => {
-    if (chart?.fetchData) {
-      setLoading(true)
-      chart.fetchData()
-        .then(setData)
-        .finally(() => setLoading(false))
+    if (data && !isLoading) {
+      setLoading(false)
     }
-  }, [chart])
+  }, [data, isLoading])
 
   if (!chart) {
     return notFound()
@@ -69,8 +67,8 @@ export default function ChartDetailPage() {
             alignItems="center"
             _hover={{ bg: "RGB(255, 255, 255, 0.08)" }}
             onClick={handleDownload}
-            disabled={loading || !data}
-            display={(loading || !data) ? 'none' : 'flex'}
+            disabled={loading}
+            display={loading ? 'none' : 'flex'}
           >
             <DownloadIcon w="18px" h="18px" />
             <Text display={{ base: 'none', md: 'block' }} fontSize={{ base: '14px'}} whiteSpace={'nowrap'}>
@@ -79,11 +77,11 @@ export default function ChartDetailPage() {
           </styled.button>
         </HStack>
         <Box w="100%" h="590px" position="relative" zIndex={1}>
-          <chart.chartRender data={data} />
+          {!loading && <chart.chartRender data={data} />}
         </Box>
       </VStack>
 
-      {chart.statsRender ? <chart.statsRender data={data} /> : null}
+      {!loading && chart.statsRender ? <chart.statsRender data={data} /> : null}
     </VStack>
   )
 }

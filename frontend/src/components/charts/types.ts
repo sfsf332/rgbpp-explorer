@@ -21,7 +21,7 @@ export interface ChartDefinition extends ChartComponent {
   title: string
   category: 'overview' | 'utilization'
   description: string
-  fetchData: () => Promise<any>
+  useData: () => { data: any; isLoading: boolean }
   prepareDownloadData?: (data: any) => ChartDownloadData
 }
 

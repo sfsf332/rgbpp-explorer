@@ -32,7 +32,6 @@ export default function ChartsPage() {
                 id={chart.id}
                 title={chart.title}
                 chartRender={chart.chartRender}
-                fetchData={chart.fetchData}
               />
             ))}
           </Grid>

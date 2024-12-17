@@ -195,7 +195,7 @@ msgstr "Chain"
 msgid "Chains"
 msgstr "Chains"
 
-#: src/app/[lang]/charts/[chartId]/page.tsx:51
+#: src/app/[lang]/charts/[chartId]/page.tsx:49
 msgid "chart"
 msgstr "chart"
 
@@ -334,7 +334,7 @@ msgstr "Doge Chain Holders"
 msgid "DOGE Chain Holders"
 msgstr "DOGE Chain Holders"
 
-#: src/app/[lang]/charts/[chartId]/page.tsx:77
+#: src/app/[lang]/charts/[chartId]/page.tsx:75
 #: src/app/[lang]/transaction/list/page.tsx:160
 msgid "Download Data"
 msgstr "Download Data"
@@ -549,11 +549,11 @@ msgstr "RGB++ Assets"
 msgid "RGB++ Assets Holders"
 msgstr "RGB++ Assets Holders"
 
-#: src/components/charts/useCharts.ts:116
+#: src/components/charts/useCharts.ts:108
 msgid "RGB++ Assets Overview & Activity"
 msgstr "RGB++ Assets Overview & Activity"
 
-#: src/components/charts/useCharts.ts:121
+#: src/components/charts/useCharts.ts:113
 msgid "RGB++ Assets Utilization"
 msgstr "RGB++ Assets Utilization"
 
@@ -656,15 +656,15 @@ msgstr "Statistic"
 msgid "Testnet"
 msgstr "Testnet"
 
-#: src/components/charts/useCharts.ts:68
+#: src/components/charts/useCharts.ts:64
 msgid "The number of transactions related to RGB++ assets"
 msgstr "The number of transactions related to RGB++ assets"
 
-#: src/components/charts/useCharts.ts:44
+#: src/components/charts/useCharts.ts:42
 msgid "The number of unique addresses that hold at least one RGB++ asset"
 msgstr "The number of addresses holding at least one RGB++ asset. If an address holds multiple RGB++ assets, it is only counted once."
 
-#: src/components/charts/useCharts.ts:91
+#: src/components/charts/useCharts.ts:85
 msgid "The total amount of CKB occupied by RGB++ assets"
 msgstr "Each RGB++ asset type occupies CKB. The chart below illustrates the total CKB occupied by all RGB++ assets."
 
@@ -696,7 +696,7 @@ msgstr "Total Count of RGB++ Asset"
 msgid "Total Holders"
 msgstr "Total Holders"
 
-#: src/components/charts/useCharts.ts:43
+#: src/components/charts/useCharts.ts:41
 msgid "Total Holders of RGB++ Asset"
 msgstr "Total Holders of RGB++ Asset"
 
@@ -704,7 +704,7 @@ msgstr "Total Holders of RGB++ Asset"
 msgid "Total Number of Assets"
 msgstr "Total Number of Assets"
 
-#: src/components/charts/useCharts.ts:90
+#: src/components/charts/useCharts.ts:84
 msgid "Total Occupied CKB"
 msgstr "Total Occupied CKB"
 
@@ -712,7 +712,7 @@ msgstr "Total Occupied CKB"
 msgid "Total RGB++ Assets"
 msgstr "Total RGB++ Assets"
 
-#: src/components/charts/useCharts.ts:67
+#: src/components/charts/useCharts.ts:63
 msgid "Total RGB++ Assets Transactions"
 msgstr "Total RGB++ Assets Transactions"
 
