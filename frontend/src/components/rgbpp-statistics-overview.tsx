@@ -5,17 +5,21 @@ import { useLingui } from '@lingui/react'
 import Link from 'next/link'
 import { Box, Flex, VStack } from 'styled-system/jsx'
 
+import { LoadingBox } from '@/components/loading-box'
 import { Text } from '@/components/ui'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
+import { useRgbppStatisticsOverview } from '@/hooks/useRgbppData'
+import { formatNumber } from '@/lib/string/format-number'
 
 interface StatItemProps {
   value: string
   label: string
   showDivider: boolean
   link?: string
+  isLoading?: boolean
 }
 
-function StatItem({ value, label, showDivider, link }: StatItemProps) {
+function StatItem({ value, label, showDivider, link, isLoading = false }: StatItemProps) {
   const Content = (
     <VStack
       gap={1}
@@ -38,9 +42,16 @@ function StatItem({ value, label, showDivider, link }: StatItemProps) {
         marginTop: { base: '20px', sm: '0', lg: '0' }
       }}
     >
-      <Text fontSize={{ base: '20px', sm: '30px', lg: '36px' }} fontWeight="600" transition="color 0.2s">
+
+      {isLoading ? (<Box
+        w="120px"
+        h={{ base: '30px', sm: '45px', lg: '54px' }}
+        py={{ base: '8px', sm: '10px', lg: '10px' }}>
+        <LoadingBox />
+      </Box>) : <Text fontSize={{ base: '20px', sm: '30px', lg: '36px' }} fontWeight="600" transition="color 0.2s">
         {value}
-      </Text>
+      </Text>}
+
       <Text fontSize={{ base: '14px', sm: '16px', lg: '16px' }} color="text.third" transition="color 0.2s">
         {label}
       </Text>
@@ -58,27 +69,19 @@ function StatItem({ value, label, showDivider, link }: StatItemProps) {
   return Content
 }
 
-interface RgbppStatisticsOverviewProps {
-  marketCap: string
-  totalAssets: string
-  totalHolders: string
-  totalOccupiedCkb: string
-}
 
-export function RgbppStatisticsOverview({
-  marketCap,
-  totalAssets,
-  totalHolders,
-  totalOccupiedCkb,
-}: RgbppStatisticsOverviewProps) {
+export function RgbppStatisticsOverview() {
+
   const isTablet = useBreakpoints('sm')
   const isDesktop = useBreakpoints('lg')
   const { i18n } = useLingui()
 
+  const { marketCap, assetCount: totalAssets, holdersCount: totalHolders, isLoading } = useRgbppStatisticsOverview()
+
   const items = [
-    { value: marketCap, label: t(i18n)`Market Cap (USD)` },
-    { value: totalAssets, label: t(i18n)`Total Number of Assets`, link: '/charts/total-assets' },
-    { value: totalHolders, label: t(i18n)`Total Holders`, link: '/charts/total-holders' },
+    { value: `$${formatNumber(marketCap)}`, label: t(i18n)`Market Cap (USD)` },
+    { value: `${formatNumber(totalAssets)}`, label: t(i18n)`Total Number of Assets`, link: '/charts/total-assets' },
+    { value: `${formatNumber(totalHolders)}`, label: t(i18n)`Total Holders`, link: '/charts/total-holders' },
     /* { value: totalOccupiedCkb, label: t(i18n)`Total Occupied CKB` },*/
   ];
 
@@ -86,7 +89,7 @@ export function RgbppStatisticsOverview({
     const itemsPerRow = isDesktop ? 4 : isTablet ? 2 : 1;
     const isLastInRow = (index + 1) % itemsPerRow === 0;
     const isLastItem = index === items.length - 1;
-    
+
     if (isLastItem) return false;
     if (isDesktop || isTablet) return !isLastInRow;
     return true;
@@ -106,7 +109,7 @@ export function RgbppStatisticsOverview({
         filter="blur(150px)"
         borderRadius={{ base: '16px', sm: '999px', lg: '999px' }}
       />
-      
+
       {/* content */}
       <Box
         position="relative"
@@ -135,6 +138,7 @@ export function RgbppStatisticsOverview({
                 value={item.value}
                 label={item.label}
                 link={item.link}
+                isLoading={isLoading}
                 showDivider={shouldShowDivider(index)}
               />
             </Box>

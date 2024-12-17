@@ -12,6 +12,7 @@ import { useChartData } from '@/components/charts/useChartData'
 import { useCharts } from '@/components/charts/useCharts'
 import { Text } from '@/components/ui'
 import { downloadCSV } from '@/utils/download'
+// import { useAssetHolders, useAssetInfo, useAssetInfoList, useRgbppXudtList } from '@/hooks/useRgbppData'
 
 export default function ChartDetailPage() {
   const params = useParams()
@@ -22,6 +23,23 @@ export default function ChartDetailPage() {
   const chart = charts.find((c) => c.id === chartId)
   const { data, isLoading } = useChartData(chartId)
 
+  /*
+  const { xudtList } = useRgbppXudtList(20, 1);
+  console.table(xudtList?.data)
+
+  const { assetList } = useAssetInfoList(20, 2)
+  console.table(assetList?.data)
+
+  const { assetInfo, assetQuote } = useAssetInfo('0x259c3e110f5196a9f60cad69e1c9258fbaf288cc1ffee3e462bec39f23264039')
+  console.log('-------------------------');
+  console.table(assetInfo)
+  console.table(assetQuote)
+
+
+  const { holders } = useAssetHolders('0xe6396293287fefb9f26d98eb0318fe80890908f0849226ad0c8cab2d62f1e351', 10, 1)
+  console.log('-------------------------');
+  console.table(holders?.data)
+*/
   useEffect(() => {
     if (data && !isLoading) {
       setLoading(false)

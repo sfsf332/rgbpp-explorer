@@ -31,16 +31,16 @@ export function useRgbppHolderCountRecords() {
       // 分别获取不同链的持有者数量
       const ckb = dayRecords.find(
         (record: HolderCountRecord) => record.network === 'ckb'
-      )?.count || 1224 // 0
+      )?.count || 0
       const btc = dayRecords.find(
         (record: HolderCountRecord) => record.network === 'btc'
-      )?.count || 134// 0
+      )?.count || 0
       const doge = dayRecords.find(
         (record: HolderCountRecord) => record.network === 'doge'
       )?.count || 0
       
       return {
-        timestamp : 1734393600000, // timestamp
+        timestamp: timestamp * 1000,
         ckb,
         btc,
         doge,

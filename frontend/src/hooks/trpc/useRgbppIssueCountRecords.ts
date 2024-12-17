@@ -31,13 +31,13 @@ export function useRgbppIssueCountRecords() {
       // 分别获取 xudt 和 dob 的数量
       const xudt = dayRecords.find(
         (record: IssueCountRecord) => record.assetType === 'xudt'
-      )?.count || 142 // 0
+      )?.count || 0
       const dob = dayRecords.find(
         (record: IssueCountRecord) => record.assetType === 'dob'
-      )?.count || 32// 0
+      )?.count || 0
       
       return {
-        timestamp : 1734393600000, // timestamp
+        timestamp: timestamp * 1000,
         xudt,
         dob,
         total: xudt + dob

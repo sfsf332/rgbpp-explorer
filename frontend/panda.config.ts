@@ -51,6 +51,14 @@ export default defineConfig({
             transform: 'translateX(var(--steps-offset-x))',
           },
         },
+        'pulse': {
+          '0%, 100%': {
+            opacity: 1,
+          },
+          '50%': {
+            opacity: 0.5,
+          },
+        },
       },
       recipes: {
         button,

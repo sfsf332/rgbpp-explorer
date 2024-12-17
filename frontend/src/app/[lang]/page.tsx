@@ -52,12 +52,7 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
             mb={{ base: '50px', xl: '60px' }}
             mt={{ base: '80px', xl: '100px' }}
           >{t(i18n)`RGB++ Statistics`}</Heading>
-          <RgbppStatisticsOverview
-            marketCap="$49.8M"
-            totalAssets="56K"
-            totalHolders="98K"
-            totalOccupiedCkb="39.7M"
-          />
+          <RgbppStatisticsOverview />
           <Heading
             fontSize={{ base: '22px', sm: '32px', xl: '40px' }}
             fontWeight="semibold"
