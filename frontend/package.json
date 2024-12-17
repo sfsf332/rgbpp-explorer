@@ -23,7 +23,7 @@
     "@lingui/core": "^4.11.2",
     "@lingui/macro": "^4.11.2",
     "@lingui/react": "^4.11.2",
-    "@magickbase/p": "git+https://github.com/homura/web3platform-api.git",
+    "@magickbase/p": "github:homura/web3platform-api",
     "@nervosnetwork/ckb-sdk-utils": "^0.109.2",
     "@next/third-parties": "^14.2.13",
     "@rgbpp-sdk/ckb": "^0.5.0",
