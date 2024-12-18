@@ -1,3 +1,4 @@
+
 import { t } from '@lingui/macro'
 import { notFound } from 'next/navigation'
 import { Box, HStack, VStack } from 'styled-system/jsx'

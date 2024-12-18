@@ -8,7 +8,9 @@ export interface HolderData {
   rank: number
   address: string
   chain: Chain
-  value: number
+  value: number,
+  percentage:number,
+  usd:number
 }
 
 // 持有人汇总信息

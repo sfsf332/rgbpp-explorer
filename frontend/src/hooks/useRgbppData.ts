@@ -58,7 +58,6 @@ export function useRgbppXudtList(pageSize = 10, pageIndex = 0) {
 export function useAssetInfo(assetId: string) {
   const { data: assetInfo } = trpc.asset.info.useQuery({ assetId })
   const { data: assetQuote } = trpc.asset.quote.useQuery({ assetId })
-
   return {
     assetInfo,
     assetQuote,
@@ -90,6 +89,6 @@ export function useAssetTransactions(assetId: string, pageSize = 10, pageIndex =
     pageSize,
     pageIndex,
   })
-
+  console.log(transactions)
   return { transactions }
 }

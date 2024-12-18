@@ -115,7 +115,7 @@ export function CoinHolderList({
                 <Trans>Position Ratio</Trans>
               </Box>
               <Box color="text.primary" fontSize="14px" lineHeight="16px">
-                {calculatePositionRatio(holder.value)}
+                {(holder.percentage*100).toFixed(2) + '%'}
               </Box>
             </VStack>
             <VStack gap="5px" alignItems="start">
@@ -148,6 +148,7 @@ export function CoinHolderList({
           <Table.Header w="190px">
             <Trans>Amount</Trans>
           </Table.Header>
+          
           <Table.Header w="135px">
             <Trans>Position Ratio</Trans>
           </Table.Header>
@@ -174,7 +175,7 @@ export function CoinHolderList({
                 {formatNumber(holder.value)}
               </Table.Cell>
               <Table.Cell>
-                {calculatePositionRatio(holder.value)}
+              {(holder.percentage*100).toFixed(2) + '%'}
               </Table.Cell>
             </Table.Row>
           )
