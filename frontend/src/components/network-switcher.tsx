@@ -33,12 +33,12 @@ export const NetworkSwitcher = memo(function NetworkSwitcher() {
     {
       icon: <MainnetSVG w="24px" h="24px" />,
       label: <Trans>Mainnet</Trans>,
-      href: resolveDomain(env.public.RGBPP_EXPLORER_MAINNET_URL, domain, true),
+      href: env.public.RGBPP_EXPLORER_MAINNET_URL // resolveDomain(env.public.RGBPP_EXPLORER_MAINNET_URL, domain, true),
     },
     {
       icon: <TestnetSVG w="24px" h="24px" />,
       label: <Trans>Testnet</Trans>,
-      href: resolveDomain(env.public.RGBPP_EXPLORER_TESTNET_URL, domain, false),
+      href: env.public.RGBPP_EXPLORER_TESTNET_URL// resolveDomain(env.public.RGBPP_EXPLORER_TESTNET_URL, domain, false),
     },
   ]
 
