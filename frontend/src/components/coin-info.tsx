@@ -9,14 +9,20 @@ import { Loading } from '@/components/loading'
 import { Text } from '@/components/ui'
 import { XudtLogoLoader } from '@/components/xudt-logo-loader'
 import { useAssetInfo } from '@/hooks/useRgbppData'
-import { formatNumber } from '@/lib/string/format-number'
+import { formatBigNumber, formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
+import { useLingui } from '@lingui/react'
 
 export function CoinInfo({ typeHash }: { typeHash: string }) {
+
+  const { i18n } = useLingui()
+  const lang = i18n.locale
+
   const { assetInfo, assetQuote } = useAssetInfo(typeHash)
   if (!assetInfo || !assetQuote) {
     return <Loading />
   }
+
   return (
     <Grid
       gridTemplateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }}
@@ -58,7 +64,7 @@ export function CoinInfo({ typeHash }: { typeHash: string }) {
           </Flex>
           <Flex alignItems="center" gap="8px">
             <Text fontSize={{ base: '18px', md: '20px', lg: '22px' }} fontWeight="600" color="brand">
-              <Trans>Price</Trans>:${formatNumber(assetQuote.price)}
+              <Trans>Price</Trans>: ${formatNumber(assetQuote.price)}
             </Text>
           </Flex>
         </Flex>
@@ -75,7 +81,7 @@ export function CoinInfo({ typeHash }: { typeHash: string }) {
             <Trans>Market Cap</Trans>
           </Text>
           <Text fontSize={{ base: '14px', md: '18px', lg: '20px' }} fontWeight="600">
-            ${formatNumber(assetQuote.marketCap)}
+            ${formatBigNumber(assetQuote.marketCap, 2, lang)}
           </Text>
         </Flex>
         <Flex flexDirection="column" gap="8px">

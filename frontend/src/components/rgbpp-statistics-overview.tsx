@@ -9,7 +9,7 @@ import { LoadingBox } from '@/components/loading-box'
 import { Text } from '@/components/ui'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
 import { useRgbppStatisticsOverview } from '@/hooks/useRgbppData'
-import { formatNumber } from '@/lib/string/format-number'
+import { formatBigNumber, formatNumber } from '@/lib/string/format-number'
 
 interface StatItemProps {
   value: string
@@ -75,13 +75,14 @@ export function RgbppStatisticsOverview() {
   const isTablet = useBreakpoints('sm')
   const isDesktop = useBreakpoints('lg')
   const { i18n } = useLingui()
+  const lang = i18n.locale
 
-  const { marketCap, assetCount: totalAssets, holdersCount: totalHolders, isLoading } = useRgbppStatisticsOverview()
+  const { marketCap, assetCount: totalAssets, holdersCount: totalHolders, loadingStatus } = useRgbppStatisticsOverview()
 
   const items = [
-    { value: `$${formatNumber(marketCap)}`, label: t(i18n)`Market Cap (USD)` },
-    { value: `${formatNumber(totalAssets)}`, label: t(i18n)`Total Number of Assets`, link: '/charts/total-assets' },
-    { value: `${formatNumber(totalHolders)}`, label: t(i18n)`Total Holders`, link: '/charts/total-holders' },
+    { value: `$${formatBigNumber(marketCap, 2, lang)}`, label: t(i18n)`Market Cap (USD)`, isLoading: loadingStatus.isLoadingMarketcap },
+    { value: `${formatNumber(totalAssets)}`, label: t(i18n)`Total Number of Assets`, link: '/charts/total-assets', isLoading: loadingStatus.isLoadingTotalAssets },
+    { value: `${formatNumber(totalHolders)}`, label: t(i18n)`Total Holders`, link: '/charts/total-holders', isLoading: loadingStatus.isLoadingTotalHolders },
     /* { value: totalOccupiedCkb, label: t(i18n)`Total Occupied CKB` },*/
   ];
 
@@ -138,7 +139,7 @@ export function RgbppStatisticsOverview() {
                 value={item.value}
                 label={item.label}
                 link={item.link}
-                isLoading={isLoading}
+                isLoading={item.isLoading}
                 showDivider={shouldShowDivider(index)}
               />
             </Box>

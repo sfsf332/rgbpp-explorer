@@ -17,9 +17,9 @@ export function useRgbppData() {
 }
 
 export function useRgbppStatisticsOverview() {
-  const { data: marketCap } = trpc.rgbpp.marketCap.useQuery()
-  const { data: totalAssets } = useRgbppIssueCountRecords()
-  const { data: totalHolders } = useRgbppHolderCountRecords()
+  const { data: marketCap, isLoading: isLoadingMarketcap } = trpc.rgbpp.marketCap.useQuery()
+  const { data: totalAssets, isLoading: isLoadingTotalAssets } = useRgbppIssueCountRecords()
+  const { data: totalHolders, isLoading: isLoadingTotalHolders } = useRgbppHolderCountRecords()
   const [assetCount, setAssetCount] = useState(0)
   const [holdersCount, setHoldersCount] = useState(0)
 
@@ -39,7 +39,11 @@ export function useRgbppStatisticsOverview() {
     marketCap: marketCap?.value || 0,
     assetCount,
     holdersCount,
-    isLoading: marketCap === undefined || totalAssets === undefined || totalHolders === undefined
+    loadingStatus: {
+      isLoadingMarketcap,
+      isLoadingTotalAssets,
+      isLoadingTotalHolders,
+    },
   }
 }
 
@@ -56,8 +60,8 @@ export function useRgbppXudtList(pageSize = 10, pageIndex = 0) {
 }
 
 export function useAssetInfo(assetId: string) {
-  const { data: assetInfo } = trpc.asset.info.useQuery({ assetId })
-  const { data: assetQuote } = trpc.asset.quote.useQuery({ assetId })
+  const { data: assetInfo } = trpc.rgbpp.info.useQuery({ assetId })
+  const { data: assetQuote } = trpc.rgbpp.quote.useQuery({ assetId })
   return {
     assetInfo,
     assetQuote,
@@ -65,7 +69,7 @@ export function useAssetInfo(assetId: string) {
 }
 
 export function useAssetInfoList(pageSize = 10, pageIndex = 0) {
-  const { data: assetList } = trpc.asset.infoList.useQuery({
+  const { data: assetList } = trpc.rgbpp.infoList.useQuery({
     pageSize,
     pageIndex,
   })
@@ -74,7 +78,7 @@ export function useAssetInfoList(pageSize = 10, pageIndex = 0) {
 }
 
 export function useAssetHolders(assetId: string, pageSize = 10, pageIndex = 0) {
-  const { data: holders } = trpc.asset.holderList.useQuery({
+  const { data: holders } = trpc.rgbpp.holderList.useQuery({
     assetId,
     pageSize,
     pageIndex,
@@ -84,7 +88,7 @@ export function useAssetHolders(assetId: string, pageSize = 10, pageIndex = 0) {
 }
 
 export function useAssetTransactions(assetId: string, pageSize = 10, pageIndex = 0) {
-  const { data: transactions } = trpc.asset.transactionList.useQuery({
+  const { data: transactions } = trpc.rgbpp.transactionList.useQuery({
     assetId,
     pageSize,
     pageIndex,
