@@ -1,6 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 import BigNumber from 'bignumber.js'
 import { Box, Flex, Grid,styled } from 'styled-system/jsx'
 
@@ -11,7 +12,6 @@ import { XudtLogoLoader } from '@/components/xudt-logo-loader'
 import { useAssetInfo } from '@/hooks/useRgbppData'
 import { formatBigNumber, formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
-import { useLingui } from '@lingui/react'
 
 export function CoinInfo({ typeHash }: { typeHash: string }) {
 

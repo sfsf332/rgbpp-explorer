@@ -32,7 +32,7 @@ export function formatBigNumber(
   // find the best unit
   let unitIndex = 0;
   while (unitIndex < units.length - 1 && val.abs().gte(scale[unitIndex + 1])) {
-    unitIndex++;
+    unitIndex += 1;
   }
 
   // scale to the appropriate unit
