@@ -1,9 +1,12 @@
+'use client'
+
 import { t } from '@lingui/macro'
-import linguiConfig from 'lingui.config.mjs'
+import { useLingui } from '@lingui/react'
+// import linguiConfig from 'lingui.config.mjs'
 import { HomeRgbppTxnsOverview } from 'src/components/latest-tx-list'
 import { Center, Flex } from 'styled-system/jsx'
 
-import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
+// import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
 import HomeBgSVG from '@/assets/home-bg.svg'
 // import { HomeQuickInfo } from '@/components/home-quick-info'
 import { HomeTitle } from '@/components/home-title'
@@ -11,16 +14,20 @@ import { NetworkCards } from '@/components/network-cards'
 import { RgbppStatisticsOverview } from '@/components/rgbpp-statistics-overview'
 import { SearchBar } from '@/components/search-bar'
 import { Heading } from '@/components/ui'
-
+/*
 export const dynamic = 'force-static'
 export const revalidate = 3600
 
+
 export async function generateStaticParams() {
   return linguiConfig.locales.map((locale) => ({ lang: locale }))
-}
+}*/
 
 export default function Home({ params: { lang } }: { params: { lang: string } }) {
-  const i18n = getI18nInstance(lang)
+  
+  // const i18n = getI18nInstance(lang)
+  const { i18n } = useLingui()
+
   return (
     <>
       <Center flexDir="column" w="100%" position="relative" px={{ base: '20px', xl: '30px' }}>
@@ -56,7 +63,7 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
           <Heading
             fontSize={{ base: '22px', sm: '32px', xl: '40px' }}
             fontWeight="semibold"
-            mb={{ base: '0px', lg: '30px' }}
+            mb={{ base: '20px', lg: '30px' }}
             mt={{ base: '80px', xl: '100px' }}
           >{t(i18n)`RGB++ Transactions`}</Heading>
           <HomeRgbppTxnsOverview />

@@ -45,8 +45,9 @@ function StatItem({ value, label, showDivider, link, isLoading = false }: StatIt
 
       {isLoading ? (<Box
         w="120px"
-        h={{ base: '30px', sm: '45px', lg: '54px' }}
-        py={{ base: '8px', sm: '10px', lg: '10px' }}>
+        h={{ base: '16px', sm: '25px', lg: '34px' }}
+        my={{ base: '7px', sm: '10px', lg: '10px' }}
+        rounded="full" overflow="hidden">
         <LoadingBox />
       </Box>) : <Text fontSize={{ base: '20px', sm: '30px', lg: '36px' }} fontWeight="600" transition="color 0.2s">
         {value}

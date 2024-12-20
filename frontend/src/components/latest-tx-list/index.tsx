@@ -7,7 +7,8 @@ import { Box, Center, Grid, VStack } from 'styled-system/jsx'
 
 import { FailedFallback } from '@/components/failed-fallback'
 import { LatestTxnListUI } from '@/components/latest-tx-list/ui'
-import { Loading } from '@/components/loading'
+// import { Loading } from '@/components/loading'
+import { LoadingBox } from '@/components/loading-box'
 import { Heading, Text } from '@/components/ui'
 import Link from '@/components/ui/link'
 import { QueryKey } from '@/constants/query-key'
@@ -70,8 +71,8 @@ export function HomeRgbppTxnsOverview() {
 
   if (isLoading) {
     return (
-      <Center h="823px">
-        <Loading />
+      <Center h="176px" w="100%" rounded="8px" overflow="hidden">
+        <LoadingBox />
       </Center>
     )
   }
@@ -84,7 +85,7 @@ export function HomeRgbppTxnsOverview() {
     )
   }
 
-  return <VStack w="100%" maxW="content" p={{ base: '20px', lg: '30px' }} gap={{ base: '20px', lg: '30px' }}>
+  return <VStack w="100%" maxW="content" gap={{ base: '20px', lg: '30px' }}>
     <Grid
       w="100%"
       gridTemplateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }}

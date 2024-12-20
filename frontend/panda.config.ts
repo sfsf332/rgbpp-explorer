@@ -149,6 +149,9 @@ export default defineConfig({
             tooltip: {
               value: '#292C44',
             },
+            skeleton: {
+              value: '#292C44',
+            },
             tabActive: {
               value: '#007bff'
             }
