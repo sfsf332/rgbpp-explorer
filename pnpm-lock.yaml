@@ -264,8 +264,8 @@ importers:
         specifier: ^4.11.2
         version: 4.11.2(react@18.3.1)
       '@magickbase/p':
-        specifier: github:homura/web3platform-api
-        version: git+https://git@github.com:homura/web3platform-api.git#9bc8e2f321c0e0e671ac7baa7e500ce3bed45800(@trpc/server@11.0.0-rc.660(typescript@5.5.3))
+        specifier: https://codeload.github.com/homura/web3platform-api/tar.gz/develop
+        version: https://codeload.github.com/homura/web3platform-api/tar.gz/develop(@trpc/server@11.0.0-rc.660(typescript@5.5.3))
       '@nervosnetwork/ckb-sdk-utils':
         specifier: ^0.109.2
         version: 0.109.3
@@ -377,7 +377,7 @@ importers:
         version: 2.4.1
       '@park-ui/panda-preset':
         specifier: ^0.38.1
-        version: 0.38.1(@internationalized/date@3.5.5)(@pandacss/dev@0.42.0(typescript@5.5.3))
+        version: 0.38.1(@internationalized/date@3.5.4)(@pandacss/dev@0.42.0(typescript@5.5.3))
       '@svgr/core':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.5.3)
@@ -2529,8 +2529,8 @@ packages:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
 
-  '@magickbase/p@git+https://git@github.com:homura/web3platform-api.git#9bc8e2f321c0e0e671ac7baa7e500ce3bed45800':
-    resolution: {commit: 9bc8e2f321c0e0e671ac7baa7e500ce3bed45800, repo: git@github.com:homura/web3platform-api.git, type: git}
+  '@magickbase/p@https://codeload.github.com/homura/web3platform-api/tar.gz/develop':
+    resolution: {tarball: https://codeload.github.com/homura/web3platform-api/tar.gz/develop}
     version: 0.0.1
     peerDependencies:
       '@trpc/server': ^11.0.0-rc.660
@@ -9422,7 +9422,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@ark-ui/anatomy@3.4.0(@internationalized/date@3.5.5)':
+  '@ark-ui/anatomy@3.4.0(@internationalized/date@3.5.4)':
     dependencies:
       '@zag-js/accordion': 0.58.2
       '@zag-js/anatomy': 0.58.2
@@ -9435,7 +9435,7 @@ snapshots:
       '@zag-js/color-utils': 0.58.2
       '@zag-js/combobox': 0.58.2
       '@zag-js/date-picker': 0.58.2
-      '@zag-js/date-utils': 0.58.2(@internationalized/date@3.5.5)
+      '@zag-js/date-utils': 0.58.2(@internationalized/date@3.5.4)
       '@zag-js/dialog': 0.58.2
       '@zag-js/editable': 0.58.2
       '@zag-js/file-upload': 0.58.2
@@ -11944,7 +11944,7 @@ snapshots:
 
   '@lukeed/csprng@1.1.0': {}
 
-  '@magickbase/p@git+https://git@github.com:homura/web3platform-api.git#9bc8e2f321c0e0e671ac7baa7e500ce3bed45800(@trpc/server@11.0.0-rc.660(typescript@5.5.3))':
+  '@magickbase/p@https://codeload.github.com/homura/web3platform-api/tar.gz/develop(@trpc/server@11.0.0-rc.660(typescript@5.5.3))':
     dependencies:
       '@trpc/server': 11.0.0-rc.660(typescript@5.5.3)
 
@@ -12747,9 +12747,9 @@ snapshots:
       '@parcel/watcher-win32-ia32': 2.4.1
       '@parcel/watcher-win32-x64': 2.4.1
 
-  '@park-ui/panda-preset@0.38.1(@internationalized/date@3.5.5)(@pandacss/dev@0.42.0(typescript@5.5.3))':
+  '@park-ui/panda-preset@0.38.1(@internationalized/date@3.5.4)(@pandacss/dev@0.42.0(typescript@5.5.3))':
     dependencies:
-      '@ark-ui/anatomy': 3.4.0(@internationalized/date@3.5.5)
+      '@ark-ui/anatomy': 3.4.0(@internationalized/date@3.5.4)
       '@pandacss/dev': 0.42.0(typescript@5.5.3)
       '@radix-ui/colors': 3.0.0
       deepmerge: 4.3.1
@@ -13963,10 +13963,6 @@ snapshots:
   '@zag-js/date-utils@0.58.2(@internationalized/date@3.5.4)':
     dependencies:
       '@internationalized/date': 3.5.4
-
-  '@zag-js/date-utils@0.58.2(@internationalized/date@3.5.5)':
-    dependencies:
-      '@internationalized/date': 3.5.5
 
   '@zag-js/date-utils@0.68.1(@internationalized/date@3.5.5)':
     dependencies:
