@@ -10,7 +10,7 @@ export interface HolderData {
   chain: Chain
   value: number,
   percentage:number,
-  usd:number
+  usd: string
 }
 
 // 持有人汇总信息
