@@ -40,7 +40,7 @@ export function useRgbppHolderCountRecords() {
       )?.count || 0
       
       return {
-        timestamp: timestamp * 1000,
+        timestamp,
         ckb,
         btc,
         doge,

@@ -37,7 +37,7 @@ export function useRgbppIssueCountRecords() {
       )?.count || 0
       
       return {
-        timestamp: timestamp * 1000,
+        timestamp,
         xudt,
         dob,
         total: xudt + dob

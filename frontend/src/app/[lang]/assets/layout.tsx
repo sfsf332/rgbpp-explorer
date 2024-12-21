@@ -1,8 +1,11 @@
+'use client'
+
 import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 import { PropsWithChildren } from 'react'
 import { VStack } from 'styled-system/jsx'
 
-import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
+// import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
 import { LinkTabs } from '@/components/link-tabs'
 
 export default function Layout({
@@ -11,7 +14,8 @@ export default function Layout({
 }: PropsWithChildren<{
   params: { lang: string }
 }>) {
-  const i18n = getI18nInstance(params.lang)
+  // const i18n = getI18nInstance(params.lang)
+  const { i18n } = useLingui()
   return (
     <VStack gap="30px" w="100%" px={{ base: '20px', xl: '40px' }} pt="30px" pb="56px" flex={1}>
       <LinkTabs

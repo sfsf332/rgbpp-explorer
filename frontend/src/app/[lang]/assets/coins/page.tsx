@@ -1,11 +1,17 @@
-import { t } from '@lingui/macro'
-import { Box, HStack, VStack } from 'styled-system/jsx'
+'use client'
 
-import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
+import { t } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
+import { useQuery } from '@tanstack/react-query'
+import { Box, Center, HStack, VStack } from 'styled-system/jsx'
+
+// import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
 import { CoinList } from '@/components/coin-list'
 import { IfBreakpoint } from '@/components/if-breakpoint'
+import { LoadingBox } from '@/components/loading-box'
 import { PaginationSearchParams } from '@/components/pagination-searchparams'
 import { Text } from '@/components/ui'
+import { QueryKey } from '@/constants/query-key'
 import { graphql } from '@/gql'
 import { graphQLClient } from '@/lib/graphql'
 import { resolvePage } from '@/lib/resolve-page'
@@ -32,31 +38,56 @@ const query = graphql(`
   }
 `)
 
-export default async function Page({
+export default function Page({
   params,
   searchParams,
 }: {
   params: { lang: string }
   searchParams: { page?: string }
 }) {
-  const i18n = getI18nInstance(params.lang)
+  // const i18n = getI18nInstance(params.lang)
+  const { i18n } = useLingui()
   const page = resolvePage(searchParams.page)
   const pageSize = 10
-  const response = await graphQLClient.request(query, { page, pageSize })
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: [QueryKey.RgbppCoins, page, pageSize],
+    async queryFn() {
+      const { rgbppCoins } = await graphQLClient.request(query, {
+        page, pageSize
+      })
+      return rgbppCoins
+    },
+    staleTime: 1000 * 60 * 5, // 数据保持新鲜5分钟
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
+    retry: 1,
+  })
+
+  if (isLoading) {
+    return (
+      <Center h="176px" w="100%" rounded="8px" overflow="hidden">
+        <LoadingBox />
+      </Center>
+    )
+  }
 
   return (
     <VStack w="100%" maxW="content" flex={1} gap="32px">
       <Box bg="bg.card" w="100%" rounded="8px" pb="10px" overflow={'hidden'}>
         <Text fontSize={{ base: '18px', lg: '20px' }} fontWeight="semibold" p={{ base: '20px', lg: '30px' }}>
-          {t(i18n)`Total: ${formatNumber(response.rgbppCoins.total)} Coins`}
+          {t(i18n)`Total: ${formatNumber(data?.total)} Coins`}
         </Text>
-        <CoinList coins={response.rgbppCoins.coins} />
+        <CoinList coins={data?.coins} />
       </Box>
       <HStack gap="16px">
         <IfBreakpoint breakpoint="md">
-          <Text fontSize="14px">{t(i18n)`Total ${formatNumber(response.rgbppCoins.total)} Items`}</Text>
+          <Text fontSize="14px">{t(i18n)`Total ${formatNumber(data?.total)} Items`}</Text>
         </IfBreakpoint>
-        <PaginationSearchParams count={response.rgbppCoins.total} pageSize={pageSize} />
+        {data?.total ? (
+          <PaginationSearchParams count={data.total} pageSize={pageSize} />
+        ) : null}
       </HStack>
     </VStack>
   )

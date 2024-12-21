@@ -41,7 +41,7 @@ msgstr "{0} 已确认"
 msgid "{0} DOB"
 msgstr "{0} DOB"
 
-#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:60
+#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:74
 msgid "{0} Holders"
 msgstr "{0} 个持有人"
 
@@ -94,7 +94,7 @@ msgstr "<0>探索<1><2/></1></0><3>生态系统</3>"
 msgid "24H Transactions"
 msgstr "24小时交易量"
 
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:107
+#: src/components/coin-info.tsx:89
 msgid "24H Volume"
 msgstr "24小时成交额"
 
@@ -167,6 +167,7 @@ msgid "BTC Balance"
 msgstr "BTC 余额"
 
 #: src/components/charts/holders-count-chart.tsx:127
+#: src/components/charts/transactions-count-chart.tsx:127
 msgid "BTC chain"
 msgstr "BTC 链"
 
@@ -174,6 +175,10 @@ msgstr "BTC 链"
 #: src/components/holder-list/holder-summary.tsx:26
 msgid "BTC Chain Holders"
 msgstr "BTC 链持有人"
+
+#: src/components/charts/transactions-count-chart.tsx:179
+msgid "BTC Chain Transactions"
+msgstr "BTC 链交易笔数"
 
 #: src/components/btc/btc-utxos.tsx:52
 msgid "BTC Txn"
@@ -195,7 +200,7 @@ msgstr "链"
 msgid "Chains"
 msgstr "浏览器"
 
-#: src/app/[lang]/charts/[chartId]/page.tsx:49
+#: src/app/[lang]/charts/[chartId]/page.tsx:67
 msgid "chart"
 msgstr "图表详情"
 
@@ -204,7 +209,7 @@ msgstr "图表详情"
 msgid "Charts"
 msgstr "图表"
 
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:113
+#: src/components/coin-info.tsx:97
 #: src/components/coin-list.tsx:61
 #: src/components/coin-list.tsx:162
 msgid "Circulating Supply"
@@ -228,6 +233,7 @@ msgid "CKB Balance"
 msgstr "CKB 余额"
 
 #: src/components/charts/holders-count-chart.tsx:119
+#: src/components/charts/transactions-count-chart.tsx:119
 msgid "CKB chain"
 msgstr "CKB 链"
 
@@ -235,6 +241,10 @@ msgstr "CKB 链"
 #: src/components/holder-list/holder-summary.tsx:31
 msgid "CKB Chain Holders"
 msgstr "CKB 链持有人"
+
+#: src/components/charts/transactions-count-chart.tsx:186
+msgid "CKB Chain Transactions"
+msgstr "CKB 链交易笔数"
 
 #: src/components/ckb/ckb-cells.tsx:55
 msgid "CKB Txn"
@@ -250,7 +260,7 @@ msgid "Coinbase"
 msgstr "挖矿产出"
 
 #: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:66
-#: src/app/[lang]/assets/layout.tsx:21
+#: src/app/[lang]/assets/layout.tsx:25
 #: src/components/charts/assets-count-chart.tsx:119
 #: src/components/charts/assets-count-chart.tsx:171
 msgid "Coins"
@@ -283,7 +293,7 @@ msgstr "已确认"
 msgid "Contract"
 msgstr "合约地址"
 
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:79
+#: src/components/coin-info.tsx:57
 msgid "Contract:"
 msgstr "合约地址："
 
@@ -299,6 +309,7 @@ msgstr "复制"
 
 #: src/components/charts/assets-count-chart.tsx:77
 #: src/components/charts/holders-count-chart.tsx:77
+#: src/components/charts/transactions-count-chart.tsx:77
 msgid "Count"
 msgstr "数量"
 
@@ -318,11 +329,12 @@ msgid "DOB Collections"
 msgstr "DOB 合集"
 
 #: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:69
-#: src/app/[lang]/assets/layout.tsx:25
+#: src/app/[lang]/assets/layout.tsx:29
 msgid "DOBs"
 msgstr "DOBs"
 
 #: src/components/charts/holders-count-chart.tsx:135
+#: src/components/charts/transactions-count-chart.tsx:135
 msgid "DOGE chain"
 msgstr "DOGE 链"
 
@@ -334,7 +346,11 @@ msgstr "Doge 链持有人"
 msgid "DOGE Chain Holders"
 msgstr "DOGE 链持有人"
 
-#: src/app/[lang]/charts/[chartId]/page.tsx:75
+#: src/components/charts/transactions-count-chart.tsx:193
+msgid "DOGE Chain Transactions"
+msgstr "DOGE 链交易笔数"
+
+#: src/app/[lang]/charts/[chartId]/page.tsx:93
 #: src/app/[lang]/transaction/list/page.tsx:160
 msgid "Download Data"
 msgstr "下载数据"
@@ -375,7 +391,7 @@ msgstr "前往"
 msgid "High"
 msgstr "高优先级"
 
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:130
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:22
 #: src/components/coin-list.tsx:49
 #: src/components/coin-list.tsx:146
 msgid "Holders"
@@ -427,7 +443,7 @@ msgstr "最新 L1 RGB++ 交易"
 msgid "Latest L2 RGB++ transaction"
 msgstr "最新 L2 RGB++ 交易"
 
-#: src/components/latest-tx-list/index.tsx:129
+#: src/components/latest-tx-list/index.tsx:130
 msgid "Latest transactions"
 msgstr "最新交易"
 
@@ -444,13 +460,13 @@ msgstr "低优先级"
 msgid "Mainnet"
 msgstr "主网"
 
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:101
+#: src/components/coin-info.tsx:81
 #: src/components/coin-list.tsx:67
 #: src/components/coin-list.tsx:170
 msgid "Market Cap"
 msgstr "市值"
 
-#: src/components/rgbpp-statistics-overview.tsx:79
+#: src/components/rgbpp-statistics-overview.tsx:84
 msgid "Market Cap (USD)"
 msgstr "市值（美元）"
 
@@ -520,11 +536,11 @@ msgid "Overview"
 msgstr "概览"
 
 #: src/components/holder-list/coin-holder-list.tsx:115
-#: src/components/holder-list/coin-holder-list.tsx:152
+#: src/components/holder-list/coin-holder-list.tsx:153
 msgid "Position Ratio"
 msgstr "持有比例"
 
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:89
+#: src/components/coin-info.tsx:67
 #: src/components/coin-list.tsx:52
 #: src/components/coin-list.tsx:150
 msgid "Price"
@@ -549,11 +565,11 @@ msgstr "RGB++ 资产"
 msgid "RGB++ Assets Holders"
 msgstr "RGB++ 资产持有人"
 
-#: src/components/charts/useCharts.ts:108
+#: src/components/charts/useCharts.ts:112
 msgid "RGB++ Assets Overview & Activity"
 msgstr "RGB++ 资产概览和交易情况"
 
-#: src/components/charts/useCharts.ts:113
+#: src/components/charts/useCharts.ts:117
 msgid "RGB++ Assets Utilization"
 msgstr "RGB++ 资产利用情况"
 
@@ -574,15 +590,15 @@ msgstr "RGB++ 浏览器"
 msgid "RGB++ Holders"
 msgstr "RGB++ 持有人"
 
-#: src/app/[lang]/page.tsx:47
+#: src/app/[lang]/page.tsx:54
 msgid "RGB++ Networks"
 msgstr "RGB++ 网络"
 
-#: src/app/[lang]/page.tsx:54
+#: src/app/[lang]/page.tsx:61
 msgid "RGB++ Statistics"
 msgstr "RGB++ 数据统计"
 
-#: src/app/[lang]/page.tsx:66
+#: src/app/[lang]/page.tsx:68
 msgid "RGB++ Transactions"
 msgstr "RGB++ 交易"
 
@@ -649,6 +665,7 @@ msgstr "抱歉，您访问的页面不存在"
 
 #: src/components/charts/assets-count-chart.tsx:156
 #: src/components/charts/holders-count-chart.tsx:164
+#: src/components/charts/transactions-count-chart.tsx:164
 msgid "Statistic"
 msgstr "汇总信息"
 
@@ -656,19 +673,19 @@ msgstr "汇总信息"
 msgid "Testnet"
 msgstr "测试网"
 
-#: src/components/charts/useCharts.ts:64
+#: src/components/charts/useCharts.ts:66
 msgid "The number of transactions related to RGB++ assets"
 msgstr "与 RGB++ 资产相关的交易数量"
 
-#: src/components/charts/useCharts.ts:42
+#: src/components/charts/useCharts.ts:44
 msgid "The number of unique addresses that hold at least one RGB++ asset"
 msgstr "持有至少一种 RGB++ 资产的地址数量，同一地址若持有多种 RGB++ 资产，只会统计一次。"
 
-#: src/components/charts/useCharts.ts:85
+#: src/components/charts/useCharts.ts:89
 msgid "The total amount of CKB occupied by RGB++ assets"
 msgstr "每类 RGB++ 资产均占用 CKB，下图展示了所有 RGB++ 资产对 CKB 的占用情况。"
 
-#: src/components/charts/useCharts.ts:21
+#: src/components/charts/useCharts.ts:23
 msgid "The total number of RGB++ assets, including FT and DOB"
 msgstr "使用 RGB++ 协议发行的资产总数，比如 SEAL、STB、Nervape 等，每种资产只统计一次。"
 
@@ -679,32 +696,33 @@ msgstr "时间"
 
 #: src/components/charts/assets-count-chart.tsx:111
 #: src/components/charts/holders-count-chart.tsx:111
+#: src/components/charts/transactions-count-chart.tsx:111
 msgid "Total"
 msgstr "总计"
 
-#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:106
-#: src/app/[lang]/assets/coins/page.tsx:57
+#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:107
+#: src/app/[lang]/assets/coins/page.tsx:86
 msgid "Total {0} Items"
 msgstr "总计 {0} 项"
 
-#: src/components/charts/useCharts.ts:20
+#: src/components/charts/useCharts.ts:22
 msgid "Total Count of RGB++ Asset"
 msgstr "RGB++ 资产总数"
 
 #: src/components/holder-list/holder-summary.tsx:19
-#: src/components/rgbpp-statistics-overview.tsx:81
+#: src/components/rgbpp-statistics-overview.tsx:86
 msgid "Total Holders"
 msgstr "总持有人数"
 
-#: src/components/charts/useCharts.ts:41
+#: src/components/charts/useCharts.ts:43
 msgid "Total Holders of RGB++ Asset"
 msgstr "RGB++ 资产持有人总数"
 
-#: src/components/rgbpp-statistics-overview.tsx:80
+#: src/components/rgbpp-statistics-overview.tsx:85
 msgid "Total Number of Assets"
 msgstr "总资产数"
 
-#: src/components/charts/useCharts.ts:84
+#: src/components/charts/useCharts.ts:88
 msgid "Total Occupied CKB"
 msgstr "累计占用 CKB"
 
@@ -712,7 +730,7 @@ msgstr "累计占用 CKB"
 msgid "Total RGB++ Assets"
 msgstr "RGB++ 资产总数"
 
-#: src/components/charts/useCharts.ts:63
+#: src/components/charts/useCharts.ts:65
 msgid "Total RGB++ Assets Transactions"
 msgstr "RGB++ 资产交易总数"
 
@@ -720,18 +738,22 @@ msgstr "RGB++ 资产交易总数"
 msgid "Total RGB++ Holders"
 msgstr "RGB++ 持有人总数"
 
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:119
+#: src/components/charts/transactions-count-chart.tsx:170
+msgid "Total RGB++ Transactions"
+msgstr "RGB++ 交易总数"
+
+#: src/components/coin-info.tsx:105
 #: src/components/coin-list.tsx:64
 #: src/components/coin-list.tsx:166
 msgid "Total Supply"
 msgstr "发行量"
 
-#: src/components/latest-tx-list/index.tsx:103
+#: src/components/latest-tx-list/index.tsx:104
 #: src/components/transaction-info.tsx:30
 msgid "Total Transactions"
 msgstr "总交易数"
 
-#: src/app/[lang]/assets/coins/page.tsx:51
+#: src/app/[lang]/assets/coins/page.tsx:80
 msgid "Total: {0} Coins"
 msgstr "共计：{0} 个代币"
 
@@ -742,14 +764,14 @@ msgid "Transaction"
 msgstr "交易"
 
 #: src/app/[lang]/address/[address]/layout.tsx:103
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:134
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:26
 #: src/app/[lang]/block/btc/[hashOrHeight]/layout.tsx:67
 #: src/app/[lang]/block/ckb/[hashOrHeight]/layout.tsx:59
 #: src/components/transaction-info.tsx:25
 msgid "Transactions"
 msgstr "交易记录"
 
-#: src/components/latest-tx-list/index.tsx:119
+#: src/components/latest-tx-list/index.tsx:120
 msgid "Transactions (24H)"
 msgstr "24小时交易数"
 
@@ -800,7 +822,7 @@ msgstr "价值"
 msgid "vB"
 msgstr "字节"
 
-#: src/components/latest-tx-list/index.tsx:136
+#: src/components/latest-tx-list/index.tsx:137
 msgid "View All Transactions"
 msgstr "查看所有交易"
 

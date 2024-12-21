@@ -36,7 +36,7 @@ const testData = {
   price: 0,
 }
 
-export function CoinList<T extends PickedCoin>({ coins }: { coins: T[] }) {
+export function CoinList<T extends PickedCoin>({ coins }: { coins: T[] | undefined }) {
   return (
     <IfBreakpoint breakpoint="lg" fallback={<CoinListGrid coins={coins} />}>
       <Table.Root w="100%" tableLayout="fixed">
@@ -69,7 +69,7 @@ export function CoinList<T extends PickedCoin>({ coins }: { coins: T[] }) {
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          {coins.map((coin) => {
+          {coins?.map((coin) => {
             return (
               <Table.Row key={coin.typeHash}>
                 <Table.Cell>
@@ -110,10 +110,10 @@ export function CoinList<T extends PickedCoin>({ coins }: { coins: T[] }) {
   )
 }
 
-export function CoinListGrid<T extends PickedCoin>({ coins }: { coins: T[] }) {
+export function CoinListGrid<T extends PickedCoin>({ coins }: { coins: T[ ] | undefined }) {
   return (
     <VStack gap={0} w="100%">
-      {coins.map((coin) => {
+      {coins?.map((coin) => {
         return (
           <Link
             href={`/assets/coins/${coin.typeHash}`}

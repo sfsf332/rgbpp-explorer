@@ -4,4 +4,5 @@ export enum QueryKey {
   BtcTransactionCardInAddressList = 'BtcTransactionCardInAddressList',
   CkbTransactionCardInAddressList = 'CkbTransactionCardInAddressList',
   BtcTransactionCardWithQueryInAddress = 'BtcTransactionCardWithQueryInAddress',
+  RgbppCoins = 'RgbppCoins',
 }

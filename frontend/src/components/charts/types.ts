@@ -45,3 +45,12 @@ export interface HoldersCountChartDataPoint {
   doge: number;
   total: number;
 }
+
+export interface TransactionCountChartDataPoint {
+  timestamp: number;
+  ckb: number;
+  btc: number;
+  doge: number;
+  unknown: number;
+  total: number;
+}

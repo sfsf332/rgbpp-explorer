@@ -5,10 +5,12 @@ import dayjs from 'dayjs'
 import { AssetsCountChart, AssetsCountStats } from '@/components/charts/assets-count-chart'
 import { ComingSoonChart } from '@/components/charts/coming-soon-chart'
 import { HoldersCountChart, HoldersCountStats } from '@/components/charts/holders-count-chart'
-import { ChartCategory, ChartDefinition, HoldersCountChartDataPoint, IssueCountChartDataPoint } from '@/components/charts/types'
+import { TransactionsCountChart, TransactionsCountStats } from '@/components/charts/transactions-count-chart'
+import { ChartCategory, ChartDefinition, HoldersCountChartDataPoint, IssueCountChartDataPoint, TransactionCountChartDataPoint } from '@/components/charts/types'
 import { DATE_TEMPLATE } from '@/constants'
 import { useRgbppHolderCountRecords } from '@/hooks/trpc/useRgbppHolderCountRecords'
 import { useRgbppIssueCountRecords } from '@/hooks/trpc/useRgbppIssueCountRecords'
+import { useRgbppTransactionCountRecords } from '@/hooks/trpc/useRgbppTransactionCountRecords'
 
 // charts, todo
 export function useCharts() {
@@ -63,17 +65,19 @@ export function useCharts() {
       title: t(i18n)`Total RGB++ Assets Transactions`,
       description: t(i18n)`The number of transactions related to RGB++ assets`,
       category: 'overview',
-      chartRender: ComingSoonChart, 
-      statsRender: undefined,
-      useData: useRgbppIssueCountRecords,
+      chartRender: TransactionsCountChart, 
+      statsRender: TransactionsCountStats,
+      useData: useRgbppTransactionCountRecords,
       prepareDownloadData: (data) => {
         return {
-          filename: 'rgb-assets-transactions',
-          headers: ['Date', 'xUDT(FT)', 'DOB(NFT)', 'Total'],
-          rows: data?.map((item: IssueCountChartDataPoint) => [
+          filename: 'rgbpp-assets-transactions',
+          headers: ['Date', 'CKB chain', 'BTC chain', 'Doge chain', 'Unknown chain', 'Total'],
+          rows: data?.map((item: TransactionCountChartDataPoint) => [
             dayjs(item.timestamp).format(DATE_TEMPLATE),
-            item.xudt,
-            item.dob,
+            item.ckb,
+            item.btc,
+            item.doge,
+            item.unknown,
             item.total
           ])
         }
@@ -86,10 +90,10 @@ export function useCharts() {
       category: 'utilization',
       chartRender: ComingSoonChart, 
       statsRender: undefined,
-      useData: useRgbppIssueCountRecords,
+      useData: () => ({ data: null, isLoading: false }),
       prepareDownloadData: (data) => {
         return {
-          filename: 'rgb-assets-transactions',
+          filename: 'rgbpp-assets-transactions',
           headers: ['Date', 'xUDT(FT)', 'DOB(NFT)', 'Total'],
           rows: data?.map((item: IssueCountChartDataPoint) => [
             dayjs(item.timestamp).format(DATE_TEMPLATE),
