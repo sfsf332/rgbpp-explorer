@@ -45,7 +45,6 @@ export default function Page({
   params: { lang: string }
   searchParams: { page?: string }
 }) {
-  // const i18n = getI18nInstance(params.lang)
   const { i18n } = useLingui()
   const page = resolvePage(searchParams.page)
   const pageSize = 10
@@ -67,9 +66,11 @@ export default function Page({
 
   if (isLoading) {
     return (
+      <VStack w="100%" maxW="content" flex={1} gap="32px">
       <Center h="176px" w="100%" rounded="8px" overflow="hidden">
         <LoadingBox />
       </Center>
+      </VStack>
     )
   }
 

@@ -1,50 +1,20 @@
 'use client'
 import { Trans } from '@lingui/macro'
 import { useParams } from 'next/navigation'
-import { Box, Flex, HStack, VStack } from 'styled-system/jsx'
+import { Box, Center, Flex, HStack, VStack } from 'styled-system/jsx'
 
 import { CoinHolderList } from '@/components/holder-list/coin-holder-list'
 import { HolderSummarySection } from '@/components/holder-list/holder-summary'
 import { Chain } from '@/components/holder-list/type'
 import { Heading } from '@/components/ui'
 import { useAssetHolders, useAssetInfo } from '@/hooks/useRgbppData'
-
-// Example mock data
-// const mockGetHoldersResponse: GetHoldersResponse = {
-//   totalSupply: 10000000,
-//   summary: {
-//     totalHolders: 10,
-//     chainHolders: {
-//       btc: 3,
-//       ckb: 7,
-//       doge: 0
-//     }
-//   },
-//   holders: [
-//     { address: 'tb1plyskg643j873n6y9jz3cquv4606rq8v750awharadsear84zszxq0d3flp', chain: 'BTC', value: 210000, rank: 1 },
-//     { address: 'ckt1qrfrwcdnvssswdwpn3s9v8fp87emat306ctjwsm3nmlkjg8qyza2cqgqqx0ppa3gs9leysm9ertq95t2q00cljcndut62vc3', chain: 'CKB', value: 90234.56, rank: 2 },
-//     { address: 'DBgHW1Shjyk91fusm9hm3HcryNBwaFwZbQ', chain: 'DOGE', value: 15090.23235, rank: 3 },
-//     { address: 'ckt1qpyn2yx4f6q4vydxgwhe0ddvjwlmk3wac24wpukuala0xsytfl8u6q2tqqqqqyqqqqqrqqqqqqcsqqqq7v57llgugadzj7z98jrqpc027z7zpplwpy7raejve9hvdprh2t9sz9sqqqqp92a0wk5nf695m2zaklre485vtgqz9gtxqqqqqqqqqqqqqqqqqqqqqqzjkwg7qqfyzs7n', chain: 'CKB', value: 15090.23235, rank: 4 },
-//     { address: 'ckt1qrejnmlar3r452tcg57gvq8patctcgy8acync0hxfnyka35ywafvkqgj4whht2f5az6d4pwm03u6n6x95qpz59nqqqvldzsf', chain: 'CKB', value: 15090.23235, rank: 5 },
-//     { address: 'ckt1qrejnmlar3r452tcg57gvq8patctcgy8acync0hxfnyka35ywafvkqgjv3se7nm9mjen690t26r3zfccuxkwzme5qq4q85en', chain: 'CKB', value: 15090.23235, rank: 6 },
-//     { address: 'ckt1qrejnmlar3r452tcg57gvq8patctcgy8acync0hxfnyka35ywafvkqgjv3se7nm9mjen690t26r3zfccuxkwzme5qq4q85en', chain: 'CKB', value: 15090.23235, rank: 7 },
-//     { address: 'ckt1qrejnmlar3r452tcg57gvq8patctcgy8acync0hxfnyka35ywafvkqgjv3se7nm9mjen690t26r3zfccuxkwzme5qq4q85en', chain: 'CKB', value: 15090.23235, rank: 8 },
-//     { address: 'ckt1qrejnmlar3r452tcg57gvq8patctcgy8acync0hxfnyka35ywafvkqgjv3se7nm9mjen690t26r3zfccuxkwzme5qq4q85en', chain: 'CKB', value: 15090.23235, rank: 9 },
-//     { address: 'ckt1qrejnmlar3r452tcg57gvq8patctcgy8acync0hxfnyka35ywafvkqgjv3se7nm9mjen690t26r3zfccuxkwzme5qq4q85en', chain: 'CKB', value: 15090.23235, rank: 10 }
-//   ],
-//   pagination: {
-//     pageSize: 10,
-//     page: 1,
-//     total: 3
-//   }
-// }
+import { LoadingBox } from '@/components/loading-box'
 
 export default function Page() {
   const params = useParams()
 
   const { holders } = useAssetHolders(params.typeHash as string)
   const { assetQuote } = useAssetInfo(params.typeHash as string)
-
   const holderSummary = {
     totalHolders: assetQuote?.holderCount?.reduce((sum, item) => sum + item.count, 0) || 0,
     chainHolders: {
@@ -57,7 +27,15 @@ export default function Page() {
   const totalSupply = Number(assetQuote?.totalSupply) || 0
   return (
     <VStack w="100%" maxW="content" gap="30px">
-      {assetQuote ? <HolderSummarySection summary={holderSummary} /> : null}
+      {assetQuote ? (
+        <HolderSummarySection summary={holderSummary} />
+      ) : (
+        <VStack w="100%" maxW="content" flex={1} gap="32px">
+          <Center h="176px" w="100%" rounded="8px" overflow="hidden">
+            <LoadingBox />
+          </Center>
+        </VStack>
+      )}
       <Box w="100%" bg="bg.card" flexDir="column" alignItems="center" rounded="8px">
         <Flex
           gap="20px"
@@ -76,7 +54,8 @@ export default function Page() {
           </HStack>
         </Flex>
         <Box p="0px">
-          {holders ? <CoinHolderList
+          {holders ? (
+            <CoinHolderList
               holders={holders.data.map((holder, index) => ({
                 address: holder.address,
                 chain: holder.network.toUpperCase() as Chain,
@@ -86,7 +65,8 @@ export default function Page() {
                 usd: holder.usd,
               }))}
               totalSupply={totalSupply}
-            /> : null}
+            />
+          ) : null}
         </Box>
       </Box>
     </VStack>
