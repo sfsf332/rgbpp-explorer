@@ -6,13 +6,13 @@ import { AssetsCountChart, AssetsCountStats } from '@/components/charts/assets-c
 import { ComingSoonChart } from '@/components/charts/coming-soon-chart'
 import { DailyTransactionsCountChart, DailyTransactionsCountStats } from '@/components/charts/daily-transactions-count-chart'
 import { HoldersCountChart, HoldersCountStats } from '@/components/charts/holders-count-chart'
-import { ChartCategory, ChartDefinition, HoldersCountChartDataPoint, IssueCountChartDataPoint, TransactionCountChartDataPoint } from '@/components/charts/types'
 import { TransactionsCountChart, TransactionsCountStats } from '@/components/charts/transactions-count-chart'
+import { ChartCategory, ChartDefinition, HoldersCountChartDataPoint, IssueCountChartDataPoint, TransactionCountChartDataPoint } from '@/components/charts/types'
 import { DATE_TEMPLATE } from '@/constants'
+import { useDailyRgbppTxCountRecords } from '@/hooks/trpc/useDailyRgbppTxCountRecords'
 import { useRgbppHolderCountRecords } from '@/hooks/trpc/useRgbppHolderCountRecords'
 import { useRgbppIssueCountRecords } from '@/hooks/trpc/useRgbppIssueCountRecords'
 import { useRgbppTransactionCountRecords } from '@/hooks/trpc/useRgbppTransactionCountRecords'
-import { useDailyRgbppTxCountRecords } from '@/hooks/trpc/useDailyRgbppTxCountRecords'
 
 // charts, todo
 export function useCharts() {

@@ -6,9 +6,9 @@ import { Box, Center, Flex, HStack, VStack } from 'styled-system/jsx'
 import { CoinHolderList } from '@/components/holder-list/coin-holder-list'
 import { HolderSummarySection } from '@/components/holder-list/holder-summary'
 import { Chain } from '@/components/holder-list/type'
+import { LoadingBox } from '@/components/loading-box'
 import { Heading } from '@/components/ui'
 import { useAssetHolders, useAssetInfo } from '@/hooks/useRgbppData'
-import { LoadingBox } from '@/components/loading-box'
 
 export default function Page() {
   const params = useParams()
