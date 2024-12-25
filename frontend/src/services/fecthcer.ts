@@ -8,11 +8,28 @@ async function v1Get<T>(...args: Parameters<typeof requesterV1.get>) {
   return requesterV1.get(...args).then((res) => toCamelcase<Response.Response<T>>(res.data))
 }
 
+interface XUDT {
+  symbol: string
+  decimal: string
+  amount: string
+  typeHash: string
+  udtIconFile: string
+  udtType: 'xudt' | 'xudt_compatible'
+}
+
 const v1GetWrapped = <T>(...args: Parameters<typeof v1Get>) =>
-  v1Get<Response.Wrapper<T>>(...args).then((res) => res && res.data)
+  v1Get<Response.Wrapper<T>>(...args).then((res) => res?.data)
 
 const v1GetUnwrapped = <T>(...args: Parameters<typeof v1GetWrapped>) =>
-  v1GetWrapped<T>(...args).then((wrapper) => wrapper && wrapper.attributes)
+  v1GetWrapped<T>(...args).then((wrapper) => wrapper?.attributes)
+
+const v1GetUnwrappedPagedList = <T>(...args: Parameters<typeof v1GetWrapped>) =>
+  v1Get<Array<Response.Wrapper<T>>>(...args).then(res => {
+    return {
+      data: res?.data.map(wrapper => ({ ...wrapper.attributes, cellId: wrapper.id })),
+      ...res?.meta,
+    }
+  })
 
 export const apiFetcher = {
   fetchStatistics: () =>
@@ -31,6 +48,18 @@ export const apiFetcher = {
       transactionsCountPerMinute: string
       reorgStartedAt: string | null
     }>(`statistics`),
+
+  fetchXudts: (page: number, size: number, sort?: string, tags?: string, union?: string) =>
+    v1GetUnwrappedPagedList<XUDT>(`/xudts`, {
+      params: {
+        page,
+        page_size: size,
+        sort,
+        tags,
+        union: union ?? 'false',
+      },
+    }),
+
   fetchRGBTransactions: async (page: number, size: number, sort?: string, leapDirection?: string) =>
     requesterV2('/rgb_transactions', {
       params: {

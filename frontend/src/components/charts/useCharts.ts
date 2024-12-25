@@ -4,13 +4,15 @@ import dayjs from 'dayjs'
 
 import { AssetsCountChart, AssetsCountStats } from '@/components/charts/assets-count-chart'
 import { ComingSoonChart } from '@/components/charts/coming-soon-chart'
+import { DailyTransactionsCountChart, DailyTransactionsCountStats } from '@/components/charts/daily-transactions-count-chart'
 import { HoldersCountChart, HoldersCountStats } from '@/components/charts/holders-count-chart'
-import { TransactionsCountChart, TransactionsCountStats } from '@/components/charts/transactions-count-chart'
 import { ChartCategory, ChartDefinition, HoldersCountChartDataPoint, IssueCountChartDataPoint, TransactionCountChartDataPoint } from '@/components/charts/types'
+import { TransactionsCountChart, TransactionsCountStats } from '@/components/charts/transactions-count-chart'
 import { DATE_TEMPLATE } from '@/constants'
 import { useRgbppHolderCountRecords } from '@/hooks/trpc/useRgbppHolderCountRecords'
 import { useRgbppIssueCountRecords } from '@/hooks/trpc/useRgbppIssueCountRecords'
 import { useRgbppTransactionCountRecords } from '@/hooks/trpc/useRgbppTransactionCountRecords'
+import { useDailyRgbppTxCountRecords } from '@/hooks/trpc/useDailyRgbppTxCountRecords'
 
 // charts, todo
 export function useCharts() {
@@ -62,7 +64,7 @@ export function useCharts() {
     },
     {
       id: 'total-transactions',
-      title: t(i18n)`Total RGB++ Assets Transactions`,
+      title: t(i18n)`Total Transactions of RGB++ Assets`,
       description: t(i18n)`The number of transactions related to RGB++ assets`,
       category: 'overview',
       chartRender: TransactionsCountChart, 
@@ -71,6 +73,29 @@ export function useCharts() {
       prepareDownloadData: (data) => {
         return {
           filename: 'rgbpp-assets-transactions',
+          headers: ['Date', 'CKB chain', 'BTC chain', 'Doge chain', 'Unknown chain', 'Total'],
+          rows: data?.map((item: TransactionCountChartDataPoint) => [
+            dayjs(item.timestamp).format(DATE_TEMPLATE),
+            item.ckb,
+            item.btc,
+            item.doge,
+            item.unknown,
+            item.total
+          ])
+        }
+      },
+    },
+    {
+      id: 'daily-transactions',
+      title: t(i18n)`Daily Transactions of RGB++ Assets`,
+      description: t(i18n)`Daily transactions related to RGB++ assets`,
+      category: 'overview',
+      chartRender: DailyTransactionsCountChart, 
+      statsRender: DailyTransactionsCountStats,
+      useData: useDailyRgbppTxCountRecords,
+      prepareDownloadData: (data) => {
+        return {
+          filename: 'rgbpp-daily-transactions',
           headers: ['Date', 'CKB chain', 'BTC chain', 'Doge chain', 'Unknown chain', 'Total'],
           rows: data?.map((item: TransactionCountChartDataPoint) => [
             dayjs(item.timestamp).format(DATE_TEMPLATE),

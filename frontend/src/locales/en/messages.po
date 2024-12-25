@@ -166,6 +166,7 @@ msgstr "BTC"
 msgid "BTC Balance"
 msgstr "BTC Balance"
 
+#: src/components/charts/daily-transactions-count-chart.tsx:127
 #: src/components/charts/holders-count-chart.tsx:127
 #: src/components/charts/transactions-count-chart.tsx:127
 msgid "BTC chain"
@@ -176,6 +177,7 @@ msgstr "BTC chain"
 msgid "BTC Chain Holders"
 msgstr "BTC Chain Holders"
 
+#: src/components/charts/daily-transactions-count-chart.tsx:179
 #: src/components/charts/transactions-count-chart.tsx:179
 msgid "BTC Chain Transactions"
 msgstr "BTC Chain Transactions"
@@ -200,7 +202,7 @@ msgstr "Chain"
 msgid "Chains"
 msgstr "Chains"
 
-#: src/app/[lang]/charts/[chartId]/page.tsx:67
+#: src/app/[lang]/charts/[chartId]/page.tsx:60
 msgid "chart"
 msgstr "chart"
 
@@ -232,6 +234,7 @@ msgstr "CKB"
 msgid "CKB Balance"
 msgstr "CKB Balance"
 
+#: src/components/charts/daily-transactions-count-chart.tsx:119
 #: src/components/charts/holders-count-chart.tsx:119
 #: src/components/charts/transactions-count-chart.tsx:119
 msgid "CKB chain"
@@ -242,6 +245,7 @@ msgstr "CKB chain"
 msgid "CKB Chain Holders"
 msgstr "CKB Chain Holders"
 
+#: src/components/charts/daily-transactions-count-chart.tsx:186
 #: src/components/charts/transactions-count-chart.tsx:186
 msgid "CKB Chain Transactions"
 msgstr "CKB Chain Transactions"
@@ -308,10 +312,23 @@ msgid "Copy"
 msgstr "Copy"
 
 #: src/components/charts/assets-count-chart.tsx:77
+#: src/components/charts/daily-transactions-count-chart.tsx:77
 #: src/components/charts/holders-count-chart.tsx:77
 #: src/components/charts/transactions-count-chart.tsx:77
 msgid "Count"
 msgstr "Count"
+
+#: src/components/charts/daily-transactions-count-chart.tsx:170
+msgid "Daily RGB++ Transactions"
+msgstr "Daily RGB++ Transactions"
+
+#: src/components/charts/useCharts.ts:65
+msgid "Daily Transactions of RGB++ Assets"
+msgstr "Daily Transactions of RGB++ Assets"
+
+#: src/components/charts/useCharts.ts:66
+msgid "Daily transactions related to RGB++ assets"
+msgstr "Daily transactions related to RGB++ assets"
 
 #: src/components/coin-list.tsx:174
 msgid "Deploy Time"
@@ -333,6 +350,7 @@ msgstr "DOB Collections"
 msgid "DOBs"
 msgstr "DOBs"
 
+#: src/components/charts/daily-transactions-count-chart.tsx:135
 #: src/components/charts/holders-count-chart.tsx:135
 #: src/components/charts/transactions-count-chart.tsx:135
 msgid "DOGE chain"
@@ -346,11 +364,12 @@ msgstr "Doge Chain Holders"
 msgid "DOGE Chain Holders"
 msgstr "DOGE Chain Holders"
 
+#: src/components/charts/daily-transactions-count-chart.tsx:193
 #: src/components/charts/transactions-count-chart.tsx:193
 msgid "DOGE Chain Transactions"
 msgstr "DOGE Chain Transactions"
 
-#: src/app/[lang]/charts/[chartId]/page.tsx:93
+#: src/app/[lang]/charts/[chartId]/page.tsx:86
 #: src/app/[lang]/transaction/list/page.tsx:160
 msgid "Download Data"
 msgstr "Download Data"
@@ -565,11 +584,11 @@ msgstr "RGB++ Assets"
 msgid "RGB++ Assets Holders"
 msgstr "RGB++ Assets Holders"
 
-#: src/components/charts/useCharts.ts:112
+#: src/components/charts/useCharts.ts:135
 msgid "RGB++ Assets Overview & Activity"
 msgstr "RGB++ Assets Overview & Activity"
 
-#: src/components/charts/useCharts.ts:117
+#: src/components/charts/useCharts.ts:140
 msgid "RGB++ Assets Utilization"
 msgstr "RGB++ Assets Utilization"
 
@@ -664,6 +683,7 @@ msgid "Sorry, the page you visited does not exist"
 msgstr "Sorry, the page you visited does not exist"
 
 #: src/components/charts/assets-count-chart.tsx:156
+#: src/components/charts/daily-transactions-count-chart.tsx:164
 #: src/components/charts/holders-count-chart.tsx:164
 #: src/components/charts/transactions-count-chart.tsx:164
 msgid "Statistic"
@@ -673,7 +693,7 @@ msgstr "Statistic"
 msgid "Testnet"
 msgstr "Testnet"
 
-#: src/components/charts/useCharts.ts:66
+#: src/components/charts/useCharts.ts:89
 msgid "The number of transactions related to RGB++ assets"
 msgstr "The number of transactions related to RGB++ assets"
 
@@ -681,7 +701,7 @@ msgstr "The number of transactions related to RGB++ assets"
 msgid "The number of unique addresses that hold at least one RGB++ asset"
 msgstr "The number of addresses holding at least one RGB++ asset. If an address holds multiple RGB++ assets, it is only counted once."
 
-#: src/components/charts/useCharts.ts:89
+#: src/components/charts/useCharts.ts:112
 msgid "The total amount of CKB occupied by RGB++ assets"
 msgstr "Each RGB++ asset type occupies CKB. The chart below illustrates the total CKB occupied by all RGB++ assets."
 
@@ -695,6 +715,7 @@ msgid "Time"
 msgstr "Time"
 
 #: src/components/charts/assets-count-chart.tsx:111
+#: src/components/charts/daily-transactions-count-chart.tsx:111
 #: src/components/charts/holders-count-chart.tsx:111
 #: src/components/charts/transactions-count-chart.tsx:111
 msgid "Total"
@@ -722,7 +743,7 @@ msgstr "Total Holders of RGB++ Asset"
 msgid "Total Number of Assets"
 msgstr "Total Number of Assets"
 
-#: src/components/charts/useCharts.ts:88
+#: src/components/charts/useCharts.ts:111
 msgid "Total Occupied CKB"
 msgstr "Total Occupied CKB"
 
@@ -731,8 +752,8 @@ msgid "Total RGB++ Assets"
 msgstr "Total RGB++ Assets"
 
 #: src/components/charts/useCharts.ts:65
-msgid "Total RGB++ Assets Transactions"
-msgstr "Total RGB++ Assets Transactions"
+#~ msgid "Total RGB++ Assets Transactions"
+#~ msgstr "Total RGB++ Assets Transactions"
 
 #: src/components/charts/holders-count-chart.tsx:170
 msgid "Total RGB++ Holders"
@@ -752,6 +773,10 @@ msgstr "Total Supply"
 #: src/components/transaction-info.tsx:30
 msgid "Total Transactions"
 msgstr "Total Transactions"
+
+#: src/components/charts/useCharts.ts:88
+msgid "Total Transactions of RGB++ Assets"
+msgstr "Total Transactions of RGB++ Assets"
 
 #: src/app/[lang]/assets/coins/page.tsx:80
 msgid "Total: {0} Coins"

@@ -2,7 +2,6 @@
 
 import { Trans } from '@lingui/macro'
 import { notFound, useParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
 import { Box, HStack, styled, VStack } from 'styled-system/jsx'
 
 import DownloadIcon from '@/assets/download.svg'
@@ -16,11 +15,10 @@ import { downloadCSV } from '@/utils/download'
 
 export default function ChartDetailPage() {
   const params = useParams()
-  const { charts } = useCharts()
-  const [loading, setLoading] = useState(true)
+  const { getChartById } = useCharts()
 
   const chartId = params.chartId as string
-  const chart = charts.find((c) => c.id === chartId)
+  const chart = getChartById(chartId)
   const { data, isLoading } = useChartData(chartId)
 
   /*
@@ -40,11 +38,6 @@ export default function ChartDetailPage() {
   console.log('-------------------------');
   console.table(holders?.data)
 */
-  useEffect(() => {
-    if (data && !isLoading) {
-      setLoading(false)
-    }
-  }, [data, isLoading])
 
   if (!chart) {
     return notFound()
@@ -85,8 +78,8 @@ export default function ChartDetailPage() {
             alignItems="center"
             _hover={{ bg: "RGB(255, 255, 255, 0.08)" }}
             onClick={handleDownload}
-            disabled={loading}
-            display={loading ? 'none' : 'flex'}
+            disabled={isLoading}
+            display={isLoading || !data ? 'none' : 'flex'}
           >
             <DownloadIcon w="18px" h="18px" />
             <Text display={{ base: 'none', md: 'block' }} fontSize={{ base: '14px'}} whiteSpace={'nowrap'}>
@@ -95,11 +88,11 @@ export default function ChartDetailPage() {
           </styled.button>
         </HStack>
         <Box w="100%" h="590px" position="relative" zIndex={1}>
-          {!loading && <chart.chartRender data={data} />}
+          {!isLoading && <chart.chartRender data={data} />}
         </Box>
       </VStack>
 
-      {!loading && chart.statsRender ? <chart.statsRender data={data} /> : null}
+      {!isLoading && chart.statsRender ? <chart.statsRender data={data} /> : null}
     </VStack>
   )
 }

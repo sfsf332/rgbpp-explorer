@@ -8,10 +8,11 @@ export function getTrpcClient() {
   return trpc.createClient({
     links: [
       httpBatchLink({
-        url: process.env.NEXT_PUBLIC_TRPC_API_URL || 'https://api.magickbase.com/api/trpc',
+        url: process.env.NEXT_PUBLIC_TRPC_API_URL || 'https://web3-api-testnet.magickbase.com/api/trpc/',
         transformer: SuperJSON,
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_TRPC_API_KEY}`,
+          // Authorization: `Bearer ${process.env.NEXT_PUBLIC_TRPC_API_KEY}`,
+          origin: 'x-requested-with'
         },
       }),
     ],
