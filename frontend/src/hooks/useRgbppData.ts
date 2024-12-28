@@ -22,7 +22,6 @@ export function useRgbppStatisticsOverview() {
   const { data: totalHolders, isLoading: isLoadingTotalHolders } = useRgbppHolderCountRecords()
   const [assetCount, setAssetCount] = useState(0)
   const [holdersCount, setHoldersCount] = useState(0)
-
   useEffect(() => {
     if (totalAssets?.length) {
       setAssetCount(totalAssets[totalAssets.length - 1].total)
@@ -47,17 +46,17 @@ export function useRgbppStatisticsOverview() {
   }
 }
 
-export function useRgbppXudtList(pageSize = 10, pageIndex = 0) {
-  const { data: xudtList, isLoading } = trpc.rgbpp.infoList.useQuery({
-    pageSize,
-    pageIndex,
-  })
+// export function useRgbppXudtList(pageSize = 10, pageIndex = 0) {
+//   const { data: xudtList, isLoading } = trpc.rgbpp.infoList.useQuery({
+//     pageSize,
+//     pageIndex,
+//   })
 
-  return {
-    xudtList,
-    isLoading
-  }
-}
+//   return {
+//     xudtList,
+//     isLoading
+//   }
+// }
 
 export function useAssetInfo(assetId: string) {
   const { data: assetInfo } = trpc.rgbpp.info.useQuery({ assetId })
@@ -68,15 +67,22 @@ export function useAssetInfo(assetId: string) {
   }
 }
 
-export function useAssetInfoList(pageSize = 10, pageIndex = 0) {
-  const { data: assetList } = trpc.rgbpp.infoList.useQuery({
+// export function useAssetInfoList(pageSize = 10, pageIndex = 0) {
+//   const { data: assetList } = trpc.rgbpp.infoList.useQuery({
+//     pageSize,
+//     pageIndex,
+//   })
+
+//   return { assetList }
+// }
+export function useCoinList(pageSize = 10, pageIndex = 0) {
+  const { data: assetList } = trpc.rgbpp.coinList.useQuery({
     pageSize,
     pageIndex,
   })
 
   return { assetList }
 }
-
 export function useAssetHolders(assetId: string, pageSize = 10, pageIndex = 0) {
   const { data: holders } = trpc.rgbpp.holderList.useQuery({
     assetId,
@@ -95,4 +101,11 @@ export function useAssetTransactions(assetId: string, pageSize = 10, pageIndex =
   })
   console.log(transactions)
   return { transactions }
+}
+export function useAddressAsset(address: string) {
+  const { data: assetInfo } = trpc.rgbpp.addressHoldAssets.useQuery({ address })
+  return {
+    assetInfo
+    
+  }
 }

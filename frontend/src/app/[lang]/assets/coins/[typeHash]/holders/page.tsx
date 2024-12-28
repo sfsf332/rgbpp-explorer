@@ -15,6 +15,8 @@ export default function Page() {
 
   const { holders } = useAssetHolders(params.typeHash as string)
   const { assetQuote } = useAssetInfo(params.typeHash as string)
+  console.log(assetQuote)
+
   const holderSummary = {
     totalHolders: assetQuote?.holderCount?.reduce((sum, item) => sum + item.count, 0) || 0,
     chainHolders: {

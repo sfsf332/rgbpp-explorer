@@ -5,52 +5,11 @@ import { VStack } from 'styled-system/jsx'
 import { CoinListUI } from '@/components/assets-list/coins-list'
 import { ComingSoon } from '@/components/coming-soon'
 import { Tabs } from '@/components/ui/tabs'
+import { useAddressAsset } from '@/hooks/useRgbppData'
 
-interface CoinList {
-  icon?: string
-  name: string
-  symbol: string
-  amout: string
-  value: string
-  typeHash: string
-}
 export function BtcAssetsList({ address }: { address: string }) {
-    console.log(address)
-    const coinList = [
-        {
-          icon: 'https://xudtlogos.cc/logos/Seal-logo.png',
-          name: 'Seal',
-          symbol: 'Seal',
-          amout: '123.3123',
-          value: '123123',
-          typeHash: '0x178fb47b597a56d48b549226aff59f750b4784250c7f40f781b64ef090a8a0a7',
-        },
-        {
-          icon: 'https://xudtlogos.cc/logos/Seal-logo.png',
-          name: 'Seal',
-          amout: '123.3123',
-          symbol: 'Seal',
-          value: '123123',
-          typeHash: '0x178fb47b597a56d48b549226aff59f750b4784250c7f40f781b64ef090a8a0a7',
-        },
-        {
-          icon: 'https://xudtlogos.cc/logos/Seal-logo.png',
-    
-          name: 'Seal',
-          symbol: 'Seal',
-          amout: '123.3123',
-          value: '123123',
-          typeHash: '0x178fb47b597a56d48b549226aff59f750b4784250c7f40f781b64ef090a8a0a7',
-        },
-        {
-          icon: 'https://xudtlogos.cc/logos/Seal-logo.png',
-          symbol: 'Seal',
-          name: 'Seal',
-          amout: '123.3123',
-          value: '123123',
-          typeHash: '0x178fb47b597a56d48b549226aff59f750b4784250c7f40f781b64ef090a8a0a7',
-        },
-      ]
+     const coinList =  useAddressAsset(address)
+   
       return (
         <>
           <VStack
@@ -67,7 +26,7 @@ export function BtcAssetsList({ address }: { address: string }) {
                 <Tabs.Trigger value="Dobs">Dobs</Tabs.Trigger>
               </Tabs.List>
               <Tabs.Content value="Coins">
-                <CoinListUI coinList={coinList as CoinList[]} />
+              <CoinListUI coinList={coinList?.assetInfo?.assets ?? []} />
               </Tabs.Content>
               <Tabs.Content value="Dobs">
                 <ComingSoon />

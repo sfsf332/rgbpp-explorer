@@ -1,3 +1,4 @@
+   //@ts-nocheck
 'use client'
 
 import { t } from '@lingui/macro'
@@ -12,31 +13,56 @@ import { LoadingBox } from '@/components/loading-box'
 import { PaginationSearchParams } from '@/components/pagination-searchparams'
 import { Text } from '@/components/ui'
 import { QueryKey } from '@/constants/query-key'
-import { graphql } from '@/gql'
-import { graphQLClient } from '@/lib/graphql'
+// import { graphql } from '@/gql'
+// import { graphQLClient } from '@/lib/graphql'
 import { resolvePage } from '@/lib/resolve-page'
 import { formatNumber } from '@/lib/string/format-number'
+import { useCoinList } from '@/hooks/useRgbppData'
 
-const query = graphql(`
-  query RgbppCoins($page: Int!, $pageSize: Int!) {
-    rgbppCoins(page: $page, pageSize: $pageSize) {
-      total
-      pageSize
-      coins {
-        icon
-        name
-        symbol
-        l1HoldersCount: holdersCount(layer: L1)
-        l2HoldersCount: holdersCount(layer: L2)
-        h24CkbTransactionsCount
-        totalAmount
-        deployedAt
-        decimal
-        typeHash
-      }
-    }
+type CoinType = {
+  info: {
+    symbol: string | null
+    id: string
+    name: string | null
+    decimals: number | null
+    icon: string | null
+    tags: string[]
   }
-`)
+  quote: {
+    totalSupply: string | null
+    holderCount: {
+      network: 'ckb' | 'btc' | 'doge' | 'unknown'
+      count: number
+    }[]
+    price: string | null
+    marketCap: string | null
+    volume24h: string | null
+    circulatingSupply: string | null
+    fdv: string | null
+    priceChange24h: number | null
+    txCount24h: number
+  }
+}
+// const query = graphql(`
+//   query RgbppCoins($page: Int!, $pageSize: Int!) {
+//     rgbppCoins(page: $page, pageSize: $pageSize) {
+//       total
+//       pageSize
+//       coins {
+//         icon
+//         name
+//         symbol
+//         l1HoldersCount: holdersCount(layer: L1)
+//         l2HoldersCount: holdersCount(layer: L2)
+//         h24CkbTransactionsCount
+//         totalAmount
+//         deployedAt
+//         decimal
+//         typeHash
+//       }
+//     }
+//   }
+// `)
 
 export default function Page({
   params,
@@ -49,22 +75,9 @@ export default function Page({
   const page = resolvePage(searchParams.page)
   const pageSize = 10
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: [QueryKey.RgbppCoins, page, pageSize],
-    async queryFn() {
-      const { rgbppCoins } = await graphQLClient.request(query, {
-        page, pageSize
-      })
-      return rgbppCoins
-    },
-    staleTime: 1000 * 60 * 5, // 数据保持新鲜5分钟
-    refetchOnMount: false,
-    refetchOnReconnect: false,
-    refetchOnWindowFocus: false,
-    retry: 1,
-  })
-
-  if (isLoading) {
+ 
+  const {assetList} = useCoinList(pageSize, page)
+  if (!assetList) {
     return (
       <VStack w="100%" maxW="content" flex={1} gap="32px">
       <Center h="176px" w="100%" rounded="8px" overflow="hidden">
@@ -78,16 +91,17 @@ export default function Page({
     <VStack w="100%" maxW="content" flex={1} gap="32px">
       <Box bg="bg.card" w="100%" rounded="8px" pb="10px" overflow={'hidden'}>
         <Text fontSize={{ base: '18px', lg: '20px' }} fontWeight="semibold" p={{ base: '20px', lg: '30px' }}>
-          {t(i18n)`Total: ${formatNumber(data?.total)} Coins`}
+          {t(i18n)`Total: ${formatNumber(assetList.pagination?.total)} Coins`}
         </Text>
-        <CoinList coins={data?.coins} />
+     
+        <CoinList coins={assetList.data} />
       </Box>
       <HStack gap="16px">
         <IfBreakpoint breakpoint="md">
-          <Text fontSize="14px">{t(i18n)`Total ${formatNumber(data?.total)} Items`}</Text>
+          <Text fontSize="14px">{t(i18n)`Total ${formatNumber(assetList.pagination?.total)} Items`}</Text>
         </IfBreakpoint>
-        {data?.total ? (
-          <PaginationSearchParams count={data.total} pageSize={pageSize} />
+        {assetList?.pagination?.total ? (
+          <PaginationSearchParams count={assetList.pagination.total} pageSize={pageSize} />
         ) : null}
       </HStack>
     </VStack>
