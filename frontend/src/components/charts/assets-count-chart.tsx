@@ -4,11 +4,11 @@ import { t, Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useState } from 'react'
 import {
+  Area,
+  AreaChart,
   Brush,
   CartesianGrid,
   Legend,
-  Line,
-  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -16,7 +16,7 @@ import {
 } from 'recharts'
 import { Grid, HStack, VStack } from 'styled-system/jsx'
 
-import { CustomLegend, CustomTooltip, xAxisFormater, yAxisTickFormater } from '@/components/charts/common'
+import { CustomLegend, CustomTooltipWithTotal, xAxisFormater, yAxisTickFormater } from '@/components/charts/common'
 import { CHART_LINE_COLORS, ChartPeriod, filterDataByPeriod } from '@/components/charts/constants'
 import { PeriodSelector } from '@/components/charts/period-selector'
 import { ChartProps, IssueCountChartDataPoint } from '@/components/charts/types'
@@ -57,7 +57,7 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
         />
       </HStack>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={filteredData}>
+        <AreaChart data={filteredData}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={CHART_LINE_COLORS.gridStroke} />
           <XAxis
             dataKey="timestamp"
@@ -97,33 +97,29 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
             content={<CustomLegend payload={undefined} onToggle={toggleLine} hiddenLines={hiddenLines} />}
           />}
           {!preview && <Tooltip 
-            content={<CustomTooltip />} 
+            content={<CustomTooltipWithTotal />} 
             cursor={{ 
               stroke: CHART_LINE_COLORS.axisStroke,
               strokeWidth: 1,
             }} 
           />}
-          <Line 
+          <Area 
             type="monotone" 
             dot={false} 
-            dataKey="total"
-            stroke={CHART_LINE_COLORS.blue} 
-            name={t(i18n)`Total`} 
-            hide={hiddenLines.has('total')}
-          />
-          <Line 
-            type="monotone" 
-            dot={false} 
+            stackId="1"
             dataKey="xudt" 
             stroke={CHART_LINE_COLORS.purple} 
+            fill={CHART_LINE_COLORS.purple}
             name={t(i18n)`Coins`} 
             hide={hiddenLines.has('xudt')}
           />
-          <Line 
+          <Area 
             type="monotone" 
             dot={false} 
+            stackId="1"
             dataKey="dob" 
             stroke={CHART_LINE_COLORS.orange} 
+            fill={CHART_LINE_COLORS.orange}
             name={t(i18n)`DOB Collections`} 
             hide={hiddenLines.has('dob')}
           />
@@ -135,7 +131,7 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
             fill={CHART_LINE_COLORS.brushFill}
             style={{ fontSize: 14 }}
           />}
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </VStack>
   )

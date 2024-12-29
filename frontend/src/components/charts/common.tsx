@@ -1,7 +1,9 @@
+import { Trans } from '@lingui/macro'
 import dayjs from 'dayjs'
 import { Box, HStack, VStack } from 'styled-system/jsx'
 
 import { Text } from '@/components/ui'
+import { TIME_TEMPLATE } from '@/constants'
 import { formatNumber } from '@/lib/string/format-number'
 
 export const xAxisFormater = (timestamp: number) => {
@@ -10,6 +12,10 @@ export const xAxisFormater = (timestamp: number) => {
 
 export const yAxisTickFormater = (value: number) => {
   return `${formatNumber(value)}`
+}
+
+export const statisticTimeFormater = (timestamp: number) => {
+  return dayjs(timestamp).format(TIME_TEMPLATE)
 }
 
 export interface CustomLegendProps {
@@ -98,6 +104,63 @@ export function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
           <Text color="text.primary">{formatNumber(item.value)}</Text>
         </HStack>
       ))}
+    </VStack>
+  )
+}
+
+export function CustomTooltipWithTotal({ active, payload, label}: CustomTooltipProps) {
+  if (!active || !payload?.length) {
+    return null
+  }
+
+  const total = payload.reduce((sum, item) => sum + (item.value || 0), 0)
+
+  return (
+    <VStack
+      bg="bg.tooltip"
+      p="15px"
+      minW="240px"
+      borderRadius="8px"
+      fontSize="14px"
+      gap="15px"
+      alignItems="start"
+    >
+      <Text color="text.third" fontSize="12px">
+        {dayjs(label).format('YYYY-MM-DD')}
+      </Text>
+
+      {payload.map((item, index) => (
+        <HStack 
+          key={item.name}
+          w="100%" 
+          gap="20px" 
+          mb={index === payload.length - 1 ? 0 : "-10px"} 
+          justify={'space-between'}
+        >
+          <HStack gap="5px">
+            <Box
+              w="12px"
+              h="12px"
+              borderRadius="2px"
+              style={{ background: item.color }}
+            />
+            <Text color="text.primary">{item.name}:</Text>
+          </HStack>
+
+          <Text color="text.primary">{formatNumber(item.value)}</Text>
+        </HStack>
+      ))}
+
+      {(
+        <>
+          <HStack w="100%" justify="space-between">
+            <Text color="text.primary" fontWeight="bold" marginLeft={"17px"}>
+              <Trans>Total:</Trans>
+            </Text>
+            <Text color="text.primary" fontWeight="bold">{formatNumber(total)}</Text>
+          </HStack>
+        </>
+      )}
     </VStack>
   )
 }

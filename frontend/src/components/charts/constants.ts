@@ -17,6 +17,8 @@ export const CHART_LINE_COLORS = {
   axisStroke: '#4C546D',
   gridStroke: '#282A42',
   brushFill: '#2A2C44',
+  cursorFill: '#181A29'
+
 } as const
 
 export type ChartPeriod = keyof typeof CHART_TIME_PERIODS
