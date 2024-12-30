@@ -60,7 +60,7 @@ export default function Page() {
           </HStack>
         </Flex>
         <Box p="0px">
-          {holders ? (
+          {/*holders ? (
             <CoinHolderList
               holders={holders.data.map((holder, index) => ({
                 address: holder.address,
@@ -72,7 +72,8 @@ export default function Page() {
               }))}
               totalSupply={totalSupply}
             />
-          ) : <ComingSoon />}
+          ) : <ComingSoon />*/}
+          <ComingSoon />
         </Box>
       </Box>
     </VStack>
