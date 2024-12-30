@@ -5,9 +5,9 @@ import { useParams } from 'next/navigation'
 import { Box, Center, Flex, HStack, VStack } from 'styled-system/jsx'
 
 import { ComingSoon } from '@/components/coming-soon'
-import { CoinHolderList } from '@/components/holder-list/coin-holder-list'
+// import { CoinHolderList } from '@/components/holder-list/coin-holder-list'
 import { HolderSummarySection } from '@/components/holder-list/holder-summary'
-import { Chain } from '@/components/holder-list/type'
+// import { Chain } from '@/components/holder-list/type'
 import { LoadingBox } from '@/components/loading-box'
 import { Heading } from '@/components/ui'
 import { useAssetInfo } from '@/hooks/useRgbppData'
@@ -60,7 +60,7 @@ export default function Page() {
           </HStack>
         </Flex>
         <Box p="0px">
-          {/*holders ? (
+          {/* holders ? (
             <CoinHolderList
               holders={holders.data.map((holder, index) => ({
                 address: holder.address,
