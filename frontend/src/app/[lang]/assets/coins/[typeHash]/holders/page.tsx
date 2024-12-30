@@ -4,19 +4,19 @@ import BigNumber from 'bignumber.js'
 import { useParams } from 'next/navigation'
 import { Box, Center, Flex, HStack, VStack } from 'styled-system/jsx'
 
+import { ComingSoon } from '@/components/coming-soon'
 import { CoinHolderList } from '@/components/holder-list/coin-holder-list'
 import { HolderSummarySection } from '@/components/holder-list/holder-summary'
 import { Chain } from '@/components/holder-list/type'
 import { LoadingBox } from '@/components/loading-box'
 import { Heading } from '@/components/ui'
-import { useAssetHolders, useAssetInfo } from '@/hooks/useRgbppData'
+import { useAssetInfo } from '@/hooks/useRgbppData'
 
 export default function Page() {
   const params = useParams()
 
-  const { holders } = useAssetHolders(params.typeHash as string)
+  const holders = null// useAssetHolders(params.typeHash as string)
   const { assetInfo } = useAssetInfo(params.typeHash as string)
-  console.log(assetInfo)
 
   const holderSummary = {
     totalHolders: assetInfo?.quote?.holderCount?.reduce((sum, item) => sum + item.count, 0) || 0,
@@ -72,7 +72,7 @@ export default function Page() {
               }))}
               totalSupply={totalSupply}
             />
-          ) : null}
+          ) : <ComingSoon />}
         </Box>
       </Box>
     </VStack>

@@ -122,7 +122,7 @@ export function CoinList<T extends CoinType>({ coins }: { coins: T[] | undefined
                     {coin.info.icon ? (
                       <styled.img w="32px" h="32px" src={coin.info.icon} rounded="100%" />
                     ) : (
-                      <XudtLogoLoader symbol={coin.info.symbol+''} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
+                      <XudtLogoLoader symbol={coin.info.symbol} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
                     )}
                     <TextOverflowTooltip label={coin.info.symbol}>
                       <Text maxW="200px" truncate cursor="pointer">
@@ -180,7 +180,7 @@ export function CoinListGrid<T extends CoinType>({ coins }: { coins: T[] | undef
               {coin.info.icon ? (
                 <styled.img w="32px" h="32px" src={coin.info.icon} rounded="100%" />
               ) : (
-                <XudtLogoLoader symbol={coin.info.symbol+''} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
+                <XudtLogoLoader symbol={coin.info.symbol} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
               )}
               <TextOverflowTooltip label={coin.info.symbol}>
                 <Text maxW="200px" truncate cursor="pointer">
