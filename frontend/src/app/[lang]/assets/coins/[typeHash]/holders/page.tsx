@@ -1,5 +1,6 @@
 'use client'
 import { Trans } from '@lingui/macro'
+import BigNumber from 'bignumber.js'
 import { useParams } from 'next/navigation'
 import { Box, Center, Flex, HStack, VStack } from 'styled-system/jsx'
 
@@ -14,22 +15,25 @@ export default function Page() {
   const params = useParams()
 
   const { holders } = useAssetHolders(params.typeHash as string)
-  const { assetQuote } = useAssetInfo(params.typeHash as string)
-  console.log(assetQuote)
+  const { assetInfo } = useAssetInfo(params.typeHash as string)
+  console.log(assetInfo)
 
   const holderSummary = {
-    totalHolders: assetQuote?.holderCount?.reduce((sum, item) => sum + item.count, 0) || 0,
+    totalHolders: assetInfo?.quote?.holderCount?.reduce((sum, item) => sum + item.count, 0) || 0,
     chainHolders: {
-      btc: assetQuote?.holderCount?.find((item) => item.network.toLowerCase() === 'btc')?.count || 0,
-      ckb: assetQuote?.holderCount?.find((item) => item.network.toLowerCase() === 'ckb')?.count || 0,
-      doge: assetQuote?.holderCount?.find((item) => item.network.toLowerCase() === 'doge')?.count || 0,
+      btc: assetInfo?.quote?.holderCount?.find((item) => item.network.toLowerCase() === 'btc')?.count || 0,
+      ckb: assetInfo?.quote?.holderCount?.find((item) => item.network.toLowerCase() === 'ckb')?.count || 0,
+      doge: assetInfo?.quote?.holderCount?.find((item) => item.network.toLowerCase() === 'doge')?.count || 0,
     },
   }
 
-  const totalSupply = Number(assetQuote?.totalSupply) || 0
+  const totalSupply = assetInfo?.quote?.totalSupply
+  ? new BigNumber(assetInfo?.quote?.totalSupply).dividedBy(new BigNumber(10).pow(assetInfo?.info?.decimals || 0)).toNumber()
+  : 0
+
   return (
     <VStack w="100%" maxW="content" gap="30px">
-      {assetQuote ? (
+      {assetInfo ? (
         <HolderSummarySection summary={holderSummary} />
       ) : (
         <VStack w="100%" maxW="content" flex={1} gap="32px">

@@ -18,10 +18,26 @@ export function CoinInfo({ typeHash }: { typeHash: string }) {
   const { i18n } = useLingui()
   const lang = i18n.locale
 
-  const { assetInfo, assetQuote } = useAssetInfo(typeHash)
-  if (!assetInfo || !assetQuote) {
+  const { assetInfo, isLoading } = useAssetInfo(typeHash)
+  if (!assetInfo || isLoading) {
     return <Loading />
   }
+
+  const quote = assetInfo.quote;
+  const info = assetInfo.info;
+
+  const decimals = info?.decimals || 0;
+  const divisor = new BigNumber(10).pow(decimals);
+
+  const processedQuote = {
+    ...quote,
+    circulatingSupply: quote?.circulatingSupply
+      ? new BigNumber(quote.circulatingSupply).dividedBy(divisor)
+      : null,
+    totalSupply: quote?.totalSupply
+      ? new BigNumber(quote.totalSupply).dividedBy(divisor)
+      : null,
+  };
 
   return (
     <Grid
@@ -36,11 +52,11 @@ export function CoinInfo({ typeHash }: { typeHash: string }) {
     >
       <Flex flexDirection="row" gap="16px" id="info" alignItems="center">
         <Box w="120px" h="120px" gridRow={{ base: '1/2', md: '1/3' }}>
-          {assetInfo.icon ? (
-            <styled.img w="100%" h="100%" src={assetInfo.icon} rounded="100%" />
+          {assetInfo.info?.icon ? (
+            <styled.img w="100%" h="100%" src={assetInfo.info?.icon} rounded="100%" />
           ) : (
             <XudtLogoLoader
-              symbol={assetInfo.symbol || assetInfo.name || ''}
+              symbol={assetInfo.info?.symbol || assetInfo.info?.name || ''}
               size={{ width: '120px', height: '120px', fontSize: '48px' }}
             />
           )}
@@ -48,9 +64,9 @@ export function CoinInfo({ typeHash }: { typeHash: string }) {
         <Flex flexDirection="column" gap="12px">
           <Flex gap="12px" alignItems="center">
             <Text fontSize={{ base: '18px', md: '20px', lg: '22px' }} fontWeight="600" lineHeight="1">
-              {assetInfo.symbol}
+              {assetInfo.info?.symbol}
             </Text>
-            <Text color="text.third">{assetInfo.name}</Text>
+            <Text color="text.third">{assetInfo.info?.name}</Text>
           </Flex>
           <Flex gap="12px" alignItems="center">
             <Text fontSize="14px" color="text.secondary" lineHeight="24px" wordBreak="keep-all">
@@ -64,7 +80,7 @@ export function CoinInfo({ typeHash }: { typeHash: string }) {
           </Flex>
           <Flex alignItems="center" gap="8px">
             <Text fontSize={{ base: '18px', md: '20px', lg: '22px' }} fontWeight="600" color="brand">
-              <Trans>Price</Trans>: ${formatNumber(assetQuote.price)}
+              <Trans>Price</Trans>: ${formatNumber(processedQuote?.price)}
             </Text>
           </Flex>
         </Flex>
@@ -81,7 +97,13 @@ export function CoinInfo({ typeHash }: { typeHash: string }) {
             <Trans>Market Cap</Trans>
           </Text>
           <Text fontSize={{ base: '14px', md: '18px', lg: '20px' }} fontWeight="600">
-            ${formatBigNumber(assetQuote.marketCap, 2, lang)}
+          ${formatBigNumber(
+              (!processedQuote?.marketCap || new BigNumber(processedQuote.marketCap).isLessThan(1)) && processedQuote?.price && processedQuote?.circulatingSupply
+                ? new BigNumber(processedQuote.price).multipliedBy(processedQuote.circulatingSupply.toString())
+                : processedQuote?.marketCap || '0',
+              2,
+              lang
+            )}
           </Text>
         </Flex>
         <Flex flexDirection="column" gap="8px">
@@ -89,7 +111,7 @@ export function CoinInfo({ typeHash }: { typeHash: string }) {
             <Trans>24H Volume</Trans>
           </Text>
           <Text fontSize={{ base: '14px', md: '18px', lg: '20px' }} fontWeight="600">
-            {formatNumber(assetQuote.volume24h)}
+            ${formatNumber(processedQuote?.volume24h)}
           </Text>
         </Flex>
         <Flex flexDirection="column" gap="8px">
@@ -97,7 +119,7 @@ export function CoinInfo({ typeHash }: { typeHash: string }) {
             <Trans>Circulating Supply</Trans>
           </Text>
           <Text fontSize={{ base: '14px', md: '18px', lg: '20px' }} fontWeight="600">
-            {assetQuote.circulatingSupply ? formatNumber(new BigNumber(assetQuote.circulatingSupply?.toString())) : null}
+            {processedQuote?.circulatingSupply ? formatNumber(new BigNumber(processedQuote?.circulatingSupply?.toString())) : null}
           </Text>
         </Flex>
         <Flex flexDirection="column" gap="8px">
@@ -105,7 +127,7 @@ export function CoinInfo({ typeHash }: { typeHash: string }) {
             <Trans>Total Supply</Trans>
           </Text>
           <Text fontSize={{ base: '14px', md: '18px', lg: '20px' }} fontWeight="600">
-            {assetQuote.totalSupply ? formatNumber(new BigNumber(assetQuote.totalSupply?.toString())) : null}
+            {processedQuote?.totalSupply ? formatNumber(new BigNumber(processedQuote?.totalSupply?.toString())) : null}
           </Text>
         </Flex>
       </Grid>

@@ -59,11 +59,13 @@ export function useRgbppStatisticsOverview() {
 // }
 
 export function useAssetInfo(assetId: string) {
-  const { data: assetInfo } = trpc.rgbpp.info.useQuery({ assetId })
-  const { data: assetQuote } = trpc.rgbpp.quote.useQuery({ assetId })
+  const { data: assetInfo, isLoading } = trpc.rgbpp.info.useQuery({ assetId })
+  // const { data: assetQuote } = trpc.rgbpp.quote.useQuery({ assetId })
+  // console.log(assetInfo)
+  // console.log(assetQuote)
   return {
     assetInfo,
-    assetQuote,
+    isLoading,
   }
 }
 
@@ -99,7 +101,6 @@ export function useAssetTransactions(assetId: string, pageSize = 10, pageIndex =
     pageSize,
     pageIndex,
   })
-  console.log(transactions)
   return { transactions }
 }
 export function useAddressAsset(address: string) {
