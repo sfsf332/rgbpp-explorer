@@ -79,6 +79,12 @@ export const apiFetcher = {
         }
       }>(res.data),
     ),
+  fetchRGBTransaction: async (txHash: string) =>
+    requesterV2(`/ckb_transactions/${txHash}/display_outputs`).then((res: AxiosResponse) =>
+      toCamelcase<{
+        data: RGBTransaction
+      }>(res.data),
+    ),
 }
 
 // ====================

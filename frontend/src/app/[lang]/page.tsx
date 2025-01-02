@@ -52,14 +52,14 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
             mb={{ base: '50px', xl: '60px' }}
             fontWeight="semibold"
           >{t(i18n)`RGB++ Networks`}</Heading>
-          <NetworkCards />
+          {/* <NetworkCards /> */}
           <Heading
             fontSize={{ base: '22px', sm: '32px', xl: '40px' }}
             fontWeight="semibold"
             mb={{ base: '50px', xl: '60px' }}
             mt={{ base: '80px', xl: '100px' }}
           >{t(i18n)`RGB++ Statistics`}</Heading>
-          <RgbppStatisticsOverview />
+          {/* <RgbppStatisticsOverview /> */}
           <Heading
             fontSize={{ base: '22px', sm: '32px', xl: '40px' }}
             fontWeight="semibold"

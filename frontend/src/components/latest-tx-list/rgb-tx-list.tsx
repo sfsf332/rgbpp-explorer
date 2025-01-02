@@ -11,7 +11,7 @@ import { Copier } from '@/components/copier'
 import { IfBreakpoint } from '@/components/if-breakpoint'
 import { Amount } from '@/components/latest-tx-list/amount'
 import { LayerType } from '@/components/layer-type'
-import {Table  } from '@/components/ui'
+import { Table } from '@/components/ui'
 import Link from '@/components/ui/link'
 import type { CkbTransaction, RgbppTransaction } from '@/gql/graphql'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
@@ -74,7 +74,7 @@ export function LatestRGBTxnListUI<
           <HStack justifyContent="space-between" w="100%">
             <LayerType type={resolveLayerTypeFromRGBppTransaction(tx)} />
             <Box>
-              <Amount ckbTransaction={tx.ckbTransaction as CkbTransaction} />
+              <Amount ckbTxHash={tx.ckbTxHash} />
             </Box>
           </HStack>
         </Link>
@@ -133,7 +133,7 @@ export function LatestRGBTxnListUI<
                 <LayerType type={resolveLayerTypeFromRGBppTransaction(tx)} />
               </Table.Cell>
               <Table.Cell>
-                <Amount ckbTransaction={tx.ckbTransaction as CkbTransaction} />
+                <Amount ckbTxHash={tx.ckbTxHash} />
               </Table.Cell>
               <Table.Cell>
                 <AgoTimeFormatter time={tx.timestamp} tooltip />

@@ -10,32 +10,32 @@ import { Amount } from '@/components/latest-tx-list/amount'
 import { LayerType } from '@/components/layer-type'
 import { Table } from '@/components/ui'
 import Link from '@/components/ui/link'
-import type { CkbTransaction, RgbppTransaction } from '@/gql/graphql'
+import type { CkbTransaction } from '@/gql/graphql'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
-import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-from-rgbpp-transaction'
-import { resolveRGBppTxHash } from '@/lib/resolve-rgbpp-tx-hash'
+import {  resolveLayerTypeFromRGBppTransactionNew } from '@/lib/resolve-layer-type-from-rgbpp-transaction'
 import { formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
+import { RGBTransaction } from '@/services/fecthcer'
+import { LoadingBox } from '../loading-box'
+import { resolveRGBppTxHash } from '@/lib/resolve-rgbpp-tx-hash'
 
-export function LatestTxnListUI<
-  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'blockNumber' | 'timestamp' | 'leapDirection' | 'btcTxid' | 'ckbTxHash'>,
->({ txs }: { txs: T[] }) {
+export function LatestTxnListUI({ txs }: { txs:RGBTransaction[] }) {
   const isMd = useBreakpoints('md')
   const isLg = useBreakpoints('lg')
-
+  if(!txs||txs.length<1) return <LoadingBox />
   if (!isMd) {
     return txs.map((tx) => {
-      const txHash = resolveRGBppTxHash(tx)
+      // const txHash = resolveRGBppTxHash(tx)
       return (
         <Link
-          href={`/transaction/${txHash}`}
+          href={`/transaction/${tx.txHash}`}
           display="flex"
           alignItems="center"
           gap={5}
           fontSize="14px"
           fontWeight="semibold"
           p="20px"
-          key={tx.ckbTxHash}
+          key={tx.txHash}
           w="100%"
           flexDirection="column"
           borderBottom="1px solid"
@@ -51,16 +51,16 @@ export function LatestTxnListUI<
           <HStack gap={3} alignItems="center" w="100%" color="text.link">
             <LinkOutlineIcon w="36px" h="36px" color="text.third" />
             <VStack gap={0} alignItems="start">
-              <Box lineHeight="20px">{truncateMiddle(txHash, 10, 8)}</Box>
+              <Box lineHeight="20px">{truncateMiddle(tx.txHash, 10, 8)}</Box>
               <Box color="text.third" fontSize="14px" fontWeight="medium" lineHeight="16px">
-                <AgoTimeFormatter time={tx.timestamp} tooltip />
+                <AgoTimeFormatter time={tx.blockTimestamp} tooltip />
               </Box>
             </VStack>
           </HStack>
           <HStack justifyContent="space-between" w="100%">
-            <LayerType type={resolveLayerTypeFromRGBppTransaction(tx)} />
+            <LayerType type={resolveLayerTypeFromRGBppTransactionNew(tx.leapDirection)} />
             <Box>
-              <Amount ckbTransaction={tx.ckbTransaction as CkbTransaction} />
+              <Amount ckbTxHash={tx.txHash} />
             </Box>
           </HStack>
         </Link>
@@ -91,14 +91,14 @@ export function LatestTxnListUI<
       </Table.Head>
       <Table.Body>
         {txs.map((tx) => {
-          const txHash = resolveRGBppTxHash(tx)
+          // const txHash = resolveRGBppTxHash(tx)
           return (
-            <Table.Row key={txHash} >
+            <Table.Row key={tx.txHash} >
               <Table.Cell>
-                <Link href={`/transaction/${txHash}`} display="flex" alignItems="center" gap={3} color="text.link">
+                <Link href={`/transaction/${tx.txHash}`} display="flex" alignItems="center" gap={3} color="text.link">
                   <LinkOutlineIcon w="36px" h="36px" />
-                  <IfBreakpoint breakpoint="lg" fallback={truncateMiddle(txHash, 6, 4)}>
-                    {truncateMiddle(txHash, 10, 10)}
+                  <IfBreakpoint breakpoint="lg" fallback={truncateMiddle(tx.txHash, 6, 4)}>
+                    {truncateMiddle(tx.txHash, 10, 10)}
                   </IfBreakpoint>
                 </Link>
               </Table.Cell>
@@ -106,13 +106,14 @@ export function LatestTxnListUI<
                   {formatNumber(tx.blockNumber)}
                 </Table.Cell> : null}
               <Table.Cell>
-                <LayerType type={resolveLayerTypeFromRGBppTransaction(tx)} />
+                <LayerType type={resolveLayerTypeFromRGBppTransactionNew(tx.leapDirection)} />
+              </Table.Cell>
+              <Table.Cell> x x
+                {/* <Amount ckbTransaction={tx.ckbTransaction as CkbTransaction} /> */}
+                <Amount ckbTxHash={tx.txHash} />
               </Table.Cell>
               <Table.Cell>
-                <Amount ckbTransaction={tx.ckbTransaction as CkbTransaction} />
-              </Table.Cell>
-              <Table.Cell>
-                <AgoTimeFormatter time={tx.timestamp} tooltip />
+                <AgoTimeFormatter time={tx.blockTimestamp} tooltip />
               </Table.Cell>
             </Table.Row>
           )
