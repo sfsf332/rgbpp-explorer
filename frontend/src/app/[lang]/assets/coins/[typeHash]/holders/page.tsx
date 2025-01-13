@@ -51,20 +51,21 @@ export default function Page() {
         >
           <HStack gap="16px">
             <Heading fontSize="20px" fontWeight="semibold" w="100%" textAlign="left">
-              <Trans>{holderSummary.totalHolders} Holders</Trans>
+              {/* <Trans>{holderSummary.totalHolders} Holders</Trans> */}
+              <Trans>Top Holders</Trans>
             </Heading>
           </HStack>
         </Flex>
         <Box p="0px">
           {holders ? (
             <CoinHolderList
-              holders={holders.data.map((holder, index) => ({
+              holders={holders.map((holder, index) => ({
                 address: holder.address,
                 chain: holder.network.toUpperCase() as Chain,
                 value: Number(holder.value),
                 percentage: Number(holder.percentage),
                 rank: index + 1,
-                usd: holder.usd,
+                amount: holder.amount,
               }))}
               totalSupply={totalSupply}
             />

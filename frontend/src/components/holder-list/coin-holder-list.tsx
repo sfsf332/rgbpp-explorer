@@ -69,9 +69,7 @@ export function CoinHolderList({
     }
   }
 
-  const calculatePositionRatio = (value: number): string => {
-    return ((value / totalSupply) * 100).toFixed(2) + '%'
-  }
+
 
   if (!isMd) {
     return holders.map((holder) => {
@@ -123,7 +121,7 @@ export function CoinHolderList({
                 <Trans>Amount</Trans>
               </Box>
               <Box color="text.primary" fontSize="14px" lineHeight="16px">
-                {formatNumber(holder.value)}
+                {formatNumber(holder.amount)}
               </Box>
             </VStack>
           </HStack>
