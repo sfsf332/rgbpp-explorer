@@ -1,9 +1,8 @@
-   //@ts-nocheck
+   // @ts-nocheck
 'use client'
 
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
-import { useQuery } from '@tanstack/react-query'
 import { Box, Center, HStack, VStack } from 'styled-system/jsx'
 
 // import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
@@ -12,12 +11,11 @@ import { IfBreakpoint } from '@/components/if-breakpoint'
 import { LoadingBox } from '@/components/loading-box'
 import { PaginationSearchParams } from '@/components/pagination-searchparams'
 import { Text } from '@/components/ui'
-import { QueryKey } from '@/constants/query-key'
+import { useCoinList } from '@/hooks/useRgbppData'
 // import { graphql } from '@/gql'
 // import { graphQLClient } from '@/lib/graphql'
 import { resolvePage } from '@/lib/resolve-page'
 import { formatNumber } from '@/lib/string/format-number'
-import { useCoinList } from '@/hooks/useRgbppData'
 
 type CoinType = {
   info: {
@@ -30,10 +28,10 @@ type CoinType = {
   }
   quote: {
     totalSupply: string | null
-    holderCount: {
+    holderCount: Array<{
       network: 'ckb' | 'btc' | 'doge' | 'unknown'
       count: number
-    }[]
+    }>
     price: string | null
     marketCap: string | null
     volume24h: string | null
@@ -76,7 +74,7 @@ export default function Page({
   const pageSize = 10
 
  
-  const {assetList} = useCoinList(pageSize, page)
+  const {assetList} = useCoinList(pageSize, page-1)
   if (!assetList) {
     return (
       <VStack w="100%" maxW="content" flex={1} gap="32px">

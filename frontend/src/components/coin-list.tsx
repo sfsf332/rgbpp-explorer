@@ -1,10 +1,13 @@
 'use client'
 
 import { Trans } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
+import BigNumber from 'bignumber.js'
 // import dayjs from 'dayjs'
 // import { sum } from 'lodash-es'
 import { Box, HStack, styled, VStack } from 'styled-system/jsx'
 
+import { AppTooltip } from '@/components/app-tooltip'
 import { IfBreakpoint } from '@/components/if-breakpoint'
 import { TextOverflowTooltip } from '@/components/text-overflow-tooltip'
 import { Table, Text } from '@/components/ui'
@@ -12,7 +15,7 @@ import Link from '@/components/ui/link'
 import { XudtLogoLoader } from '@/components/xudt-logo-loader'
 // import { DATE_TEMPLATE } from '@/constants'
 // import { RgbppCoinsQuery } from '@/gql/graphql'
-import { formatNumber } from '@/lib/string/format-number'
+import { formatBigNumber, formatNumber } from '@/lib/string/format-number'
 
 type CoinType = {
   info: {
@@ -25,10 +28,10 @@ type CoinType = {
   }
   quote: {
     totalSupply: string | null
-    holderCount: {
+    holderCount: Array<{
       network: 'ckb' | 'btc' | 'doge' | 'unknown'
       count: number
-    }[]
+    }>
     price: string | null
     marketCap: string | null
     volume24h: string | null
@@ -39,6 +42,36 @@ type CoinType = {
   }
 }
 
+const MarketCapRender = ({ assetInfo }: { assetInfo: CoinType }) => {
+  const { i18n } = useLingui()
+  const lang = i18n.locale
+
+  const quote = assetInfo.quote;
+  const info = assetInfo.info;
+
+  const decimals = info?.decimals || 0;
+  const divisor = new BigNumber(10).pow(decimals);
+
+  const processedQuote = {
+    ...quote,
+    circulatingSupply: quote?.circulatingSupply
+      ? new BigNumber(quote.circulatingSupply).dividedBy(divisor)
+      : null,
+    totalSupply: quote?.totalSupply
+      ? new BigNumber(quote.totalSupply).dividedBy(divisor)
+      : null,
+  };
+
+  const marketCap = formatBigNumber(
+    (!processedQuote?.marketCap || new BigNumber(processedQuote.marketCap).isLessThan(1)) && processedQuote?.price && processedQuote?.circulatingSupply
+    ? new BigNumber(processedQuote.price).multipliedBy(processedQuote.circulatingSupply)
+    : processedQuote?.marketCap || '0',
+    2,
+    lang
+  );
+
+  return `$${marketCap}` 
+}
 
 export function CoinList<T extends CoinType>({ coins }: { coins: T[] | undefined }) {
 
@@ -89,7 +122,7 @@ export function CoinList<T extends CoinType>({ coins }: { coins: T[] | undefined
                     {coin.info.icon ? (
                       <styled.img w="32px" h="32px" src={coin.info.icon} rounded="100%" />
                     ) : (
-                      <XudtLogoLoader symbol={coin.info.symbol+''} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
+                      <XudtLogoLoader symbol={coin.info.symbol} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
                     )}
                     <TextOverflowTooltip label={coin.info.symbol}>
                       <Text maxW="200px" truncate cursor="pointer">
@@ -99,12 +132,21 @@ export function CoinList<T extends CoinType>({ coins }: { coins: T[] | undefined
                   </Link>
                 </Table.Cell>
                 <Table.Cell>{formatNumber(coin.quote.holderCount.reduce((sum, holder) => sum + holder.count, 0))}</Table.Cell>
-                <Table.Cell>${formatNumber(coin.quote.price)}</Table.Cell>
+                <Table.Cell overflow={'hidden'} textOverflow={'ellipsis'}>
+                  <AppTooltip 
+                    trigger={<span>${formatNumber(coin.quote.price)}</span>} 
+                    content={formatNumber(coin.quote.price)}
+                   />
+                </Table.Cell>
                 <Table.Cell>{formatNumber(coin.quote.txCount24h)}</Table.Cell>
                 <Table.Cell>${formatNumber(coin.quote.volume24h)}</Table.Cell>
-                <Table.Cell>{formatNumber(coin.quote.totalSupply, coin.info.decimals||1)}</Table.Cell>
-                <Table.Cell>{formatNumber(coin.quote.totalSupply, coin.info.decimals||1)}</Table.Cell>
-                <Table.Cell>${formatNumber(coin.quote.marketCap)}</Table.Cell>
+                <Table.Cell overflow={'hidden'} textOverflow={'ellipsis'}>
+                  {formatNumber(coin.quote.totalSupply, coin.info.decimals||1)}
+                </Table.Cell>
+                <Table.Cell overflow={'hidden'} textOverflow={'ellipsis'}>
+                  {formatNumber(coin.quote.totalSupply, coin.info.decimals||1)}
+                </Table.Cell>
+                <Table.Cell><MarketCapRender assetInfo={coin} /></Table.Cell>
                 {/* <Table.Cell>{coin.deployedAt ? dayjs(coin.deployedAt).format(DATE_TEMPLATE) : '-'}</Table.Cell>*/}
               </Table.Row>
             )
@@ -138,7 +180,7 @@ export function CoinListGrid<T extends CoinType>({ coins }: { coins: T[] | undef
               {coin.info.icon ? (
                 <styled.img w="32px" h="32px" src={coin.info.icon} rounded="100%" />
               ) : (
-                <XudtLogoLoader symbol={coin.info.symbol+''} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
+                <XudtLogoLoader symbol={coin.info.symbol} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
               )}
               <TextOverflowTooltip label={coin.info.symbol}>
                 <Text maxW="200px" truncate cursor="pointer">
@@ -173,7 +215,7 @@ export function CoinListGrid<T extends CoinType>({ coins }: { coins: T[] | undef
               },
               {
                 label: <Trans>Market Cap</Trans>,
-                value: '$' + formatNumber(coin.quote.marketCap),
+                value: <MarketCapRender assetInfo={coin} />, // '$' + formatNumber(coin.quote.marketCap),
               },
               // {
               //   label: <Trans>Deploy Time</Trans>,

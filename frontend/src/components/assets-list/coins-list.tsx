@@ -61,7 +61,7 @@ export function CoinListUI({ coinList }: { coinList: CoinInfo[] }) {
                     {coin.info.icon ? (
                       <styled.img w="32px" h="32px" src={coin.info.icon} rounded="100%" />
                     ) : (
-                      <XudtLogoLoader symbol={coin.info.symbol||''} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
+                      <XudtLogoLoader symbol={coin.info.symbol} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
                     )}
                     <TextOverflowTooltip label={coin.info.symbol}>
                       <Text maxW="200px" fontSize="16px" fontWeight="600" color="brand" truncate cursor="pointer">
@@ -121,10 +121,10 @@ export function AddressCoinListMobile({ coinList }: { coinList: CoinInfo[] }) {
                 {coin.info.icon ? (
                   <styled.img w="32px" h="32px" src={coin.info.icon} rounded="100%" />
                 ) : (
-                  <XudtLogoLoader symbol={coin.info.id} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
+                  <XudtLogoLoader symbol={coin.info.symbol} size={{ width: '32px', height: '32px', fontSize: '14px' }} />
                 )}
                 <Text maxW="200px" color="brand" fontWeight={600} fontSize="14px" truncate cursor="pointer">
-                  {coin.info.id}
+                  {coin.info.symbol}
                 </Text>
               </HStack>
               <HStack>

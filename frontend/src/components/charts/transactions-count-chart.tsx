@@ -4,11 +4,11 @@ import { t, Trans } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import { useState } from 'react'
 import {
+  Area,
+  AreaChart,
   Brush,
   CartesianGrid,
   Legend,
-  Line,
-  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -16,7 +16,7 @@ import {
 } from 'recharts'
 import { Grid, HStack, VStack } from 'styled-system/jsx'
 
-import { CustomLegend, CustomTooltip, xAxisFormater, yAxisTickFormater } from '@/components/charts/common'
+import { CustomLegend, CustomTooltipWithTotal, xAxisFormater, yAxisTickFormater } from '@/components/charts/common'
 import { CHART_LINE_COLORS, ChartPeriod, filterDataByPeriod } from '@/components/charts/constants'
 import { PeriodSelector } from '@/components/charts/period-selector'
 import { ChartProps, TransactionCountChartDataPoint } from '@/components/charts/types'
@@ -57,7 +57,13 @@ export function TransactionsCountChart({ preview = false, data = [] }: ChartProp
         />
       </HStack>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={filteredData}>
+        <AreaChart data={filteredData}>
+          <defs>
+            <linearGradient id="colorCKB" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor={CHART_LINE_COLORS.ckb} stopOpacity={0.8}/>
+              <stop offset="95%" stopColor={CHART_LINE_COLORS.ckb} stopOpacity={0}/>
+            </linearGradient>
+          </defs>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={CHART_LINE_COLORS.gridStroke} />
           <XAxis
             dataKey="timestamp"
@@ -97,41 +103,42 @@ export function TransactionsCountChart({ preview = false, data = [] }: ChartProp
             content={<CustomLegend payload={undefined} onToggle={toggleLine} hiddenLines={hiddenLines} />}
           />}
           {!preview && <Tooltip 
-            content={<CustomTooltip />} 
+            content={<CustomTooltipWithTotal />} 
             cursor={{ 
               stroke: CHART_LINE_COLORS.axisStroke,
               strokeWidth: 1,
             }} 
           />}
-          <Line 
-            type="monotone" 
-            dot={false} 
-            dataKey="total"
-            stroke={CHART_LINE_COLORS.blue} 
-            name={t(i18n)`Total`} 
-            hide={hiddenLines.has('total')}
-          />
-          <Line 
+          <Area 
             type="monotone" 
             dot={false} 
             dataKey="ckb" 
-            stroke={CHART_LINE_COLORS.purple} 
+            stackId="1"
+            stroke={CHART_LINE_COLORS.ckb} 
+            fill="url(#colorCKB)" 
+            fillOpacity={0.6}
             name={t(i18n)`CKB chain`} 
             hide={hiddenLines.has('ckb')}
           />
-          <Line 
+          <Area 
             type="monotone" 
             dot={false} 
             dataKey="btc" 
-            stroke={CHART_LINE_COLORS.orange} 
+            stackId="1"
+            stroke={CHART_LINE_COLORS.btc} 
+            fill={CHART_LINE_COLORS.btc} 
+            fillOpacity={0.6}
             name={t(i18n)`BTC chain`} 
             hide={hiddenLines.has('btc')}
           />
-          <Line 
+          <Area 
             type="monotone" 
             dot={false} 
             dataKey="doge" 
-            stroke={CHART_LINE_COLORS.yellow} 
+            stackId="1"
+            stroke={CHART_LINE_COLORS.doge} 
+            fill={CHART_LINE_COLORS.doge} 
+            fillOpacity={0.6}
             name={t(i18n)`DOGE chain`} 
             hide={hiddenLines.has('doge')}
           />
@@ -143,7 +150,7 @@ export function TransactionsCountChart({ preview = false, data = [] }: ChartProp
             fill={CHART_LINE_COLORS.brushFill}
             style={{ fontSize: 14 }}
           />}
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </VStack>
   )

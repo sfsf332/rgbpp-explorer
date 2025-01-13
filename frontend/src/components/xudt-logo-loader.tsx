@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Box, styled } from 'styled-system/jsx'
 
 interface Props {
-  symbol: string
+  symbol: string | null
   size?: {
     width?: string
     height?: string
@@ -27,7 +27,7 @@ export function XudtLogoLoader({ symbol, size }: Props) {
 
   const { width, height, fontSize } = size || defaultSize
 
-  if (loadFailed) {
+  if (loadFailed || !symbol) {
     return (
       <Box
         w={width}
@@ -41,7 +41,7 @@ export function XudtLogoLoader({ symbol, size }: Props) {
         justifyContent="center"
         style={{ fontSize, flexShrink: 0 }}
       >
-        {symbol.charAt(0).toUpperCase()}
+        {symbol?.charAt(0).toUpperCase()}
       </Box>
     )
   }

@@ -108,7 +108,8 @@ export function DailyTransactionsCountChart({ preview = false, data = [] }: Char
             type="monotone"
             dataKey="ckb"
             stackId="1"
-            fill={CHART_LINE_COLORS.purple}
+            fill={CHART_LINE_COLORS.ckb}
+            fillOpacity={0.6}
             name={t(i18n)`CKB chain`}
             hide={hiddenLines.has('ckb')}
           />
@@ -116,7 +117,8 @@ export function DailyTransactionsCountChart({ preview = false, data = [] }: Char
             type="monotone"
             dataKey="btc"
             stackId="1"
-            fill={CHART_LINE_COLORS.orange}
+            fill={CHART_LINE_COLORS.btc}
+            fillOpacity={0.6}
             name={t(i18n)`BTC chain`}
             hide={hiddenLines.has('btc')}
           />
@@ -124,7 +126,8 @@ export function DailyTransactionsCountChart({ preview = false, data = [] }: Char
             type="monotone"
             dataKey="doge"
             stackId="1"
-            fill={CHART_LINE_COLORS.yellow}
+            fill={CHART_LINE_COLORS.doge}
+            fillOpacity={0.6}
             name={t(i18n)`DOGE chain`}
             hide={hiddenLines.has('doge')}
           />

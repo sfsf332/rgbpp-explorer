@@ -154,10 +154,10 @@ export function CustomTooltipWithTotal({ active, payload, label}: CustomTooltipP
       {(
         <>
           <HStack w="100%" justify="space-between">
-            <Text color="text.primary" fontWeight="bold" marginLeft={"17px"}>
+            <Text color="brand" fontWeight="bold" marginLeft={"17px"}>
               <Trans>Total:</Trans>
             </Text>
-            <Text color="text.primary" fontWeight="bold">{formatNumber(total)}</Text>
+            <Text color="brand" fontWeight="bold">{formatNumber(total)}</Text>
           </HStack>
         </>
       )}

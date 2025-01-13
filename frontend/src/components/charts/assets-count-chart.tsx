@@ -58,6 +58,16 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
       </HStack>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={filteredData}>
+          <defs>
+            <linearGradient id="colorXudt" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor={CHART_LINE_COLORS.purple} stopOpacity={0.8}/>
+              <stop offset="95%" stopColor={CHART_LINE_COLORS.purple} stopOpacity={0}/>
+            </linearGradient>
+            <linearGradient id="colorDob" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor={CHART_LINE_COLORS.orange} stopOpacity={0.8}/>
+              <stop offset="95%" stopColor={CHART_LINE_COLORS.orange} stopOpacity={0}/>
+            </linearGradient>
+          </defs>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={CHART_LINE_COLORS.gridStroke} />
           <XAxis
             dataKey="timestamp"
@@ -109,7 +119,8 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
             stackId="1"
             dataKey="xudt" 
             stroke={CHART_LINE_COLORS.purple} 
-            fill={CHART_LINE_COLORS.purple}
+            fill="url(#colorXudt)"
+            fillOpacity={0.6}
             name={t(i18n)`Coins`} 
             hide={hiddenLines.has('xudt')}
           />
@@ -119,7 +130,8 @@ export function AssetsCountChart({ preview = false, data = [] }: ChartProps) {
             stackId="1"
             dataKey="dob" 
             stroke={CHART_LINE_COLORS.orange} 
-            fill={CHART_LINE_COLORS.orange}
+            fill="url(#colorDob)"
+            fillOpacity={0.6}
             name={t(i18n)`DOB Collections`} 
             hide={hiddenLines.has('dob')}
           />
