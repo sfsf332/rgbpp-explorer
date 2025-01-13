@@ -53,14 +53,14 @@ export function NetworkCards() {
     },
     refetchInterval: 10000,
   })
-  const { data:staticData} = useQuery({
-    queryKey: ['statics'],
-    queryFn: async () => {
-      return await apiFetcher.fetchStatistics()
-    },
-    refetchInterval: 10000,
-  })
-  console.log(staticData);
+  // const { data:staticData} = useQuery({
+  //   queryKey: ['statics'],
+  //   queryFn: async () => {
+  //     return await apiFetcher.fetchStatistics()
+  //   },
+  //   refetchInterval: 10000,
+  // })
+  // console.log(staticData)
   return (
     <Grid w="100%" gridTemplateColumns={{ base: '100%', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}>
       <Link
