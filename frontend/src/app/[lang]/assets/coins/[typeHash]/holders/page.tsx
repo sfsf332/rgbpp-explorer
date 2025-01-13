@@ -1,39 +1,35 @@
 'use client'
 import { Trans } from '@lingui/macro'
-import BigNumber from 'bignumber.js'
 import { useParams } from 'next/navigation'
 import { Box, Center, Flex, HStack, VStack } from 'styled-system/jsx'
 
-import { ComingSoon } from '@/components/coming-soon'
-// import { CoinHolderList } from '@/components/holder-list/coin-holder-list'
+import { CoinHolderList } from '@/components/holder-list/coin-holder-list'
 import { HolderSummarySection } from '@/components/holder-list/holder-summary'
-// import { Chain } from '@/components/holder-list/type'
+import { Chain } from '@/components/holder-list/type'
 import { LoadingBox } from '@/components/loading-box'
 import { Heading } from '@/components/ui'
-import { useAssetInfo } from '@/hooks/useRgbppData'
+import { useAssetHolders, useAssetInfo } from '@/hooks/useRgbppData'
 
 export default function Page() {
   const params = useParams()
 
-  const holders = null// useAssetHolders(params.typeHash as string)
-  const { assetInfo } = useAssetInfo(params.typeHash as string)
+  const { holders } = useAssetHolders(params.typeHash as string)
+  const { assetQuote } = useAssetInfo(params.typeHash as string)
+  console.log(assetQuote)
 
   const holderSummary = {
-    totalHolders: assetInfo?.quote?.holderCount?.reduce((sum, item) => sum + item.count, 0) || 0,
+    totalHolders: assetQuote?.holderCount?.reduce((sum, item) => sum + item.count, 0) || 0,
     chainHolders: {
-      btc: assetInfo?.quote?.holderCount?.find((item) => item.network.toLowerCase() === 'btc')?.count || 0,
-      ckb: assetInfo?.quote?.holderCount?.find((item) => item.network.toLowerCase() === 'ckb')?.count || 0,
-      doge: assetInfo?.quote?.holderCount?.find((item) => item.network.toLowerCase() === 'doge')?.count || 0,
+      btc: assetQuote?.holderCount?.find((item) => item.network.toLowerCase() === 'btc')?.count || 0,
+      ckb: assetQuote?.holderCount?.find((item) => item.network.toLowerCase() === 'ckb')?.count || 0,
+      doge: assetQuote?.holderCount?.find((item) => item.network.toLowerCase() === 'doge')?.count || 0,
     },
   }
 
-  const totalSupply = assetInfo?.quote?.totalSupply
-  ? new BigNumber(assetInfo?.quote?.totalSupply).dividedBy(new BigNumber(10).pow(assetInfo?.info?.decimals || 0)).toNumber()
-  : 0
-
+  const totalSupply = Number(assetQuote?.totalSupply) || 0
   return (
     <VStack w="100%" maxW="content" gap="30px">
-      {assetInfo ? (
+      {assetQuote ? (
         <HolderSummarySection summary={holderSummary} />
       ) : (
         <VStack w="100%" maxW="content" flex={1} gap="32px">
@@ -55,13 +51,12 @@ export default function Page() {
         >
           <HStack gap="16px">
             <Heading fontSize="20px" fontWeight="semibold" w="100%" textAlign="left">
-              {/* <Trans>{holderSummary.totalHolders} Holders</Trans> */}
-              <Trans>Top Holders</Trans>
+              <Trans>{holderSummary.totalHolders} Holders</Trans>
             </Heading>
           </HStack>
         </Flex>
         <Box p="0px">
-          {/* holders ? (
+          {holders ? (
             <CoinHolderList
               holders={holders.map((holder, index) => ({
                 address: holder.address,
@@ -73,8 +68,7 @@ export default function Page() {
               }))}
               totalSupply={totalSupply}
             />
-          ) : <ComingSoon />*/}
-          <ComingSoon />
+          ) : null}
         </Box>
       </Box>
     </VStack>

@@ -60,11 +60,12 @@ export function useRgbppStatisticsOverview() {
 
 export function useAssetInfo(assetId: string) {
   const { data: assetInfo, isLoading } = trpc.rgbpp.info.useQuery({ assetId })
-  // const { data: assetQuote } = trpc.rgbpp.quote.useQuery({ assetId })
+  const { data: assetQuote } = trpc.rgbpp.quote.useQuery({ assetId })
   // console.log(assetInfo)
   // console.log(assetQuote)
   return {
     assetInfo,
+    assetQuote,
     isLoading,
   }
 }
@@ -85,7 +86,7 @@ export function useCoinList(pageSize = 10, pageIndex = 0) {
 
   return { assetList }
 }
-export function useAssetHolders(assetId: string, pageSize = 10, pageIndex = 0) {
+export function useAssetHolders(assetId: string) {
   const { data: holders } = trpc.rgbpp.topHolders.useQuery({
     assetId
   })
