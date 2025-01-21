@@ -13,7 +13,7 @@ import { Amount } from '@/components/latest-tx-list/amount'
 import { LayerType } from '@/components/layer-type'
 import { Table } from '@/components/ui'
 import Link from '@/components/ui/link'
-import type { CkbTransaction, RgbppTransaction } from '@/gql/graphql'
+import type { RgbppTransaction } from '@/gql/graphql'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
 import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-from-rgbpp-transaction'
 import { resolveRGBppTxHash } from '@/lib/resolve-rgbpp-tx-hash'
@@ -74,7 +74,7 @@ export function LatestRGBTxnListUI<
           <HStack justifyContent="space-between" w="100%">
             <LayerType type={resolveLayerTypeFromRGBppTransaction(tx)} />
             <Box>
-              <Amount ckbTxHash={tx.ckbTxHash} />
+              <Amount ckbTransaction={tx.ckbTransaction} />
             </Box>
           </HStack>
         </Link>
@@ -133,7 +133,7 @@ export function LatestRGBTxnListUI<
                 <LayerType type={resolveLayerTypeFromRGBppTransaction(tx)} />
               </Table.Cell>
               <Table.Cell>
-                <Amount ckbTxHash={tx.ckbTxHash} />
+                <Amount ckbTransaction={tx.ckbTransaction} />
               </Table.Cell>
               <Table.Cell>
                 <AgoTimeFormatter time={tx.timestamp} tooltip />

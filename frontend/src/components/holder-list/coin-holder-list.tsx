@@ -20,10 +20,12 @@ import { truncateMiddle } from '@/lib/string/truncate-middle'
 
 export function CoinHolderList({
   holders,
-  totalSupply
+  totalSupply,
+  decimals
 }: {
   holders: HolderData[]
-  totalSupply: number
+  totalSupply: number,
+  decimals: number
 }) {
   const isMd = useBreakpoints('md')
   const isLg = useBreakpoints('lg')
@@ -121,7 +123,7 @@ export function CoinHolderList({
                 <Trans>Amount</Trans>
               </Box>
               <Box color="text.primary" fontSize="14px" lineHeight="16px">
-                {formatNumber(holder.amount)}
+                {formatNumber(holder.amount,decimals||8)}
               </Box>
             </VStack>
           </HStack>
@@ -170,7 +172,7 @@ export function CoinHolderList({
                 {renderChain(holder.chain)}
               </Table.Cell>
               <Table.Cell>
-                {formatNumber(holder.value)}
+                {formatNumber(holder.amount,decimals||8)}
               </Table.Cell>
               <Table.Cell>
               {(holder.percentage*100).toFixed(2) + '%'}

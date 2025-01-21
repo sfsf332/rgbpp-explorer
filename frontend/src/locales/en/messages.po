@@ -41,7 +41,7 @@ msgstr "{0} confirmed"
 msgid "{0} DOB"
 msgstr "{0} DOB"
 
-#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:52
+#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:54
 msgid "{0} Holders"
 msgstr "{0} Holders"
 
@@ -94,7 +94,7 @@ msgstr "<0>Explore the<1><2/></1></0><3>Ecosystem</3>"
 msgid "24H Transactions"
 msgstr "24H Transactions"
 
-#: src/components/coin-info.tsx:89
+#: src/components/coin-info.tsx:111
 msgid "24H Volume"
 msgstr "24H Volume"
 
@@ -103,7 +103,7 @@ msgstr "24H Volume"
 msgid "Address"
 msgstr "Address"
 
-#: src/components/assets-list/coins-list.tsx:33
+#: src/components/assets-list/coins-list.tsx:38
 #: src/components/holder-list/coin-holder-list.tsx:123
 #: src/components/holder-list/coin-holder-list.tsx:149
 #: src/components/latest-tx-list/rgb-tx-list.tsx:101
@@ -166,19 +166,19 @@ msgstr "BTC"
 msgid "BTC Balance"
 msgstr "BTC Balance"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:120
-#: src/components/charts/holders-count-chart.tsx:127
-#: src/components/charts/transactions-count-chart.tsx:127
+#: src/components/charts/daily-transactions-count-chart.tsx:122
+#: src/components/charts/holders-count-chart.tsx:131
+#: src/components/charts/transactions-count-chart.tsx:131
 msgid "BTC chain"
 msgstr "BTC chain"
 
-#: src/components/charts/holders-count-chart.tsx:179
+#: src/components/charts/holders-count-chart.tsx:186
 #: src/components/holder-list/holder-summary.tsx:26
 msgid "BTC Chain Holders"
 msgstr "BTC Chain Holders"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:183
-#: src/components/charts/transactions-count-chart.tsx:179
+#: src/components/charts/daily-transactions-count-chart.tsx:186
+#: src/components/charts/transactions-count-chart.tsx:186
 msgid "BTC Chain Transactions"
 msgstr "BTC Chain Transactions"
 
@@ -211,9 +211,9 @@ msgstr "chart"
 msgid "Charts"
 msgstr "Charts"
 
-#: src/components/coin-info.tsx:97
-#: src/components/coin-list.tsx:61
-#: src/components/coin-list.tsx:162
+#: src/components/coin-info.tsx:119
+#: src/components/coin-list.tsx:99
+#: src/components/coin-list.tsx:209
 msgid "Circulating Supply"
 msgstr "Circulating Supply"
 
@@ -234,19 +234,19 @@ msgstr "CKB"
 msgid "CKB Balance"
 msgstr "CKB Balance"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:112
-#: src/components/charts/holders-count-chart.tsx:119
-#: src/components/charts/transactions-count-chart.tsx:119
+#: src/components/charts/daily-transactions-count-chart.tsx:113
+#: src/components/charts/holders-count-chart.tsx:120
+#: src/components/charts/transactions-count-chart.tsx:120
 msgid "CKB chain"
 msgstr "CKB chain"
 
-#: src/components/charts/holders-count-chart.tsx:186
+#: src/components/charts/holders-count-chart.tsx:193
 #: src/components/holder-list/holder-summary.tsx:31
 msgid "CKB Chain Holders"
 msgstr "CKB Chain Holders"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:190
-#: src/components/charts/transactions-count-chart.tsx:186
+#: src/components/charts/daily-transactions-count-chart.tsx:193
+#: src/components/charts/transactions-count-chart.tsx:193
 msgid "CKB Chain Transactions"
 msgstr "CKB Chain Transactions"
 
@@ -254,7 +254,7 @@ msgstr "CKB Chain Transactions"
 msgid "CKB Txn"
 msgstr "CKB Txn"
 
-#: src/components/coin-list.tsx:46
+#: src/components/coin-list.tsx:84
 msgid "Coin"
 msgstr "Coin"
 
@@ -263,10 +263,10 @@ msgstr "Coin"
 msgid "Coinbase"
 msgstr "Coinbase"
 
-#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:66
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:29
 #: src/app/[lang]/assets/layout.tsx:25
-#: src/components/charts/assets-count-chart.tsx:113
-#: src/components/charts/assets-count-chart.tsx:167
+#: src/components/charts/assets-count-chart.tsx:124
+#: src/components/charts/assets-count-chart.tsx:179
 msgid "Coins"
 msgstr "Coins"
 
@@ -293,11 +293,11 @@ msgstr "Confirmations"
 msgid "Confirmed"
 msgstr "Confirmed"
 
-#: src/components/assets-list/coins-list.tsx:39
+#: src/components/assets-list/coins-list.tsx:44
 msgid "Contract"
 msgstr "Contract"
 
-#: src/components/coin-info.tsx:57
+#: src/components/coin-info.tsx:73
 msgid "Contract:"
 msgstr "Contract:"
 
@@ -311,18 +311,18 @@ msgstr "Copied"
 msgid "Copy"
 msgstr "Copy"
 
-#: src/components/charts/assets-count-chart.tsx:77
+#: src/components/charts/assets-count-chart.tsx:87
 #: src/components/charts/daily-transactions-count-chart.tsx:77
-#: src/components/charts/holders-count-chart.tsx:77
-#: src/components/charts/transactions-count-chart.tsx:77
+#: src/components/charts/holders-count-chart.tsx:83
+#: src/components/charts/transactions-count-chart.tsx:83
 msgid "Count"
 msgstr "Count"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:165
+#: src/components/charts/daily-transactions-count-chart.tsx:168
 msgid "Daily Average"
 msgstr "Daily Average"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:172
+#: src/components/charts/daily-transactions-count-chart.tsx:175
 msgid "Daily RGB++ Transactions"
 msgstr "Daily RGB++ Transactions"
 
@@ -335,8 +335,8 @@ msgid "Daily transactions related to RGB++ assets"
 msgstr "Daily transactions related to RGB++ assets"
 
 #: src/components/coin-list.tsx:174
-msgid "Deploy Time"
-msgstr "Deploy Time"
+#~ msgid "Deploy Time"
+#~ msgstr "Deploy Time"
 
 #: src/components/btc/btc-utxo-tables.tsx:167
 #: src/components/btc/btc-utxo-tables.tsx:247
@@ -344,19 +344,19 @@ msgstr "Deploy Time"
 msgid "DOB"
 msgstr "DOB"
 
-#: src/components/charts/assets-count-chart.tsx:123
-#: src/components/charts/assets-count-chart.tsx:174
+#: src/components/charts/assets-count-chart.tsx:135
+#: src/components/charts/assets-count-chart.tsx:186
 msgid "DOB Collections"
 msgstr "DOB Collections"
 
-#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:69
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:32
 #: src/app/[lang]/assets/layout.tsx:29
 msgid "DOBs"
 msgstr "DOBs"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:128
-#: src/components/charts/holders-count-chart.tsx:135
-#: src/components/charts/transactions-count-chart.tsx:135
+#: src/components/charts/daily-transactions-count-chart.tsx:131
+#: src/components/charts/holders-count-chart.tsx:142
+#: src/components/charts/transactions-count-chart.tsx:142
 msgid "DOGE chain"
 msgstr "DOGE chain"
 
@@ -364,12 +364,12 @@ msgstr "DOGE chain"
 msgid "Doge Chain Holders"
 msgstr "Doge Chain Holders"
 
-#: src/components/charts/holders-count-chart.tsx:193
+#: src/components/charts/holders-count-chart.tsx:200
 msgid "DOGE Chain Holders"
 msgstr "DOGE Chain Holders"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:197
-#: src/components/charts/transactions-count-chart.tsx:193
+#: src/components/charts/daily-transactions-count-chart.tsx:200
+#: src/components/charts/transactions-count-chart.tsx:200
 msgid "DOGE Chain Transactions"
 msgstr "DOGE Chain Transactions"
 
@@ -415,8 +415,8 @@ msgid "High"
 msgstr "High"
 
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:22
-#: src/components/coin-list.tsx:49
-#: src/components/coin-list.tsx:146
+#: src/components/coin-list.tsx:87
+#: src/components/coin-list.tsx:193
 msgid "Holders"
 msgstr "Holders"
 
@@ -483,9 +483,9 @@ msgstr "Low"
 msgid "Mainnet"
 msgstr "Mainnet"
 
-#: src/components/coin-info.tsx:81
-#: src/components/coin-list.tsx:67
-#: src/components/coin-list.tsx:170
+#: src/components/coin-info.tsx:97
+#: src/components/coin-list.tsx:105
+#: src/components/coin-list.tsx:217
 msgid "Market Cap"
 msgstr "Market Cap"
 
@@ -511,7 +511,7 @@ msgstr "Miner Reward"
 msgid "More Info"
 msgstr "More Info"
 
-#: src/components/assets-list/coins-list.tsx:30
+#: src/components/assets-list/coins-list.tsx:35
 msgid "Name"
 msgstr "Name"
 
@@ -563,9 +563,9 @@ msgstr "Overview"
 msgid "Position Ratio"
 msgstr "Position Ratio"
 
-#: src/components/coin-info.tsx:67
-#: src/components/coin-list.tsx:52
-#: src/components/coin-list.tsx:150
+#: src/components/coin-info.tsx:83
+#: src/components/coin-list.tsx:90
+#: src/components/coin-list.tsx:197
 msgid "Price"
 msgstr "Price"
 
@@ -686,9 +686,9 @@ msgstr "Something wrong. Error code: {0}"
 msgid "Sorry, the page you visited does not exist"
 msgstr "Sorry, the page you visited does not exist"
 
-#: src/components/charts/assets-count-chart.tsx:152
-#: src/components/charts/holders-count-chart.tsx:164
-#: src/components/charts/transactions-count-chart.tsx:164
+#: src/components/charts/assets-count-chart.tsx:164
+#: src/components/charts/holders-count-chart.tsx:171
+#: src/components/charts/transactions-count-chart.tsx:171
 msgid "Statistic"
 msgstr "Statistic"
 
@@ -719,11 +719,11 @@ msgstr "Time"
 
 #: src/components/charts/holders-count-chart.tsx:111
 #: src/components/charts/transactions-count-chart.tsx:111
-msgid "Total"
-msgstr "Total"
+#~ msgid "Total"
+#~ msgstr "Total"
 
 #: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:107
-#: src/app/[lang]/assets/coins/page.tsx:87
+#: src/app/[lang]/assets/coins/page.tsx:99
 msgid "Total {0} Items"
 msgstr "Total {0} Items"
 
@@ -748,21 +748,21 @@ msgstr "Total Number of Assets"
 msgid "Total Occupied CKB"
 msgstr "Total Occupied CKB"
 
-#: src/components/charts/assets-count-chart.tsx:158
+#: src/components/charts/assets-count-chart.tsx:170
 msgid "Total RGB++ Assets"
 msgstr "Total RGB++ Assets"
 
-#: src/components/charts/holders-count-chart.tsx:170
+#: src/components/charts/holders-count-chart.tsx:177
 msgid "Total RGB++ Holders"
 msgstr "Total RGB++ Holders"
 
-#: src/components/charts/transactions-count-chart.tsx:170
+#: src/components/charts/transactions-count-chart.tsx:177
 msgid "Total RGB++ Transactions"
 msgstr "Total RGB++ Transactions"
 
-#: src/components/coin-info.tsx:105
-#: src/components/coin-list.tsx:64
-#: src/components/coin-list.tsx:166
+#: src/components/coin-info.tsx:127
+#: src/components/coin-list.tsx:102
+#: src/components/coin-list.tsx:213
 msgid "Total Supply"
 msgstr "Total Supply"
 
@@ -779,7 +779,7 @@ msgstr "Total Transactions of RGB++ Assets"
 msgid "Total:"
 msgstr "Total:"
 
-#: src/app/[lang]/assets/coins/page.tsx:81
+#: src/app/[lang]/assets/coins/page.tsx:92
 msgid "Total: {0} Coins"
 msgstr "Total: {0} Coins"
 
@@ -819,8 +819,8 @@ msgstr "Txn Fee:<0>{0} </0>{feeUnit}"
 msgid "Txns"
 msgstr "Txns"
 
-#: src/components/coin-list.tsx:55
-#: src/components/coin-list.tsx:154
+#: src/components/coin-list.tsx:93
+#: src/components/coin-list.tsx:201
 #: src/components/network-cards.tsx:93
 #: src/components/network-cards.tsx:126
 msgid "Txns(24H)"
@@ -839,7 +839,7 @@ msgstr "Unconfirmed"
 msgid "UTXO Stack"
 msgstr "UTXO Stack"
 
-#: src/components/assets-list/coins-list.tsx:36
+#: src/components/assets-list/coins-list.tsx:41
 msgid "Value"
 msgstr "Value"
 
@@ -860,8 +860,8 @@ msgstr "View Details in CKB"
 msgid "View Details in Mempool"
 msgstr "View Details in Mempool"
 
-#: src/components/coin-list.tsx:58
-#: src/components/coin-list.tsx:158
+#: src/components/coin-list.tsx:96
+#: src/components/coin-list.tsx:205
 msgid "Volume(24H)"
 msgstr "Volume(24H)"
 

@@ -14,8 +14,8 @@ export default function Page() {
   const params = useParams()
 
   const { holders } = useAssetHolders(params.typeHash as string)
-  const { assetQuote } = useAssetInfo(params.typeHash as string)
-  console.log(assetQuote)
+  const {assetInfo, assetQuote } = useAssetInfo(params.typeHash as string)
+  console.log(assetQuote,assetInfo)
 
   const holderSummary = {
     totalHolders: assetQuote?.holderCount?.reduce((sum, item) => sum + item.count, 0) || 0,
@@ -56,7 +56,7 @@ export default function Page() {
           </HStack>
         </Flex>
         <Box p="0px">
-          {holders ? (
+          {(holders&&assetInfo) ? (
             <CoinHolderList
               holders={holders.map((holder, index) => ({
                 address: holder.address,
@@ -66,6 +66,7 @@ export default function Page() {
                 rank: index + 1,
                 amount: holder.amount,
               }))}
+              decimals={assetInfo.info.decimals||8}
               totalSupply={totalSupply}
             />
           ) : null}

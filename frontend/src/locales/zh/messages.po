@@ -41,7 +41,7 @@ msgstr "{0} 已确认"
 msgid "{0} DOB"
 msgstr "{0} DOB"
 
-#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:52
+#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:54
 msgid "{0} Holders"
 msgstr "{0} 个持有人"
 
@@ -94,7 +94,7 @@ msgstr "<0>探索<1><2/></1></0><3>生态系统</3>"
 msgid "24H Transactions"
 msgstr "24小时交易量"
 
-#: src/components/coin-info.tsx:89
+#: src/components/coin-info.tsx:111
 msgid "24H Volume"
 msgstr "24小时成交额"
 
@@ -103,7 +103,7 @@ msgstr "24小时成交额"
 msgid "Address"
 msgstr "地址"
 
-#: src/components/assets-list/coins-list.tsx:33
+#: src/components/assets-list/coins-list.tsx:38
 #: src/components/holder-list/coin-holder-list.tsx:123
 #: src/components/holder-list/coin-holder-list.tsx:149
 #: src/components/latest-tx-list/rgb-tx-list.tsx:101
@@ -166,19 +166,19 @@ msgstr "BTC"
 msgid "BTC Balance"
 msgstr "BTC 余额"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:120
-#: src/components/charts/holders-count-chart.tsx:127
-#: src/components/charts/transactions-count-chart.tsx:127
+#: src/components/charts/daily-transactions-count-chart.tsx:122
+#: src/components/charts/holders-count-chart.tsx:131
+#: src/components/charts/transactions-count-chart.tsx:131
 msgid "BTC chain"
 msgstr "BTC 链"
 
-#: src/components/charts/holders-count-chart.tsx:179
+#: src/components/charts/holders-count-chart.tsx:186
 #: src/components/holder-list/holder-summary.tsx:26
 msgid "BTC Chain Holders"
 msgstr "BTC 链持有人"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:183
-#: src/components/charts/transactions-count-chart.tsx:179
+#: src/components/charts/daily-transactions-count-chart.tsx:186
+#: src/components/charts/transactions-count-chart.tsx:186
 msgid "BTC Chain Transactions"
 msgstr "BTC 链交易笔数"
 
@@ -211,9 +211,9 @@ msgstr "图表详情"
 msgid "Charts"
 msgstr "图表"
 
-#: src/components/coin-info.tsx:97
-#: src/components/coin-list.tsx:61
-#: src/components/coin-list.tsx:162
+#: src/components/coin-info.tsx:119
+#: src/components/coin-list.tsx:99
+#: src/components/coin-list.tsx:209
 msgid "Circulating Supply"
 msgstr "流通量"
 
@@ -234,19 +234,19 @@ msgstr "CKB"
 msgid "CKB Balance"
 msgstr "CKB 余额"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:112
-#: src/components/charts/holders-count-chart.tsx:119
-#: src/components/charts/transactions-count-chart.tsx:119
+#: src/components/charts/daily-transactions-count-chart.tsx:113
+#: src/components/charts/holders-count-chart.tsx:120
+#: src/components/charts/transactions-count-chart.tsx:120
 msgid "CKB chain"
 msgstr "CKB 链"
 
-#: src/components/charts/holders-count-chart.tsx:186
+#: src/components/charts/holders-count-chart.tsx:193
 #: src/components/holder-list/holder-summary.tsx:31
 msgid "CKB Chain Holders"
 msgstr "CKB 链持有人"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:190
-#: src/components/charts/transactions-count-chart.tsx:186
+#: src/components/charts/daily-transactions-count-chart.tsx:193
+#: src/components/charts/transactions-count-chart.tsx:193
 msgid "CKB Chain Transactions"
 msgstr "CKB 链交易笔数"
 
@@ -254,7 +254,7 @@ msgstr "CKB 链交易笔数"
 msgid "CKB Txn"
 msgstr "CKB 交易"
 
-#: src/components/coin-list.tsx:46
+#: src/components/coin-list.tsx:84
 msgid "Coin"
 msgstr "代币"
 
@@ -263,10 +263,10 @@ msgstr "代币"
 msgid "Coinbase"
 msgstr "挖矿产出"
 
-#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:66
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:29
 #: src/app/[lang]/assets/layout.tsx:25
-#: src/components/charts/assets-count-chart.tsx:113
-#: src/components/charts/assets-count-chart.tsx:167
+#: src/components/charts/assets-count-chart.tsx:124
+#: src/components/charts/assets-count-chart.tsx:179
 msgid "Coins"
 msgstr "代币"
 
@@ -293,11 +293,11 @@ msgstr "确认数"
 msgid "Confirmed"
 msgstr "已确认"
 
-#: src/components/assets-list/coins-list.tsx:39
+#: src/components/assets-list/coins-list.tsx:44
 msgid "Contract"
 msgstr "合约地址"
 
-#: src/components/coin-info.tsx:57
+#: src/components/coin-info.tsx:73
 msgid "Contract:"
 msgstr "合约地址："
 
@@ -311,18 +311,18 @@ msgstr "已复制"
 msgid "Copy"
 msgstr "复制"
 
-#: src/components/charts/assets-count-chart.tsx:77
+#: src/components/charts/assets-count-chart.tsx:87
 #: src/components/charts/daily-transactions-count-chart.tsx:77
-#: src/components/charts/holders-count-chart.tsx:77
-#: src/components/charts/transactions-count-chart.tsx:77
+#: src/components/charts/holders-count-chart.tsx:83
+#: src/components/charts/transactions-count-chart.tsx:83
 msgid "Count"
 msgstr "数量"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:165
+#: src/components/charts/daily-transactions-count-chart.tsx:168
 msgid "Daily Average"
 msgstr "日均概览"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:172
+#: src/components/charts/daily-transactions-count-chart.tsx:175
 msgid "Daily RGB++ Transactions"
 msgstr "RGB++ 每日交易笔数"
 
@@ -335,8 +335,8 @@ msgid "Daily transactions related to RGB++ assets"
 msgstr "RGB++ 相关资产每日交易笔数"
 
 #: src/components/coin-list.tsx:174
-msgid "Deploy Time"
-msgstr "部署时间"
+#~ msgid "Deploy Time"
+#~ msgstr "部署时间"
 
 #: src/components/btc/btc-utxo-tables.tsx:167
 #: src/components/btc/btc-utxo-tables.tsx:247
@@ -344,19 +344,19 @@ msgstr "部署时间"
 msgid "DOB"
 msgstr "DOB"
 
-#: src/components/charts/assets-count-chart.tsx:123
-#: src/components/charts/assets-count-chart.tsx:174
+#: src/components/charts/assets-count-chart.tsx:135
+#: src/components/charts/assets-count-chart.tsx:186
 msgid "DOB Collections"
 msgstr "DOB 合集"
 
-#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:69
+#: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:32
 #: src/app/[lang]/assets/layout.tsx:29
 msgid "DOBs"
 msgstr "DOBs"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:128
-#: src/components/charts/holders-count-chart.tsx:135
-#: src/components/charts/transactions-count-chart.tsx:135
+#: src/components/charts/daily-transactions-count-chart.tsx:131
+#: src/components/charts/holders-count-chart.tsx:142
+#: src/components/charts/transactions-count-chart.tsx:142
 msgid "DOGE chain"
 msgstr "DOGE 链"
 
@@ -364,12 +364,12 @@ msgstr "DOGE 链"
 msgid "Doge Chain Holders"
 msgstr "Doge 链持有人"
 
-#: src/components/charts/holders-count-chart.tsx:193
+#: src/components/charts/holders-count-chart.tsx:200
 msgid "DOGE Chain Holders"
 msgstr "DOGE 链持有人"
 
-#: src/components/charts/daily-transactions-count-chart.tsx:197
-#: src/components/charts/transactions-count-chart.tsx:193
+#: src/components/charts/daily-transactions-count-chart.tsx:200
+#: src/components/charts/transactions-count-chart.tsx:200
 msgid "DOGE Chain Transactions"
 msgstr "DOGE 链交易笔数"
 
@@ -415,8 +415,8 @@ msgid "High"
 msgstr "高优先级"
 
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:22
-#: src/components/coin-list.tsx:49
-#: src/components/coin-list.tsx:146
+#: src/components/coin-list.tsx:87
+#: src/components/coin-list.tsx:193
 msgid "Holders"
 msgstr "持有者"
 
@@ -483,9 +483,9 @@ msgstr "低优先级"
 msgid "Mainnet"
 msgstr "主网"
 
-#: src/components/coin-info.tsx:81
-#: src/components/coin-list.tsx:67
-#: src/components/coin-list.tsx:170
+#: src/components/coin-info.tsx:97
+#: src/components/coin-list.tsx:105
+#: src/components/coin-list.tsx:217
 msgid "Market Cap"
 msgstr "市值"
 
@@ -511,7 +511,7 @@ msgstr "矿工奖励"
 msgid "More Info"
 msgstr "更多信息"
 
-#: src/components/assets-list/coins-list.tsx:30
+#: src/components/assets-list/coins-list.tsx:35
 msgid "Name"
 msgstr "代币"
 
@@ -563,9 +563,9 @@ msgstr "概览"
 msgid "Position Ratio"
 msgstr "持有比例"
 
-#: src/components/coin-info.tsx:67
-#: src/components/coin-list.tsx:52
-#: src/components/coin-list.tsx:150
+#: src/components/coin-info.tsx:83
+#: src/components/coin-list.tsx:90
+#: src/components/coin-list.tsx:197
 msgid "Price"
 msgstr "价格"
 
@@ -686,9 +686,9 @@ msgstr "出错了。错误代码：{0}"
 msgid "Sorry, the page you visited does not exist"
 msgstr "抱歉，您访问的页面不存在"
 
-#: src/components/charts/assets-count-chart.tsx:152
-#: src/components/charts/holders-count-chart.tsx:164
-#: src/components/charts/transactions-count-chart.tsx:164
+#: src/components/charts/assets-count-chart.tsx:164
+#: src/components/charts/holders-count-chart.tsx:171
+#: src/components/charts/transactions-count-chart.tsx:171
 msgid "Statistic"
 msgstr "汇总信息"
 
@@ -719,11 +719,11 @@ msgstr "时间"
 
 #: src/components/charts/holders-count-chart.tsx:111
 #: src/components/charts/transactions-count-chart.tsx:111
-msgid "Total"
-msgstr "总计"
+#~ msgid "Total"
+#~ msgstr "总计"
 
 #: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:107
-#: src/app/[lang]/assets/coins/page.tsx:87
+#: src/app/[lang]/assets/coins/page.tsx:99
 msgid "Total {0} Items"
 msgstr "总计 {0} 项"
 
@@ -748,21 +748,21 @@ msgstr "总资产数"
 msgid "Total Occupied CKB"
 msgstr "累计占用 CKB"
 
-#: src/components/charts/assets-count-chart.tsx:158
+#: src/components/charts/assets-count-chart.tsx:170
 msgid "Total RGB++ Assets"
 msgstr "RGB++ 资产总数"
 
-#: src/components/charts/holders-count-chart.tsx:170
+#: src/components/charts/holders-count-chart.tsx:177
 msgid "Total RGB++ Holders"
 msgstr "RGB++ 持有人总数"
 
-#: src/components/charts/transactions-count-chart.tsx:170
+#: src/components/charts/transactions-count-chart.tsx:177
 msgid "Total RGB++ Transactions"
 msgstr "RGB++ 交易总数"
 
-#: src/components/coin-info.tsx:105
-#: src/components/coin-list.tsx:64
-#: src/components/coin-list.tsx:166
+#: src/components/coin-info.tsx:127
+#: src/components/coin-list.tsx:102
+#: src/components/coin-list.tsx:213
 msgid "Total Supply"
 msgstr "发行量"
 
@@ -779,7 +779,7 @@ msgstr "RGB++ 累计交易笔数"
 msgid "Total:"
 msgstr "共计："
 
-#: src/app/[lang]/assets/coins/page.tsx:81
+#: src/app/[lang]/assets/coins/page.tsx:92
 msgid "Total: {0} Coins"
 msgstr "共计：{0} 个代币"
 
@@ -819,8 +819,8 @@ msgstr "交易费:<0>{0} </0>{feeUnit}"
 msgid "Txns"
 msgstr "交易"
 
-#: src/components/coin-list.tsx:55
-#: src/components/coin-list.tsx:154
+#: src/components/coin-list.tsx:93
+#: src/components/coin-list.tsx:201
 #: src/components/network-cards.tsx:93
 #: src/components/network-cards.tsx:126
 msgid "Txns(24H)"
@@ -839,7 +839,7 @@ msgstr "未确认"
 msgid "UTXO Stack"
 msgstr "UTXO Stack"
 
-#: src/components/assets-list/coins-list.tsx:36
+#: src/components/assets-list/coins-list.tsx:41
 msgid "Value"
 msgstr "价值"
 
@@ -860,8 +860,8 @@ msgstr "在 CKB 浏览器中查看详情"
 msgid "View Details in Mempool"
 msgstr "在 Mempool 中查看详情"
 
-#: src/components/coin-list.tsx:58
-#: src/components/coin-list.tsx:158
+#: src/components/coin-list.tsx:96
+#: src/components/coin-list.tsx:205
 msgid "Volume(24H)"
 msgstr "24小时成交额"
 

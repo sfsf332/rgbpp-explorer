@@ -17,7 +17,7 @@ import { QueryKey } from '@/constants/query-key'
 import { graphql } from '@/gql'
 import { graphQLClient } from '@/lib/graphql'
 import { formatNumber } from '@/lib/string/format-number'
-import { apiFetcher } from '@/services/fecthcer'
+// import { apiFetcher } from '@/services/fecthcer'
 
 function FieldGroup({ fields }: { fields: Array<{ label: ReactNode; value: ReactNode }> }) {
   return (
