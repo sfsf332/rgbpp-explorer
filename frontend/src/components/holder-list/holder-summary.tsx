@@ -31,12 +31,13 @@ export function HolderSummarySection({ summary }: Props) {
       label: <Trans>CKB Chain Holders</Trans>,
       value: summary.chainHolders.ckb,
       icon: <CkbIcon />
-    },
-    {
-      label: <Trans>Doge Chain Holders</Trans>,
-      value: summary.chainHolders.doge,
-      icon: <DogeIcon />
     }
+    // ,
+    // {
+    //   label: <Trans>Doge Chain Holders</Trans>,
+    //   value: summary.chainHolders.doge,
+    //   icon: <DogeIcon />
+    // }
   ]
 
   return (
