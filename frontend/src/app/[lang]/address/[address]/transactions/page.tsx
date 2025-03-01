@@ -8,6 +8,7 @@ import { isValidCkbAddress } from '@/lib/ckb/is-valid-ckb-address'
 export const maxDuration = 30
 
 export default async function Page({ params: { address } }: { params: { address: string; lang: string } }) {
+  
   if (isValidBTCAddress(address)) {
     return <BtcTxList address={address} />
   }

@@ -9,6 +9,7 @@ import { QueryKey } from '@/constants/query-key'
 import { graphql } from '@/gql'
 import { BitcoinTransaction, CkbTransaction } from '@/gql/graphql'
 import { graphQLClient } from '@/lib/graphql'
+import { useBtcTransaction } from '@/hooks/useRgbppData'
 
 const btcTransactionQuery = graphql(`
   query BtcTransactionByTxId($txid: String!) {
@@ -135,19 +136,8 @@ export function BtcTransactionInViewQuery({ txid, children, fallback }: Props) {
       if (view) setEnabled(true)
     },
   })
-  const { data, isLoading, error } = useQuery({
-    queryKey: [QueryKey.BtcTransactionCardWithQueryInAddress, txid],
-    async queryFn() {
-      const { btcTransaction } = await graphQLClient.request(btcTransactionQuery, {
-        txid,
-      })
-      return btcTransaction
-    },
-    enabled,
-    refetchOnReconnect: false,
-    refetchOnWindowFocus: false,
-    retryOnMount: false,
-  })
+
+  const { btcTransaction: data, isLoading, error } = useBtcTransaction(txid)
 
   const { data: ckbTx } = useQuery({
     queryKey: [QueryKey.BtcTransactionCardWithQueryInAddress, txid, 'rgbpp'],
@@ -163,7 +153,9 @@ export function BtcTransactionInViewQuery({ txid, children, fallback }: Props) {
 
   return (
     <Skeleton ref={ref} isLoaded={!isLoading} minH={!data ? '480px' : 'auto'} w="100%">
-      {data ? children(data as BitcoinTransaction, ckbTx as Pick<CkbTransaction, 'inputs' | 'outputs'>) : null}
+      {data
+        ? children(data as unknown as BitcoinTransaction, ckbTx as Pick<CkbTransaction, 'inputs' | 'outputs'>)
+        : null}
     </Skeleton>
   )
 }

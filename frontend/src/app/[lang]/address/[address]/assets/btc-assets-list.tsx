@@ -5,11 +5,11 @@ import { VStack } from 'styled-system/jsx'
 import { CoinListUI } from '@/components/assets-list/coins-list'
 import { ComingSoon } from '@/components/coming-soon'
 import { Tabs } from '@/components/ui/tabs'
-import { useAddressAsset } from '@/hooks/useRgbppData'
+import { useAddressAsset, useBtcInfo } from '@/hooks/useRgbppData'
 
 export function BtcAssetsList({ address }: { address: string }) {
      const coinList =  useAddressAsset(address)
-   
+
       return (
         <>
           <VStack

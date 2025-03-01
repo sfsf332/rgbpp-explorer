@@ -8,6 +8,7 @@ import { BtcUtxoTables } from '@/components/btc/btc-utxo-tables'
 import { TransactionHeaderInAddress } from '@/components/transaction-header-in-address'
 import { UtxoOrCellFooter } from '@/components/utxo-or-cell-footer'
 import { BitcoinInput, BitcoinOutput, BitcoinTransaction, CkbTransaction } from '@/gql/graphql'
+import { useBtcTransaction } from '@/hooks/useRgbppData'
 
 export const BtcTransactionCardInAddress = forwardRef<
   HTMLDivElement,
@@ -17,6 +18,7 @@ export const BtcTransactionCardInAddress = forwardRef<
     address: string
   }
 >(function BtcTransactionCardInAddress({ tx, address, ckbCell }, ref) {
+ 
   return (
     <VStack key={tx.txid} w="100%" gap={0} bg="bg.card" rounded="8px" ref={ref}>
       <TransactionHeaderInAddress time={tx.transactionTime} txid={tx.txid} btcTime />

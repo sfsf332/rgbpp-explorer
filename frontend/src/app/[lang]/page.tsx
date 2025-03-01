@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 }*/
 
 export default function Home({ params: { lang } }: { params: { lang: string } }) {
-  
+
   // const i18n = getI18nInstance(lang)
   const { i18n } = useLingui()
 

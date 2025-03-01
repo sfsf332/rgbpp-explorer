@@ -107,18 +107,18 @@ function UtxoInput({
       )
     if (!vin.prevout) return null
     const formattedAddress = (
-      <IfBreakpoint breakpoint="sm" fallback={truncateMiddle(vin.prevout.address?.address ?? '', 6, 6)}>
-        {truncateMiddle(vin.prevout.address?.address ?? '', 10, 10)}
+      <IfBreakpoint breakpoint="sm" fallback={truncateMiddle(vin.prevout.address ?? '', 6, 6)}>
+        {truncateMiddle(vin.prevout.address ?? '', 10, 10)}
       </IfBreakpoint>
     )
     return (
-      <Copier onlyIcon value={vin.prevout.address?.address}>
-        {currentAddress === vin.prevout.address?.address ? (
+      <Copier onlyIcon value={vin.prevout.address}>
+        {currentAddress === vin.prevout.address? (
           <Text as="span" color="text.primary">
             {formattedAddress}
           </Text>
         ) : (
-          <Link href={`/address/${vin.prevout.address?.address}`} color="brand" fontSize="14px">
+          <Link href={`/address/${vin.prevout.address}`} color="brand" fontSize="14px">
             {formattedAddress}
           </Link>
         )}
@@ -186,8 +186,8 @@ function UtxoOutput({
   ckbOutputs?: CkbTransaction['outputs']
 }) {
   const formattedAddress = (
-    <IfBreakpoint breakpoint="sm" fallback={truncateMiddle(vout.address?.address ?? '', 6, 6)}>
-      {truncateMiddle(vout.address?.address ?? '', 10, 10)}
+    <IfBreakpoint breakpoint="sm" fallback={truncateMiddle(vout.address ?? '', 6, 6)}>
+      {truncateMiddle(vout.address ?? '', 10, 10)}
     </IfBreakpoint>
   )
   return (
@@ -210,13 +210,13 @@ function UtxoOutput({
         {vout.scriptpubkeyType === ScriptpubkeyType.OpReturn ? (
           <Trans>OP_RETURN</Trans>
         ) : (
-          <Copier onlyIcon value={vout.address?.address}>
-            {currentAddress === vout.address?.address ? (
+          <Copier onlyIcon value={vout.address}>
+            {currentAddress === vout.address ? (
               <Text as="span" color="text.primary">
                 {formattedAddress}
               </Text>
             ) : (
-              <Link href={`/address/${vout.address?.address}`} color="brand" fontSize="14px">
+              <Link href={`/address/${vout.address}`} color="brand" fontSize="14px">
                 {formattedAddress}
               </Link>
             )}

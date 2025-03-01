@@ -109,3 +109,21 @@ export function useAddressAsset(address: string) {
     
   }
 }
+export function useBtcTransaction(address: string) {
+  
+  
+  const { data: btcTransaction,isLoading, error} = trpc.temp.btc.transaction.useQuery(address)
+  return {
+    btcTransaction,
+    isLoading,error
+    
+  }
+}
+export function useBtcInfo(address: string) {
+
+  const { data: btcInfo } = trpc.temp.btc.address.useQuery(address)
+  return {
+    btcInfo
+    
+  }
+}

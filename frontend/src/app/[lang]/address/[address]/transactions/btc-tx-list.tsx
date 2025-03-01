@@ -12,6 +12,7 @@ import { NoData } from '@/components/no-data'
 import { QueryKey } from '@/constants/query-key'
 import { graphql } from '@/gql'
 import { graphQLClient } from '@/lib/graphql'
+import { useBtcInfo, useBtcTransaction } from '@/hooks/useRgbppData'
 
 const btcAddressTxsQuery = graphql(`
   query BtcTransactionByAddress($address: String!, $afterTxid: String) {
@@ -24,6 +25,7 @@ const btcAddressTxsQuery = graphql(`
 `)
 
 export function BtcTxList({ address }: { address: string }) {
+ 
   const { data, isLoading, ...query } = useInfiniteQuery({
     queryKey: [QueryKey.BtcTransactionCardInAddressList, address],
     async queryFn({ pageParam }) {
