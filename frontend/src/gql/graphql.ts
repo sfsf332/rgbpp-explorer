@@ -96,7 +96,7 @@ export type BitcoinInput = {
 /** Bitcoin Output */
 export type BitcoinOutput = {
   __typename?: 'BitcoinOutput';
-  address?:  Scalars["String"]["output"]
+  address?: Maybe<BitcoinAddress>;
   scriptpubkey: Scalars['String']['output'];
   scriptpubkeyAddress?: Maybe<Scalars['String']['output']>;
   scriptpubkeyAsm: Scalars['String']['output'];

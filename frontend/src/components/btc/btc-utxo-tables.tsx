@@ -107,12 +107,12 @@ function UtxoInput({
       )
     if (!vin.prevout) return null
     const formattedAddress = (
-      <IfBreakpoint breakpoint="sm" fallback={truncateMiddle(vin.prevout.address ?? '', 6, 6)}>
-        {truncateMiddle(vin.prevout.address ?? '', 10, 10)}
+      <IfBreakpoint breakpoint="sm" fallback={truncateMiddle(String(vin.prevout.address ?? ''), 6, 6)}>
+        {truncateMiddle(String(vin.prevout.address ?? ''), 10, 10)}
       </IfBreakpoint>
     )
     return (
-      <Copier onlyIcon value={vin.prevout.address}>
+      <Copier onlyIcon value={vin.prevout.address ? String(vin.prevout.address) : undefined}>
         {currentAddress === vin.prevout.address? (
           <Text as="span" color="text.primary">
             {formattedAddress}
@@ -186,8 +186,8 @@ function UtxoOutput({
   ckbOutputs?: CkbTransaction['outputs']
 }) {
   const formattedAddress = (
-    <IfBreakpoint breakpoint="sm" fallback={truncateMiddle(vout.address ?? '', 6, 6)}>
-      {truncateMiddle(vout.address ?? '', 10, 10)}
+    <IfBreakpoint breakpoint="sm" fallback={truncateMiddle(String(vout.address ?? ''), 6, 6)}>
+      {truncateMiddle(String(vout.address ?? ''), 10, 10)}
     </IfBreakpoint>
   )
   return (
@@ -210,7 +210,7 @@ function UtxoOutput({
         {vout.scriptpubkeyType === ScriptpubkeyType.OpReturn ? (
           <Trans>OP_RETURN</Trans>
         ) : (
-          <Copier onlyIcon value={vout.address}>
+          <Copier onlyIcon value={vout.address ? String(vout.address) : undefined}>
             {currentAddress === vout.address ? (
               <Text as="span" color="text.primary">
                 {formattedAddress}

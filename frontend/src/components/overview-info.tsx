@@ -83,7 +83,9 @@ export function OverviewInfoItem({
           {label}
         </Text>
       ) : (
-        label
+        <Text color="text.third" fontSize="14px" lineHeight="24px" whiteSpace="nowrap">
+        {label}
+        </Text>
       )}
       <Box flex={1} textAlign={{ base: 'right', md: 'center' }} {...valueProps}>
         {unsupported ? (

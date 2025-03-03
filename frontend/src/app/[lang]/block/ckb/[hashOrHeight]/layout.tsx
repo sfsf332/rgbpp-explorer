@@ -10,6 +10,7 @@ import { LinkTabs } from '@/components/link-tabs'
 import { graphql } from '@/gql'
 import { CkbBlock } from '@/gql/graphql'
 import { graphQLClient } from '@/lib/graphql'
+import { apiFetcher } from '@/services/fecthcer'
 
 const query = graphql(`
   query CkbBlock($hashOrHeight: String!) {
@@ -38,7 +39,10 @@ export default async function Layout({
 }: PropsWithChildren<{
   params: { hashOrHeight: string; lang: string }
 }>) {
-  const data = await graphQLClient.request(query, { hashOrHeight })
+  // const data = await graphQLClient.request(query, { hashOrHeight })
+  console.log(hashOrHeight)
+  const data = await apiFetcher.fetchCkbBlock(hashOrHeight)
+  console.log(data)
   if (!data?.ckbBlock) notFound()
   const i18n = getI18nInstance(lang)
 
@@ -47,6 +51,7 @@ export default async function Layout({
       <BlockHeader
         i18n={i18n}
         id={data.ckbBlock.hash}
+        
         height={data.ckbBlock.number}
         confirmations={data.ckbBlock.confirmations}
       />

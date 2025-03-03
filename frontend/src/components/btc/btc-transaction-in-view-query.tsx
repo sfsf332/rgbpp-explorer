@@ -9,7 +9,7 @@ import { QueryKey } from '@/constants/query-key'
 import { graphql } from '@/gql'
 import { BitcoinTransaction, CkbTransaction } from '@/gql/graphql'
 import { graphQLClient } from '@/lib/graphql'
-import { useBtcTransaction } from '@/hooks/useRgbppData'
+import { useBtcAddressTransaction } from '@/hooks/useRgbppData'
 
 const btcTransactionQuery = graphql(`
   query BtcTransactionByTxId($txid: String!) {
@@ -137,8 +137,8 @@ export function BtcTransactionInViewQuery({ txid, children, fallback }: Props) {
     },
   })
 
-  const { btcTransaction: data, isLoading, error } = useBtcTransaction(txid)
-
+  const { btcTransaction: data, isLoading, error } = useBtcAddressTransaction(txid)
+  console.log(data)
   const { data: ckbTx } = useQuery({
     queryKey: [QueryKey.BtcTransactionCardWithQueryInAddress, txid, 'rgbpp'],
     async queryFn() {

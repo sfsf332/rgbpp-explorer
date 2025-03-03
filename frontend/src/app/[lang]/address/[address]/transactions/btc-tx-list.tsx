@@ -12,7 +12,6 @@ import { NoData } from '@/components/no-data'
 import { QueryKey } from '@/constants/query-key'
 import { graphql } from '@/gql'
 import { graphQLClient } from '@/lib/graphql'
-import { useBtcInfo, useBtcTransaction } from '@/hooks/useRgbppData'
 
 const btcAddressTxsQuery = graphql(`
   query BtcTransactionByAddress($address: String!, $afterTxid: String) {
@@ -45,7 +44,7 @@ export function BtcTxList({ address }: { address: string }) {
     initialData: undefined,
     initialPageParam: '',
   })
-
+  
   if (isLoading) {
     return <Loading my="80px" />
   }

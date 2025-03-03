@@ -27,7 +27,7 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
 
   // const i18n = getI18nInstance(lang)
   const { i18n } = useLingui()
-
+  
   return (
     <>
       <Center flexDir="column" w="100%" position="relative" px={{ base: '20px', xl: '30px' }}>

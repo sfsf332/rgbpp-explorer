@@ -1,5 +1,3 @@
-'use client'
-
 import { useEffect, useState } from 'react'
 
 import { trpc } from '@/configs/trpc'
@@ -26,13 +24,13 @@ export function useRgbppStatisticsOverview() {
     if (totalAssets?.length) {
       setAssetCount(totalAssets[totalAssets.length - 1].total)
     }
-  }, [totalAssets]);
+  }, [totalAssets])
 
   useEffect(() => {
     if (totalHolders?.length) {
       setHoldersCount(totalHolders[totalHolders.length - 1].total)
     }
-  }, [totalHolders]);
+  }, [totalHolders])
 
   return {
     marketCap: marketCap?.value || 0,
@@ -88,7 +86,7 @@ export function useCoinList(pageSize = 10, pageIndex = 0) {
 }
 export function useAssetHolders(assetId: string) {
   const { data: holders } = trpc.rgbpp.topHolders.useQuery({
-    assetId
+    assetId,
   })
 
   return { holders }
@@ -105,25 +103,23 @@ export function useAssetTransactions(assetId: string, pageSize = 10, pageIndex =
 export function useAddressAsset(address: string) {
   const { data: assetInfo } = trpc.rgbpp.addressHoldAssets.useQuery({ address })
   return {
-    assetInfo
-    
+    assetInfo,
   }
 }
-export function useBtcTransaction(address: string) {
-  
-  
-  const { data: btcTransaction,isLoading, error} = trpc.temp.btc.transaction.useQuery(address)
+
+export function useBtcAddressTransaction(txid: string) {
+  const { data: btcTransaction, isLoading, error } = trpc.temp.btc.transaction.useQuery(txid)
   return {
     btcTransaction,
-    isLoading,error
-    
+    isLoading,
+    error,
   }
 }
-export function useBtcInfo(address: string) {
-
-  const { data: btcInfo } = trpc.temp.btc.address.useQuery(address)
-  return {
-    btcInfo
-    
+export function useAddressInfoBTC(address: string){
+  const { data: btcInfo, isLoading, error } = trpc.temp.btc.address.useQuery( address)
+    return {
+      btcInfo,
+      isLoading,
+      error
+    }
   }
-}
