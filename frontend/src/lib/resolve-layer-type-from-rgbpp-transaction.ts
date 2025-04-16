@@ -1,7 +1,7 @@
 import { LeapDirection, RgbppTransaction } from '@/gql/graphql'
 
 export function resolveLayerTypeFromRGBppTransaction(
-  tx: Pick<RgbppTransaction, 'ckbTransaction' | 'btc' | 'leapDirection'>,
+  tx: Pick<RgbppTransaction, 'ckbTransaction' | 'btcTransaction' | 'leapDirection'>,
 ) {
   console.log(tx)
  
@@ -13,7 +13,7 @@ export function resolveLayerTypeFromRGBppTransaction(
     case LeapDirection.Within:
       return 'l1'
     default:
-      if (tx.btc?.txid && !tx.leapDirection) return 'l1'
+      if (tx.btcTransaction?.txid && !tx.leapDirection) return 'l1'
       return 'l2'
   }
 }

@@ -14,7 +14,7 @@ import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-f
 import { truncateMiddle } from '@/lib/string/truncate-middle'
 
 export function ExplorerTxListUI<
-  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'timestamp' | 'btcTxid' | 'leapDirection' | 'ckbTxHash'> & {
+  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'timestamp' | 'btcTransaction' | 'btcTxid' | 'leapDirection' | 'ckbTxHash'> & {
     txid: string,
     type: string
   },
