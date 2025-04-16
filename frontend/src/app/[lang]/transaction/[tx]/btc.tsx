@@ -22,7 +22,7 @@ export function BTCTransactionPage({
   return (
     <VStack w="100%" maxW="content" p={{ base: '20px', xl: '30px' }} gap={{ base: '20px', xl: '30px' }}>
       <TransactionHeader
-        type={resolveLayerTypeFromRGBppTransaction({ ckbTransaction, leapDirection, btc: btcTransaction })}
+        type={resolveLayerTypeFromRGBppTransaction({ ckbTransaction, leapDirection, btcTransaction })}
         txid={btcTransaction.txid}
         confirmations={btcTransaction.confirmations}
         i18n={i18n}
