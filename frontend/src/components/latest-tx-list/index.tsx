@@ -35,10 +35,11 @@ export function HomeRgbppTxnsOverview() {
     timestamp: tx.timestamp,
     ckbTransaction: tx.ckbTransaction,
     leapDirection: tx.leapDirection,
-    btc: tx.btc,
+    btcTransaction: tx.btcTransaction,
+    btcTxid: tx.btcTxid,
     ckbTxHash: tx.ckbTxHash,
     blockNumber: tx.blockNumber
-  })) as Array<Pick<RgbppTransaction, 'timestamp' | 'ckbTransaction' | 'leapDirection' | 'btc' | 'ckbTxHash' | 'blockNumber'>>;
+  })) as Array<Pick<RgbppTransaction, 'timestamp' | 'ckbTransaction' | 'leapDirection' | 'btcTransaction' | 'btcTxid' | 'ckbTxHash' | 'blockNumber'>>;
 
   return (
     <Box w="100%" bg="bg.card" p="24px" rounded="8px">

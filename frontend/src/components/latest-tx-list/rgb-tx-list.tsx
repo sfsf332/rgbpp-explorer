@@ -31,12 +31,8 @@ const filterType = [
 
 type RGBTransaction = Pick<
   RgbppTransaction,
-  'ckbTransaction' | 'blockNumber' | 'timestamp' | 'leapDirection' | 'ckbTxHash'
-> & {
-  btc?: {
-    txid: string
-  }
-}
+  'ckbTransaction' | 'blockNumber' | 'timestamp' | 'leapDirection' | 'ckbTxHash' | 'btcTransaction' | 'btcTxid'
+>
 
 export function LatestRGBTxnListUI({ txs }: { txs: RGBTransaction[] }) {
   const isMd = useBreakpoints('md')
@@ -195,8 +191,8 @@ export function LatestRGBTxnListUI({ txs }: { txs: RGBTransaction[] }) {
               </VStack>
               <HStack gap="8px">
                 {type === 'l1-l2' || type === 'l1' ? (
-                  tx.btc?.txid ? (
-                    <ViewBtcExplorer txid={tx.btc.txid} />
+                  tx.btcTransaction ? (
+                    <ViewBtcExplorer txid={tx.btcTxid} />
                   ) : null
                 ) : (
                   <ViewCkbExplorer txHash={tx.ckbTxHash} />
