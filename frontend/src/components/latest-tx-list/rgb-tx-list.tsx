@@ -13,7 +13,7 @@ import { Amount } from '@/components/latest-tx-list/amount'
 import { LayerType } from '@/components/layer-type'
 import { Table, Text } from '@/components/ui'
 import Link from '@/components/ui/link'
-import { ViewBtcExplorer } from '@/components/view-btc-explorer'
+import { ViewBtcExplorer } from '../view-btc-explorer'
 import { ViewCkbExplorer } from '@/components/view-ckb-explorer'
 import type { RgbppTransaction } from '@/gql/graphql'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
@@ -192,7 +192,7 @@ export function LatestRGBTxnListUI({ txs }: { txs: RGBTransaction[] }) {
               <HStack gap="8px">
                 {type === 'l1-l2' || type === 'l1' ? (
                   tx.btcTransaction ? (
-                    <ViewBtcExplorer txid={tx.btcTxid} />
+                    <ViewBtcExplorer txid={tx.btcTxid ?? ''} />
                   ) : null
                 ) : (
                   <ViewCkbExplorer txHash={tx.ckbTxHash} />
