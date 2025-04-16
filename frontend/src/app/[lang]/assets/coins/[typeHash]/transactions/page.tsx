@@ -1,4 +1,3 @@
-
 import { t } from '@lingui/macro'
 import { notFound } from 'next/navigation'
 import { Box, HStack, VStack } from 'styled-system/jsx'
@@ -99,7 +98,10 @@ export default async function Page({
   return (
     <VStack w="100%" maxW="content" gap="32px">
       <Box w="100%" bg="bg.card" rounded="8px" pt={{ base: '10px', md: '30px' }} pb="10px">
-        <LatestTxnListUI txs={(response.rgbppCoin.transactions as RgbppTransaction[]) ?? []} />
+        <LatestTxnListUI txs={(response.rgbppCoin.transactions as RgbppTransaction[]).map(tx => ({
+          ...tx,
+          btc: tx.btcTxid ? { txid: tx.btcTxid } : undefined
+        })) ?? []} />
       </Box>
 
       <HStack gap="16px" mt="auto" p="30px">
