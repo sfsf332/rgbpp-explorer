@@ -17,7 +17,7 @@ export default function Page() {
         <Heading fontSize="20px" fontWeight="semibold" p="30px"><Trans>Latest L1 RGB++ transaction</Trans></Heading>
         <ExplorerTxList
           txs={rgbppLatestL1Transactions || []}
-          txid={(tx) => tx.btc?.txid ?? ''}
+          txid={(tx) => tx.btcTxid ?? ''}
           type="btc"
         />
       </Box>

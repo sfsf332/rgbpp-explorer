@@ -280,7 +280,7 @@ export function useRgbppTransactions() {
       timestamp: tx.timestamp,
       ckbTransaction: tx.ckbTransaction,
       leapDirection: tx.leapDirection,
-      btc: tx.btc,
+      btcTxid: tx.btcTxid,
       ckbTxHash: tx.txHash,
       blockNumber: tx.blockNumber
     })) || [],

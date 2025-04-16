@@ -14,7 +14,7 @@ import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-f
 import { truncateMiddle } from '@/lib/string/truncate-middle'
 
 export function ExplorerTxListUI<
-  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'timestamp' | 'btc' | 'leapDirection' | 'ckbTxHash'> & {
+  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'timestamp' | 'btcTxid' | 'leapDirection' | 'ckbTxHash'> & {
     txid: string,
     type: string
   },
@@ -68,8 +68,8 @@ export function ExplorerTxListUI<
             <Table.Row key={txid} lineHeight="36px">
               <Table.Cell w="235px">
                 {type!=='ckb'?  
-                <Link href={`/transaction/${tx.btc?.txid}`} display="flex" alignItems="center" gap={3} color="text.link">
-                  {truncateMiddle(tx.btc?.txid ?? '', 10, 8)}
+                <Link href={`/transaction/${tx.btcTxid}`} display="flex" alignItems="center" gap={3} color="text.link">
+                  {truncateMiddle(tx.btcTxid ?? '', 10, 8)}
                 </Link> 
                 : 
                 <Link href={`/transaction/${tx.ckbTxHash}`} display="flex" alignItems="center" gap={3} color="text.link">
