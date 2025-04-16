@@ -6,15 +6,18 @@ interface HolderCountRecord {
   status: {
     timestamp: number;
   };
-  network: 'ckb' | 'btc' | 'doge';
   count: number;
+  network: 'ckb' | 'btc' | 'doge' | 'unknown';
 }
 
 export function useRgbppHolderCountRecords() {
-  const { data: holderCountRecordsRaw } = trpc.rgbpp.holderCountRecords.useQuery<HolderCountRecord[]>()
+  const { data: holderCountRecordsRaw } = trpc.rgbpp.holderCountRecords.useQuery<HolderCountRecord[]>(undefined, {
+    staleTime: 60 * 1000, // 1 minute
+    refetchOnWindowFocus: false,
+  })
 
   const holderCountRecords = useMemo(() => {
-    if (!holderCountRecordsRaw) return []
+    if (!holderCountRecordsRaw || !Array.isArray(holderCountRecordsRaw)) return []
 
     // 获取所有唯一的时间戳
     const timestamps = [...new Set<number>(
@@ -50,7 +53,7 @@ export function useRgbppHolderCountRecords() {
   }, [holderCountRecordsRaw])
 
   return {
-    data:holderCountRecords,
+    data: holderCountRecords,
     isLoading: !holderCountRecordsRaw
   }
 }

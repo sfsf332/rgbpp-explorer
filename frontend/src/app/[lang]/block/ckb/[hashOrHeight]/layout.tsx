@@ -1,67 +1,38 @@
-import { t } from '@lingui/macro'
+'use client'
 import { notFound } from 'next/navigation'
 import { PropsWithChildren } from 'react'
 import { VStack } from 'styled-system/jsx'
 
-import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
 import { BlockHeader } from '@/components/block-header'
 import { CkbBlockOverview } from '@/components/ckb/ckb-block-overview'
 import { LinkTabs } from '@/components/link-tabs'
-import { graphql } from '@/gql'
-import { CkbBlock } from '@/gql/graphql'
-import { graphQLClient } from '@/lib/graphql'
-import { apiFetcher } from '@/services/fecthcer'
+import { useBlockInfo } from '@/hooks/useRgbppData'
 
-const query = graphql(`
-  query CkbBlock($hashOrHeight: String!) {
-    ckbBlock(heightOrHash: $hashOrHeight) {
-      version
-      hash
-      number
-      timestamp
-      transactionsCount
-      totalFee
-      miner {
-        address
-        shannon
-        transactionsCount
-      }
-      reward
-      size
-      confirmations
-    }
-  }
-`)
 
-export default async function Layout({
-  params: { hashOrHeight, lang },
+export default function Layout({
+  params: { hashOrHeight },
   children,
 }: PropsWithChildren<{
-  params: { hashOrHeight: string; lang: string }
+  params: { hashOrHeight: string; }
 }>) {
-  // const data = await graphQLClient.request(query, { hashOrHeight })
-  console.log(hashOrHeight)
-  const data = await apiFetcher.fetchCkbBlock(hashOrHeight)
-  console.log(data)
-  if (!data?.ckbBlock) notFound()
-  const i18n = getI18nInstance(lang)
+  const { data ,isLoading,error} = useBlockInfo('CKB', hashOrHeight)
+  if (error) notFound()
 
   return (
     <VStack w="100%" maxW="content" p={{ base: '20px', lg: '30px' }} gap={{ base: '20px', lg: '30px' }}>
-      <BlockHeader
-        i18n={i18n}
-        id={data.ckbBlock.hash}
-        
-        height={data.ckbBlock.number}
-        confirmations={data.ckbBlock.confirmations}
+     {!isLoading&&data?
+      (<BlockHeader
+        id={data.hash}
+        height={data.height}
       />
-      <CkbBlockOverview i18n={i18n} block={data.ckbBlock as CkbBlock} />
+      ):null}
+      <CkbBlockOverview block={data} />
       <LinkTabs
         w="100%"
         links={[
           {
             href: `/block/ckb/${hashOrHeight}/transactions`,
-            label: t(i18n)`Transactions`,
+            label: `Transactions`,
           },
         ]}
       />

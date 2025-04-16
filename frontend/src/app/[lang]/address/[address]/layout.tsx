@@ -1,51 +1,29 @@
 import { t } from '@lingui/macro'
+import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import type { PropsWithChildren, ReactNode } from 'react'
 import { Flex, HStack, VStack } from 'styled-system/jsx'
-import dynamic from 'next/dynamic'
 
 import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
 // import { BtcAddressOverview } from '@/components/btc/btc-address-overview'
 import { BtcAddressType } from '@/components/btc/btc-address-type'
-import { CkbAddressOverview } from '@/components/ckb/ckb-address-overview'
+// import { CkbAddressOverview } from '@/components/ckb/ckb-address-overview'
 import { Copier } from '@/components/copier'
 import { IfBreakpoint } from '@/components/if-breakpoint'
 import { LinkTabs } from '@/components/link-tabs'
 import { Heading, Text } from '@/components/ui'
-import { graphql } from '@/gql'
 import { isValidBTCAddress } from '@/lib/btc/is-valid-btc-address'
 import { isValidCkbAddress } from '@/lib/ckb/is-valid-ckb-address'
-import { graphQLClient } from '@/lib/graphql'
 
 const BtcAddressOverview = dynamic(
-  () => import('@/components/btc/btc-address-overview').then(mod => mod.BtcAddressOverview),
-  { ssr: false }
+  () => import('@/components/btc/btc-address-overview').then((mod) => mod.BtcAddressOverview),
+  { ssr: false },
 )
-const btcAddressQuery = graphql(`
-  query BtcAddressBase($address: String!) {
-    btcAddress(address: $address) {
-      address
-      satoshi
-      pendingSatoshi
-      transactionsCount
-    }
-  }
-`)
+const CkbAddressOverview = dynamic(
+  () => import('@/components/ckb/ckb-address-overview').then((mod) => mod.CkbAddressOverview),
+  { ssr: false },
+)
 
-const ckbAddressQuery = graphql(`
-  query CkbAddressBase($address: String!) {
-    ckbAddress(address: $address) {
-      address
-      shannon
-      balance {
-        total
-        available
-        occupied
-      }
-      transactionsCount
-    }
-  }
-`)
 
 export default async function Layout({
   children,
@@ -58,20 +36,12 @@ export default async function Layout({
   const isCkbAddress = isValidCkbAddress(address)
 
   if (!isBtcAddress && !isCkbAddress) notFound()
-
   let overflow: ReactNode = null
   if (isBtcAddress) {
-   
     overflow = <BtcAddressOverview btcAddress={address} />
-   
-  
   } else if (isCkbAddress) {
-    const data = await graphQLClient.request(ckbAddressQuery, { address })
-    if (data?.ckbAddress) {
-      overflow = <CkbAddressOverview ckbAddress={data?.ckbAddress} lang={lang} />
-    }
+    overflow = <CkbAddressOverview ckbAddress={address} />
   }
-
   if (!overflow) notFound()
 
   return (
@@ -93,7 +63,7 @@ export default async function Layout({
             <Text as="span" wordBreak="break-all" whiteSpace="wrap" textAlign="left">
               {address}
             </Text>
-            <IfBreakpoint breakpoint="lg" >
+            <IfBreakpoint breakpoint="lg">
               <BtcAddressType address={address} />
             </IfBreakpoint>
           </HStack>
@@ -104,11 +74,11 @@ export default async function Layout({
         w="100%"
         links={[
           {
-            href: `/address/${address}/transactions`,
+            href: `/${lang}/address/${address}/transactions`,
             label: t(i18n)`Transactions`,
           },
           {
-            href: `/address/${address}/assets`,
+            href: `/${lang}/address/${address}/assets`,
             label: t(i18n)`RGB++ Assets`,
           },
         ]}

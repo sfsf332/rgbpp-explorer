@@ -26,6 +26,7 @@ export interface BtcUtxoTablesProps {
 }
 
 export function BtcUtxoTables({ txid, vin = [], vout = [], currentAddress, ckbCell }: BtcUtxoTablesProps) {
+
   return (
     <Grid
       w="100%"

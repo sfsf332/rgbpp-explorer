@@ -1,7 +1,6 @@
 'use client'
 
 import { Trans } from '@lingui/macro'
-import { useQuery } from '@tanstack/react-query'
 import { ReactNode } from 'react'
 import { Box, Grid, HStack, VStack } from 'styled-system/jsx'
 
@@ -13,11 +12,8 @@ import DogeIcon from '@/assets/chains/doge.svg'
 import UtxoStackIcon from '@/assets/chains/utxo-stack.svg'
 import Link from '@/components/ui/link'
 import { Text } from '@/components/ui/primitives/text'
-import { QueryKey } from '@/constants/query-key'
-import { graphql } from '@/gql'
-import { graphQLClient } from '@/lib/graphql'
+import { useBtcInfo, useCkbInfo } from '@/hooks/useRgbppData'
 import { formatNumber } from '@/lib/string/format-number'
-// import { apiFetcher } from '@/services/fecthcer'
 
 function FieldGroup({ fields }: { fields: Array<{ label: ReactNode; value: ReactNode }> }) {
   return (
@@ -33,34 +29,9 @@ function FieldGroup({ fields }: { fields: Array<{ label: ReactNode; value: React
 }
 
 export function NetworkCards() {
-  const { data } = useQuery({
-    queryKey: [QueryKey.BlockHeightAndTxns24H],
-    async queryFn() {
-      return graphQLClient.request(
-        graphql(`
-          query CkbAndBtcChainInfo {
-            ckbChainInfo {
-              tipBlockNumber
-              transactionsCountIn24Hours
-            }
-            btcChainInfo {
-              tipBlockHeight
-              transactionsCountIn24Hours
-            }
-          }
-        `),
-      )
-    },
-    refetchInterval: 10000,
-  })
-  // const { data:staticData} = useQuery({
-  //   queryKey: ['statics'],
-  //   queryFn: async () => {
-  //     return await apiFetcher.fetchStatistics()
-  //   },
-  //   refetchInterval: 10000,
-  // })
-  // console.log(staticData)
+  const {data:btcChainInfo} = useBtcInfo()
+  const {data:ckbChainInfo} = useCkbInfo()
+  console.log(btcChainInfo, ckbChainInfo)
   return (
     <Grid w="100%" gridTemplateColumns={{ base: '100%', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}>
       <Link
@@ -87,11 +58,11 @@ export function NetworkCards() {
           fields={[
             {
               label: <Trans>Block Height</Trans>,
-              value: formatNumber(data?.btcChainInfo?.tipBlockHeight),
+              value: formatNumber(btcChainInfo?.tipBlockHeight),
             },
             {
               label: <Trans>Txns(24H)</Trans>,
-              value: formatNumber(data?.btcChainInfo?.transactionsCountIn24Hours),
+              value: formatNumber(btcChainInfo?.rgbpp?.txCountInLast24h),
             },
           ]}
         />
@@ -120,11 +91,11 @@ export function NetworkCards() {
           fields={[
             {
               label: <Trans>Block Height</Trans>,
-              value: formatNumber(data?.ckbChainInfo?.tipBlockNumber),
+              value: formatNumber(ckbChainInfo?.tipBlock?.number),
             },
             {
               label: <Trans>Txns(24H)</Trans>,
-              value: formatNumber(data?.ckbChainInfo?.transactionsCountIn24Hours),
+              value: formatNumber(ckbChainInfo?.tipBlock?.number),
             },
           ]}
         />

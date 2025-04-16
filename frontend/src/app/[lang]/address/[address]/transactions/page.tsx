@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { BtcTxList } from '@/app/[lang]/address/[address]/transactions/btc-tx-list'
+import BtcTxList from '@/app/[lang]/address/[address]/transactions/btc-tx-list'
 import { CKBTxList } from '@/app/[lang]/address/[address]/transactions/ckb-tx-list'
 import { isValidBTCAddress } from '@/lib/btc/is-valid-btc-address'
 import { isValidCkbAddress } from '@/lib/ckb/is-valid-ckb-address'

@@ -10,23 +10,41 @@ import { LoadingBox } from '@/components/loading-box'
 import { Heading } from '@/components/ui'
 import { useAssetHolders, useAssetInfo } from '@/hooks/useRgbppData'
 
+interface HolderCountItem {
+  network: string;
+  count: number;
+}
+
+interface Holder {
+  address: string;
+  network: string;
+  value: string | number;
+  percentage: string | number;
+  amount: string | number;
+}
+
 export default function Page() {
   const params = useParams()
 
   const { holders } = useAssetHolders(params.typeHash as string)
-  const {assetInfo, assetQuote } = useAssetInfo(params.typeHash as string)
-  console.log(assetQuote,assetInfo)
-
-  const holderSummary = {
-    totalHolders: assetQuote?.holderCount?.reduce((sum, item) => sum + item.count, 0) || 0,
-    chainHolders: {
-      btc: assetQuote?.holderCount?.find((item) => item.network.toLowerCase() === 'btc')?.count || 0,
-      ckb: assetQuote?.holderCount?.find((item) => item.network.toLowerCase() === 'ckb')?.count || 0,
-      doge: assetQuote?.holderCount?.find((item) => item.network.toLowerCase() === 'doge')?.count || 0,
-    },
-  }
+  const { assetInfo, assetQuote } = useAssetInfo(params.typeHash as string)
+  console.log(assetQuote, assetInfo)
 
   const totalSupply = Number(assetQuote?.totalSupply) || 0
+  const totalHolders = assetQuote?.holderCount?.reduce((sum: number, item: HolderCountItem) => sum + item.count, 0) || 0
+  const averageBalance = totalHolders > 0 ? totalSupply / totalHolders : 0
+
+  const holderSummary = {
+    totalHolders,
+    chainHolders: {
+      btc: assetQuote?.holderCount?.find((item: HolderCountItem) => item.network.toLowerCase() === 'btc')?.count || 0,
+      ckb: assetQuote?.holderCount?.find((item: HolderCountItem) => item.network.toLowerCase() === 'ckb')?.count || 0,
+      doge: assetQuote?.holderCount?.find((item: HolderCountItem) => item.network.toLowerCase() === 'doge')?.count || 0,
+    },
+    totalSupply,
+    averageBalance,
+  }
+
   return (
     <VStack w="100%" maxW="content" gap="30px">
       {assetQuote ? (
@@ -58,7 +76,7 @@ export default function Page() {
         <Box p="0px">
           {(holders&&assetInfo) ? (
             <CoinHolderList
-              holders={holders.map((holder, index) => ({
+              holders={holders.map((holder: Holder, index: number) => ({
                 address: holder.address,
                 chain: holder.network.toUpperCase() as Chain,
                 value: Number(holder.value),

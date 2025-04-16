@@ -12,6 +12,7 @@ export interface LinkProps
   extends Assign<JsxStyleProps, Omit<HTMLArkProps<'a'>, 'href'>>,
     NextLinkProps,
     PropsWithChildren {}
+
 const StyledLink = styled(NextLink)
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link({ children, ...props }, ref) {
@@ -26,28 +27,14 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link({ chi
     )
   }
 
-  if (
-    typeof props.href === 'object' &&
-    (props.href.pathname?.startsWith('https://') || props.href.pathname?.startsWith('http://'))
-  ) {
-    return (
-      <StyledLink ref={ref} {...props} href={props.href} prefetch={false}>
-        {children}
-      </StyledLink>
-    )
-  }
+  const href = typeof props.href === 'string'
+    ? props.href.startsWith(`/${locale}`)
+      ? props.href
+      : `/${locale}${props.href}`
+    : props.href.pathname?.startsWith(`/${locale}`)
+      ? props.href.pathname
+      : `/${locale}${props.href.pathname}`
 
-  const href =
-    typeof props.href === 'string'
-      ? props.href.startsWith(`/${locale}`)
-        ? props.href
-        : `/${locale}${props.href}`
-      : {
-          ...props.href,
-          pathname: props.href.pathname?.startsWith(`/${locale}`)
-            ? props.href.pathname
-            : `/${locale}${props.href.pathname}`,
-        }
   return (
     <StyledLink ref={ref} {...props} href={href} prefetch={false}>
       {children}

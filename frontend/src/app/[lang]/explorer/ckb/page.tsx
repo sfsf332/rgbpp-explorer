@@ -1,66 +1,25 @@
-import { t } from '@lingui/macro'
+'use client'
+
+import { Trans } from '@lingui/macro'
 import { Box, Grid } from 'styled-system/jsx'
 
-import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
 import { Info } from '@/app/[lang]/explorer/ckb/info'
 import { ExplorerTxList } from '@/components/explorer-tx-list'
 import { Heading } from '@/components/ui'
-import { graphql } from '@/gql'
-import { RgbppTransaction } from '@/gql/graphql'
-import { graphQLClient } from '@/lib/graphql'
+import { useRgbppTransactions } from '@/hooks/useRgbppData'
 
-export const revalidate = 10
-export const dynamic = 'force-static'
-
-const query = graphql(`
-  query RgbppLatestL2Transactions($limit: Int!) {
-    rgbppLatestL2Transactions(limit: $limit) {
-      txs {
-        ckbTxHash
-        leapDirection
-        timestamp
-        ckbTransaction {
-          outputs {
-            txHash
-            index
-            capacity
-            cellType
-            lock {
-              codeHash
-              hashType
-              args
-            }
-            xudtInfo {
-              symbol
-              amount
-              decimal
-            }
-            status {
-              consumed
-              txHash
-              index
-            }
-          }
-        }
-      }
-      total
-      pageSize
-    }
-  }
-`)
-
-export default async function Page({ params: { lang } }: { params: { lang: string } }) {
-  const i18n = getI18nInstance(lang)
-  const { rgbppLatestL2Transactions } = await graphQLClient.request(query, { limit: 10 })
-
+// eslint-disable-next-line @next/next/no-async-client-component
+export default async function Page() {
+  const {data:rgbppLatestL2Transactions} = useRgbppTransactions()
   return (
     <Grid gridTemplateColumns="repeat(2, 1fr)" w="100%" maxW="content" p={{ base: '20px', xl: '30px' }} gap="30px">
-      <Info i18n={i18n} />
+      <Info />
       <Box bg="bg.card" rounded="8px" whiteSpace="nowrap" pb="12px" gridColumn="1/3">
-        <Heading fontSize="20px" fontWeight="semibold" p="30px">{t(i18n)`Latest L2 RGB++ transaction`}</Heading>
-        <ExplorerTxList<RgbppTransaction>
-          txs={rgbppLatestL2Transactions.txs as RgbppTransaction[]}
-          txid={(tx) => tx.ckbTxHash ?? ''}
+        <Heading fontSize="20px" fontWeight="semibold" p="30px"><Trans>Latest L2 RGB++ transaction</Trans></Heading>
+        <ExplorerTxList
+          txs={rgbppLatestL2Transactions || []}
+          txid={(tx) => tx.btc?.txid ?? ''}
+          type="ckb"
         />
       </Box>
     </Grid>

@@ -2,6 +2,7 @@ import { type ReactNode } from 'react'
 
 // 链类型枚举
 export type Chain = 'BTC' | 'CKB' | 'DOGE'
+export type TrpcChain = 'btc' | 'ckb' | 'doge'
 
 // 持有人数据
 export interface HolderData {
@@ -11,7 +12,6 @@ export interface HolderData {
   value: number,
   percentage:number,
   amount: string,
-  
 }
 
 // 持有人汇总信息
@@ -22,6 +22,8 @@ export interface HolderSummary {
     ckb: number
     doge: number
   }
+  totalSupply: number
+  averageBalance: number
 }
 
 // 分页参数

@@ -1,5 +1,5 @@
-import type { I18n } from '@lingui/core'
-import { t } from '@lingui/macro'
+'use client'
+import { Trans } from '@lingui/macro'
 import { Grid, HStack, VStack } from 'styled-system/jsx'
 
 import BtcIcon from '@/assets/chains/btc.svg'
@@ -15,50 +15,29 @@ import {
   splitLineBefore,
 } from '@/components/overview-info'
 import { Heading } from '@/components/ui'
-import { graphql } from '@/gql'
-import { graphQLClient } from '@/lib/graphql'
+import { useBtcInfo } from '@/hooks/useRgbppData'
 
-export async function Info({ i18n }: { i18n: I18n }) {
-  const { btcChainInfo, rgbppStatistic } = await graphQLClient.request(
-    graphql(`
-      query BtcChainInfo {
-        btcChainInfo {
-          tipBlockHeight
-          tipBlockHash
-          difficulty
-          transactionsCountIn24Hours
-          fees {
-            fastest
-            halfHour
-            hour
-            economy
-            minimum
-          }
-        }
-        rgbppStatistic {
-          latest24HoursL1TransactionsCount
-          holdersCount(layer: L1)
-        }
-      }
-    `),
-  )
-
+export function Info() {
+  const { data : btcInfo,isLoading} = useBtcInfo()
+ 
   return (
-    <VStack gridColumn="1/3" gap="20px" bg="bg.card" p={{ base: '20px', md: '30px' }} alignItems="start" rounded="8px">
-      <HStack gap="16px">
-        <BtcIcon w="48px" h="48px" />
-        <Heading fontSize="20px" fontWeight="bold">{t(i18n)`Bitcoin`}</Heading>
+    btcInfo && !isLoading ? 
+    (
+      <VStack gridColumn="1/3" gap="20px" bg="bg.card" p={{ base: '20px', md: '30px' }} alignItems="start" rounded="8px">
+        <HStack gap="16px">
+          <BtcIcon w="48px" h="48px" />
+          <Heading fontSize="20px" fontWeight="bold"><Trans>Bitcoin</Trans></Heading>
       </HStack>
       <Grid w="100%" gridTemplateColumns={{ base: '1fr', xl: 'repeat(2, 1fr)' }} gap={{ base: '20px', md: '30px' }}>
         <OverviewInfo>
-          <OverviewInfoItem label={t(i18n)`Block Height`} formatNumber>
-            {btcChainInfo.tipBlockHeight}
+          <OverviewInfoItem label={<Trans>Block Height</Trans>} formatNumber>
+            {btcInfo.tipBlockHeight}
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`L1 RGB++ Txns(24H)`} formatNumber>
-            {rgbppStatistic.latest24HoursL1TransactionsCount}
+          <OverviewInfoItem label={<Trans>L1 RGB++ Txns(24H)</Trans>} formatNumber>
+            {btcInfo.rgbpp.txCountInLast24h}
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`RGB++ Assets Holders`} formatNumber>
-            {rgbppStatistic.holdersCount}
+          <OverviewInfoItem label={<Trans>RGB++ Assets Holders</Trans>} formatNumber>
+            {btcInfo.rgbpp.holdersCount}
           </OverviewInfoItem>
         </OverviewInfo>
         <OverviewInfoGrid
@@ -80,54 +59,55 @@ export async function Info({ i18n }: { i18n: I18n }) {
         >
           <OverviewInfoItem
             formatNumber
-            unit={t(i18n)`sats/vB`}
+            unit={<Trans>sats/vB</Trans>}
             direction="column"
             label={
               <OverviewInfoTagLabel bg="danger.a10" color="danger" icon={<SpeedHighIcon />} mx="auto">
-                {t(i18n)`High`}
+                <Trans>High</Trans>
               </OverviewInfoTagLabel>
             }
           >
-            {btcChainInfo.fees.fastest}
+            {btcInfo.fee.fastestFee}
           </OverviewInfoItem>
           <OverviewInfoItem
             formatNumber
             direction="column"
-            unit={t(i18n)`sats/vB`}
+            unit={<Trans>sats/vB</Trans>}
             label={
               <OverviewInfoTagLabel bg="warning.a10" color="warning" icon={<SpeedMediumIcon />} mx="auto">
-                {t(i18n)`Medium`}
+                <Trans>Medium</Trans>
               </OverviewInfoTagLabel>
             }
           >
-            {btcChainInfo.fees.halfHour}
+            {btcInfo.fee.halfHourFee}
           </OverviewInfoItem>
           <OverviewInfoItem
             formatNumber
-            unit={t(i18n)`sats/vB`}
+            unit={<Trans>sats/vB</Trans>}
             direction="column"
             label={
               <OverviewInfoTagLabel bg="success.a10" color="success" icon={<SpeedLowIcon />} mx="auto">
-                {t(i18n)`Low`}
+                <Trans>Low</Trans>
               </OverviewInfoTagLabel>
             }
           >
-            {btcChainInfo.fees.economy}
+            {btcInfo.fee.economyFee}
           </OverviewInfoItem>
           <OverviewInfoItem
             formatNumber
-            unit={t(i18n)`sats/vB`}
+            unit={<Trans>sats/vB</Trans>}
             direction="column"
             label={
               <OverviewInfoTagLabel bg="brand.a10" color="brand" icon={<SpeedDropIcon />} mx="auto">
-                {t(i18n)`Drop`}
+                <Trans>Drop</Trans>
               </OverviewInfoTagLabel>
             }
           >
-            {btcChainInfo.fees.minimum}
+            {btcInfo.fee.minimumFee}
           </OverviewInfoItem>
         </OverviewInfoGrid>
       </Grid>
-    </VStack>
+    </VStack>)  
+    :null  
   )
 }

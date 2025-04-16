@@ -1,5 +1,4 @@
-import type { I18n } from '@lingui/core'
-import { t } from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import BigNumber from 'bignumber.js'
 import { Box, Grid, HStack, VStack } from 'styled-system/jsx'
 
@@ -11,20 +10,14 @@ import { TextOverflowTooltip } from '@/components/text-overflow-tooltip'
 import { TimeFormatter } from '@/components/time-formatter'
 import { Heading, Text } from '@/components/ui'
 import Link from '@/components/ui/link'
-import { BitcoinBlock } from '@/gql/graphql'
 import { resolveBtcTime } from '@/lib/btc/resolve-btc-time'
 import { formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
 
 export function BtcBlockOverview({
   block,
-  i18n,
 }: {
-  block: Pick<
-    BitcoinBlock,
-    'timestamp' | 'size' | 'transactionsCount' | 'feeRateRange' | 'totalFee' | 'miner' | 'height'
-  >
-  i18n: I18n
+  block:any
 }) {
   if (!block) return null
   return (
@@ -38,8 +31,8 @@ export function BtcBlockOverview({
         borderBottomColor="border.primary"
       >
         <OverviewSVG w="24px" />
-        <Heading fontSize="16px" fontWeight="semibold">{t(i18n)`Overview`}</Heading>
-        {block.timestamp ? <TimeFormatter timestamp={resolveBtcTime(block.timestamp)} ml="auto" /> : null}
+        <Heading fontSize="16px" fontWeight="semibold"><Trans>Overview</Trans></Heading>
+        {block.time ? <TimeFormatter timestamp={resolveBtcTime(block.time)} ml="auto" /> : null}
       </HStack>
       <Grid
         w="100%"
@@ -51,21 +44,19 @@ export function BtcBlockOverview({
         textAlign="center"
       >
         <OverviewInfo>
-          <OverviewInfoItem label={t(i18n)`Block size`}>
-            <OverflowAmount amount={formatNumber(block.size)} symbol={t(i18n)`bytes`} />
+        <OverviewInfoItem label={<Trans>Block size</Trans>}>
+        <OverflowAmount amount={formatNumber(block.size)} symbol={<Trans>bytes</Trans>} />
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`Transaction`} formatNumber>
-            {block.transactionsCount}
+          <OverviewInfoItem label={<Trans>Transaction</Trans>} formatNumber>
+            {block.txCount}
           </OverviewInfoItem>
         </OverviewInfo>
         <OverviewInfo>
-          <OverviewInfoItem label={t(i18n)`Fee rate span`}>
+          <OverviewInfoItem label={<Trans>Fee rate span</Trans>}>
             <TextOverflowTooltip
               label={
                 <Text whiteSpace="nowrap">
-                  {t(
-                    i18n,
-                  )`${formatNumber(block.feeRateRange?.min ?? 0)} sats/vB ~ ${formatNumber(BigNumber(block.feeRateRange?.max ?? 0))} sats/vB`}
+                 <Trans>${formatNumber(block.fees?.low ?? 0)} sats/vB ~ ${formatNumber(BigNumber(block.fees?.low?? 0))} sats/vB</Trans>
                 </Text>
               }
               contentProps={{ maxW: 'unset' }}
@@ -80,24 +71,24 @@ export function BtcBlockOverview({
                 flex={1}
                 ml="auto"
               >
-                {formatNumber(block.feeRateRange?.min ?? 0)}
+                {formatNumber(block.fees?.low?? 0)}
                 <Text as="span" fontSize="14px" ml="4px">
-                  {t(i18n)`sats/vB`}
+                <Trans>sats/vB</Trans>
                 </Text>
                 {' ~ '}
-                {formatNumber(BigNumber(block.feeRateRange?.max ?? 0))}{' '}
+                {formatNumber(BigNumber(block.fees?.high ?? 0))}{' '}
                 <Text as="span" fontSize="14px">
-                  {t(i18n)`sats/vB`}
+                <Trans>sats/vB</Trans>
                 </Text>
               </Box>
             </TextOverflowTooltip>
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`Miner`} formatNumber>
+          <OverviewInfoItem label={<Trans>Miner</Trans>} formatNumber>
             {block.miner ? (
               <AppTooltip
                 trigger={
                   <Link
-                    href={`/address/${block.miner.address}`}
+                    href={`/address/${block.miner}`}
                     color="brand"
                     textAlign={{ base: 'right', md: 'center' }}
                     _hover={{
@@ -105,7 +96,7 @@ export function BtcBlockOverview({
                       textUnderlineOffset: '4px',
                     }}
                   >
-                    {truncateMiddle(block.miner.address, 5, 5)}
+                    {truncateMiddle(block.miner, 5, 5)}
                   </Link>
                 }
                 content={block.miner.address}

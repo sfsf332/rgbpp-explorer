@@ -11,10 +11,13 @@ interface IssueCountRecord {
 }
 
 export function useRgbppIssueCountRecords() {
-  const { data: issueCountRecordsRaw } = trpc.rgbpp.issueCountRecords.useQuery<IssueCountRecord[]>()
+  const { data: issueCountRecordsRaw } = trpc.rgbpp.issueCountRecords.useQuery<IssueCountRecord[]>(undefined, {
+    staleTime: 60 * 1000, // 1 minute
+    refetchOnWindowFocus: false,
+  })
 
   const issueCountRecords = useMemo(() => {
-    if (!issueCountRecordsRaw) return []
+    if (!issueCountRecordsRaw || !Array.isArray(issueCountRecordsRaw)) return []
 
     // 获取所有唯一的时间戳
     const timestamps = [...new Set<number>(
@@ -46,7 +49,7 @@ export function useRgbppIssueCountRecords() {
   }, [issueCountRecordsRaw])
 
   return {
-    data:issueCountRecords,
+    data: issueCountRecords,
     isLoading: !issueCountRecordsRaw
   }
 }

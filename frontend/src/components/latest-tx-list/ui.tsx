@@ -18,7 +18,7 @@ import { formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
 
 export function LatestTxnListUI<
-  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'blockNumber' | 'timestamp' | 'leapDirection' | 'btcTxid' | 'ckbTxHash'>,
+  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'blockNumber' | 'timestamp' | 'leapDirection' | 'btc' | 'ckbTxHash'>,
 >({ txs }: { txs: T[] }) {
   const isMd = useBreakpoints('md')
   const isLg = useBreakpoints('lg')

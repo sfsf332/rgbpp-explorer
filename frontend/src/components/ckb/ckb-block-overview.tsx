@@ -1,5 +1,4 @@
-import type { I18n } from '@lingui/core'
-import { t } from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import { Grid, HStack, VStack } from 'styled-system/jsx'
 
 import OverflowSVG from '@/assets/overview.svg'
@@ -8,23 +7,20 @@ import { OverviewInfo, OverviewInfoItem } from '@/components/overview-info'
 import { TimeFormatter } from '@/components/time-formatter'
 import { Heading, Text } from '@/components/ui'
 import Link from '@/components/ui/link'
-import { CkbBlock } from '@/gql/graphql'
 import { formatCkbAddress } from '@/lib/address/format-ckb-address'
 import { formatNumber } from '@/lib/string/format-number'
 
 export function CkbBlockOverview({
   block,
-  i18n,
 }: {
-  block: Pick<CkbBlock, 'timestamp' | 'transactionsCount' | 'miner' | 'reward' | 'size' | 'confirmations'>
-  i18n: I18n
+  block: any
 }) {
   if (!block) return null
   return (
     <VStack gap={0} w="100%" bg="bg.card" rounded="8px">
       <HStack w="100%" px="30px" py="16px" gap="12px" borderBottom="1px solid" borderBottomColor="border.primary">
         <OverflowSVG w="24px" />
-        <Heading fontSize="16px" fontWeight="semibold">{t(i18n)`Overview`}</Heading>
+        <Heading fontSize="16px" fontWeight="semibold"><Trans>Overview</Trans></Heading>
         {block.timestamp ? <TimeFormatter timestamp={block.timestamp} /> : null}
       </HStack>
       <Grid
@@ -37,18 +33,18 @@ export function CkbBlockOverview({
         textAlign="center"
       >
         <OverviewInfo>
-          <OverviewInfoItem label={t(i18n)`Block size`}>
-            <OverflowAmount amount={formatNumber(block.size)} symbol={t(i18n)`bytes`} />
+          <OverviewInfoItem label={<Trans>Block size</Trans>}>
+            <OverflowAmount amount={formatNumber(block.size)} symbol={<Trans>bytes</Trans>} />
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`Transaction`} formatNumber>
-            {block.transactionsCount}
+          <OverviewInfoItem label={<Trans>Transaction</Trans>} formatNumber>
+            {block.txCount}
           </OverviewInfoItem>
         </OverviewInfo>
         <OverviewInfo>
-          <OverviewInfoItem label={t(i18n)`Miner`}>
+          <OverviewInfoItem label={<Trans>Miner</Trans>}>
             {block.miner ? (
               <Link
-                href={`/address/${block.miner.address}`}
+                href={`/address/${block.miner}`}
                 whiteSpace="nowrap"
                 maxW="250px"
                 truncate
@@ -59,14 +55,14 @@ export function CkbBlockOverview({
                 }}
                 cursor="pointer"
               >
-                {formatCkbAddress(block.miner.address)}
+                {formatCkbAddress(block.miner)}
               </Link>
             ) : (
               <Text color="text.third">-</Text>
             )}
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`Miner Reward`} formatNumber>
-            <OverflowAmount amount={formatNumber(block.reward, 8)} symbol={t(i18n)`CKB`} />
+          <OverviewInfoItem label={<Trans>Miner Reward</Trans>} formatNumber>
+            <OverflowAmount amount={formatNumber(block.blockReward.amount, 8)} symbol={<Trans>CKB</Trans>} />
           </OverviewInfoItem>
         </OverviewInfo>
       </Grid>

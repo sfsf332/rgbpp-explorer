@@ -14,12 +14,13 @@ import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-f
 import { truncateMiddle } from '@/lib/string/truncate-middle'
 
 export function ExplorerTxListUI<
-  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'timestamp' | 'btcTransaction' | 'leapDirection'> & {
-    txid: string
+  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'timestamp' | 'btc' | 'leapDirection' | 'ckbTxHash'> & {
+    txid: string,
+    type: string
   },
->({ txs }: { txs: T[] }) {
+>({ txs, type }: { txs: T[]; type: string }) {
   const isMd = useBreakpoints('md')
-
+  console.log(type)
   if (!isMd) {
     return txs.map(({ txid, ...tx }) => {
       const amount = <Amount ckbTransaction={tx.ckbTransaction as CkbTransaction} />
@@ -66,9 +67,15 @@ export function ExplorerTxListUI<
           return (
             <Table.Row key={txid} lineHeight="36px">
               <Table.Cell w="235px">
-                <Link href={`/transaction/${txid}`} display="flex" alignItems="center" gap={3} color="text.link">
-                  {truncateMiddle(txid ?? '', 10, 8)}
+                {type!=='ckb'?  
+                <Link href={`/transaction/${tx.btc?.txid}`} display="flex" alignItems="center" gap={3} color="text.link">
+                  {truncateMiddle(tx.btc?.txid ?? '', 10, 8)}
+                </Link> 
+                : 
+                <Link href={`/transaction/${tx.ckbTxHash}`} display="flex" alignItems="center" gap={3} color="text.link">
+                  {truncateMiddle(tx.ckbTxHash ?? '', 10, 8)}
                 </Link>
+                }
               </Table.Cell>
               <Table.Cell w="140px" display={{ base: 'none', lg: 'table-cell' }}>
                 <LayerType type={resolveLayerTypeFromRGBppTransaction(tx)} />

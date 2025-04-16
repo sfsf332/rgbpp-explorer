@@ -20,7 +20,7 @@ export function LinkTabs({ links, ...props }: LinkTabsProps) {
     i18n: { locale },
   } = useLingui()
 
-  const hasActive = links.some((link) => pathname === `/${locale}${link.href}`)
+  const hasActive = links.some((link) => pathname === link.href)
   if (!hasActive) {
     return null
   }
@@ -28,7 +28,7 @@ export function LinkTabs({ links, ...props }: LinkTabsProps) {
   return (
     <HStack gap="20px" {...props}>
       {links.map((link) => {
-        const isActive = pathname === `/${locale}${link.href}`
+        const isActive = pathname === link.href
         return (
           <Link
             href={link.href}

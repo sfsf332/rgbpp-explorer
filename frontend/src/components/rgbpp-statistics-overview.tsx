@@ -42,16 +42,21 @@ function StatItem({ value, label, showDivider, link, isLoading = false }: StatIt
         marginTop: { base: '20px', sm: '0', lg: '0' }
       }}
     >
-
-      {isLoading ? (<Box
-        w="120px"
-        h={{ base: '16px', sm: '25px', lg: '34px' }}
-        my={{ base: '7px', sm: '10px', lg: '10px' }}
-        rounded="full" overflow="hidden">
-        <LoadingBox />
-      </Box>) : <Text fontSize={{ base: '20px', sm: '30px', lg: '36px' }} fontWeight="600" transition="color 0.2s">
-        {value}
-      </Text>}
+      {isLoading ? (
+        <Box
+          w="120px"
+          h={{ base: '16px', sm: '25px', lg: '34px' }}
+          my={{ base: '7px', sm: '10px', lg: '10px' }}
+          rounded="full"
+          overflow="hidden"
+        >
+          <LoadingBox />
+        </Box>
+      ) : (
+        <Text fontSize={{ base: '20px', sm: '30px', lg: '36px' }} fontWeight="600" transition="color 0.2s">
+          {value}
+        </Text>
+      )}
 
       <Text fontSize={{ base: '14px', sm: '16px', lg: '16px' }} color="text.third" transition="color 0.2s">
         {label}
@@ -70,9 +75,7 @@ function StatItem({ value, label, showDivider, link, isLoading = false }: StatIt
   return Content
 }
 
-
 export function RgbppStatisticsOverview() {
-
   const isTablet = useBreakpoints('sm')
   const isDesktop = useBreakpoints('lg')
   const { i18n } = useLingui()
@@ -81,20 +84,33 @@ export function RgbppStatisticsOverview() {
   const { marketCap, assetCount: totalAssets, holdersCount: totalHolders, loadingStatus } = useRgbppStatisticsOverview()
 
   const items = [
-    { value: `$${formatBigNumber(marketCap, 2, lang)}`, label: t(i18n)`Market Cap (USD)`, isLoading: loadingStatus.isLoadingMarketcap },
-    { value: `${formatNumber(totalAssets)}`, label: t(i18n)`Total Number of Assets`, link: '/charts/total-assets', isLoading: loadingStatus.isLoadingTotalAssets },
-    { value: `${formatNumber(totalHolders)}`, label: t(i18n)`Total Holders`, link: '/charts/total-holders', isLoading: loadingStatus.isLoadingTotalHolders },
-    /* { value: totalOccupiedCkb, label: t(i18n)`Total Occupied CKB` },*/
-  ];
+    { 
+      value: `$${formatBigNumber(marketCap, 2, lang)}`, 
+      label: t(i18n)`Market Cap (USD)`, 
+      isLoading: loadingStatus.isLoadingMarketcap 
+    },
+    { 
+      value: `${formatNumber(totalAssets)}`, 
+      label: t(i18n)`Total Number of Assets`, 
+      link: '/charts/total-assets', 
+      isLoading: loadingStatus.isLoadingTotalAssets 
+    },
+    { 
+      value: `${formatNumber(totalHolders)}`, 
+      label: t(i18n)`Total Holders`, 
+      link: '/charts/total-holders', 
+      isLoading: loadingStatus.isLoadingTotalHolders 
+    },
+  ]
 
   const shouldShowDivider = (index: number) => {
-    const itemsPerRow = isDesktop ? 4 : isTablet ? 2 : 1;
-    const isLastInRow = (index + 1) % itemsPerRow === 0;
-    const isLastItem = index === items.length - 1;
+    const itemsPerRow = isDesktop ? 4 : isTablet ? 2 : 1
+    const isLastInRow = (index + 1) % itemsPerRow === 0
+    const isLastItem = index === items.length - 1
 
-    if (isLastItem) return false;
-    if (isDesktop || isTablet) return !isLastInRow;
-    return true;
+    if (isLastItem) return false
+    if (isDesktop || isTablet) return !isLastInRow
+    return true
   }
 
   return (
@@ -148,5 +164,5 @@ export function RgbppStatisticsOverview() {
         </Flex>
       </Box>
     </Box>
-  );
+  )
 }

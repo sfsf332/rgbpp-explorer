@@ -1,142 +1,48 @@
 'use client'
 
 import { Trans } from '@lingui/macro'
-import { useLingui } from '@lingui/react'
-import { useQuery } from '@tanstack/react-query'
-import { Box, Center, Grid, VStack } from 'styled-system/jsx'
+import { Box, Center } from 'styled-system/jsx'
 
 import { FailedFallback } from '@/components/failed-fallback'
 import { LatestTxnListUI } from '@/components/latest-tx-list/ui'
-// import { Loading } from '@/components/loading'
 import { LoadingBox } from '@/components/loading-box'
-import { Heading, Text } from '@/components/ui'
-import Link from '@/components/ui/link'
-import { QueryKey } from '@/constants/query-key'
-import { graphql } from '@/gql'
-import { RgbppTransaction } from '@/gql/graphql'
-import { graphQLClient } from '@/lib/graphql'
-import { formatNumber } from '@/lib/string/format-number'
-
-
-const query = graphql(`
-  query RgbppLatestTransactions($limit: Int!) {
-    rgbppLatestTransactions(limit: $limit) {
-      txs {
-        ckbTxHash
-        btcTxid
-        leapDirection
-        blockNumber
-        timestamp
-        ckbTransaction {
-          outputs {
-            txHash
-            index
-            capacity
-            cellType
-            lock {
-              codeHash
-              hashType
-              args
-            }
-            xudtInfo {
-              symbol
-              amount
-              decimal
-            }
-            status {
-              consumed
-              txHash
-              index
-            }
-          }
-        }
-      }
-      total
-      pageSize
-    }
-  }
-`)
+import { NoData } from '@/components/no-data'
+import type { RgbppTransaction } from '@/gql/graphql'
+import { useRgbppTransactions } from '@/hooks/useRgbppData'
 
 export function HomeRgbppTxnsOverview() {
-  const { i18n } = useLingui()
-  const { isLoading, data, error } = useQuery({
-    queryKey: [QueryKey.LastRgbppTxns],
-    async queryFn() {
-      return graphQLClient.request(query, {
-        limit: 10,
-      })
-    },
-    refetchInterval: 10000,
-  })
+  const { data: transactions, isLoading, error } = useRgbppTransactions()
+  
+  if (error) {
+    return <FailedFallback />
+  }
 
   if (isLoading) {
+    return <LoadingBox />
+  }
+
+  if (!transactions?.length) {
     return (
-      <Center h="176px" w="100%" rounded="8px" overflow="hidden">
-        <LoadingBox />
+      <Center w="100%" bg="bg.card" pt="80px" pb="120px" rounded="8px">
+        <NoData>
+          <Trans>No Transaction</Trans>
+        </NoData>
       </Center>
     )
   }
 
-  if (error || !data) {
-    return (
-      <Center h="823px">
-        <FailedFallback />
-      </Center>
-    )
-  }
+  const formattedTxs = transactions.map((tx: RgbppTransaction) => ({
+    timestamp: tx.timestamp,
+    ckbTransaction: tx.ckbTransaction,
+    leapDirection: tx.leapDirection,
+    btc: tx.btc,
+    ckbTxHash: tx.ckbTxHash,
+    blockNumber: tx.blockNumber
+  })) as Array<Pick<RgbppTransaction, 'timestamp' | 'ckbTransaction' | 'leapDirection' | 'btc' | 'ckbTxHash' | 'blockNumber'>>;
 
-  return <VStack w="100%" maxW="content" gap={{ base: '20px', lg: '30px' }}>
-    <Grid
-      w="100%"
-      gridTemplateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }}
-      gap={{ base: '20px', md: '30px' }}
-      display="none"
-    >
-      <Box
-        bg="bg.card"
-        rounded="8px"
-        p={{ base: '24px', md: '30px' }}
-        display="flex"
-        flexDirection="column"
-        gap="8px"
-      >
-        <Text color="text.third" fontSize={{ base: '14px', md: '16px' }}>
-          <Trans>Total Transactions</Trans>
-        </Text>
-        <Text fontSize={{ base: '24px', md: '30px', lg: '36px'  }} fontWeight="600">
-          {formatNumber(490933495)}
-        </Text>
-      </Box>
-
-      <Box
-        bg="bg.card"
-        rounded="8px"
-        p={{ base: '24px', md: '30px' }}
-        display="flex"
-        flexDirection="column"
-        gap="8px"
-      >
-        <Text color="text.third" fontSize={{ base: '14px', md: '16px' }}>
-          <Trans>Transactions (24H)</Trans>
-        </Text>
-        <Text fontSize={{ base: '24px', md: '30px', lg: '36px' }} fontWeight="600">
-          {formatNumber(933495)}
-        </Text>
-      </Box>
-    </Grid>
-
-    <Box w="100%" bg="bg.card" flexDir="column" alignItems="center" rounded="8px">
-      <Heading fontSize="20px" fontWeight="semibold" p="30px" w="100%" textAlign="center">
-        <Trans>Latest transactions</Trans>
-      </Heading>
-      <Box p="0px">
-        <LatestTxnListUI txs={data.rgbppLatestTransactions.txs as RgbppTransaction[]} />
-      </Box>
-      <Box p="20px" textAlign="center" display="none">
-        <Link href="/transaction/list" color="brand">
-          <Trans>View All Transactions</Trans>
-        </Link>
-      </Box>
+  return (
+    <Box w="100%" bg="bg.card" p="24px" rounded="8px">
+      <LatestTxnListUI txs={formattedTxs} />
     </Box>
-  </VStack>
+  )
 }

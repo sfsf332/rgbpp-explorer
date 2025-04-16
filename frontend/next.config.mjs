@@ -6,6 +6,19 @@ const nextConfig = {
     esmExternals: true,
     gzipSize: true,
   },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://web3-api-testnet.magickbase.com https://web3-api-sta.magickbase.com https://testnet-api.explorer.rgbpp.io;"
+          }
+        ]
+      }
+    ]
+  },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
     config.module.rules.push(

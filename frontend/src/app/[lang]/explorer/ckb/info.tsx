@@ -1,5 +1,5 @@
-import type { I18n } from '@lingui/core'
-import { t } from '@lingui/macro'
+'use client'
+import { Trans } from '@lingui/macro'
 import { Grid, HStack, VStack } from 'styled-system/jsx'
 
 import CkbIcon from '@/assets/chains/ckb.svg'
@@ -8,83 +8,70 @@ import SpeedLowIcon from '@/assets/speed/low.svg'
 import SpeedMediumIcon from '@/assets/speed/medium.svg'
 import { OverviewInfo, OverviewInfoItem, OverviewInfoTagLabel } from '@/components/overview-info'
 import { Heading } from '@/components/ui'
-import { graphql } from '@/gql'
-import { graphQLClient } from '@/lib/graphql'
+import { useCkbInfo } from '@/hooks/useRgbppData'
 
-export async function Info({ i18n }: { i18n: I18n }) {
-  const { ckbChainInfo, rgbppStatistic } = await graphQLClient.request(
-    graphql(`
-      query CkbChainInfo {
-        ckbChainInfo {
-          tipBlockNumber
-          fees {
-            fast
-            slow
-            average
-          }
-        }
-        rgbppStatistic {
-          latest24HoursL2TransactionsCount
-          holdersCount(layer: L2)
-        }
-      }
-    `),
-  )
+export  function Info() {
+  const {data:ckbChainInfo,isLoading} = useCkbInfo()
 
+  console.log(ckbChainInfo,isLoading)
+  
   return (
-    <VStack gridColumn="1/3" gap="20px" bg="bg.card" p={{ base: '20px', md: '30px' }} alignItems="start" rounded="8px">
+    ckbChainInfo && !isLoading ? 
+    (<VStack gridColumn="1/3" gap="20px" bg="bg.card" p={{ base: '20px', md: '30px' }} alignItems="start" rounded="8px">
       <HStack gap="16px">
         <CkbIcon w="48px" h="48px" />
-        <Heading fontSize="20px" fontWeight="bold">{t(i18n)`CKB`}</Heading>
+        <Heading fontSize="20px" fontWeight="bold"><Trans>CKB</Trans></Heading>
       </HStack>
       <Grid w="100%" gridTemplateColumns={{ base: '1fr', xl: 'repeat(2, 1fr)' }} gap={{ base: '20px', md: '30px' }}>
         <OverviewInfo>
-          <OverviewInfoItem label={t(i18n)`Block Height`} formatNumber>
-            {ckbChainInfo.tipBlockNumber}
+          <OverviewInfoItem label={<Trans>Block Height</Trans>} formatNumber>
+            {ckbChainInfo.tipBlock.number}
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`L2 RGB++ Txns(24H)`} formatNumber>
-            {rgbppStatistic.latest24HoursL2TransactionsCount}
+          <OverviewInfoItem label={<Trans>L2 RGB++ Txns(24H)</Trans>} formatNumber>
+            {ckbChainInfo.udtStats.txCountInLast24h}
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`RGB++ Assets Holders`} formatNumber>
-            {rgbppStatistic.holdersCount}
+          <OverviewInfoItem label={<Trans>RGB++ Assets Holders</Trans>} formatNumber>
+            {/* {rgbppStatistic.holdersCount} */}
+            {ckbChainInfo.udtStats.holders}
+
           </OverviewInfoItem>
         </OverviewInfo>
         <OverviewInfo>
           <OverviewInfoItem
             formatNumber
-            unit={t(i18n)`shannons/kB`}
+            unit={<Trans>shannons/kB</Trans>}
             label={
               <OverviewInfoTagLabel bg="danger.a10" color="danger" icon={<SpeedHighIcon />}>
-                {t(i18n)`High`}
+                <Trans>High</Trans>
               </OverviewInfoTagLabel>
             }
           >
-            {ckbChainInfo.fees.fast}
+            {ckbChainInfo.fees.high}
           </OverviewInfoItem>
           <OverviewInfoItem
             formatNumber
-            unit={t(i18n)`shannons/kB`}
+            unit={<Trans>shannons/kB</Trans>}
             label={
               <OverviewInfoTagLabel bg="warning.a10" color="warning" icon={<SpeedMediumIcon />}>
-                {t(i18n)`Medium`}
+                <Trans>Medium</Trans>
               </OverviewInfoTagLabel>
             }
           >
-            {ckbChainInfo.fees.average}
+            {ckbChainInfo.fees.medium}
           </OverviewInfoItem>
           <OverviewInfoItem
             formatNumber
-            unit={t(i18n)`shannons/kB`}
+            unit={<Trans>shannons/kB</Trans>}
             label={
               <OverviewInfoTagLabel bg="success.a10" color="success" icon={<SpeedLowIcon />}>
-                {t(i18n)`Low`}
+                <Trans>Low</Trans>
               </OverviewInfoTagLabel>
             }
           >
-            {ckbChainInfo.fees.slow}
+            {ckbChainInfo.fees.low}
           </OverviewInfoItem>
         </OverviewInfo>
       </Grid>
-    </VStack>
+    </VStack>) :null  
   )
 }

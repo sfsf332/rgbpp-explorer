@@ -3,7 +3,6 @@ import { AxiosResponse } from 'axios'
 
 import { requesterV1, requesterV2 } from '@/services/requester'
 import { Response } from '@/services/types'
-import { Block } from '@ckb-lumos/lumos'
 
 async function v1Get<T>(...args: Parameters<typeof requesterV1.get>) {
   return requesterV1.get(...args).then((res) => toCamelcase<Response.Response<T>>(res.data))

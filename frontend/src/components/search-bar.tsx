@@ -12,10 +12,11 @@ import SearchIcon from '@/assets/search.svg'
 import SearchFailedSVG from '@/assets/search-failed.svg'
 import { Loading } from '@/components/loading'
 import { HoverCard, Text } from '@/components/ui'
-import { graphql } from '@/gql'
+// import { graphql } from '@/gql'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
-import { graphQLClient } from '@/lib/graphql'
+import { useSearchTrpc } from '@/hooks/useRgbppData'
 
+// import { graphQLClient } from '@/lib/graphql'
 import { SystemProperties } from '../../styled-system/types'
 
 function SearchResult({
@@ -31,7 +32,6 @@ function SearchResult({
   children: ReactNode
   maxW?: SystemProperties['maxW']
 }) {
-
   const isMd = useBreakpoints('md')
 
   return (
@@ -62,49 +62,31 @@ function SearchResult({
 
 function useSearch() {
   const router = useRouter()
+  const search = useSearchTrpc('')
   return useMutation({
     async mutationFn(keyword: string) {
-      const { search } = await graphQLClient.request(
-        graphql(`
-          query Search($keyword: String!) {
-            search(query: $keyword) {
-              query
-              btcBlock
-              btcTransaction
-              btcAddress
-              ckbBlock
-              ckbTransaction
-              ckbAddress
-              rgbppCoin
-            }
-          }
-        `),
-        {
-          keyword,
-        },
-      )
-      if (search.rgbppCoin) {
-        return router.push(`/assets/coins/${search.rgbppCoin}`)
+      const result = await search.refetch()
+      if (!result.data) {
+        throw new Error('Not found')
       }
-      if (search.ckbTransaction) {
-        return router.push(`/transaction/${search.ckbTransaction}`)
+      switch (result.data) {
+        case 'udt':
+          return router.push(`/assets/coins/${keyword}`)
+        case 'ckb_transaction':
+          return router.push(`/transaction/${keyword}`)
+        case 'bitcoin_transaction':
+          return router.push(`/transaction/${keyword}`)
+        case 'bitcoin_address':
+          return router.push(`/address/${keyword}`)
+        case 'address':
+          return router.push(`/address/${keyword}`)
+        case 'block':
+          return router.push(`/block/ckb/${keyword}`)
+        case 'bitcoin_block':
+          return router.push(`/block/btc/${keyword}`)
+        default:
+          throw new Error('Not found')
       }
-      if (search.btcTransaction) {
-        return router.push(`/transaction/${search.btcTransaction}`)
-      }
-      if (search.btcAddress) {
-        return router.push(`/address/${search.btcAddress}`)
-      }
-      if (search.ckbAddress) {
-        return router.push(`/address/${search.ckbAddress}`)
-      }
-      if (search.ckbBlock) {
-        return router.push(`/block/ckb/${search.ckbBlock}`)
-      }
-      if (search.btcBlock) {
-        return router.push(`/block/btc/${search.btcBlock}`)
-      }
-      throw new Error('Not found')
     },
   })
 }

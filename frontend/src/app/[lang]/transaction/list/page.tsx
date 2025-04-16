@@ -15,7 +15,7 @@ import { Heading , Text } from '@/components/ui'
 import { DATE_TEMPLATE } from '@/constants'
 import { QueryKey } from '@/constants/query-key'
 import { graphql } from '@/gql'
-import { RgbppTransaction } from '@/gql/graphql'
+import { CkbTransaction, LeapDirection } from '@/gql/graphql'
 import { graphQLClient } from '@/lib/graphql'
 import { formatNumber as formatNumberFn } from '@/lib/string/format-number'
 import { apiFetcher, RGBTransaction } from '@/services/fecthcer'
@@ -31,6 +31,35 @@ const query = graphql(`
         blockNumber
         timestamp
         ckbTransaction {
+          hash
+          blockNumber
+          confirmations
+          confirmed
+          fee
+          feeRate
+          isCellbase
+          size
+          inputs {
+            txHash
+            index
+            capacity
+            cellType
+            lock {
+              codeHash
+              hashType
+              args
+            }
+            xudtInfo {
+              symbol
+              amount
+              decimal
+            }
+            status {
+              consumed
+              txHash
+              index
+            }
+          }
           outputs {
             txHash
             index
@@ -59,21 +88,39 @@ const query = graphql(`
     }
   }
 `)
-export default function Page() {
 
-  const { isLoading, data, error } = useQuery({
+type RgbppLatestTransactionsResponse = {
+  rgbppLatestTransactions: {
+    txs: Array<{
+      ckbTxHash: string
+      btcTxid: string
+      leapDirection: LeapDirection
+      blockNumber: number
+      timestamp: string
+      ckbTransaction: CkbTransaction
+    }>
+    total: number
+    pageSize: number
+  }
+}
+
+export default function Page() {
+  const { isLoading, data, error } = useQuery<RgbppLatestTransactionsResponse>({
     queryKey: [QueryKey.LastRgbppTxns],
-    async queryFn() {
-      return graphQLClient.request(query, {
+    queryFn: async () => {
+      const result = await graphQLClient.request<RgbppLatestTransactionsResponse, { limit: number }>(query as any, {
         limit: 10,
       })
+      return result
     },
     refetchInterval: 10000,
   })
+
   const currentPage = 1,
     sort = 'number.desc',
     type = '',
-    pageSize =10
+    pageSize = 10
+
   const {
     isLoading: txLoading,
     data: txData,
@@ -90,6 +137,7 @@ export default function Page() {
     },
     refetchInterval: 10000,
   })
+
   if (isLoading && txLoading) {
     return (
       <Center h="823px">
@@ -105,27 +153,26 @@ export default function Page() {
       </Center>
     )
   }
-  const prepareDownloadData=(downloadData: RGBTransaction[]) => {
-    
+
+  const prepareDownloadData = (downloadData: RGBTransaction[]) => {
     return {
       filename: 'rgbpp-transactions',
-      headers: ['Date', 'Hash', 'LeapDirection','Amount'],
-      rows: downloadData?.map((item:RGBTransaction) => [
+      headers: ['Date', 'Hash', 'LeapDirection', 'Amount'],
+      rows: downloadData?.map((item: RGBTransaction) => [
         dayjs(item.blockTimestamp).format(DATE_TEMPLATE),
         item.txHash,
         item.leapDirection,
         item.ckbTransaction
       ])
     }
-  };
-  const downloadTxn = async () => {
-    if(!txData?.data){return}
-    const downloadData = prepareDownloadData(txData.data.ckbTransactions)
-    
-    downloadCSV(downloadData.filename,
-        downloadData.headers,
-        downloadData.rows)
   }
+
+  const downloadTxn = async () => {
+    if (!txData?.data) { return }
+    const downloadData = prepareDownloadData(txData.data.ckbTransactions)
+    downloadCSV(downloadData.filename, downloadData.headers, downloadData.rows)
+  }
+
   return (
     <Grid gridTemplateColumns="repeat(2, 1fr)" w="100%" maxW="content" p={{ base: '20px', xl: '30px' }} gap="30px">
       {txData ? <TransactionInfo txData={txData} /> : null}
@@ -162,16 +209,13 @@ export default function Page() {
           </styled.button>
         </Heading>
         <Box p="0px">
-          <LatestRGBTxnListUI txs={data.rgbppLatestTransactions.txs as RgbppTransaction[]} />
+          <LatestRGBTxnListUI txs={data.rgbppLatestTransactions.txs} />
           <HStack gap="16px" display={'flex'}
-          alignItems={'center'}
-          justifyContent={'center'}
+            alignItems={'center'}
+            justifyContent={'center'}
           >
-            {/* <IfBreakpoint breakpoint="md">
-            <Text fontSize="14px">{t(i18n)`Total ${formatNumberFn(txData?.meta.total)} Items`}</Text>
-            </IfBreakpoint> */}
             <PaginationSearchParams count={txData?.meta.total} pageSize={pageSize} />
-        </HStack>
+          </HStack>
         </Box>
       </Box>
     </Grid>

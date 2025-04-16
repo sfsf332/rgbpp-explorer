@@ -13,6 +13,7 @@ import { resolveBtcTime } from '@/lib/btc/resolve-btc-time'
 import { formatNumber } from '@/lib/string/format-number'
 
 export function BtcTransactionOverview({ btcTransaction, i18n }: { btcTransaction: BitcoinTransaction; i18n: I18n }) {
+  
   return (
     <VStack gap={0} w="100%" bg="bg.card" rounded="8px">
       <HStack
