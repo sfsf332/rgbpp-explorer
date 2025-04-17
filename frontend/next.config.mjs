@@ -13,7 +13,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://web3-api-testnet.magickbase.com https://web3-api-sta.magickbase.com https://testnet-api.explorer.rgbpp.io;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://*.vercel.app; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://web3-api-testnet.magickbase.com https://web3-api-sta.magickbase.com https://testnet-api.explorer.rgbpp.io https://www.google-analytics.com https://stats.g.doubleclick.net https://vercel.live https://*.vercel.app wss://*.vercel.app; frame-src 'self' https://www.google.com https://vercel.live; worker-src 'self' blob:;"
           }
         ]
       }
