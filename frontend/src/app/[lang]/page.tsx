@@ -1,11 +1,10 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-// import { HomeRgbppTxnsOverview } from 'src/components/latest-tx-list'
+import { HomeRgbppTxnsOverview } from 'src/components/latest-tx-list'
 import { Center, Flex } from 'styled-system/jsx'
 
 import HomeBgSVG from '@/assets/home-bg.svg'
-import { HomeRgbppTxnsOverview } from '@/components/latest-tx-list'
 import { NetworkCards } from '@/components/network-cards'
 import { RgbppStatisticsOverview } from '@/components/rgbpp-statistics-overview'
 import { Heading } from '@/components/ui'
