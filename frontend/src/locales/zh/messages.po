@@ -14,19 +14,29 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:38
-msgid "RGB++ Networks"
+#: src/app/[lang]/page.tsx:31
+msgid "home.title"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:45
+#: src/app/[lang]/page.tsx:43
+msgid "home.welcome"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/page.tsx:51
 msgid "RGB++ Statistics"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:52
+#: src/app/[lang]/page.tsx:58
 msgid "RGB++ Transactions"
 msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/page.tsx:40
+#~ msgid "RGB++ Networks"
+#~ msgstr ""
 
 #: src/components/latest-tx-list/amount.tsx:10
 #: src/components/latest-tx-list/amount.tsx:29

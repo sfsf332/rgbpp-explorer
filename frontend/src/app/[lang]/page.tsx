@@ -1,19 +1,21 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-import { HomeRgbppTxnsOverview } from 'src/components/latest-tx-list'
+// import { HomeRgbppTxnsOverview } from 'src/components/latest-tx-list'
 import { Center, Flex } from 'styled-system/jsx'
 
 import HomeBgSVG from '@/assets/home-bg.svg'
-import { HomeTitle } from '@/components/home-title'
+import { HomeRgbppTxnsOverview } from '@/components/latest-tx-list'
 import { NetworkCards } from '@/components/network-cards'
 import { RgbppStatisticsOverview } from '@/components/rgbpp-statistics-overview'
-// import { SearchBar } from '@/components/search-bar'
 import { Heading } from '@/components/ui'
 
 export default function Home({ params: { lang } }: { params: { lang: string } }) {
-
+  console.log('Home component rendering with lang:', lang)
+  
+  return (
     <>
+    
       <Center flexDir="column" w="100%" position="relative" px={{ base: '20px', xl: '30px' }}>
         <HomeBgSVG w="100%" pos="absolute" top={{ base: '100px', sm: "50px", lg: '50px' }} left="0" />
         <Flex
@@ -22,10 +24,11 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
           pos="relative"
           aspectRatio={{ base: 1440 / 1100, sm: 1440 / 800, lg: 1440 / 700, xl: 1440 / 700, '2xl': 1440 / 680 }}
         >
+          
           <Flex w="100%" direction="column" textAlign="center" align="center" justify="start" gap={{ base:'54px', sm: '80px', lg: '100px'}} pb="40px">
-            <HomeTitle />
-            {/* <HomeQuickInfo /> */}
-            {/* <SearchBar /> */}
+            <Heading fontSize={{ base: '32px', sm: '48px', xl: '64px' }} fontWeight="bold">
+              <Trans id="home.title">RGB++ Explorer</Trans>
+            </Heading>
           </Flex>
         </Flex>
       </Center>
@@ -35,7 +38,9 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
             fontSize={{ base: '22px', sm: '32px', xl: '40px' }}
             mb={{ base: '50px', xl: '60px' }}
             fontWeight="semibold"
-          ><Trans id="RGB++ Networks">RGB++ Networks</Trans></Heading>
+          >
+            <Trans id="home.welcome">Welcome to RGB++ Explorer</Trans>
+          </Heading>
           <NetworkCards />
           <Heading
             fontSize={{ base: '22px', sm: '32px', xl: '40px' }}
@@ -54,5 +59,5 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
         </Flex>
       </Center>
     </>
-  
+  )
 }

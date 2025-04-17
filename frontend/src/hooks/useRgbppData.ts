@@ -189,12 +189,13 @@ export function useBlockInfo(chain: Chain, blockHash: string) {
     error
   }
 }
-export  function useBtcInfo() {
-  const {data,isLoading} =  trpc.temp.btc.chainInfo.useQuery()
-  console.log(data)
+export function useBtcInfo() {
+  const { data, isLoading, error } = trpc.temp.btc.chainInfo.useQuery()
+  
   return {
     data,
-    isLoading
+    isLoading,
+    error
   }
 }
 export function useBtcTxDetail(txHash:string) {
@@ -216,10 +217,12 @@ export function getBtcTipBlockNumber() {
 }
 
 export function useCkbInfo() {
-  const {data,isLoading} =  trpc.explorer.chainInfo.useQuery()
+  const { data, isLoading, error } = trpc.explorer.chainInfo.useQuery()
+  
   return {
     data,
-    isLoading
+    isLoading,
+    error
   }
 }
 export function useSearchTrpc(key: string) {
