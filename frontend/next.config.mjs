@@ -14,7 +14,7 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://*.vercel.app; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://web3-api.magickbase.com https://web3-api-sta.magickbase.com https://explorer.rgbpp.io https://www.google-analytics.com https://stats.g.doubleclick.net https://vercel.live https://*.vercel.app wss://*.vercel.app http://localhost:*  https://localhost:*  https://explorer.rgbpp.io/* ws://localhost:* wss://localhost:*; frame-src 'self' https://www.google.com https://vercel.live; worker-src 'self' blob:; base-uri 'self'; form-action 'self';",
+              "default-src 'self' https://*.rgbpp.io; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel.live https://*.vercel.app https://*.magickbase.com https://*.rgbpp.io; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://*.magickbase.com  https://explorer.rgbpp.io https://vercel.live https://*.vercel.app wss://*.vercel.app  https://*.rgbpp.io/* wss://*.rgbpp.io/*; frame-src 'self' https://www.google.com https://vercel.live; worker-src 'self' blob:; base-uri 'self'; form-action 'self';",
           },
         ],
       },
