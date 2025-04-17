@@ -8,7 +8,7 @@ import HomeBgSVG from '@/assets/home-bg.svg'
 import { HomeTitle } from '@/components/home-title'
 import { NetworkCards } from '@/components/network-cards'
 import { RgbppStatisticsOverview } from '@/components/rgbpp-statistics-overview'
-import { SearchBar } from '@/components/search-bar'
+// import { SearchBar } from '@/components/search-bar'
 import { Heading } from '@/components/ui'
 
 export default function Home({ params: { lang } }: { params: { lang: string } }) {
@@ -25,7 +25,7 @@ export default function Home({ params: { lang } }: { params: { lang: string } })
           <Flex w="100%" direction="column" textAlign="center" align="center" justify="start" gap={{ base:'54px', sm: '80px', lg: '100px'}} pb="40px">
             <HomeTitle />
             {/* <HomeQuickInfo /> */}
-            <SearchBar />
+            {/* <SearchBar /> */}
           </Flex>
         </Flex>
       </Center>
