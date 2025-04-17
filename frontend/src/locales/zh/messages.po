@@ -14,26 +14,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:29
-msgid "home.title"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:41
-msgid "home.welcome"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:49
-msgid "RGB++ Statistics"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:56
-msgid "RGB++ Transactions"
-msgstr ""
-
-#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:40
 #~ msgid "RGB++ Networks"
 #~ msgstr ""
@@ -147,7 +127,7 @@ msgstr "可用"
 
 #: src/components/holder-list/holder-summary-card.tsx:43
 #~ msgid "Average Balance"
-#~ msgstr ""
+#~ msgstr "平均余额"
 
 #: src/components/transaction-info.tsx:38
 msgid "Avg. Confirmation Time"
@@ -170,7 +150,7 @@ msgstr "Bitcoin"
 
 #: src/components/latest-tx-list/rgb-tx-list.tsx:183
 msgid "Block"
-msgstr ""
+msgstr "Block"
 
 #: src/components/block-header-btc.tsx:37
 #: src/components/block-header.tsx:37
@@ -223,7 +203,7 @@ msgstr "BTC 链交易笔数"
 
 #: src/components/holder-list/holder-summary.tsx:21
 msgid "BTC Holders"
-msgstr ""
+msgstr "BTC 持有者"
 
 #: src/components/btc/btc-utxos.tsx:52
 msgid "BTC Txn"
@@ -294,7 +274,7 @@ msgstr "CKB 链交易笔数"
 
 #: src/components/holder-list/holder-summary.tsx:26
 msgid "CKB Holders"
-msgstr ""
+msgstr "CKB 持有者"
 
 #: src/components/ckb/ckb-cells.tsx:55
 msgid "CKB Txn"
@@ -667,13 +647,13 @@ msgstr "RGB++ 持有人"
 #~ msgid "RGB++ Networks"
 #~ msgstr "RGB++ 网络"
 
-#: src/app/[lang]/page.tsx:61
-#~ msgid "RGB++ Statistics"
-#~ msgstr "RGB++ 数据统计"
+#: src/app/[lang]/page.tsx:58
+msgid "RGB++ Statistics"
+msgstr "RGB++ 数据统计"
 
-#: src/app/[lang]/page.tsx:68
-#~ msgid "RGB++ Transactions"
-#~ msgstr "RGB++ 交易"
+#: src/app/[lang]/page.tsx:67
+msgid "RGB++ Transactions"
+msgstr "RGB++ 交易"
 
 #: src/components/home-quick-info.tsx:63
 msgid "RGB++ Txns"
@@ -905,7 +885,7 @@ msgstr "字节"
 
 #: src/components/view-btc-explorer.tsx:27
 msgid "View Details in BTC"
-msgstr ""
+msgstr "在BTC浏览器中查看细节"
 
 #: src/components/view-ckb-explorer.tsx:27
 msgid "View Details in CKB"
@@ -919,6 +899,10 @@ msgstr "在 Mempool 中查看详情"
 #: src/components/coin-list.tsx:205
 msgid "Volume(24H)"
 msgstr "24小时成交额"
+
+#: src/app/[lang]/page.tsx:49
+msgid "Welcome to RGB++ Explorer"
+msgstr "欢迎使用RGB++浏览器"
 
 #: src/components/footer.tsx:102
 msgid "Whitepaper"

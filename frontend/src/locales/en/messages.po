@@ -14,29 +14,29 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:29
-msgid "home.title"
-msgstr "home.title"
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:41
-msgid "home.welcome"
-msgstr "home.welcome"
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:49
-msgid "RGB++ Statistics"
-msgstr "RGB++ Statistics"
-
-#. js-lingui-explicit-id
-#: src/app/[lang]/page.tsx:56
-msgid "RGB++ Transactions"
-msgstr "RGB++ Transactions"
-
-#. js-lingui-explicit-id
 #: src/app/[lang]/page.tsx:40
 #~ msgid "RGB++ Networks"
 #~ msgstr "RGB++ Networks"
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/page.tsx:29
+#~ msgid "home.title"
+#~ msgstr "home.title"
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/page.tsx:49
+#~ msgid "RGB++ Statistics"
+#~ msgstr "RGB++ Statistics"
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/page.tsx:56
+#~ msgid "RGB++ Transactions"
+#~ msgstr "RGB++ Transactions"
+
+#. js-lingui-explicit-id
+#: src/app/[lang]/page.tsx:41
+#~ msgid "home.welcome"
+#~ msgstr "home.welcome"
 
 #: src/components/latest-tx-list/amount.tsx:10
 #: src/components/latest-tx-list/amount.tsx:29
@@ -667,13 +667,13 @@ msgstr "RGB++ Holders"
 #~ msgid "RGB++ Networks"
 #~ msgstr "RGB++ Networks"
 
-#: src/app/[lang]/page.tsx:61
-#~ msgid "RGB++ Statistics"
-#~ msgstr "RGB++ Statistics"
+#: src/app/[lang]/page.tsx:58
+msgid "RGB++ Statistics"
+msgstr "RGB++ Statistics"
 
-#: src/app/[lang]/page.tsx:68
-#~ msgid "RGB++ Transactions"
-#~ msgstr "RGB++ Transactions"
+#: src/app/[lang]/page.tsx:67
+msgid "RGB++ Transactions"
+msgstr "RGB++ Transactions"
 
 #: src/components/home-quick-info.tsx:63
 msgid "RGB++ Txns"
@@ -919,6 +919,10 @@ msgstr "View Details in Mempool"
 #: src/components/coin-list.tsx:205
 msgid "Volume(24H)"
 msgstr "Volume(24H)"
+
+#: src/app/[lang]/page.tsx:49
+msgid "Welcome to RGB++ Explorer"
+msgstr "Welcome to RGB++ Explorer"
 
 #: src/components/footer.tsx:102
 msgid "Whitepaper"

@@ -10,6 +10,9 @@ const linguiConfig = {
   ],
   format: 'po',
   compileNamespace: 'ts',
+  fallbackLocales: {
+    default: 'en'
+  }
 }
 
 export default linguiConfig
