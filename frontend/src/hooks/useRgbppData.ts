@@ -243,9 +243,8 @@ export function useBtcTxList () {
     error
   }
 }
-export function useBtcTxs (txid:string) {
-  
-  const {data,isLoading} = trpc.temp.btc.transaction.useQuery({ txid })
+export function useBtcTxs (txid:string, options?: { enabled?: boolean }) {
+  const {data,isLoading} = trpc.temp.btc.transaction.useQuery({ txid }, { enabled: options?.enabled })
   return {
     data,
     isLoading
@@ -263,9 +262,9 @@ export function useCkbTxs (hash: string) {
   }
 }
 
-export function useCkbTxDetail (hash:string) {
-  // @ts-ignore
-  const {data,isLoading} = trpc.tx.getTxDetail.useQuery( hash)
+export function useCkbTxDetail (hash:string, options?: { enabled?: boolean }) {
+  //@ts-expect-error
+  const {data,isLoading} = trpc.tx.getTxDetail.useQuery(hash, { enabled: options?.enabled })
   return {
     data,
     isLoading

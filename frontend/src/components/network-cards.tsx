@@ -31,7 +31,7 @@ function FieldGroup({ fields }: { fields: Array<{ label: ReactNode; value: React
 export function NetworkCards() {
   const {data:btcChainInfo} = useBtcInfo()
   const {data:ckbChainInfo} = useCkbInfo()
-  console.log(btcChainInfo, ckbChainInfo)
+  
   return (
     <Grid w="100%" gridTemplateColumns={{ base: '100%', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}>
       <Link
@@ -58,11 +58,11 @@ export function NetworkCards() {
           fields={[
             {
               label: <Trans>Block Height</Trans>,
-              value: formatNumber(btcChainInfo?.tipBlockHeight),
+              value: formatNumber(btcChainInfo?.tipBlockHeight ?? 0),
             },
             {
               label: <Trans>Txns(24H)</Trans>,
-              value: formatNumber(btcChainInfo?.rgbpp?.txCountInLast24h),
+              value: formatNumber(btcChainInfo?.rgbpp?.txCountInLast24h ?? 0),
             },
           ]}
         />
@@ -91,11 +91,11 @@ export function NetworkCards() {
           fields={[
             {
               label: <Trans>Block Height</Trans>,
-              value: formatNumber(ckbChainInfo?.tipBlock?.number),
+              value: formatNumber(ckbChainInfo?.tipBlock?.number ?? 0),
             },
             {
               label: <Trans>Txns(24H)</Trans>,
-              value: formatNumber(ckbChainInfo?.tipBlock?.number),
+              value: formatNumber(ckbChainInfo?.tipBlock?.number ?? 0),
             },
           ]}
         />

@@ -13,6 +13,7 @@ import { shannonToCKB } from '@/lib/ckb/shannon-to-ckb'
 import { formatNumber } from '@/lib/string/format-number'
 
 export function CkbTransactionOverview({ ckbTransaction, i18n }: { i18n: I18n; ckbTransaction: CkbTransaction }) {
+  console.log(ckbTransaction)
   return (
     <VStack gap={0} w="100%" bg="bg.card" rounded="8px">
       <HStack
@@ -25,7 +26,7 @@ export function CkbTransactionOverview({ ckbTransaction, i18n }: { i18n: I18n; c
       >
         <OverflowSVG w="24px" />
         <Heading fontSize="16px" fontWeight="semibold">{t(i18n)`Overview`}</Heading>
-        {ckbTransaction.block?.timestamp ? <TimeFormatter timestamp={ckbTransaction.block.timestamp} /> : null}
+        {ckbTransaction?.block?.timestamp ? <TimeFormatter timestamp={ckbTransaction.block.timestamp} /> : null}
       </HStack>
       <Grid
         w="100%"
@@ -39,26 +40,26 @@ export function CkbTransactionOverview({ ckbTransaction, i18n }: { i18n: I18n; c
         <OverviewInfo>
           <OverviewInfoItem label={t(i18n)`Block Height`}>
             <Link
-              href={`/block/ckb/${ckbTransaction.block?.hash || ckbTransaction.blockNumber}`}
+              href={`/block/ckb/${ckbTransaction?.blockHash || ckbTransaction?.blockNumber}`}
               color="brand"
               _hover={{ 
                 textDecoration: 'underline',
                 textUnderlineOffset: '3px',
               }}
             >
-              {formatNumber(ckbTransaction.blockNumber)}
+              {formatNumber(ckbTransaction?.blockNumber ?? 0)}
             </Link>
           </OverviewInfoItem>
           <OverviewInfoItem label={t(i18n)`Size`} formatNumber unit={t(i18n)`bytes`}>
-            {ckbTransaction.size}
+            {formatNumber(ckbTransaction?.size ?? 0)}
           </OverviewInfoItem>
         </OverviewInfo>
         <OverviewInfo>
           <OverviewInfoItem label={t(i18n)`Fee`}>
-            <OverflowAmount amount={formatNumber(shannonToCKB(ckbTransaction.fee))} symbol={t(i18n)`CKB`} />
+            <OverflowAmount amount={formatNumber(shannonToCKB(ckbTransaction?.fee ?? 0))} symbol={t(i18n)`CKB`} />
           </OverviewInfoItem>
           <OverviewInfoItem label={t(i18n)`Fee Rate`}>
-            <OverflowAmount amount={formatNumber(ckbTransaction.feeRate)} symbol={t(i18n)`shannons/kB`} />
+            <OverflowAmount amount={formatNumber(ckbTransaction?.feeRate ?? 0)} symbol={t(i18n)`shannons/kB`} />
           </OverviewInfoItem>
         </OverviewInfo>
       </Grid>
