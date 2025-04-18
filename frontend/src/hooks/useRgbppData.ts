@@ -263,7 +263,6 @@ export function useCkbTxs (hash: string) {
 }
 
 export function useCkbTxDetail (hash:string, options?: { enabled?: boolean }) {
-  //@ts-expect-error
   const {data,isLoading} = trpc.tx.getTxDetail.useQuery(hash, { enabled: options?.enabled })
   return {
     data,
