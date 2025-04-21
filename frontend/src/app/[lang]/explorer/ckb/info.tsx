@@ -28,11 +28,11 @@ export  function Info() {
             {ckbChainInfo.tipBlock.number}
           </OverviewInfoItem>
           <OverviewInfoItem label={<Trans>L2 RGB++ Txns(24H)</Trans>} formatNumber>
-            {ckbChainInfo.udtStats.txCountInLast24h}
+            {ckbChainInfo.udtStats?ckbChainInfo.udtStats.txCountInLast24h:ckbChainInfo.txCountInLast24h}
           </OverviewInfoItem>
           <OverviewInfoItem label={<Trans>RGB++ Assets Holders</Trans>} formatNumber>
             {/* {rgbppStatistic.holdersCount} */}
-            {ckbChainInfo.udtStats.holders}
+            {ckbChainInfo.udtStats?ckbChainInfo.udtStats.holders:0}
 
           </OverviewInfoItem>
         </OverviewInfo>
