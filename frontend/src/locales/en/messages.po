@@ -39,7 +39,7 @@ msgstr ""
 #~ msgstr "home.welcome"
 
 #: src/components/latest-tx-list/amount.tsx:10
-#: src/components/latest-tx-list/amount.tsx:16
+#: src/components/latest-tx-list/amount.tsx:17
 msgid "-"
 msgstr "-"
 

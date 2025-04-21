@@ -155,6 +155,7 @@ export type CkbBlock = {
 };
 
 export type CkbTransaction = {
+  outputs: any;
   __typename?: 'CkbTransaction';
   block?: CkbBlock;
   block_number: number;
