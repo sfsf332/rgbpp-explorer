@@ -6,9 +6,9 @@ import { sum } from 'lodash-es'
 import { Flex } from 'styled-system/jsx'
 
 import MoneyIcon from '@/assets/money.svg'
-import { BitcoinOutput } from '@/gql/graphql'
 import { satsToBtc } from '@/lib/btc/sats-to-btc'
 import { formatNumber } from '@/lib/string/format-number'
+import { BitcoinOutput } from '@/types/graphql'
 
 export function BtcOutputsSum({ vout = [] }: { vout?: BitcoinOutput[] }) {
   const balance = sum(vout.map((x) => x.value))

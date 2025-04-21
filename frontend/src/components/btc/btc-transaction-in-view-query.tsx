@@ -5,10 +5,10 @@ import { ReactNode, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 import { Skeleton, SkeletonProps } from '@/components/ui/primitives/skeleton'
+import {  useBtcTxs } from '@/hooks/useRgbppData'
 // import { QueryKey } from '@/constants/query-key'
 // import { graphql } from '@/gql'
-import { BitcoinTransaction, CkbTransaction } from '@/gql/graphql'
-import {  useBtcTxs } from '@/hooks/useRgbppData'
+import { BitcoinTransaction, CkbTransaction } from '@/types/graphql'
 // import { graphQLClient } from '@/lib/graphql'
 
 
@@ -16,7 +16,7 @@ interface Props extends Omit<SkeletonProps, 'children'> {
   txid: string
   children: (
     btcTransaction: BitcoinTransaction,
-    ckbTransaction?: Pick<CkbTransaction, 'inputs' | 'outputs'>,
+    ckbTransaction?: Pick<CkbTransaction, 'display_inputs' | 'display_outputs'>,
   ) => ReactNode
   fallback?: ReactNode
 }

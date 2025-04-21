@@ -62,9 +62,14 @@ function SearchResult({
 
 function useSearch() {
   const router = useRouter()
-  const search = useSearchTrpc('')
+  const [keyword, setKeyword] = useState('')
+  const search = useSearchTrpc(keyword)
+  
   return useMutation({
     async mutationFn(keyword: string) {
+      setKeyword(keyword)
+      // 等待 keyword 更新
+      await new Promise(resolve => setTimeout(resolve, 0))
       const result = await search.refetch()
       if (!result.data) {
         throw new Error('Not found')

@@ -1,8 +1,11 @@
 import { ExplorerTxListUI } from '@/components/explorer-tx-list/ui'
-import { RgbppTransaction } from '@/gql/graphql'
+import { RgbppTransaction } from '@/types/graphql'
 
 export function ExplorerTxList<
-  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'timestamp' | 'btcTxid' | 'leapDirection' | 'ckbTxHash'>,
->({ txs, txid ,type }: { txs: T[]; txid: (tx: T) => string; type: string }) {
-  return <ExplorerTxListUI txs={txs.map((tx) => ({ ...tx, txid: txid(tx) ?? '', type }))} type={type} />
+  T extends Omit<Pick<RgbppTransaction, 'ckbTransaction' | 'timestamp' | 'network' | 'txHash'>, 'btc' | 'direction'> & {
+    btc?: { txid: string | null };
+    direction?: 'on' | 'off' | 'within' | null;
+  }
+>(props: { transactions: T[]; type: string }) {
+  return <ExplorerTxListUI txs={props.transactions} type={props.type} />
 }

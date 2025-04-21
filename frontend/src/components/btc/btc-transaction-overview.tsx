@@ -1,19 +1,17 @@
-import type { I18n } from '@lingui/core'
-import { t } from '@lingui/macro'
+import {  Trans } from '@lingui/macro'
 import { Grid, HStack, VStack } from 'styled-system/jsx'
 
 import OverviewSVG from '@/assets/overview.svg'
 import { OverflowAmount } from '@/components/overflow-amount'
 import { OverviewInfo, OverviewInfoItem } from '@/components/overview-info'
-import { TimeFormatter } from '@/components/time-formatter'
+// import { TimeFormatter } from '@/components/time-formatter'
 import { Heading } from '@/components/ui'
 import Link from '@/components/ui/link'
-import { BitcoinTransaction } from '@/gql/graphql'
-import { resolveBtcTime } from '@/lib/btc/resolve-btc-time'
+// import { resolveBtcTime } from '@/lib/btc/resolve-btc-time'
 import { formatNumber } from '@/lib/string/format-number'
+import { BitcoinTransaction } from '@/types/graphql'
 
-export function BtcTransactionOverview({ btcTransaction, i18n }: { btcTransaction: BitcoinTransaction; i18n: I18n }) {
-  
+export function BtcTransactionOverview({ btcTransaction }: { btcTransaction: BitcoinTransaction; }) {
   return (
     <VStack gap={0} w="100%" bg="bg.card" rounded="8px">
       <HStack
@@ -25,10 +23,10 @@ export function BtcTransactionOverview({ btcTransaction, i18n }: { btcTransactio
         borderBottomColor="border.primary"
       >
         <OverviewSVG w="24px" />
-        <Heading fontSize="16px" fontWeight="semibold">{t(i18n)`Overview`}</Heading>
-        {btcTransaction.transactionTime ? (
-          <TimeFormatter timestamp={resolveBtcTime(btcTransaction.transactionTime)} />
-        ) : null}
+        <Heading fontSize="16px" fontWeight="semibold"><Trans>Overview</Trans></Heading>
+        {/* {btcTransaction.timestamp ? (
+          <TimeFormatter timestamp={resolveBtcTime(btcTransaction.timestamp)} />
+        ) : null} */}
       </HStack>
       <Grid
         w="100%"
@@ -40,29 +38,45 @@ export function BtcTransactionOverview({ btcTransaction, i18n }: { btcTransactio
         textAlign="center"
       >
         <OverviewInfo>
-          <OverviewInfoItem label={t(i18n)`Block Height`}>
-            <Link
-              href={`/block/btc/${btcTransaction.blockHash}`}
-              color="brand"
-              _hover={{ 
-                textDecoration: 'underline',
-                textUnderlineOffset: '3px',
-              }}
-            >
-              {formatNumber(btcTransaction?.blockHeight)}
-            </Link>
+          <OverviewInfoItem label={<Trans>Block Height</Trans>}>
+            {btcTransaction.blockHeight ? (
+              <Link
+                href={`/block/btc/${btcTransaction.blockHeight}`}
+                color="brand"
+                _hover={{ 
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '3px',
+                }}
+              >
+                {formatNumber(btcTransaction.blockHeight)}
+              </Link>
+            ) : (
+              <Trans>Unconfirmed</Trans>
+            )}
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`Size`}>
-            <OverflowAmount amount={formatNumber(btcTransaction.size)} symbol={t(i18n)`bytes`} />
+          <OverviewInfoItem label={<Trans>Size</Trans>}>
+            {btcTransaction.size ? (
+              <OverflowAmount amount={formatNumber(btcTransaction.size)} symbol={<Trans>bytes</Trans>} />
+            ) : (
+              <Trans>Unknown</Trans>
+            )}
           </OverviewInfoItem>
         </OverviewInfo>
         <OverviewInfo>
-          <OverviewInfoItem label={t(i18n)`Fee`}>
-            <OverflowAmount amount={formatNumber(btcTransaction.fee)} symbol={t(i18n)`sats`} />
+          <OverviewInfoItem label={<Trans>Fee</Trans>}>
+            {btcTransaction.fee ? (
+              <OverflowAmount amount={formatNumber(btcTransaction.fee)} symbol={<Trans>sats</Trans>} />
+            ) : (
+              <Trans>Unknown</Trans>
+            )}
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`Fee Rate`}>
-            <OverflowAmount amount={formatNumber(btcTransaction.feeRate)} symbol={t(i18n)`sat/vB`} />
-          </OverviewInfoItem>
+          {/* <OverviewInfoItem label={<Trans>Fee Rate</Trans>}>
+            {btcTransaction.feeRate ? (
+              <OverflowAmount amount={formatNumber(btcTransaction.feeRate)} symbol={<Trans>sat/vB</Trans>} />
+            ) : (
+              <Trans>Unknown</Trans>
+            )}
+          </OverviewInfoItem> */}
         </OverviewInfo>
       </Grid>
     </VStack>

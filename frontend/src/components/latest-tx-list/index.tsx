@@ -7,12 +7,12 @@ import { FailedFallback } from '@/components/failed-fallback'
 import { LatestTxnListUI } from '@/components/latest-tx-list/ui'
 import { LoadingBox } from '@/components/loading-box'
 import { NoData } from '@/components/no-data'
-import type { RgbppTransaction } from '@/gql/graphql'
 import { useRgbppTransactions } from '@/hooks/useRgbppData'
+import { RgbppTransaction } from '@/types/graphql'
 
 export function HomeRgbppTxnsOverview() {
   const { data: transactions, isLoading, error } = useRgbppTransactions()
-  
+  console.log(transactions)
   if (error) {
     return <FailedFallback />
   }
@@ -31,19 +31,10 @@ export function HomeRgbppTxnsOverview() {
     )
   }
 
-  const formattedTxs = transactions.map((tx: RgbppTransaction) => ({
-    timestamp: tx.timestamp,
-    ckbTransaction: tx.ckbTransaction,
-    leapDirection: tx.leapDirection,
-    btcTransaction: tx.btcTransaction,
-    btcTxid: tx.btcTxid,
-    ckbTxHash: tx.ckbTxHash,
-    blockNumber: tx.blockNumber
-  })) as Array<Pick<RgbppTransaction, 'timestamp' | 'ckbTransaction' | 'leapDirection' | 'btcTransaction' | 'btcTxid' | 'ckbTxHash' | 'blockNumber'>>;
-
+ 
   return (
     <Box w="100%" bg="bg.card" p="24px" rounded="8px">
-      <LatestTxnListUI txs={formattedTxs} />
+      <LatestTxnListUI txs={transactions as RgbppTransaction[]} />
     </Box>
   )
 }

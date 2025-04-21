@@ -1,5 +1,4 @@
-import type { I18n } from '@lingui/core'
-import { t } from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import { Flex, HStack, VStack } from 'styled-system/jsx'
 
 import BtcIcon from '@/assets/chains/btc.svg'
@@ -8,16 +7,17 @@ import { IfBreakpoint } from '@/components/if-breakpoint'
 import { Text } from '@/components/ui'
 import Link from '@/components/ui/link'
 import { ViewMemPool } from '@/components/view-mempool'
-import { BitcoinInput, BitcoinOutput, BitcoinTransaction, CkbTransaction } from '@/gql/graphql'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
+import {  BitcoinTransaction } from '@/types/graphql'
 
 export interface BtcUtxosProps extends Pick<BitcoinTransaction, 'txid' | 'vin' | 'vout'> {
   isBinding?: boolean
-  ckbCell?: Pick<CkbTransaction, 'inputs' | 'outputs'>
-  i18n: I18n
+  // ckbCell?: Pick<CkbTransaction, 'inputs' | 'outputs'>
 }
 
-export function BtcUtxos({ txid, vin, vout, isBinding, ckbCell, i18n }: BtcUtxosProps) {
+export function BtcUtxos({ txid, vin, vout, isBinding }: BtcUtxosProps) {
+  
+
   return (
     <VStack w="100%" gap={0} bg="bg.card" rounded="8px">
       <Flex
@@ -34,7 +34,7 @@ export function BtcUtxos({ txid, vin, vout, isBinding, ckbCell, i18n }: BtcUtxos
           <BtcIcon h="40px" w="40px" />
           {isBinding ? (
             <VStack alignItems="start" gap={0}>
-              <Text fontSize="16px" fontWeight="semibold">{t(i18n)`RGB++ Binding Txn on BTC`}</Text>
+              <Text fontSize="16px" fontWeight="semibold">{<Trans>`RGB++ Binding Txn on BTC</Trans>}</Text>
               <Link
                 href={`/transaction/${txid}`}
                 color="brand"
@@ -49,12 +49,18 @@ export function BtcUtxos({ txid, vin, vout, isBinding, ckbCell, i18n }: BtcUtxos
               </Link>
             </VStack>
           ) : (
-            <Text fontSize="16px" fontWeight="semibold">{t(i18n)`BTC Txn`}</Text>
+            <Text fontSize="16px" fontWeight="semibold">{<Trans>BTC Txn</Trans>}</Text>
           )}
         </HStack>
         <ViewMemPool txid={txid} />
       </Flex>
-      <BtcUtxoTables txid={txid} vin={vin as BitcoinInput[]} vout={vout as BitcoinOutput[]} ckbCell={ckbCell} />
+      {/* todo 暂时屏蔽 */}
+      <BtcUtxoTables 
+        txid={txid} 
+        vin={vin} 
+        vout={vout} 
+        // ckbCell={ckbCell} 
+      />
     </VStack>
   )
 }

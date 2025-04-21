@@ -8,11 +8,9 @@ import { Copier } from '@/components/copier'
 import { IfBreakpoint } from '@/components/if-breakpoint'
 import { Heading, Text } from '@/components/ui'
 import Link from '@/components/ui/link'
-import { CellType, CkbCell } from '@/gql/graphql'
-import { scriptToAddress } from '@/lib/ckb/script-to-address'
-import { shannonToCKB } from '@/lib/ckb/shannon-to-ckb'
 import { formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
+import { CkbCell } from '@/types/graphql'
 
 export interface CellTablesProps {
   inputs?: CkbCell[] | null
@@ -88,7 +86,7 @@ export function CkbCellTables({ inputs = [], outputs = [], isCellbase, address }
 }
 
 function Cell({ cell, address: currentAddress }: { cell: CkbCell; address?: string }) {
-  const address = scriptToAddress(cell.lock)
+  const address = cell.address_hash
   const formattedAddress = (
     <IfBreakpoint breakpoint="sm" fallback={truncateMiddle(address, 6, 6)}>
       {truncateMiddle(address, 10, 10)}
@@ -105,7 +103,6 @@ function Cell({ cell, address: currentAddress }: { cell: CkbCell; address?: stri
       borderBottomColor="border.primary"
     >
       <HStack gap="8px">
-        <SubTractIcon w="16px" h="16px" color={cell.status?.consumed ? 'text.third' : 'success.unspent'} />
         <Copier onlyIcon value={address}>
           {currentAddress !== address ? (
             <Link
@@ -126,20 +123,20 @@ function Cell({ cell, address: currentAddress }: { cell: CkbCell; address?: stri
       </HStack>
       <VStack gap={0} alignItems="flex-end" fontSize={{ base: '14px', md: '16px' }} textAlign="right">
         <Box>
-          {formatNumber(shannonToCKB(cell.capacity))}{' '}
+          {formatNumber(cell.capacity, 8)}{' '}
           <Text as="span" fontSize="12px" color="text.third">
             <Trans>CKB</Trans>
           </Text>
         </Box>
-        {cell.xudtInfo ? (
+        {cell.assetId ? (
           <Box>
-            {formatNumber(cell.xudtInfo.amount, cell.xudtInfo.decimal)}{' '}
+            {formatNumber(cell.amount || '0', 8)}{' '}
             <Text as="span" fontSize="12px" color="text.third">
-              {cell.xudtInfo.symbol}
+              {cell.symbol}
             </Text>
           </Box>
         ) : null}
-        {cell.cellType === CellType.Dob || cell.cellType === CellType.Mnft ? (
+        {cell.cell_type === 'normal' ? (
           <Box>
             1
             <Text as="span" fontSize="12px" color="text.third" ml="4px">

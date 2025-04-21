@@ -39,7 +39,7 @@ msgstr ""
 #~ msgstr "home.welcome"
 
 #: src/components/latest-tx-list/amount.tsx:10
-#: src/components/latest-tx-list/amount.tsx:29
+#: src/components/latest-tx-list/amount.tsx:16
 msgid "-"
 msgstr "-"
 
@@ -57,8 +57,8 @@ msgid "{0} CKB"
 msgstr "{0} CKB"
 
 #: src/components/utxo-or-cell-footer.tsx:81
-msgid "{0} confirmed"
-msgstr "{0} confirmed"
+#~ msgid "{0} confirmed"
+#~ msgstr "{0} confirmed"
 
 #: src/components/btc/btc-diff-tags.tsx:121
 #: src/components/ckb/ckb-diff-tags.tsx:107
@@ -74,7 +74,7 @@ msgstr "{0} Holders"
 #~ msgid "{0} sats/vB ~ {1} sats/vB"
 #~ msgstr "{0} sats/vB ~ {1} sats/vB"
 
-#: src/app/[lang]/transaction/list/page.tsx:189
+#: src/app/[lang]/transaction/list/page.tsx:120
 msgid "{0} transactions"
 msgstr "{0} transactions"
 
@@ -107,9 +107,13 @@ msgstr "{minutesDiff}m ago"
 msgid "{secondsDiff}s ago"
 msgstr "{secondsDiff}s ago"
 
+#: src/components/btc/btc-utxos.tsx:37
+msgid "`RGB++ Binding Txn on BTC"
+msgstr "`RGB++ Binding Txn on BTC"
+
 #: src/components/latest-tx-list/amount.tsx:17
-msgid "<0>{0}</0><1>DOB</1>"
-msgstr "<0>{0}</0><1>DOB</1>"
+#~ msgid "<0>{0}</0><1>DOB</1>"
+#~ msgstr "<0>{0}</0><1>DOB</1>"
 
 #: src/components/home-title.tsx:43
 msgid "<0>Explore the<1><2/></1></0><3>Ecosystem</3>"
@@ -136,8 +140,8 @@ msgstr "Address"
 #: src/components/btc/btc-transaction-card.tsx:61
 #: src/components/holder-list/coin-holder-list.tsx:123
 #: src/components/holder-list/coin-holder-list.tsx:149
-#: src/components/latest-tx-list/rgb-tx-list.tsx:105
-#: src/components/latest-tx-list/ui.tsx:85
+#: src/components/latest-tx-list/rgb-tx-list.tsx:108
+#: src/components/latest-tx-list/ui.tsx:83
 msgid "Amount"
 msgstr "Amount"
 
@@ -168,7 +172,7 @@ msgstr "Back to Home"
 msgid "Bitcoin"
 msgstr "Bitcoin"
 
-#: src/components/latest-tx-list/rgb-tx-list.tsx:183
+#: src/components/latest-tx-list/rgb-tx-list.tsx:186
 msgid "Block"
 msgstr "Block"
 
@@ -180,10 +184,9 @@ msgstr "Block {0}"
 #: src/app/[lang]/explorer/btc/info.tsx:33
 #: src/app/[lang]/explorer/ckb/info.tsx:27
 #: src/components/btc/btc-transaction-card.tsx:39
-#: src/components/btc/btc-transaction-overview.tsx:43
-#: src/components/ckb/ckb-transaction-overview.tsx:40
-#: src/components/latest-tx-list/rgb-tx-list.tsx:98
-#: src/components/latest-tx-list/ui.tsx:79
+#: src/components/btc/btc-transaction-overview.tsx:41
+#: src/components/ckb/ckb-transaction-overview.tsx:39
+#: src/components/latest-tx-list/rgb-tx-list.tsx:101
 #: src/components/network-cards.tsx:60
 #: src/components/network-cards.tsx:93
 msgid "Block Height"
@@ -197,8 +200,8 @@ msgstr "Block size"
 #: src/components/btc/btc-address-overview.tsx:40
 #: src/components/btc/btc-address-overview.tsx:45
 #: src/components/btc/btc-address-overview.tsx:49
-#: src/components/btc/btc-utxo-tables.tsx:151
-#: src/components/btc/btc-utxo-tables.tsx:231
+#: src/components/btc/btc-utxo-tables.tsx:96
+#: src/components/btc/btc-utxo-tables.tsx:178
 msgid "BTC"
 msgstr "BTC"
 
@@ -230,9 +233,9 @@ msgid "BTC Txn"
 msgstr "BTC Txn"
 
 #: src/components/btc/btc-block-overview.tsx:48
-#: src/components/btc/btc-transaction-overview.tsx:56
+#: src/components/btc/btc-transaction-overview.tsx:59
 #: src/components/ckb/ckb-block-overview.tsx:37
-#: src/components/ckb/ckb-transaction-overview.tsx:52
+#: src/components/ckb/ckb-transaction-overview.tsx:51
 msgid "bytes"
 msgstr "bytes"
 
@@ -265,8 +268,7 @@ msgstr "Circulating Supply"
 #: src/components/ckb/ckb-address-overview.tsx:46
 #: src/components/ckb/ckb-address-overview.tsx:52
 #: src/components/ckb/ckb-block-overview.tsx:65
-#: src/components/ckb/ckb-cell-tables.tsx:131
-#: src/components/ckb/ckb-transaction-overview.tsx:58
+#: src/components/ckb/ckb-cell-tables.tsx:128
 #: src/components/footer.tsx:94
 #: src/components/navbar/index.tsx:40
 #: src/components/network-cards.tsx:86
@@ -296,7 +298,7 @@ msgstr "CKB Chain Transactions"
 msgid "CKB Holders"
 msgstr "CKB Holders"
 
-#: src/components/ckb/ckb-cells.tsx:55
+#: src/components/ckb/ckb-cells.tsx:52
 msgid "CKB Txn"
 msgstr "CKB Txn"
 
@@ -304,8 +306,8 @@ msgstr "CKB Txn"
 msgid "Coin"
 msgstr "Coin"
 
-#: src/components/btc/btc-utxo-tables.tsx:106
-#: src/components/ckb/ckb-cell-tables.tsx:61
+#: src/components/btc/btc-utxo-tables.tsx:47
+#: src/components/ckb/ckb-cell-tables.tsx:59
 msgid "Coinbase"
 msgstr "Coinbase"
 
@@ -332,7 +334,6 @@ msgstr "Coming soon, please stay tuned"
 
 #: src/components/block-header-btc.tsx:66
 #: src/components/block-header.tsx:66
-#: src/components/transaction-header.tsx:71
 msgid "Confirmations"
 msgstr "Confirmations"
 
@@ -385,9 +386,9 @@ msgstr "Daily transactions related to RGB++ assets"
 #~ msgid "Deploy Time"
 #~ msgstr "Deploy Time"
 
-#: src/components/btc/btc-utxo-tables.tsx:168
-#: src/components/btc/btc-utxo-tables.tsx:248
-#: src/components/ckb/ckb-cell-tables.tsx:146
+#: src/components/btc/btc-utxo-tables.tsx:113
+#: src/components/btc/btc-utxo-tables.tsx:195
+#: src/components/ckb/ckb-cell-tables.tsx:143
 msgid "DOB"
 msgstr "DOB"
 
@@ -421,7 +422,7 @@ msgid "DOGE Chain Transactions"
 msgstr "DOGE Chain Transactions"
 
 #: src/app/[lang]/charts/[chartId]/page.tsx:86
-#: src/app/[lang]/transaction/list/page.tsx:207
+#: src/app/[lang]/transaction/list/page.tsx:138
 msgid "Download Data"
 msgstr "Download Data"
 
@@ -434,13 +435,11 @@ msgstr "Drop"
 msgid "Explorer"
 msgstr "Explorer"
 
-#: src/components/btc/btc-transaction-overview.tsx:60
-#: src/components/ckb/ckb-transaction-overview.tsx:57
+#: src/components/btc/btc-transaction-overview.tsx:66
 msgid "Fee"
 msgstr "Fee"
 
-#: src/components/btc/btc-transaction-overview.tsx:63
-#: src/components/ckb/ckb-transaction-overview.tsx:60
+#: src/components/ckb/ckb-transaction-overview.tsx:59
 msgid "Fee Rate"
 msgstr "Fee Rate"
 
@@ -449,8 +448,8 @@ msgid "Fee rate span"
 msgstr "Fee rate span"
 
 #: src/components/utxo-or-cell-footer.tsx:67
-msgid "Fee Rate:<0>{0}</0>{feeUnit}/{sizeUnit}"
-msgstr "Fee Rate:<0>{0}</0>{feeUnit}/{sizeUnit}"
+#~ msgid "Fee Rate:<0>{0}</0>{feeUnit}/{sizeUnit}"
+#~ msgstr "Fee Rate:<0>{0}</0>{feeUnit}/{sizeUnit}"
 
 #: src/components/pagination-searchparams.tsx:43
 msgid "Go"
@@ -471,15 +470,14 @@ msgstr "High"
 msgid "Holders"
 msgstr "Holders"
 
-#: src/components/btc/btc-utxo-tables.tsx:49
-#: src/components/ckb/ckb-cell-tables.tsx:47
+#: src/components/btc/btc-utxo-tables.tsx:226
+#: src/components/ckb/ckb-cell-tables.tsx:45
 msgid "Inputs ({0})"
 msgstr "Inputs ({0})"
 
-#: src/components/ckb/ckb-transaction-card-with-query-in-address.tsx:25
 #: src/components/ckb/ckb-transaction-card-with-query-in-block.tsx:20
-msgid "kB"
-msgstr "kB"
+#~ msgid "kB"
+#~ msgstr "kB"
 
 #: src/components/layer-type.tsx:26
 #: src/components/layer-type.tsx:44
@@ -509,7 +507,7 @@ msgstr "L2 RGB++ Assets"
 msgid "L2 RGB++ Txns(24H)"
 msgstr "L2 RGB++ Txns(24H)"
 
-#: src/app/[lang]/explorer/btc/page.tsx:17
+#: src/app/[lang]/explorer/btc/page.tsx:19
 msgid "Latest L1 RGB++ transaction"
 msgstr "Latest L1 RGB++ transaction"
 
@@ -590,21 +588,21 @@ msgstr "Occupied"
 msgid "Oops! Your search did not match any record."
 msgstr "Oops! Your search did not match any record."
 
-#: src/components/btc/btc-utxo-tables.tsx:212
+#: src/components/btc/btc-utxo-tables.tsx:155
 msgid "OP_RETURN"
 msgstr "OP_RETURN"
 
-#: src/components/btc/btc-utxo-tables.tsx:70
-#: src/components/ckb/ckb-cell-tables.tsx:80
+#: src/components/btc/btc-utxo-tables.tsx:247
+#: src/components/ckb/ckb-cell-tables.tsx:78
 msgid "Outputs ({0})"
 msgstr "Outputs ({0})"
 
 #: src/components/btc/btc-address-overview.tsx:24
 #: src/components/btc/btc-block-overview.tsx:34
-#: src/components/btc/btc-transaction-overview.tsx:28
+#: src/components/btc/btc-transaction-overview.tsx:26
 #: src/components/ckb/ckb-address-overview.tsx:22
 #: src/components/ckb/ckb-block-overview.tsx:23
-#: src/components/ckb/ckb-transaction-overview.tsx:27
+#: src/components/ckb/ckb-transaction-overview.tsx:26
 msgid "Overview"
 msgstr "Overview"
 
@@ -647,10 +645,10 @@ msgid "RGB++ Assets Utilization"
 msgstr "RGB++ Assets Utilization"
 
 #: src/components/btc/btc-utxos.tsx:37
-msgid "RGB++ Binding Txn on BTC"
-msgstr "RGB++ Binding Txn on BTC"
+#~ msgid "RGB++ Binding Txn on BTC"
+#~ msgstr "RGB++ Binding Txn on BTC"
 
-#: src/components/ckb/ckb-cells.tsx:39
+#: src/components/ckb/ckb-cells.tsx:36
 msgid "RGB++ Binding Txn on CKB"
 msgstr "RGB++ Binding Txn on CKB"
 
@@ -679,12 +677,12 @@ msgstr "RGB++ Transactions"
 msgid "RGB++ Txns"
 msgstr "RGB++ Txns"
 
-#: src/components/btc/btc-transaction-overview.tsx:64
-msgid "sat/vB"
-msgstr "sat/vB"
+#: src/components/btc/btc-transaction-overview.tsx:75
+#~ msgid "sat/vB"
+#~ msgstr "sat/vB"
 
-#: src/components/btc/btc-transaction-card-in-address.tsx:36
-#: src/components/btc/btc-transaction-overview.tsx:61
+#: src/components/btc/btc-transaction-card-in-address.tsx:39
+#: src/components/btc/btc-transaction-overview.tsx:68
 msgid "sats"
 msgstr "sats"
 
@@ -705,25 +703,24 @@ msgstr "Script"
 msgid "SDK"
 msgstr "SDK"
 
-#: src/components/search-bar.tsx:114
-#: src/components/search-bar.tsx:160
+#: src/components/search-bar.tsx:119
+#: src/components/search-bar.tsx:165
 msgid "Search by Address/Tx Hash/Block Hash/AssetID"
 msgstr "Search by Address/Tx Hash/Block Hash/AssetID"
 
-#: src/components/ckb/ckb-transaction-card-with-query-in-address.tsx:24
 #: src/components/ckb/ckb-transaction-card-with-query-in-block.tsx:20
-msgid "shannons"
-msgstr "shannons"
+#~ msgid "shannons"
+#~ msgstr "shannons"
 
 #: src/app/[lang]/explorer/ckb/info.tsx:42
 #: src/app/[lang]/explorer/ckb/info.tsx:53
 #: src/app/[lang]/explorer/ckb/info.tsx:64
-#: src/components/ckb/ckb-transaction-overview.tsx:61
+#: src/components/ckb/ckb-transaction-overview.tsx:60
 msgid "shannons/kB"
 msgstr "shannons/kB"
 
-#: src/components/btc/btc-transaction-overview.tsx:55
-#: src/components/ckb/ckb-transaction-overview.tsx:52
+#: src/components/btc/btc-transaction-overview.tsx:57
+#: src/components/ckb/ckb-transaction-overview.tsx:51
 msgid "Size"
 msgstr "Size"
 
@@ -762,12 +759,12 @@ msgid "The total number of RGB++ assets, including FT and DOB"
 msgstr "The total number of assets issued by RGB++ protocol, such as SEAL, STB, and Nervape. Each asset type is counted only once."
 
 #: src/components/btc/btc-transaction-card.tsx:51
-#: src/components/latest-tx-list/rgb-tx-list.tsx:108
-#: src/components/latest-tx-list/ui.tsx:88
+#: src/components/latest-tx-list/rgb-tx-list.tsx:111
+#: src/components/latest-tx-list/ui.tsx:86
 msgid "Time"
 msgstr "Time"
 
-#: src/components/latest-tx-list/rgb-tx-list.tsx:189
+#: src/components/latest-tx-list/rgb-tx-list.tsx:192
 msgid "Timestamp"
 msgstr "Timestamp"
 
@@ -776,7 +773,7 @@ msgstr "Timestamp"
 #~ msgid "Total"
 #~ msgstr "Total"
 
-#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:109
+#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:116
 #: src/app/[lang]/assets/coins/page.tsx:99
 msgid "Total {0} Items"
 msgstr "Total {0} Items"
@@ -838,7 +835,7 @@ msgstr "Total: {0} Coins"
 
 #: src/components/btc/btc-block-overview.tsx:50
 #: src/components/ckb/ckb-block-overview.tsx:39
-#: src/components/transaction-header.tsx:44
+#: src/components/transaction-header.tsx:41
 msgid "Transaction"
 msgstr "Transaction"
 
@@ -857,12 +854,12 @@ msgstr "Transactions"
 msgid "Try again"
 msgstr "Try again"
 
-#: src/components/latest-tx-list/rgb-tx-list.tsx:94
-#: src/components/latest-tx-list/ui.tsx:76
+#: src/components/latest-tx-list/rgb-tx-list.tsx:97
+#: src/components/latest-tx-list/ui.tsx:74
 msgid "Tx hash"
 msgstr "Tx hash"
 
-#: src/components/utxo-or-cell-footer.tsx:56
+#: src/components/utxo-or-cell-footer.tsx:53
 msgid "Txn Fee:<0>{0} </0>{feeUnit}"
 msgstr "Txn Fee:<0>{0} </0>{feeUnit}"
 
@@ -878,14 +875,20 @@ msgstr "Txns"
 msgid "Txns(24H)"
 msgstr "Txns(24H)"
 
-#: src/components/latest-tx-list/rgb-tx-list.tsx:102
-#: src/components/latest-tx-list/ui.tsx:82
+#: src/components/latest-tx-list/rgb-tx-list.tsx:105
+#: src/components/latest-tx-list/ui.tsx:80
 msgid "Type"
 msgstr "Type"
 
 #: src/components/btc/btc-address-overview.tsx:48
+#: src/components/btc/btc-transaction-overview.tsx:54
 msgid "Unconfirmed"
 msgstr "Unconfirmed"
+
+#: src/components/btc/btc-transaction-overview.tsx:61
+#: src/components/btc/btc-transaction-overview.tsx:70
+msgid "Unknown"
+msgstr "Unknown"
 
 #: src/components/footer.tsx:119
 msgid "UTXO Stack"
@@ -895,7 +898,7 @@ msgstr "UTXO Stack"
 msgid "Value"
 msgstr "Value"
 
-#: src/components/btc/btc-transaction-card-in-address.tsx:37
+#: src/components/btc/btc-transaction-card-in-address.tsx:40
 msgid "vB"
 msgstr "vB"
 

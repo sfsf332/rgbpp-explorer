@@ -1,6 +1,6 @@
 'use client'
 
-import { CkbTransactionCardWithQueryInAddress } from '@/components/ckb/ckb-transaction-card-with-query-in-address'
+// import { CkbTransactionCardWithQueryInAddress } from '@/components/ckb/ckb-transaction-card-with-query-in-address'
 import { Loading } from '@/components/loading'
 import { useBtcAddressTransactions } from '@/hooks/useRgbppData'
 
@@ -51,11 +51,14 @@ export function CKBTxList({ address }: { address: string }) {
     <>
     {isLoading ? <Loading my="80px" /> : (
       data?.data.map((item: TransactionItem) => (
-        <CkbTransactionCardWithQueryInAddress 
-          address={address} 
-          hash={item.txHash} 
-          key={item.txHash} 
-        />
+        <div key={item.txHash}>
+        {item.txHash}
+        </div>
+        // <CkbTransactionCardWithQueryInAddress 
+        //   address={address} 
+        //   hash={item.txHash} 
+        //   key={item.txHash} 
+        // />
       ))
     )}
     </>

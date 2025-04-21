@@ -13,81 +13,12 @@ import { PaginationSearchParams } from '@/components/pagination-searchparams'
 import { TransactionInfo } from '@/components/transaction-info'
 import { Heading , Text } from '@/components/ui'
 import { DATE_TEMPLATE } from '@/constants'
-import { QueryKey } from '@/constants/query-key'
-import { graphql } from '@/gql'
-import { CkbTransaction, LeapDirection } from '@/gql/graphql'
-import { graphQLClient } from '@/lib/graphql'
+// import { graphQLClient } from '@/lib/graphql'
 import { formatNumber as formatNumberFn } from '@/lib/string/format-number'
 import { apiFetcher, RGBTransaction } from '@/services/fecthcer'
+// import { QueryKey } from '@/constants/query-key'
+import { CkbTransaction, LeapDirection } from '@/types/graphql'
 import { downloadCSV } from '@/utils/download'
-
-const query = graphql(`
-  query RgbppLatestTransactions($limit: Int!) {
-    rgbppLatestTransactions(limit: $limit) {
-      txs {
-        ckbTxHash
-        btcTxid
-        leapDirection
-        blockNumber
-        timestamp
-        ckbTransaction {
-          hash
-          blockNumber
-          confirmations
-          confirmed
-          fee
-          feeRate
-          isCellbase
-          size
-          inputs {
-            txHash
-            index
-            capacity
-            cellType
-            lock {
-              codeHash
-              hashType
-              args
-            }
-            xudtInfo {
-              symbol
-              amount
-              decimal
-            }
-            status {
-              consumed
-              txHash
-              index
-            }
-          }
-          outputs {
-            txHash
-            index
-            capacity
-            cellType
-            lock {
-              codeHash
-              hashType
-              args
-            }
-            xudtInfo {
-              symbol
-              amount
-              decimal
-            }
-            status {
-              consumed
-              txHash
-              index
-            }
-          }
-        }
-      }
-      total
-      pageSize
-    }
-  }
-`)
 
 type RgbppLatestTransactionsResponse = {
   rgbppLatestTransactions: {
@@ -105,16 +36,16 @@ type RgbppLatestTransactionsResponse = {
 }
 
 export default function Page() {
-  const { isLoading, data, error } = useQuery<RgbppLatestTransactionsResponse>({
-    queryKey: [QueryKey.LastRgbppTxns],
-    queryFn: async () => {
-      const result = await graphQLClient.request<RgbppLatestTransactionsResponse, { limit: number }>(query as any, {
-        limit: 10,
-      })
-      return result
-    },
-    refetchInterval: 10000,
-  })
+  // const { isLoading, data, error } = useQuery<RgbppLatestTransactionsResponse>({
+  //   queryKey: [QueryKey.LastRgbppTxns],
+  //   queryFn: async () => {
+  //     const result = await graphQLClient.request<RgbppLatestTransactionsResponse, { limit: number }>(query as any, {
+  //       limit: 10,
+  //     })
+  //     return result
+  //   },
+  //   refetchInterval: 10000,
+  // })
 
   const currentPage = 1,
     sort = 'number.desc',
@@ -138,7 +69,7 @@ export default function Page() {
     refetchInterval: 10000,
   })
 
-  if (isLoading && txLoading) {
+  if (txLoading) {
     return (
       <Center h="823px">
         <Loading />
@@ -146,7 +77,7 @@ export default function Page() {
     )
   }
 
-  if (error || txError || !txData || !data) {
+  if (txError || !txData ) {
     return (
       <Center h="823px">
         <FailedFallback />
@@ -200,7 +131,7 @@ export default function Page() {
             alignItems="center"
             _hover={{ bg: 'RGB(255, 255, 255, 0.08)' }}
             onClick={downloadTxn}
-            disabled={isLoading || !data}
+            disabled={txLoading || !txData}
           >
             <DownloadIcon w="18px" h="18px" />
             <Text display={{ base: 'none', md: 'block' }} fontSize={{ base: '14px' }} whiteSpace={'nowrap'}>
@@ -209,7 +140,14 @@ export default function Page() {
           </styled.button>
         </Heading>
         <Box p="0px">
-          <LatestRGBTxnListUI txs={data.rgbppLatestTransactions.txs} />
+          <LatestRGBTxnListUI txs={txData?.data?.ckbTransactions.map(tx => ({
+            ckbTxHash: tx.txHash,
+            btcTxid: tx.rgbTxid,
+            timestamp: tx.blockTimestamp.toString(),
+            ckbTransaction: tx.ckbTransaction,
+            leapDirection: tx.leapDirection as any,
+            blockNumber: tx.blockNumber
+          })) || []} />
           <HStack gap="16px" display={'flex'}
             alignItems={'center'}
             justifyContent={'center'}

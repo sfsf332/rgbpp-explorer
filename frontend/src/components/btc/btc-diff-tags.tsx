@@ -24,9 +24,9 @@ export function BtcDiffTags({
   txid?: string
 }) {
   const inputBalance = sum(
-    compact(vin.filter((x) => address === x.prevout?.address?.address).map((x) => x.prevout?.value)),
+    compact(vin.filter((x) => x.prevout?.address?.address === address).map((x) => x.prevout?.value)),
   )
-  const outputBalance = sum(compact(vout.filter((x) => address === x.address?.address).map((x) => x.value)))
+  const outputBalance = sum(compact(vout.filter((x) => x.address?.address === address).map((x) => x.value)))
   const diff = satsToBtc(BigNumber(outputBalance).minus(BigNumber(inputBalance)))
 
   const inputs = vin

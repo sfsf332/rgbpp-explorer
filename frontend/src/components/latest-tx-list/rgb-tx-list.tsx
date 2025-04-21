@@ -16,12 +16,12 @@ import { Table, Text } from '@/components/ui'
 import Link from '@/components/ui/link'
 import { ViewBtcExplorer } from '@/components/view-btc-explorer'
 import { ViewCkbExplorer } from '@/components/view-ckb-explorer'
-import type { RgbppTransaction } from '@/gql/graphql'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
-import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-from-rgbpp-transaction'
-import { resolveRGBppTxHash } from '@/lib/resolve-rgbpp-tx-hash'
+// import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-from-rgbpp-transaction'
+// import { resolveRGBppTxHash } from '@/lib/resolve-rgbpp-tx-hash'
 import { formatNumber } from '@/lib/string/format-number'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
+import type { CkbTransaction,LeapDirection } from '@/types/graphql'
 
 const filterType = [
   { label: 'BTC', value: 'BTC', icon: <BtcIcon w="18px" h="18px" mr="4px" /> },
@@ -30,10 +30,14 @@ const filterType = [
   { label: 'Leap (Cross-Chain)', value: 'LEAP' },
 ]
 
-type RGBTransaction = Pick<
-  RgbppTransaction,
-  'ckbTransaction' | 'blockNumber' | 'timestamp' | 'leapDirection' | 'ckbTxHash' | 'btcTransaction' | 'btcTxid'
->
+type RGBTransaction = {
+  ckbTxHash: string;
+  btcTxid: string;
+  leapDirection: LeapDirection;
+  blockNumber: number;
+  timestamp: string;
+  ckbTransaction: CkbTransaction;
+}
 
 export function LatestRGBTxnListUI({ txs }: { txs: RGBTransaction[] }) {
   const isMd = useBreakpoints('md')
@@ -42,7 +46,7 @@ export function LatestRGBTxnListUI({ txs }: { txs: RGBTransaction[] }) {
 
   if (!isMd) {
     return txs.map((tx) => {
-      const txHash = resolveRGBppTxHash(tx)
+      const txHash = tx.ckbTxHash
       return (
         <Link
           href={`/transaction/${txHash}`}
@@ -66,7 +70,6 @@ export function LatestRGBTxnListUI({ txs }: { txs: RGBTransaction[] }) {
           }}
         >
           <HStack gap={3} alignItems="center" w="100%" color="text.link">
-            {/* <LinkOutlineIcon w="36px" h="36px" color="text.third" /> */}
             <VStack gap={0} alignItems="start">
               <Box lineHeight="20px">{truncateMiddle(txHash, 10, 8)}</Box>
               <Box color="text.third" fontWeight="medium" lineHeight="16px">
@@ -75,9 +78,9 @@ export function LatestRGBTxnListUI({ txs }: { txs: RGBTransaction[] }) {
             </VStack>
           </HStack>
           <HStack justifyContent="space-between" w="100%">
-            <LayerType type={resolveLayerTypeFromRGBppTransaction(tx)} />
+            <LayerType type={tx.leapDirection === 'BtcToCkb' ? 'l2' : 'l2-l1'} />
             <Box>
-              <Amount ckbTransaction={tx.ckbTransaction} />
+              <Amount transaction={tx.ckbTransaction} />
             </Box>
           </HStack>
         </Link>
@@ -111,8 +114,8 @@ export function LatestRGBTxnListUI({ txs }: { txs: RGBTransaction[] }) {
         </Table.Head>
         <Table.Body>
           {txs.map((tx) => {
-            const type = resolveLayerTypeFromRGBppTransaction(tx)
-            const txHash = resolveRGBppTxHash(tx)
+            const type = tx.leapDirection === 'BtcToCkb' ? 'l2' : 'l2-l1'
+            const txHash = tx.ckbTxHash
             return (
               <Table.Row key={txHash}>
                 <Table.Cell>
@@ -136,7 +139,7 @@ export function LatestRGBTxnListUI({ txs }: { txs: RGBTransaction[] }) {
                   <LayerType type={type} />
                 </Table.Cell>
                 <Table.Cell>
-                  <Amount ckbTransaction={tx.ckbTransaction} />
+                  <Amount transaction={tx.ckbTransaction} />
                 </Table.Cell>
                 <Table.Cell>
                   <AgoTimeFormatter time={tx.timestamp} tooltip />
@@ -148,8 +151,8 @@ export function LatestRGBTxnListUI({ txs }: { txs: RGBTransaction[] }) {
       </Table.Root>
       <HStack gap="8px" justifyContent="center" mt="20px">
         {txs.map((tx) => {
-          const type = resolveLayerTypeFromRGBppTransaction(tx)
-          const txHash = resolveRGBppTxHash(tx)
+          const type = tx.leapDirection === 'BtcToCkb' ? 'l2' : 'l2-l1'
+          const txHash = tx.ckbTxHash
           return (
             <Flex
               key={txHash}
@@ -191,10 +194,8 @@ export function LatestRGBTxnListUI({ txs }: { txs: RGBTransaction[] }) {
                 </Box>
               </VStack>
               <HStack gap="8px">
-                {type === 'l1-l2' || type === 'l1' ? (
-                  tx.btcTransaction ? (
-                    <ViewBtcExplorer txid={tx.btcTxid ?? ''} />
-                  ) : null
+                {type === 'l2' ? (
+                  <ViewBtcExplorer txid={tx.btcTxid} />
                 ) : (
                   <ViewCkbExplorer txHash={tx.ckbTxHash} />
                 )}

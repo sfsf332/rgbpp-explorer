@@ -3,35 +3,32 @@
 import { Trans } from '@lingui/macro'
 import { isNumber } from 'lodash-es'
 import { ReactNode } from 'react'
-import { Box, Flex, HStack } from 'styled-system/jsx'
+import {  Flex} from 'styled-system/jsx'
 
-import { BtcDiffTags } from '@/components/btc/btc-diff-tags'
-import { CkbDiffTags } from '@/components/ckb/ckb-diff-tags'
+// import { BtcDiffTags } from '@/components/btc/btc-diff-tags'
+// import { CkbDiffTags } from '@/components/ckb/ckb-diff-tags'
 import { Text } from '@/components/ui'
-import { BitcoinInput, BitcoinOutput, CkbTransaction } from '@/gql/graphql'
+import { CkbTransaction } from '@/gql/graphql'
 import { formatNumber } from '@/lib/string/format-number'
 
 export function UtxoOrCellFooter({
   fee,
   feeRate,
-  confirmations,
-  ckbCell,
-  btcUtxo,
+  // confirmations,
+
   feeUnit,
   sizeUnit,
-  address,
-  children,
-  txid,
+  
 }: {
   address?: string
   fee?: number | null
   feeRate?: number | null
-  confirmations?: number
+  // confirmations?: number
   ckbCell?: Pick<CkbTransaction, 'inputs' | 'outputs'>
-  btcUtxo?: {
-    vin?: BitcoinInput[]
-    vout?: BitcoinOutput[]
-  }
+  // btcUtxo?: {
+  //   vin?: BitcoinInput[]
+  //   vout?: BitcoinOutput[]
+  // }
   feeUnit?: ReactNode
   sizeUnit?: ReactNode
   children?: ReactNode
@@ -62,7 +59,7 @@ export function UtxoOrCellFooter({
             </Trans>
           </Text>
         ) : null}
-        {isNumber(feeRate) ? (
+        {/* {isNumber(feeRate) ? (
           <Text as="span" fontSize="14px" color="text.third">
             <Trans>
               Fee Rate:
@@ -72,9 +69,9 @@ export function UtxoOrCellFooter({
               {feeUnit}/{sizeUnit}
             </Trans>
           </Text>
-        ) : null}
+        ) : null} */}
       </Flex>
-      {isNumber(confirmations) || btcUtxo || ckbCell || address ? (
+      {/* {isNumber(confirmations) || btcUtxo || ckbCell || address ? (
         <HStack gap="16px" flexWrap="wrap" justify={{ base: 'start', lg: 'end' }}>
           {isNumber(confirmations) ? (
             <Box bg="brand" py="8px" fontSize="14px" lineHeight="16px" px="16px" rounded="4px">
@@ -85,7 +82,7 @@ export function UtxoOrCellFooter({
           {btcUtxo && address ? <BtcDiffTags {...btcUtxo} txid={txid} ckbCell={ckbCell} address={address} /> : null}
         </HStack>
       ) : null}
-      {children}
+      {children} */}
     </Flex>
   )
 }

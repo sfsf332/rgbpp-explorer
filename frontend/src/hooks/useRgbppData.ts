@@ -5,7 +5,7 @@ import { trpc } from '@/configs/trpc'
 import { useRgbppHolderCountRecords } from '@/hooks/trpc/useRgbppHolderCountRecords'
 import { useRgbppIssueCountRecords } from '@/hooks/trpc/useRgbppIssueCountRecords'
 
-type TrpcChain = 'btc' | 'ckb' | 'doge'
+
 
 export function useRgbppData() {
   const { data: marketCap } = trpc.rgbpp.marketCap.useQuery()
@@ -177,9 +177,8 @@ export function useBlockTxs(blockHash: string) {
   }
 }
 export function useBlockInfo(chain: Chain, blockHash: string) {
-  const chainValue = chain === 'BTC' ? 'btc' : chain === 'CKB' ? 'ckb' : 'doge'
   const { data, isLoading, error } = trpc.block.getBlockInfo.useQuery({
-    chain: chainValue,
+    chain,
     hashOrNumber: blockHash
   } as any)
 
@@ -227,7 +226,7 @@ export function useCkbInfo() {
 }
 export function useSearchTrpc(key: string) {
   return trpc.explorer.typeOf.useQuery(key, {
-    enabled: false,
+    enabled: !!key,
     retry: false,
   })
 }
@@ -244,7 +243,8 @@ export function useBtcTxList () {
   }
 }
 export function useBtcTxs (txid:string, options?: { enabled?: boolean }) {
-  const {data,isLoading} = trpc.temp.btc.transaction.useQuery({ txid }, { enabled: options?.enabled })
+
+  const {data,isLoading} = trpc.temp.btc.transaction.useQuery({txid})
   return {
     data,
     isLoading
@@ -270,21 +270,14 @@ export function useCkbTxDetail (hash:string, options?: { enabled?: boolean }) {
   }
 }
 export function useRgbppTransactions() {
-  const { data: response, isLoading, error } = trpc.rgbpp.transactionList.useQuery({
+  const { data, isLoading, error } = trpc.rgbpp.transactionList.useQuery({
     assetId: '',
     page: 1,
     pageSize: 10,
   })
 
   return {
-    data: response?.data?.map((tx: any) => ({
-      timestamp: tx.timestamp,
-      ckbTransaction: tx.ckbTransaction,
-      leapDirection: tx.leapDirection,
-      btc: { txid: tx.btcTxid },
-      ckbTxHash: tx.txHash,
-      blockNumber: tx.blockNumber
-    })) || [],
+    data: data?.data,
     isLoading,
     error
   }

@@ -4,6 +4,7 @@ import { Text } from '@/components/ui'
 
 export function OverflowAmount({ amount, symbol }: { amount: string; symbol: ReactNode }) {
   const [int, float] = amount.split('.')
+  console.log(int, float)
   return (
     <>
       {int}

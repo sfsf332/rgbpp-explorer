@@ -8,29 +8,29 @@ import { LayerType } from '@/components/layer-type'
 import { TextOverflowTooltip } from '@/components/text-overflow-tooltip'
 import { Table } from '@/components/ui'
 import Link from '@/components/ui/link'
-import { CkbTransaction, RgbppTransaction } from '@/gql/graphql'
 import { useBreakpoints } from '@/hooks/useBreakpoints'
 import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-from-rgbpp-transaction'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
+import { RgbppTransaction } from '@/types/graphql'
+// import { CkbTransaction } from '@/types/graphql'
 
-export function ExplorerTxListUI<
-  T extends Pick<RgbppTransaction, 'ckbTransaction' | 'timestamp' | 'btcTransaction' | 'leapDirection' | 'ckbTxHash'> & {
-    txid: string,
-    type: string
-  },
->({ txs, type }: { txs: T[]; type: string }) {
+type Transaction = Omit<Pick<RgbppTransaction, 'ckbTransaction' | 'timestamp' | 'network' | 'txHash'>, 'btc' | 'direction'> & {
+  btc?: { txid: string | null };
+  direction?: 'on' | 'off' | 'within' | null;
+}
+
+export function ExplorerTxListUI({ txs, type }: { txs: Transaction[]; type: string }) {
   const isMd = useBreakpoints('md')
-  console.log(type)
   if (!isMd) {
-    return txs.map(({ txid, ...tx }) => {
-      const amount = <Amount ckbTransaction={tx.ckbTransaction as CkbTransaction} />
+    return txs.map(({ txHash, ...tx }) => {
+      const amount = <Amount transaction={tx.ckbTransaction as any} />
       return (
         <Link
-          href={`/transaction/${txid}`}
+          href={`/transaction/${txHash}`}
           display="grid"
           gridTemplateColumns="repeat(2, calc(50% - 4px))"
           gap="8px"
-          key={txid}
+          key={txHash}
           w="100%"
           justifyContent="space-between"
           py="16px"
@@ -43,7 +43,7 @@ export function ExplorerTxListUI<
           }}
         >
           <VStack fontSize="14px" alignItems="start" gap="4px">
-            <Box color="text.link">{truncateMiddle(txid ?? '', 6, 6)}</Box>
+            <Box color="text.link">{truncateMiddle(txHash ?? '', 6, 6)}</Box>
             <Box fontWeight="medium" color="text.secondary">
               <AgoTimeFormatter time={tx.timestamp} tooltip />
             </Box>
@@ -63,17 +63,17 @@ export function ExplorerTxListUI<
   return (
     <Table.Root tableLayout="fixed">
       <Table.Body>
-        {txs.map(({ txid, ...tx }) => {
+        {txs.map(({ txHash, ...tx }) => {
           return (
-            <Table.Row key={txid} lineHeight="36px">
+            <Table.Row key={txHash} lineHeight="36px">
               <Table.Cell w="235px">
                 {type!=='ckb'?  
-                <Link href={`/transaction/${tx.btcTransaction?.txid}`} display="flex" alignItems="center" gap={3} color="text.link">
-                  {truncateMiddle(tx.btcTransaction?.txid ?? '', 10, 8)}
+                <Link href={`/transaction/${tx.btc?.txid ?? txHash}`} display="flex" alignItems="center" gap={3} color="text.link">
+                  {truncateMiddle(tx.btc?.txid ?? txHash, 10, 8)}
                 </Link> 
                 : 
-                <Link href={`/transaction/${tx.ckbTxHash}`} display="flex" alignItems="center" gap={3} color="text.link">
-                  {truncateMiddle(tx.ckbTxHash ?? '', 10, 8)}
+                <Link href={`/transaction/${txHash}`} display="flex" alignItems="center" gap={3} color="text.link">
+                  {truncateMiddle(txHash ?? '', 10, 8)}
                 </Link>
                 }
               </Table.Cell>
@@ -84,7 +84,7 @@ export function ExplorerTxListUI<
                 <AgoTimeFormatter time={tx.timestamp} tooltip />
               </Table.Cell>
               <Table.Cell textAlign="right" w="160px">
-                <Amount ckbTransaction={tx.ckbTransaction as CkbTransaction} />
+                <Amount transaction={tx.ckbTransaction as any} />
               </Table.Cell>
             </Table.Row>
           )

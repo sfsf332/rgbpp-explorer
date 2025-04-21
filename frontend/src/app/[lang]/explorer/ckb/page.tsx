@@ -16,11 +16,8 @@ export default async function Page() {
       <Info />
       <Box bg="bg.card" rounded="8px" whiteSpace="nowrap" pb="12px" gridColumn="1/3">
         <Heading fontSize="20px" fontWeight="semibold" p="30px"><Trans>Latest L2 RGB++ transaction</Trans></Heading>
-        <ExplorerTxList
-          txs={rgbppLatestL2Transactions || []}
-          txid={(tx) => tx.btcTxid ?? ''}
-          type="ckb"
-        />
+       
+        <ExplorerTxList transactions={rgbppLatestL2Transactions || []} type="ckb" />
       </Box>
     </Grid>
   )

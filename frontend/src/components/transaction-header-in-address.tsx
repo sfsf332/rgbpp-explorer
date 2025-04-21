@@ -2,14 +2,13 @@ import { Flex } from 'styled-system/jsx'
 
 import { Copier } from '@/components/copier'
 import { IfBreakpoint } from '@/components/if-breakpoint'
-import { TimeFormatter } from '@/components/time-formatter'
+// import { TimeFormatter } from '@/components/time-formatter'
 import Link from '@/components/ui/link'
-import { resolveBtcTime } from '@/lib/btc/resolve-btc-time'
+// import { resolveBtcTime } from '@/lib/btc/resolve-btc-time'
 import { truncateMiddle } from '@/lib/string/truncate-middle'
 
 export function TransactionHeaderInAddress({
   txid,
-  time,
   btcTime,
 }: {
   txid: string
@@ -34,7 +33,7 @@ export function TransactionHeaderInAddress({
           </IfBreakpoint>
         </Link>
       </Copier>
-      {time ? <TimeFormatter alwaysShowAgo timestamp={btcTime ? resolveBtcTime(time) : time} /> : null}
+      {/* {time ? <TimeFormatter alwaysShowAgo timestamp={btcTime ? resolveBtcTime(time) : time} /> : null} */}
     </Flex>
   )
 }

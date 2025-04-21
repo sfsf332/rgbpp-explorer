@@ -1,19 +1,24 @@
-import { LeapDirection, RgbppTransaction } from '@/gql/graphql'
+// import { RgbppTransaction } from '@/types/graphql'
+// import { CkbTransaction } from '@/types/graphql'
 
-export function resolveLayerTypeFromRGBppTransaction(
-  tx: Pick<RgbppTransaction, 'ckbTransaction' | 'btcTransaction' | 'leapDirection'>,
-) {
+export function resolveLayerTypeFromRGBppTransaction<
+  T extends {
+    btc?: { txid: string | null };
+    direction?: 'on' | 'off' | 'within' | null;
+    ckbTransaction: any;
+  }
+>(tx: T) {
   console.log(tx)
  
-  switch (tx.leapDirection) {
-    case LeapDirection.LeapOut:
+  switch (tx.direction) {
+    case 'on':
       return 'l1-l2'
-    case LeapDirection.LeapIn:
+    case 'off':
       return 'l2-l1'
-    case LeapDirection.Within:
+    case 'within':
       return 'l1'
     default:
-      if (tx.btcTransaction?.txid && !tx.leapDirection) return 'l1'
+      if (tx.btc?.txid && !tx.direction) return 'l1'
       return 'l2'
   }
 }

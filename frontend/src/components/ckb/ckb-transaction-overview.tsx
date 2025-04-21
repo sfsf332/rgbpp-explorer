@@ -1,19 +1,17 @@
-import type { I18n } from '@lingui/core'
-import { t } from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import { Grid, HStack, VStack } from 'styled-system/jsx'
 
 import OverflowSVG from '@/assets/overview.svg'
-import { OverflowAmount } from '@/components/overflow-amount'
+// import { OverflowAmount } from '@/components/overflow-amount'
 import { OverviewInfo, OverviewInfoItem } from '@/components/overview-info'
 import { TimeFormatter } from '@/components/time-formatter'
 import { Heading } from '@/components/ui'
 import Link from '@/components/ui/link'
-import { CkbTransaction } from '@/gql/graphql'
-import { shannonToCKB } from '@/lib/ckb/shannon-to-ckb'
+// import { shannonToCKB } from '@/lib/ckb/shannon-to-ckb'
 import { formatNumber } from '@/lib/string/format-number'
+import { CkbTransaction } from '@/types/graphql'
 
-export function CkbTransactionOverview({ ckbTransaction, i18n }: { i18n: I18n; ckbTransaction: CkbTransaction }) {
-  console.log(ckbTransaction)
+export function CkbTransactionOverview({ ckbTransaction }: { ckbTransaction: CkbTransaction }) {
   return (
     <VStack gap={0} w="100%" bg="bg.card" rounded="8px">
       <HStack
@@ -25,8 +23,8 @@ export function CkbTransactionOverview({ ckbTransaction, i18n }: { i18n: I18n; c
         borderBottomColor="border.primary"
       >
         <OverflowSVG w="24px" />
-        <Heading fontSize="16px" fontWeight="semibold">{t(i18n)`Overview`}</Heading>
-        {ckbTransaction?.block?.timestamp ? <TimeFormatter timestamp={ckbTransaction.block.timestamp} /> : null}
+        <Heading fontSize="16px" fontWeight="semibold"><Trans>Overview</Trans></Heading>
+        {ckbTransaction.block_timestamp ? <TimeFormatter timestamp={ckbTransaction.block_timestamp} /> : null}
       </HStack>
       <Grid
         w="100%"
@@ -38,28 +36,29 @@ export function CkbTransactionOverview({ ckbTransaction, i18n }: { i18n: I18n; c
         textAlign="center"
       >
         <OverviewInfo>
-          <OverviewInfoItem label={t(i18n)`Block Height`}>
+          <OverviewInfoItem label={<Trans>Block Height</Trans>}>
             <Link
-              href={`/block/ckb/${ckbTransaction?.blockHash || ckbTransaction?.blockNumber}`}
+              href={`/block/ckb/${ckbTransaction.block_number}`}
               color="brand"
               _hover={{ 
                 textDecoration: 'underline',
                 textUnderlineOffset: '3px',
               }}
             >
-              {formatNumber(ckbTransaction?.blockNumber ?? 0)}
+              {formatNumber(ckbTransaction.block_number)}
             </Link>
           </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`Size`} formatNumber unit={t(i18n)`bytes`}>
-            {formatNumber(ckbTransaction?.size ?? 0)}
+          <OverviewInfoItem label={<Trans>Size</Trans>} formatNumber unit={<Trans>bytes</Trans>}>
+             {ckbTransaction.size}
           </OverviewInfoItem>
         </OverviewInfo>
         <OverviewInfo>
-          <OverviewInfoItem label={t(i18n)`Fee`}>
-            <OverflowAmount amount={formatNumber(shannonToCKB(ckbTransaction?.fee ?? 0))} symbol={t(i18n)`CKB`} />
-          </OverviewInfoItem>
-          <OverviewInfoItem label={t(i18n)`Fee Rate`}>
-            <OverflowAmount amount={formatNumber(ckbTransaction?.feeRate ?? 0)} symbol={t(i18n)`shannons/kB`} />
+          {/* <OverviewInfoItem label={<Trans>Fee</Trans>}>
+            <OverflowAmount amount={formatNumber(shannonToCKB(ckbTransaction?.fee ?? 0))} symbol={<Trans>CKB</Trans>} />
+          </OverviewInfoItem> */}
+          <OverviewInfoItem label={<Trans>Fee Rate</Trans>}>
+            {ckbTransaction.fee_rate ?? 0} <Trans>shannons/kB</Trans>
+            {/* <OverflowAmount amount={formatNumber(ckbTransaction?.feeRate)} symbol={<Trans>shannons/kB</Trans>} /> */}
           </OverviewInfoItem>
         </OverviewInfo>
       </Grid>

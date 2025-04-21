@@ -3,37 +3,24 @@
 import { Trans } from '@lingui/macro'
 
 import { Text } from '@/components/ui'
-import { CellType, CkbTransaction } from '@/gql/graphql'
 import { formatNumber } from '@/lib/string/format-number'
+import { CkbTransaction } from '@/types/graphql'
 
-export function Amount({ ckbTransaction }: { ckbTransaction?: Pick<CkbTransaction, 'outputs'> | null }) {
-  if (!ckbTransaction) return <Trans>-</Trans>
+export function Amount({ transaction }: { transaction?: CkbTransaction | null }) {
+  if (!transaction?.display_outputs) return <Trans>-</Trans>
 
-  const dobOutputCount = ckbTransaction?.outputs.filter(
-    (output) => output.cellType === CellType.Dob || output.cellType === CellType.Mnft,
-  )
-  if (dobOutputCount?.length) {
-    return (
-      <Trans>
-        <b>{dobOutputCount.length}</b>
-        <Text as="span" color="text.third" fontSize="14px" fontWeight="medium" ml="4px">
-          DOB
-        </Text>
-      </Trans>
-    )
-  }
+  const outputs = transaction.display_outputs
+  const capacity = outputs[0]?.capacity
 
-  const cellDiff = ckbTransaction.outputs.find((x) => x.xudtInfo)
-
-  if (!cellDiff) {
+  if (!capacity) {
     return <Trans>-</Trans>
   }
 
   return (
     <>
-      <b>{formatNumber(cellDiff.xudtInfo?.amount, cellDiff.xudtInfo?.decimal)}</b>
+      <b>{formatNumber(capacity)}</b>
       <Text as="span" color="text.third" fontSize="14px" fontWeight="medium" ml="4px">
-        {cellDiff.xudtInfo?.symbol}
+        CKB
       </Text>
     </>
   )

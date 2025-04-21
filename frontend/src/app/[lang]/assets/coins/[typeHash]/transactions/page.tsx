@@ -8,10 +8,10 @@ import { LatestTxnListUI } from '@/components/latest-tx-list/ui'
 import { PaginationSearchParams } from '@/components/pagination-searchparams'
 import { Text } from '@/components/ui'
 import { graphql } from '@/gql'
-import { RgbppTransaction } from '@/gql/graphql'
 import { graphQLClient } from '@/lib/graphql'
 import { resolvePage } from '@/lib/resolve-page'
 import { formatNumber } from '@/lib/string/format-number'
+import type { RgbppTransaction } from '@/types/graphql'
 
 const query = graphql(`
   query RgbppCoinTransactionsByTypeHash($typeHash: String!, $page: Int!, $pageSize: Int!) {
@@ -82,6 +82,13 @@ const query = graphql(`
   }
 `)
 
+type QueryResponse = {
+  rgbppCoin?: {
+    transactionsCount: number
+    transactions: RgbppTransaction[]
+  }
+}
+
 export default async function Page({
   params: { typeHash, lang },
   searchParams,
@@ -92,15 +99,15 @@ export default async function Page({
   const i18n = getI18nInstance(lang)
   const page = resolvePage(searchParams.page)
   const pageSize = 10
-  const response = await graphQLClient.request(query, { typeHash, page, pageSize })
+  const response = await graphQLClient.request<QueryResponse>(query, { typeHash, page, pageSize })
   if (!response.rgbppCoin) notFound()
 
   return (
     <VStack w="100%" maxW="content" gap="32px">
       <Box w="100%" bg="bg.card" rounded="8px" pt={{ base: '10px', md: '30px' }} pb="10px">
-        <LatestTxnListUI txs={(response.rgbppCoin.transactions as RgbppTransaction[]).map(tx => ({
+        <LatestTxnListUI txs={(response.rgbppCoin.transactions).map(tx => ({
           ...tx,
-          btc: tx.btcTxid ? { txid: tx.btcTxid } : undefined
+          btc: { txid: tx.btc?.txid ?? null }
         })) ?? []} />
       </Box>
 
