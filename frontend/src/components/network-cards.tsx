@@ -9,7 +9,7 @@ import BchIcon from '@/assets/chains/bch.svg'
 import BtcIcon from '@/assets/chains/btc.svg'
 import CkbIcon from '@/assets/chains/ckb.svg'
 import DogeIcon from '@/assets/chains/doge.svg'
-import UtxoStackIcon from '@/assets/chains/utxo-stack.svg'
+// import UtxoStackIcon from '@/assets/chains/utxo-stack.svg'
 import Link from '@/components/ui/link'
 import { Text } from '@/components/ui/primitives/text'
 import { useBtcInfo, useCkbInfo } from '@/hooks/useRgbppData'
@@ -95,7 +95,7 @@ export function NetworkCards() {
             },
             {
               label: <Trans>Txns(24H)</Trans>,
-              value: formatNumber(ckbChainInfo?.tipBlock?.number ?? 0),
+              value: formatNumber(ckbChainInfo?.txCountInLast24h ?? 0),
             },
           ]}
         />

@@ -21,7 +21,7 @@ export function Amount({ transaction }: { transaction?: CkbTransaction | null })
   }
   return (
     <>
-      <b>{info?.amount}</b>
+      <b>{formatNumber(info?.amount,8)}</b>
       <Text as="span" color="text.third" fontSize="14px" fontWeight="medium" ml="4px">
       { info?.symbol}
       </Text>

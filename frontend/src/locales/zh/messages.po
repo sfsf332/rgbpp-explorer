@@ -18,8 +18,8 @@ msgstr ""
 #~ msgid "RGB++ Networks"
 #~ msgstr ""
 
-#: src/components/latest-tx-list/amount.tsx:10
-#: src/components/latest-tx-list/amount.tsx:17
+#: src/components/latest-tx-list/amount.tsx:11
+#: src/components/latest-tx-list/amount.tsx:20
 msgid "-"
 msgstr "-"
 
@@ -101,6 +101,10 @@ msgstr "<0>探索<1><2/></1></0><3>生态系统</3>"
 
 #: src/components/btc/btc-block-overview.tsx:59
 msgid "${0} sats/vB ~ ${1} sats/vB"
+msgstr ""
+
+#: src/components/latest-tx-list/amount.tsx:17
+msgid "1 DOB"
 msgstr ""
 
 #: src/components/transaction-info.tsx:33
