@@ -7,21 +7,23 @@ import { formatNumber } from '@/lib/string/format-number'
 import { CkbTransaction } from '@/types/graphql'
 
 export function Amount({ transaction }: { transaction?: CkbTransaction | null }) {
+  
   if (!transaction?.outputs) return <Trans>-</Trans>
 
   const outputs = transaction.outputs
-  const capacity = outputs[0]?.capacity
+  const info = outputs[0].xudtInfo
   const cellType = outputs[0]?.cellType
-  console.log(outputs)
-  if (!capacity) {
+  if  (cellType === 'DOB'){
+    return <Trans>1 DOB</Trans>
+  }
+  if (!info) {
     return <Trans>-</Trans>
   }
-  console.log(cellType)
   return (
     <>
-      <b>{formatNumber(capacity)}</b>
+      <b>{info?.amount}</b>
       <Text as="span" color="text.third" fontSize="14px" fontWeight="medium" ml="4px">
-        {cellType}
+      { info?.symbol}
       </Text>
     </>
   )

@@ -118,10 +118,10 @@ export function NetworkCards() {
             <BchIcon w="32px" h="32px" />
             <Text>BCH</Text>
           </HStack>
-          <HStack whiteSpace="nowrap">
+          {/* <HStack whiteSpace="nowrap">
             <UtxoStackIcon w="32px" h="32px" />
             <Text>UTXO Stack</Text>
-          </HStack>
+          </HStack> */}
         </HStack>
         <Box fontWeight="semibold" py="10px" px="40px" rounded="100px" bg="bg.input" mx="auto">
           <Trans>Coming</Trans>

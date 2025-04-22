@@ -11,7 +11,7 @@ import { HolderSummary } from '@/components/holder-list/type'
 export function HolderSummaryUI({ summary }: { summary: HolderSummary }) {
   return (
     <Box w="100%" bg="bg.card" rounded="8px" p="24px">
-      <HStack gap="24px" flexWrap="wrap">
+      <HStack gap="24px" flexWrap="nowrap">
         <HolderSummaryCard
           label={<Trans>Total Holders</Trans>}
           value={summary.totalHolders}
@@ -20,12 +20,12 @@ export function HolderSummaryUI({ summary }: { summary: HolderSummary }) {
         <HolderSummaryCard
           label={<Trans>BTC Holders</Trans>}
           value={summary.chainHolders.btc}
-          icon={<BtcIcon w="18px" h="18px" />}
+          icon={<BtcIcon w="60px" h="60px" />}
         />
         <HolderSummaryCard
           label={<Trans>CKB Holders</Trans>}
           value={summary.chainHolders.ckb}
-          icon={<CkbIcon w="18px" h="18px" />}
+          icon={<CkbIcon w="60px" h="60px" />}
         />
       </HStack>
     </Box>
