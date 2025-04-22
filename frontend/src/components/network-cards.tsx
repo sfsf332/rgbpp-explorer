@@ -95,7 +95,7 @@ export function NetworkCards() {
             },
             {
               label: <Trans>Txns(24H)</Trans>,
-              value: formatNumber(ckbChainInfo?.tipBlock?.number ?? 0),
+              value: formatNumber(ckbChainInfo?.txCountInLast24h ?? 0),
             },
           ]}
         />
