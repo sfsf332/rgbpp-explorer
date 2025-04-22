@@ -38,8 +38,8 @@ msgstr ""
 #~ msgid "home.welcome"
 #~ msgstr "home.welcome"
 
-#: src/components/latest-tx-list/amount.tsx:10
-#: src/components/latest-tx-list/amount.tsx:17
+#: src/components/latest-tx-list/amount.tsx:11
+#: src/components/latest-tx-list/amount.tsx:20
 msgid "-"
 msgstr "-"
 
@@ -122,6 +122,10 @@ msgstr "<0>Explore the<1><2/></1></0><3>Ecosystem</3>"
 #: src/components/btc/btc-block-overview.tsx:59
 msgid "${0} sats/vB ~ ${1} sats/vB"
 msgstr "${0} sats/vB ~ ${1} sats/vB"
+
+#: src/components/latest-tx-list/amount.tsx:17
+msgid "1 DOB"
+msgstr "1 DOB"
 
 #: src/components/transaction-info.tsx:33
 msgid "24H Transactions"

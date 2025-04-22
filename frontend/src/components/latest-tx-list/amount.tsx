@@ -3,7 +3,7 @@
 import { Trans } from '@lingui/macro'
 
 import { Text } from '@/components/ui'
-// import { formatNumber } from '@/lib/string/format-number'
+import { formatNumber } from '@/lib/string/format-number'
 import { CkbTransaction } from '@/types/graphql'
 
 export function Amount({ transaction }: { transaction?: CkbTransaction | null }) {
@@ -21,7 +21,7 @@ export function Amount({ transaction }: { transaction?: CkbTransaction | null })
   }
   return (
     <>
-      <b>{info?.amount}</b>
+      <b>{formatNumber(info?.amount)}</b>
       <Text as="span" color="text.third" fontSize="14px" fontWeight="medium" ml="4px">
       { info?.symbol}
       </Text>
