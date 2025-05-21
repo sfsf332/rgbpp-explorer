@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ['p.magickbase.com'],
+  },
   reactStrictMode: true,
   experimental: {
     swcPlugins: [['@lingui/swc-plugin', {}]],
@@ -11,7 +14,6 @@ const nextConfig = {
     pagesBufferLength: 5,
   },
   poweredByHeader: false,
-  reactStrictMode: true,
   swcMinify: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

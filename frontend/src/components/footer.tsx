@@ -135,6 +135,8 @@ export function Footer({ lang }: { lang: string }) {
           <Image
             src="https://p.magickbase.com/favicon.ico"
             alt="magickabse"
+            width={16}
+            height={16}
             style={{
               width: '16px',
               height: '16px',
