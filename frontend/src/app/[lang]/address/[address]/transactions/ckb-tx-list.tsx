@@ -14,7 +14,7 @@ interface TransactionItem {
 export function CKBTxList({ address }: { address: string }) {
   const [page, setPage] = useState(1)
   const [allTransactions, setAllTransactions] = useState<TransactionItem[]>([])
-  const { addressTransactions: data, isLoading } = useAddressTransactions(address, page, 2)
+  const { addressTransactions: data, isLoading } = useAddressTransactions(address, 1, 1)
   const loadMoreRef = useRef<HTMLDivElement>(null)
 
   // 调试信息
