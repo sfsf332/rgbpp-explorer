@@ -112,15 +112,17 @@ export function useAddressAsset(address: string) {
   }
 }
 
-export function useBtcAddressTransactions(address: string) {
+
+
+export function useAddressTransactions(address: string,page:number,pageSize:number) {
   const {
     data:addressTransactions,
     isLoading,
     error,
   } = trpc.address.transactions.useQuery({
     address,
-    page: 1,
-    pageSize: 10,
+    page,
+    pageSize,
   })
   return {
     addressTransactions,
