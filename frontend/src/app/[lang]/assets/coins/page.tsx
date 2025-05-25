@@ -41,26 +41,6 @@ type CoinType = {
     txCount24h: number
   }
 }
-// const query = graphql(`
-//   query RgbppCoins($page: Int!, $pageSize: Int!) {
-//     rgbppCoins(page: $page, pageSize: $pageSize) {
-//       total
-//       pageSize
-//       coins {
-//         icon
-//         name
-//         symbol
-//         l1HoldersCount: holdersCount(layer: L1)
-//         l2HoldersCount: holdersCount(layer: L2)
-//         h24CkbTransactionsCount
-//         totalAmount
-//         deployedAt
-//         decimal
-//         typeHash
-//       }
-//     }
-//   }
-// `)
 
 export default function Page({
   params,
@@ -74,7 +54,7 @@ export default function Page({
   const pageSize = 10
 
  
-  const {assetList} = useCoinList(pageSize, page-1)
+  const {assetList} = useCoinList(pageSize, page)
   if (!assetList) {
     return (
       <VStack w="100%" maxW="content" flex={1} gap="32px">
@@ -98,8 +78,11 @@ export default function Page({
         <IfBreakpoint breakpoint="md">
           <Text fontSize="14px">{t(i18n)`Total ${formatNumber(assetList.pagination?.total)} Items`}</Text>
         </IfBreakpoint>
+        
         {assetList?.pagination?.total ? (
+         
           <PaginationSearchParams count={assetList.pagination.total} pageSize={pageSize} />
+         
         ) : null}
       </HStack>
     </VStack>

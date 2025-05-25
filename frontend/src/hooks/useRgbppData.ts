@@ -79,11 +79,10 @@ export function useAssetInfo(assetId: string) {
 
 //   return { assetList }
 // }
-// todo 修改为分页
-export function useCoinList(pageSize = 10, pageIndex = 1) {
+export function useCoinList(pageSize: number, pageIndex: number) {
   const { data: assetList } = trpc.rgbpp.coinList.useQuery({
-    page: 1,
-    pageSize:10,
+    page: pageIndex,
+    pageSize,
   })
   return { assetList }
 }
