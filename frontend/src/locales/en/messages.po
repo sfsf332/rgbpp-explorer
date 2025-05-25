@@ -455,7 +455,7 @@ msgstr "Fee rate span"
 #~ msgid "Fee Rate:<0>{0}</0>{feeUnit}/{sizeUnit}"
 #~ msgstr "Fee Rate:<0>{0}</0>{feeUnit}/{sizeUnit}"
 
-#: src/components/pagination-searchparams.tsx:43
+#: src/components/pagination-searchparams.tsx:45
 msgid "Go"
 msgstr "Go"
 
@@ -526,6 +526,10 @@ msgstr "Latest L2 RGB++ transaction"
 #: src/components/failed-fallback.tsx:14
 msgid "Load failed, Please wait a moment"
 msgstr "Load failed, Please wait a moment"
+
+#: src/app/[lang]/address/[address]/transactions/ckb-tx-list.tsx:76
+msgid "Load more"
+msgstr "Load more"
 
 #: src/app/[lang]/explorer/btc/info.tsx:90
 #: src/app/[lang]/explorer/ckb/info.tsx:67
@@ -778,7 +782,7 @@ msgstr "Timestamp"
 #~ msgstr "Total"
 
 #: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:116
-#: src/app/[lang]/assets/coins/page.tsx:99
+#: src/app/[lang]/assets/coins/page.tsx:79
 msgid "Total {0} Items"
 msgstr "Total {0} Items"
 
@@ -833,7 +837,7 @@ msgstr "Total Transactions of RGB++ Assets"
 msgid "Total:"
 msgstr "Total:"
 
-#: src/app/[lang]/assets/coins/page.tsx:92
+#: src/app/[lang]/assets/coins/page.tsx:72
 msgid "Total: {0} Coins"
 msgstr "Total: {0} Coins"
 
