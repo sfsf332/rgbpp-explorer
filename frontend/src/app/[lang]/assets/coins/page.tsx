@@ -6,7 +6,7 @@ import { useLingui } from '@lingui/react'
 import { Box, Center, HStack, VStack } from 'styled-system/jsx'
 
 // import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
-import { CoinList } from '@/components/coin-list'
+import { CoinList } from '@/components/coin-list-v0'
 import { IfBreakpoint } from '@/components/if-breakpoint'
 import { LoadingBox } from '@/components/loading-box'
 import { PaginationSearchParams } from '@/components/pagination-searchparams'
@@ -54,7 +54,8 @@ export default function Page({
   const pageSize = 10
 
  
-  const {assetList} = useCoinList(pageSize, page)
+  const {assetList,isLoading,error} = useCoinList(pageSize, page)
+  console.log(assetList)
   if (!assetList) {
     return (
       <VStack w="100%" maxW="content" flex={1} gap="32px">
@@ -69,19 +70,19 @@ export default function Page({
     <VStack w="100%" maxW="content" flex={1} gap="32px">
       <Box bg="bg.card" w="100%" rounded="8px" pb="10px" overflow={'hidden'}>
         <Text fontSize={{ base: '18px', lg: '20px' }} fontWeight="semibold" p={{ base: '20px', lg: '30px' }}>
-          {t(i18n)`Total: ${formatNumber(assetList.pagination?.total)} Coins`}
+          {t(i18n)`Total: ${formatNumber(assetList.total)} Coins`}
         </Text>
-     
-        <CoinList coins={assetList.data} />
+      {/* {assetList.result.length} */}
+        <CoinList coins={assetList.result} />
       </Box>
       <HStack gap="16px">
         <IfBreakpoint breakpoint="md">
-          <Text fontSize="14px">{t(i18n)`Total ${formatNumber(assetList.pagination?.total)} Items`}</Text>
+          <Text fontSize="14px">{t(i18n)`Total ${formatNumber(assetList?.total)} Items`}</Text>
         </IfBreakpoint>
         
-        {assetList?.pagination?.total ? (
+        {assetList?.total ? (
          
-          <PaginationSearchParams count={assetList.pagination.total} pageSize={pageSize} />
+          <PaginationSearchParams count={assetList.total} pageSize={pageSize} />
          
         ) : null}
       </HStack>
