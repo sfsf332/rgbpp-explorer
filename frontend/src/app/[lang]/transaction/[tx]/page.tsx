@@ -2,6 +2,8 @@
 
 // import { notFound } from 'next/navigation'
 
+import { Box, Grid } from 'styled-system/jsx'
+
 import { BtcTransactionOverview } from '@/components/btc/btc-transaction-overview'
 import { BtcUtxos } from '@/components/btc/btc-utxos'
 import { CkbCells } from '@/components/ckb/ckb-cells'
@@ -10,14 +12,12 @@ import { Loading } from '@/components/loading'
 import { TransactionHeader } from '@/components/transaction-header'
 import { useBtcTxs, useCkbTxDetail } from '@/hooks/useRgbppData'
 import { resolveLayerTypeFromRGBppTransaction } from '@/lib/resolve-layer-type-from-rgbpp-transaction'
-import {CkbTransaction } from '@/types/graphql'
+import { CkbTransaction } from '@/types/graphql'
 
 function BtcTransactionPage({ tx }: { tx: string }) {
-  const { data:btcTransaction, isLoading } = useBtcTxs(tx)
+  const { data: btcTransaction, isLoading } = useBtcTxs(tx)
   if (isLoading || !btcTransaction) return <Loading my="80px" />
-  console.log(btcTransaction)
 
-  
   return (
     <>
       {/* todo: remove confirmations */}
@@ -31,11 +31,7 @@ function BtcTransactionPage({ tx }: { tx: string }) {
         // confirmations={data.confirmed ? 1 : 0}
       />
       <BtcTransactionOverview btcTransaction={btcTransaction} />
-      <BtcUtxos
-        txid={btcTransaction.txid}
-        vin={btcTransaction.vin}
-        vout={btcTransaction.vout}
-      />
+      <BtcUtxos txid={btcTransaction.txid} vin={btcTransaction.vin} vout={btcTransaction.vout} />
     </>
   )
 }
@@ -65,9 +61,20 @@ function CkbTransactionPage({ tx }: { tx: string }) {
 }
 
 export default function Page({ params: { tx } }: { params: { tx: string } }) {
- 
   if (tx.startsWith('0x')) {
-    return <CkbTransactionPage tx={tx} />
+    return (
+      <Grid gridTemplateColumns="repeat(1, 1fr)" w="100%" maxW="content" p={{ base: '20px', xl: '30px' }} gap="30px">
+        <Box bg="bg.card" w="100%" rounded="8px" pb="10px" overflow={'hidden'}>
+          <CkbTransactionPage tx={tx} />
+        </Box>
+      </Grid>
+    )
   }
-  return <BtcTransactionPage tx={tx} />
+  return (
+    <Grid gridTemplateColumns="repeat(1, 1fr)" w="100%" maxW="content" p={{ base: '20px', xl: '30px' }} gap="30px">
+      <Box bg="bg.card" w="100%" rounded="8px" pb="10px" overflow={'hidden'}>
+        <BtcTransactionPage tx={tx} />
+      </Box>
+    </Grid>
+  )
 }
