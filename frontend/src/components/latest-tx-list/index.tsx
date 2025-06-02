@@ -1,6 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/macro'
+import Link from 'next/link'
 import { Box, Center } from 'styled-system/jsx'
 
 import { FailedFallback } from '@/components/failed-fallback'
@@ -12,7 +13,6 @@ import { RgbppTransaction } from '@/types/graphql'
 
 export function HomeRgbppTxnsOverview() {
   const { data: transactions, isLoading, error } = useRgbppTransactions()
-  console.log(transactions)
   if (error) {
     return <FailedFallback />
   }
@@ -35,6 +35,11 @@ export function HomeRgbppTxnsOverview() {
   return (
     <Box w="100%" bg="bg.card" p="24px" rounded="8px">
       <LatestTxnListUI txs={transactions as RgbppTransaction[]} />
+      <Box mt="16px" textAlign="right">
+        <Link href="/transaction/list" style={{ color: 'var(--colors-text-secondary)' }}>
+          <Trans>View All Transactions →</Trans>
+        </Link>
+      </Box>
     </Box>
   )
 }
