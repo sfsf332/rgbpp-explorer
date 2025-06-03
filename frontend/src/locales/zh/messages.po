@@ -18,8 +18,8 @@ msgstr ""
 #~ msgid "RGB++ Networks"
 #~ msgstr ""
 
-#: src/components/latest-tx-list/amount.tsx:11
-#: src/components/latest-tx-list/amount.tsx:20
+#: src/components/latest-tx-list/amount.tsx:10
+#: src/components/latest-tx-list/amount.tsx:26
 msgid "-"
 msgstr "-"
 
@@ -104,8 +104,12 @@ msgid "${0} sats/vB ~ ${1} sats/vB"
 msgstr ""
 
 #: src/components/latest-tx-list/amount.tsx:17
-msgid "1 DOB"
+msgid "1 <0>DOB</0>"
 msgstr ""
+
+#: src/components/latest-tx-list/amount.tsx:17
+#~ msgid "1 DOB"
+#~ msgstr ""
 
 #: src/components/transaction-info.tsx:33
 msgid "24H Transactions"
@@ -286,6 +290,7 @@ msgstr "CKB 持有者"
 msgid "CKB Txn"
 msgstr "CKB 交易"
 
+#: src/components/coin-list-v0.tsx:62
 #: src/components/coin-list.tsx:84
 msgid "Coin"
 msgstr "代币"
@@ -303,8 +308,8 @@ msgid "Coins"
 msgstr "代币"
 
 #: src/components/network-cards.tsx:127
-msgid "Coming"
-msgstr "即将推出"
+#~ msgid "Coming"
+#~ msgstr "即将推出"
 
 #: src/components/charts/coming-soon-chart.tsx:17
 #: src/components/coming-soon-text.tsx:6
@@ -383,8 +388,8 @@ msgstr "DOB 合集"
 
 #: src/app/[lang]/address/[address]/assets/ckb-assets-list.tsx:32
 #: src/app/[lang]/assets/layout.tsx:29
-msgid "DOBs"
-msgstr "DOBs"
+#~ msgid "DOBs"
+#~ msgstr "DOBs"
 
 #: src/components/charts/daily-transactions-count-chart.tsx:131
 #: src/components/charts/holders-count-chart.tsx:142
@@ -449,6 +454,8 @@ msgstr "高优先级"
 #~ msgstr ""
 
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:22
+#: src/components/coin-list-v0.tsx:65
+#: src/components/coin-list-v0.tsx:164
 #: src/components/coin-list.tsx:87
 #: src/components/coin-list.tsx:193
 msgid "Holders"
@@ -521,6 +528,8 @@ msgid "Mainnet"
 msgstr "主网"
 
 #: src/components/coin-info.tsx:97
+#: src/components/coin-list-v0.tsx:81
+#: src/components/coin-list-v0.tsx:181
 #: src/components/coin-list.tsx:105
 #: src/components/coin-list.tsx:217
 msgid "Market Cap"
@@ -600,6 +609,8 @@ msgid "Position Ratio"
 msgstr "持有比例"
 
 #: src/components/coin-info.tsx:83
+#: src/components/coin-list-v0.tsx:68
+#: src/components/coin-list-v0.tsx:168
 #: src/components/coin-list.tsx:90
 #: src/components/coin-list.tsx:197
 msgid "Price"
@@ -624,13 +635,13 @@ msgstr "RGB++ 资产"
 msgid "RGB++ Assets Holders"
 msgstr "RGB++ 资产持有人"
 
-#: src/components/charts/useCharts.ts:137
+#: src/components/charts/useCharts.ts:138
 msgid "RGB++ Assets Overview & Activity"
 msgstr "RGB++ 资产概览和交易情况"
 
 #: src/components/charts/useCharts.ts:142
-msgid "RGB++ Assets Utilization"
-msgstr "RGB++ 资产利用情况"
+#~ msgid "RGB++ Assets Utilization"
+#~ msgstr "RGB++ 资产利用情况"
 
 #: src/components/btc/btc-utxos.tsx:37
 #~ msgid "RGB++ Binding Txn on BTC"
@@ -739,8 +750,8 @@ msgid "The number of unique addresses that hold at least one RGB++ asset"
 msgstr "持有至少一种 RGB++ 资产的地址数量，同一地址若持有多种 RGB++ 资产，只会统计一次。"
 
 #: src/components/charts/useCharts.ts:114
-msgid "The total amount of CKB occupied by RGB++ assets"
-msgstr "每类 RGB++ 资产均占用 CKB，下图展示了所有 RGB++ 资产对 CKB 的占用情况。"
+#~ msgid "The total amount of CKB occupied by RGB++ assets"
+#~ msgstr "每类 RGB++ 资产均占用 CKB，下图展示了所有 RGB++ 资产对 CKB 的占用情况。"
 
 #: src/components/charts/useCharts.ts:25
 msgid "The total number of RGB++ assets, including FT and DOB"
@@ -762,7 +773,7 @@ msgstr ""
 #~ msgstr "总计"
 
 #: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:116
-#: src/app/[lang]/assets/coins/page.tsx:79
+#: src/app/[lang]/assets/coins/page.tsx:80
 msgid "Total {0} Items"
 msgstr "总计 {0} 项"
 
@@ -784,8 +795,8 @@ msgid "Total Number of Assets"
 msgstr "总资产数"
 
 #: src/components/charts/useCharts.ts:113
-msgid "Total Occupied CKB"
-msgstr "累计占用 CKB"
+#~ msgid "Total Occupied CKB"
+#~ msgstr "累计占用 CKB"
 
 #: src/components/charts/assets-count-chart.tsx:170
 msgid "Total RGB++ Assets"
@@ -817,7 +828,7 @@ msgstr "RGB++ 累计交易笔数"
 msgid "Total:"
 msgstr "共计："
 
-#: src/app/[lang]/assets/coins/page.tsx:72
+#: src/app/[lang]/assets/coins/page.tsx:73
 msgid "Total: {0} Coins"
 msgstr "共计：{0} 个代币"
 
@@ -856,6 +867,8 @@ msgstr "交易费:<0>{0} </0>{feeUnit}"
 msgid "Txns"
 msgstr "交易"
 
+#: src/components/coin-list-v0.tsx:71
+#: src/components/coin-list-v0.tsx:172
 #: src/components/coin-list.tsx:93
 #: src/components/coin-list.tsx:201
 #: src/components/network-cards.tsx:64
@@ -894,6 +907,10 @@ msgstr "字节"
 #~ msgid "View All Transactions"
 #~ msgstr "查看所有交易"
 
+#: src/components/latest-tx-list/index.tsx:40
+msgid "View All Transactions →"
+msgstr ""
+
 #: src/components/view-btc-explorer.tsx:27
 msgid "View Details in BTC"
 msgstr "在BTC浏览器中查看细节"
@@ -906,6 +923,8 @@ msgstr "在 CKB 浏览器中查看详情"
 msgid "View Details in Mempool"
 msgstr "在 Mempool 中查看详情"
 
+#: src/components/coin-list-v0.tsx:74
+#: src/components/coin-list-v0.tsx:176
 #: src/components/coin-list.tsx:96
 #: src/components/coin-list.tsx:205
 msgid "Volume(24H)"

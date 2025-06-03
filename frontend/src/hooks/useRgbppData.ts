@@ -80,10 +80,16 @@ export function useAssetInfo(assetId: string) {
 //   return { assetList }
 // }
 export function useCoinList(pageSize: number, pageIndex: number) {
+  console.log(pageIndex,pageSize)
 //@ts-ignore
   const { data, isLoading, error } = trpc.v0.asset.list.useQuery({
-    page: pageIndex,
-    pageSize,
+    tags:['RGB++'],
+   
+    
+      page: pageIndex,
+      pageSize,
+   
+    orderKey:'marketCap'
   })
  
   return {
