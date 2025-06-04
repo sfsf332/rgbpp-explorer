@@ -87,6 +87,15 @@ export function useCoinList(pageSize = 10, pageIndex:number) {
   return { assetList }
 }
 
+export function useAssetHolders(assetId: string) {
+  const { data: holders } = trpc.rgbpp.topHolders.useQuery({
+    assetId,
+  })
+
+  return { holders }
+}
+
+
 export function useAssetTransactions(assetId?: string, pageSize = 10, pageIndex = 1) {
   const { data: transactions,isLoading,error } = trpc.rgbpp.transactionList.useQuery({
     assetId: assetId ?? '',

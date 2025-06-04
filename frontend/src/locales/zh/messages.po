@@ -186,8 +186,8 @@ msgid "Block size"
 msgstr "区块大小"
 
 #: src/components/btc/btc-address-overview.tsx:40
-#: src/components/btc/btc-address-overview.tsx:45
-#: src/components/btc/btc-address-overview.tsx:49
+#: src/components/btc/btc-address-overview.tsx:51
+#: src/components/btc/btc-address-overview.tsx:55
 #: src/components/btc/btc-utxo-tables.tsx:96
 #: src/components/btc/btc-utxo-tables.tsx:178
 msgid "BTC"
@@ -254,7 +254,7 @@ msgstr "流通量"
 #: src/app/[lang]/explorer/ckb/info.tsx:23
 #: src/components/ckb/ckb-address-overview.tsx:40
 #: src/components/ckb/ckb-address-overview.tsx:46
-#: src/components/ckb/ckb-address-overview.tsx:52
+#: src/components/ckb/ckb-address-overview.tsx:55
 #: src/components/ckb/ckb-block-overview.tsx:65
 #: src/components/ckb/ckb-cell-tables.tsx:128
 #: src/components/footer.tsx:94
@@ -326,7 +326,7 @@ msgstr "即将推出，敬请期待"
 msgid "Confirmations"
 msgstr "确认数"
 
-#: src/components/btc/btc-address-overview.tsx:42
+#: src/components/btc/btc-address-overview.tsx:48
 msgid "Confirmed"
 msgstr "已确认"
 
@@ -477,8 +477,8 @@ msgid "L1"
 msgstr "L1"
 
 #: src/components/btc/btc-address-overview.tsx:56
-msgid "L1 RGB++ Assets"
-msgstr "L1 RGB++ 资产"
+#~ msgid "L1 RGB++ Assets"
+#~ msgstr "L1 RGB++ 资产"
 
 #: src/app/[lang]/explorer/btc/info.tsx:36
 msgid "L1 RGB++ Txns(24H)"
@@ -491,8 +491,8 @@ msgid "L2"
 msgstr "L2"
 
 #: src/components/ckb/ckb-address-overview.tsx:60
-msgid "L2 RGB++ Assets"
-msgstr "L2 RGB++ 资产"
+#~ msgid "L2 RGB++ Assets"
+#~ msgstr "L2 RGB++ 资产"
 
 #: src/app/[lang]/explorer/ckb/info.tsx:30
 msgid "L2 RGB++ Txns(24H)"
@@ -577,7 +577,7 @@ msgstr "已经到底啦"
 msgid "No Transaction"
 msgstr "无交易"
 
-#: src/components/ckb/ckb-address-overview.tsx:49
+#: src/components/ckb/ckb-address-overview.tsx:52
 msgid "Occupied"
 msgstr "已占用"
 
@@ -862,8 +862,8 @@ msgstr "交易哈希"
 msgid "Txn Fee:<0>{0} </0>{feeUnit}"
 msgstr "交易费:<0>{0} </0>{feeUnit}"
 
-#: src/components/btc/btc-address-overview.tsx:53
-#: src/components/ckb/ckb-address-overview.tsx:57
+#: src/components/btc/btc-address-overview.tsx:43
+#: src/components/ckb/ckb-address-overview.tsx:58
 msgid "Txns"
 msgstr "交易"
 
@@ -881,7 +881,7 @@ msgstr "交易(24小时)"
 msgid "Type"
 msgstr "类型"
 
-#: src/components/btc/btc-address-overview.tsx:48
+#: src/components/btc/btc-address-overview.tsx:54
 #: src/components/btc/btc-transaction-overview.tsx:54
 msgid "Unconfirmed"
 msgstr "未确认"
