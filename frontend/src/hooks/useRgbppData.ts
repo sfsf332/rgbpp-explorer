@@ -79,31 +79,12 @@ export function useAssetInfo(assetId: string) {
 
 //   return { assetList }
 // }
-export function useCoinList(pageSize: number, pageIndex: number) {
-  console.log(pageIndex,pageSize)
-//@ts-ignore
-  const { data, isLoading, error } = trpc.v0.asset.list.useQuery({
-    tags:['RGB++'],
-   
-    
-      page: pageIndex,
-      pageSize,
-   
-    orderKey:'marketCap'
+export function useCoinList(pageSize = 10, pageIndex:number) {
+  const { data: assetList } = trpc.rgbpp.coinList.useQuery({
+    page: pageIndex,
+    pageSize:10,
   })
- 
-  return {
-    assetList: data,
-    isLoading,
-    error
-  }
-}
-export function useAssetHolders(assetId: string) {
-  const { data: holders } = trpc.rgbpp.topHolders.useQuery({
-    assetId,
-  })
-
-  return { holders }
+  return { assetList }
 }
 
 export function useAssetTransactions(assetId?: string, pageSize = 10, pageIndex = 1) {

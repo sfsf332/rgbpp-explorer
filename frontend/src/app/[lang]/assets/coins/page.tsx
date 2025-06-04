@@ -6,7 +6,7 @@ import { useLingui } from '@lingui/react'
 import { Box, Center, HStack, VStack } from 'styled-system/jsx'
 
 // import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
-import { CoinList } from '@/components/coin-list-v0'
+import { CoinList } from '@/components/coin-list'
 import { IfBreakpoint } from '@/components/if-breakpoint'
 import { LoadingBox } from '@/components/loading-box'
 import { PaginationSearchParams } from '@/components/pagination-searchparams'
@@ -73,16 +73,16 @@ export default function Page({
           {t(i18n)`Total: ${formatNumber(assetList.total)} Coins`}
         </Text>
       {/* {assetList.result.length} */}
-        <CoinList coins={assetList.result} />
+        <CoinList coins={assetList.data} />
       </Box>
       <HStack gap="16px">
         <IfBreakpoint breakpoint="md">
-          <Text fontSize="14px">{t(i18n)`Total ${formatNumber(assetList?.total)} Items`}</Text>
+          <Text fontSize="14px">{t(i18n)`Total ${formatNumber(assetList?.pagination.total)} Items`}</Text>
         </IfBreakpoint>
         
-        {assetList?.total ? (
+        {assetList?.pagination ? (
          
-          <PaginationSearchParams count={assetList.total} pageSize={pageSize} />
+          <PaginationSearchParams count={assetList.pagination.total} pageSize={pageSize} />
          
         ) : null}
       </HStack>
