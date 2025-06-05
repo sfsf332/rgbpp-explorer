@@ -74,7 +74,7 @@ msgstr "{0} Holders"
 #~ msgid "{0} sats/vB ~ {1} sats/vB"
 #~ msgstr "{0} sats/vB ~ {1} sats/vB"
 
-#: src/app/[lang]/transaction/list/page.tsx:120
+#: src/app/[lang]/transaction/list/page.tsx:101
 msgid "{0} transactions"
 msgstr "{0} transactions"
 
@@ -148,8 +148,7 @@ msgstr "Address"
 #: src/components/btc/btc-transaction-card.tsx:61
 #: src/components/holder-list/coin-holder-list.tsx:123
 #: src/components/holder-list/coin-holder-list.tsx:149
-#: src/components/latest-tx-list/rgb-tx-list.tsx:108
-#: src/components/latest-tx-list/ui.tsx:83
+#: src/components/latest-tx-list/ui.tsx:82
 msgid "Amount"
 msgstr "Amount"
 
@@ -181,8 +180,8 @@ msgid "Bitcoin"
 msgstr "Bitcoin"
 
 #: src/components/latest-tx-list/rgb-tx-list.tsx:186
-msgid "Block"
-msgstr "Block"
+#~ msgid "Block"
+#~ msgstr "Block"
 
 #: src/components/block-header-btc.tsx:37
 #: src/components/block-header.tsx:37
@@ -194,7 +193,7 @@ msgstr "Block {0}"
 #: src/components/btc/btc-transaction-card.tsx:39
 #: src/components/btc/btc-transaction-overview.tsx:41
 #: src/components/ckb/ckb-transaction-overview.tsx:39
-#: src/components/latest-tx-list/rgb-tx-list.tsx:101
+#: src/components/latest-tx-list/rgb-tx-list.tsx:107
 #: src/components/network-cards.tsx:60
 #: src/components/network-cards.tsx:93
 msgid "Block Height"
@@ -431,7 +430,7 @@ msgid "DOGE Chain Transactions"
 msgstr "DOGE Chain Transactions"
 
 #: src/app/[lang]/charts/[chartId]/page.tsx:86
-#: src/app/[lang]/transaction/list/page.tsx:138
+#: src/app/[lang]/transaction/list/page.tsx:119
 msgid "Download Data"
 msgstr "Download Data"
 
@@ -778,14 +777,14 @@ msgid "The total number of RGB++ assets, including FT and DOB"
 msgstr "The total number of assets issued by RGB++ protocol, such as SEAL, STB, and Nervape. Each asset type is counted only once."
 
 #: src/components/btc/btc-transaction-card.tsx:51
-#: src/components/latest-tx-list/rgb-tx-list.tsx:111
-#: src/components/latest-tx-list/ui.tsx:86
+#: src/components/latest-tx-list/rgb-tx-list.tsx:117
+#: src/components/latest-tx-list/ui.tsx:85
 msgid "Time"
 msgstr "Time"
 
 #: src/components/latest-tx-list/rgb-tx-list.tsx:192
-msgid "Timestamp"
-msgstr "Timestamp"
+#~ msgid "Timestamp"
+#~ msgstr "Timestamp"
 
 #: src/components/charts/holders-count-chart.tsx:111
 #: src/components/charts/transactions-count-chart.tsx:111
@@ -873,8 +872,8 @@ msgstr "Transactions"
 msgid "Try again"
 msgstr "Try again"
 
-#: src/components/latest-tx-list/rgb-tx-list.tsx:97
-#: src/components/latest-tx-list/ui.tsx:74
+#: src/components/latest-tx-list/rgb-tx-list.tsx:103
+#: src/components/latest-tx-list/ui.tsx:73
 msgid "Tx hash"
 msgstr "Tx hash"
 
@@ -896,8 +895,8 @@ msgstr "Txns"
 msgid "Txns(24H)"
 msgstr "Txns(24H)"
 
-#: src/components/latest-tx-list/rgb-tx-list.tsx:105
-#: src/components/latest-tx-list/ui.tsx:80
+#: src/components/latest-tx-list/rgb-tx-list.tsx:111
+#: src/components/latest-tx-list/ui.tsx:79
 msgid "Type"
 msgstr "Type"
 

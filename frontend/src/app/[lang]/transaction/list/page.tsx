@@ -13,44 +13,26 @@ import { PaginationSearchParams } from '@/components/pagination-searchparams'
 import { TransactionInfo } from '@/components/transaction-info'
 import { Heading , Text } from '@/components/ui'
 import { DATE_TEMPLATE } from '@/constants'
+import { resolvePage } from '@/lib/resolve-page'
 // import { graphQLClient } from '@/lib/graphql'
 import { formatNumber as formatNumberFn } from '@/lib/string/format-number'
 import { apiFetcher, RGBTransaction } from '@/services/fecthcer'
 // import { QueryKey } from '@/constants/query-key'
-import { CkbTransaction, LeapDirection } from '@/types/graphql'
 import { downloadCSV } from '@/utils/download'
 
-type RgbppLatestTransactionsResponse = {
-  rgbppLatestTransactions: {
-    txs: Array<{
-      ckbTxHash: string
-      btcTxid: string
-      leapDirection: LeapDirection
-      blockNumber: number
-      timestamp: string
-      ckbTransaction: CkbTransaction
-    }>
-    total: number
-    pageSize: number
-  }
-}
 
-export default function Page() {
-  // const { isLoading, data, error } = useQuery<RgbppLatestTransactionsResponse>({
-  //   queryKey: [QueryKey.LastRgbppTxns],
-  //   queryFn: async () => {
-  //     const result = await graphQLClient.request<RgbppLatestTransactionsResponse, { limit: number }>(query as any, {
-  //       limit: 10,
-  //     })
-  //     return result
-  //   },
-  //   refetchInterval: 10000,
-  // })
+export default function Page({
+  params,
+  searchParams,
+}: {
+  params: { lang: string }
+  searchParams: { page?: string }
+}) {
+  const page = resolvePage(searchParams.page),
 
-  const currentPage = 1,
     sort = 'number.desc',
     pageSize = 10
-
+    
   const {
     isLoading: txLoading,
     data: txData,
@@ -58,7 +40,7 @@ export default function Page() {
   } = useQuery({
     queryKey: ['rgbpp_transactions'],
     async queryFn() {
-      const response = await apiFetcher.fetchRGBTransactions(currentPage, pageSize, sort)
+      const response = await apiFetcher.fetchRGBTransactions(page, pageSize, sort)
       if (response) {
         const { data, meta } = response
         return { data, meta }
@@ -142,14 +124,16 @@ export default function Page() {
           <LatestRGBTxnListUI txs={txData?.data?.ckbTransactions.map(tx => ({
             ckbTxHash: tx.txHash,
             btcTxid: tx.rgbTxid,
-            timestamp: tx.blockTimestamp.toString(),
+            blockTimestamp: tx.blockTimestamp,
             ckbTransaction: tx.ckbTransaction,
-            leapDirection: tx.leapDirection as any,
-            blockNumber: tx.blockNumber
+            leapDirection: tx.leapDirection as 'in' | 'withinBTC' | 'leapoutBTC',
+            blockNumber: Number(tx.blockNumber)
           })) || []} />
+          
           <HStack gap="16px" display={'flex'}
             alignItems={'center'}
             justifyContent={'center'}
+            mt="20px"
           >
             <PaginationSearchParams count={txData?.meta.total} pageSize={pageSize} />
           </HStack>
