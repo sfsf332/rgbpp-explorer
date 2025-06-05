@@ -49,7 +49,6 @@ export default function Page() {
 
   const currentPage = 1,
     sort = 'number.desc',
-    type = '',
     pageSize = 10
 
   const {
@@ -59,7 +58,7 @@ export default function Page() {
   } = useQuery({
     queryKey: ['rgbpp_transactions'],
     async queryFn() {
-      const response = await apiFetcher.fetchRGBTransactions(currentPage, pageSize, sort, type)
+      const response = await apiFetcher.fetchRGBTransactions(currentPage, pageSize, sort)
       if (response) {
         const { data, meta } = response
         return { data, meta }
