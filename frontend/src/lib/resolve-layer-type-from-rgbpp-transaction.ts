@@ -6,9 +6,9 @@ export function resolveLayerTypeFromRGBppTransaction<
     btc?: { txid: string | null };
     direction?: 'on' | 'off' | 'within' | null;
     ckbTransaction: any;
+    network:'ckb'|'btc'
   }
 >(tx: T) {
-  console.log(tx)
  
   switch (tx.direction) {
     case 'on':
@@ -18,7 +18,7 @@ export function resolveLayerTypeFromRGBppTransaction<
     case 'within':
       return 'l1'
     default:
-      if (tx.btc?.txid && !tx.direction) return 'l1'
+      if (tx.network==='ckb' && !tx.direction) return 'l1'
       return 'l2'
   }
 }
