@@ -82,7 +82,8 @@ export function useAssetInfo(assetId: string) {
 export function useCoinList(pageSize = 10, pageIndex:number) {
   const { data: assetList } = trpc.rgbpp.coinList.useQuery({
     page: pageIndex,
-    pageSize:10,
+    pageSize:pageSize,
+    // sort:'addresses_count.desc',
   })
   return { assetList }
 }

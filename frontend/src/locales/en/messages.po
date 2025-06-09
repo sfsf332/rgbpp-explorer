@@ -74,7 +74,7 @@ msgstr "{0} Holders"
 #~ msgid "{0} sats/vB ~ {1} sats/vB"
 #~ msgstr "{0} sats/vB ~ {1} sats/vB"
 
-#: src/app/[lang]/transaction/list/page.tsx:79
+#: src/app/[lang]/transaction/list/page.tsx:80
 msgid "{0} transactions"
 msgstr "{0} transactions"
 
@@ -430,11 +430,11 @@ msgid "DOGE Chain Transactions"
 msgstr "DOGE Chain Transactions"
 
 #: src/app/[lang]/charts/[chartId]/page.tsx:86
-#: src/app/[lang]/transaction/list/page.tsx:97
+#: src/app/[lang]/transaction/list/page.tsx:98
 msgid "Download Data"
 msgstr "Download Data"
 
-#: src/app/[lang]/explorer/btc/info.tsx:102
+#: src/app/[lang]/explorer/btc/info.tsx:103
 msgid "Drop"
 msgstr "Drop"
 
@@ -485,7 +485,7 @@ msgstr "Holders"
 msgid "Inputs ({0})"
 msgstr "Inputs ({0})"
 
-#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:42
+#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:40
 msgid "Items"
 msgstr "Items"
 
@@ -541,7 +541,7 @@ msgstr "Load failed, Please wait a moment"
 msgid "Load more"
 msgstr "Load more"
 
-#: src/app/[lang]/explorer/btc/info.tsx:90
+#: src/app/[lang]/explorer/btc/info.tsx:91
 #: src/app/[lang]/explorer/ckb/info.tsx:67
 msgid "Low"
 msgstr "Low"
@@ -710,8 +710,8 @@ msgstr "sats"
 
 #: src/app/[lang]/explorer/btc/info.tsx:62
 #: src/app/[lang]/explorer/btc/info.tsx:75
-#: src/app/[lang]/explorer/btc/info.tsx:86
-#: src/app/[lang]/explorer/btc/info.tsx:98
+#: src/app/[lang]/explorer/btc/info.tsx:87
+#: src/app/[lang]/explorer/btc/info.tsx:99
 #: src/components/btc/btc-block-overview.tsx:76
 #: src/components/btc/btc-block-overview.tsx:81
 msgid "sats/vB"
@@ -790,11 +790,11 @@ msgstr "Time"
 #~ msgid "Timestamp"
 #~ msgstr "Timestamp"
 
-#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:42
+#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:40
 msgid "Total"
 msgstr "Total"
 
-#: src/app/[lang]/assets/coins/page.tsx:80
+#: src/app/[lang]/assets/coins/page.tsx:79
 msgid "Total {0} Items"
 msgstr "Total {0} Items"
 
@@ -849,7 +849,7 @@ msgstr "Total Transactions of RGB++ Assets"
 msgid "Total:"
 msgstr "Total:"
 
-#: src/app/[lang]/assets/coins/page.tsx:73
+#: src/app/[lang]/assets/coins/page.tsx:72
 msgid "Total: {0} Coins"
 msgstr "Total: {0} Coins"
 

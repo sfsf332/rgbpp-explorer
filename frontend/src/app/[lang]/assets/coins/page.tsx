@@ -54,8 +54,7 @@ export default function Page({
   const pageSize = 10
 
  
-  const {assetList,isLoading,error} = useCoinList(pageSize, page)
-  console.log(assetList)
+  const {assetList,isLoading,error} = useCoinList(pageSize, page,'addresses_count.desc')
   if (!assetList) {
     return (
       <VStack w="100%" maxW="content" flex={1} gap="32px">

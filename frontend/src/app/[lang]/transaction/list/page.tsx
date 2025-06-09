@@ -16,6 +16,7 @@ import { useRgbppTransactions } from '@/hooks/useRgbppData'
 import { resolvePage } from '@/lib/resolve-page'
 import { formatNumber as formatNumberFn } from '@/lib/string/format-number'
 import { RgbppTransaction } from '@/types/graphql'
+import { downloadCSV } from '@/utils/download'
 
 export default function Page({ params, searchParams }: { params: { lang: string }; searchParams: { page?: string } }) {
   const page = resolvePage(searchParams.page)
@@ -53,8 +54,8 @@ export default function Page({ params, searchParams }: { params: { lang: string 
 
   const downloadTxn = async () => {
     if (!txData?.data) return
-    // const downloadData = prepareDownloadData(txData.data)
-    // downloadCSV(downloadData.filename, downloadData.headers, downloadData.rows)
+    const downloadData = prepareDownloadData(txData.data as RgbppTransaction[])
+    downloadCSV(downloadData.filename, downloadData.headers, downloadData.rows)
   }
 
   return (

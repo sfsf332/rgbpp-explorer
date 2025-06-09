@@ -31,8 +31,39 @@ function BtcTransactionPage({ tx }: { tx: string }) {
         txid={btcTransaction.txid}
         // confirmations={data.confirmed ? 1 : 0}
       />
-      <BtcTransactionOverview btcTransaction={btcTransaction} />
-      <BtcUtxos txid={btcTransaction.txid} vin={btcTransaction.vin} vout={btcTransaction.vout} />
+      <BtcTransactionOverview btcTransaction={{
+        ...btcTransaction,
+        vout: btcTransaction.vout.map((output: any) => ({
+          ...output,
+          spent: output.spent ? {
+            txid: '',
+            vin: 0,
+            status: {
+              confirmed: false,
+              block_hash: '',
+              block_height: 0,
+              block_time: 0
+            }
+          } : null
+        }))
+      }} />
+      <BtcUtxos 
+        txid={btcTransaction.txid} 
+        vin={btcTransaction.vin} 
+        vout={btcTransaction.vout.map((output: any) => ({
+          ...output,
+          spent: output.spent ? {
+            txid: '',
+            vin: 0,
+            status: {
+              confirmed: false,
+              block_hash: '',
+              block_height: 0,
+              block_time: 0
+            }
+          } : null
+        }))} 
+      />
     </>
   )
 }

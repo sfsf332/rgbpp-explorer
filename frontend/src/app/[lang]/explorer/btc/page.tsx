@@ -23,7 +23,10 @@ export default function Page() {
             <Loading />
           </Center>
         ) : (
-        <ExplorerTxList transactions={rgbppLatestL1Transactions?.data || []} type="btc" />
+        <ExplorerTxList transactions={rgbppLatestL1Transactions?.data?.map((tx: any) => ({
+          ...tx,
+          network: 'btc'
+        })) as any || []} type="btc" />
         )}
       </Box>
     </Grid>

@@ -54,7 +54,7 @@ msgstr "{0} 个持有人"
 #~ msgid "{0} sats/vB ~ {1} sats/vB"
 #~ msgstr "{0} 聪/字节 ~ {1} 聪/字节"
 
-#: src/app/[lang]/transaction/list/page.tsx:79
+#: src/app/[lang]/transaction/list/page.tsx:80
 msgid "{0} transactions"
 msgstr "{0} 条交易"
 
@@ -410,11 +410,11 @@ msgid "DOGE Chain Transactions"
 msgstr "DOGE 链交易笔数"
 
 #: src/app/[lang]/charts/[chartId]/page.tsx:86
-#: src/app/[lang]/transaction/list/page.tsx:97
+#: src/app/[lang]/transaction/list/page.tsx:98
 msgid "Download Data"
 msgstr "下载数据"
 
-#: src/app/[lang]/explorer/btc/info.tsx:102
+#: src/app/[lang]/explorer/btc/info.tsx:103
 msgid "Drop"
 msgstr "丢弃"
 
@@ -465,7 +465,7 @@ msgstr "持有者"
 msgid "Inputs ({0})"
 msgstr "输入 ({0})"
 
-#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:42
+#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:40
 msgid "Items"
 msgstr ""
 
@@ -521,7 +521,7 @@ msgstr "加载失败，请稍候"
 msgid "Load more"
 msgstr ""
 
-#: src/app/[lang]/explorer/btc/info.tsx:90
+#: src/app/[lang]/explorer/btc/info.tsx:91
 #: src/app/[lang]/explorer/ckb/info.tsx:67
 msgid "Low"
 msgstr "低优先级"
@@ -690,8 +690,8 @@ msgstr "聪"
 
 #: src/app/[lang]/explorer/btc/info.tsx:62
 #: src/app/[lang]/explorer/btc/info.tsx:75
-#: src/app/[lang]/explorer/btc/info.tsx:86
-#: src/app/[lang]/explorer/btc/info.tsx:98
+#: src/app/[lang]/explorer/btc/info.tsx:87
+#: src/app/[lang]/explorer/btc/info.tsx:99
 #: src/components/btc/btc-block-overview.tsx:76
 #: src/components/btc/btc-block-overview.tsx:81
 msgid "sats/vB"
@@ -770,11 +770,11 @@ msgstr "时间"
 #~ msgid "Timestamp"
 #~ msgstr ""
 
-#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:42
+#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:40
 msgid "Total"
 msgstr "总计"
 
-#: src/app/[lang]/assets/coins/page.tsx:80
+#: src/app/[lang]/assets/coins/page.tsx:79
 msgid "Total {0} Items"
 msgstr "总计 {0} 项"
 
@@ -829,7 +829,7 @@ msgstr "RGB++ 累计交易笔数"
 msgid "Total:"
 msgstr "共计："
 
-#: src/app/[lang]/assets/coins/page.tsx:73
+#: src/app/[lang]/assets/coins/page.tsx:72
 msgid "Total: {0} Coins"
 msgstr "共计：{0} 个代币"
 

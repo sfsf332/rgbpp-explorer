@@ -79,7 +79,8 @@ export function Info() {
               </OverviewInfoTagLabel>
             }
           >
-            {btcInfo.fee.halfHourFee}
+            -
+            {/* {btcInfo.fee.halfHourFee} */}
           </OverviewInfoItem>
           <OverviewInfoItem
             formatNumber

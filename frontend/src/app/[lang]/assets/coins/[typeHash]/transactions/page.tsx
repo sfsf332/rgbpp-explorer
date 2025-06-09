@@ -23,9 +23,7 @@ export default  function Page({
   const page = resolvePage(searchParams.page)
   const pageSize = 10
   const { data: txData, isLoading, error } = useRgbppTransactions(page,pageSize,typeHash)
- 
-  console.log(txData)
-  
+   
   const transactions = txData?.data as RgbppTransaction[] || []
 
   return (
