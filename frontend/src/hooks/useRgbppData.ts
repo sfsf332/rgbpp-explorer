@@ -272,15 +272,15 @@ export function useCkbTxDetail (hash:string, options?: { enabled?: boolean }) {
     isLoading
   }
 }
-export function useRgbppTransactions() {
+export function useRgbppTransactions(page:number,pageSize:number,assetId?:string) {
   const { data, isLoading, error } = trpc.rgbpp.transactionList.useQuery({
-    assetId: '',
-    page: 1,
-    pageSize: 10,
+    assetId: assetId ?? '',
+    page,
+    pageSize
   })
 
   return {
-    data: data?.data,
+    data: data,
     isLoading,
     error
   }

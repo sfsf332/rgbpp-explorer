@@ -33,6 +33,9 @@ type RGBTransaction = {
   blockTimestamp: string|number
   ckbTxHash: string
   btcTxid: string
+  //withinBTC L1 在首页是null
+  //in L1-L2 在首页是on
+  //leapoutBTC L2-L1 在首页是off
   leapDirection: 'withinBTC' | 'in' | 'leapoutBTC'
   blockNumber: number
   ckbTransaction: CkbTransaction

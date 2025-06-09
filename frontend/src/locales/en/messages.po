@@ -66,7 +66,7 @@ msgstr "{0} CKB"
 msgid "{0} DOB"
 msgstr "{0} DOB"
 
-#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:72
+#: src/app/[lang]/assets/coins/[typeHash]/holders/page.tsx:71
 msgid "{0} Holders"
 msgstr "{0} Holders"
 
@@ -74,7 +74,7 @@ msgstr "{0} Holders"
 #~ msgid "{0} sats/vB ~ {1} sats/vB"
 #~ msgstr "{0} sats/vB ~ {1} sats/vB"
 
-#: src/app/[lang]/transaction/list/page.tsx:101
+#: src/app/[lang]/transaction/list/page.tsx:79
 msgid "{0} transactions"
 msgstr "{0} transactions"
 
@@ -131,7 +131,7 @@ msgstr "1 <0>DOB</0>"
 #~ msgid "1 DOB"
 #~ msgstr "1 DOB"
 
-#: src/components/transaction-info.tsx:33
+#: src/components/transaction-info.tsx:31
 msgid "24H Transactions"
 msgstr "24H Transactions"
 
@@ -160,11 +160,11 @@ msgstr "Available"
 #~ msgid "Average Balance"
 #~ msgstr "Average Balance"
 
-#: src/components/transaction-info.tsx:38
+#: src/components/transaction-info.tsx:36
 msgid "Avg. Confirmation Time"
 msgstr "Avg. Confirmation Time"
 
-#: src/components/transaction-info.tsx:39
+#: src/components/transaction-info.tsx:37
 msgid "Avg. Transaction Fee"
 msgstr "Avg. Transaction Fee"
 
@@ -193,7 +193,7 @@ msgstr "Block {0}"
 #: src/components/btc/btc-transaction-card.tsx:39
 #: src/components/btc/btc-transaction-overview.tsx:41
 #: src/components/ckb/ckb-transaction-overview.tsx:39
-#: src/components/latest-tx-list/rgb-tx-list.tsx:107
+#: src/components/latest-tx-list/rgb-tx-list.tsx:110
 #: src/components/network-cards.tsx:60
 #: src/components/network-cards.tsx:93
 msgid "Block Height"
@@ -430,7 +430,7 @@ msgid "DOGE Chain Transactions"
 msgstr "DOGE Chain Transactions"
 
 #: src/app/[lang]/charts/[chartId]/page.tsx:86
-#: src/app/[lang]/transaction/list/page.tsx:119
+#: src/app/[lang]/transaction/list/page.tsx:97
 msgid "Download Data"
 msgstr "Download Data"
 
@@ -472,7 +472,7 @@ msgstr "High"
 #~ msgid "Holder Summary"
 #~ msgstr "Holder Summary"
 
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:22
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:19
 #: src/components/coin-list-v0.tsx:65
 #: src/components/coin-list-v0.tsx:164
 #: src/components/coin-list.tsx:87
@@ -484,6 +484,10 @@ msgstr "Holders"
 #: src/components/ckb/ckb-cell-tables.tsx:45
 msgid "Inputs ({0})"
 msgstr "Inputs ({0})"
+
+#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:42
+msgid "Items"
+msgstr "Items"
 
 #: src/components/ckb/ckb-transaction-card-with-query-in-block.tsx:20
 #~ msgid "kB"
@@ -521,7 +525,7 @@ msgstr "L2 RGB++ Txns(24H)"
 msgid "Latest L1 RGB++ transaction"
 msgstr "Latest L1 RGB++ transaction"
 
-#: src/app/[lang]/explorer/ckb/page.tsx:18
+#: src/app/[lang]/explorer/ckb/page.tsx:19
 msgid "Latest L2 RGB++ transaction"
 msgstr "Latest L2 RGB++ transaction"
 
@@ -777,7 +781,7 @@ msgid "The total number of RGB++ assets, including FT and DOB"
 msgstr "The total number of assets issued by RGB++ protocol, such as SEAL, STB, and Nervape. Each asset type is counted only once."
 
 #: src/components/btc/btc-transaction-card.tsx:51
-#: src/components/latest-tx-list/rgb-tx-list.tsx:117
+#: src/components/latest-tx-list/rgb-tx-list.tsx:120
 #: src/components/latest-tx-list/ui.tsx:85
 msgid "Time"
 msgstr "Time"
@@ -786,12 +790,10 @@ msgstr "Time"
 #~ msgid "Timestamp"
 #~ msgstr "Timestamp"
 
-#: src/components/charts/holders-count-chart.tsx:111
-#: src/components/charts/transactions-count-chart.tsx:111
-#~ msgid "Total"
-#~ msgstr "Total"
+#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:42
+msgid "Total"
+msgstr "Total"
 
-#: src/app/[lang]/assets/coins/[typeHash]/transactions/page.tsx:116
 #: src/app/[lang]/assets/coins/page.tsx:80
 msgid "Total {0} Items"
 msgstr "Total {0} Items"
@@ -835,7 +837,7 @@ msgstr "Total RGB++ Transactions"
 msgid "Total Supply"
 msgstr "Total Supply"
 
-#: src/components/transaction-info.tsx:30
+#: src/components/transaction-info.tsx:28
 msgid "Total Transactions"
 msgstr "Total Transactions"
 
@@ -858,9 +860,9 @@ msgid "Transaction"
 msgstr "Transaction"
 
 #: src/app/[lang]/address/[address]/layout.tsx:78
-#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:26
+#: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:23
 #: src/app/[lang]/block/btc/[hashOrHeight]/layout.tsx:40
-#: src/components/transaction-info.tsx:25
+#: src/components/transaction-info.tsx:23
 msgid "Transactions"
 msgstr "Transactions"
 
@@ -872,7 +874,7 @@ msgstr "Transactions"
 msgid "Try again"
 msgstr "Try again"
 
-#: src/components/latest-tx-list/rgb-tx-list.tsx:103
+#: src/components/latest-tx-list/rgb-tx-list.tsx:106
 #: src/components/latest-tx-list/ui.tsx:73
 msgid "Tx hash"
 msgstr "Tx hash"
@@ -895,7 +897,7 @@ msgstr "Txns"
 msgid "Txns(24H)"
 msgstr "Txns(24H)"
 
-#: src/components/latest-tx-list/rgb-tx-list.tsx:111
+#: src/components/latest-tx-list/rgb-tx-list.tsx:114
 #: src/components/latest-tx-list/ui.tsx:79
 msgid "Type"
 msgstr "Type"

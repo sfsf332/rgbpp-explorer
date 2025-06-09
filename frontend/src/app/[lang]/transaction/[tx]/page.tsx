@@ -26,6 +26,7 @@ function BtcTransactionPage({ tx }: { tx: string }) {
           ckbTransaction: undefined,
           btc: btcTransaction,
           direction: undefined,
+          network: 'btc'
         })}
         txid={btcTransaction.txid}
         // confirmations={data.confirmed ? 1 : 0}
@@ -50,6 +51,7 @@ function CkbTransactionPage({ tx }: { tx: string }) {
           ckbTransaction: data as unknown as CkbTransaction,
           btc: undefined,
           direction: undefined,
+          network: 'ckb'
         })}
         txid={hash}
       />
