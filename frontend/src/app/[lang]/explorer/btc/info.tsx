@@ -91,7 +91,7 @@ export function Info() {
               </OverviewInfoTagLabel>
             }
           >
-            {btcInfo.fee.economyFee}
+            {btcInfo.fee.minimumFee}
           </OverviewInfoItem>
           <OverviewInfoItem
             formatNumber
