@@ -8,9 +8,10 @@ export function resolveRGBppTxHash(tx: Pick<RgbppTransaction, 'btc' | 'ckbTransa
   switch (type) {
     case 'l1-l2':
     case 'l1':
-      return tx.btc.txid ?? tx.ckbTransaction.outputs[0].txHash
-    case 'l2':
+      return tx.btc?.txid ?? tx.ckbTransaction.outputs[0].txHash
     case 'l2-l1':
-      return tx.ckbTransaction.outputs[0].txHash ?? tx.btc.txid
+      return tx.ckbTransaction.outputs[0].txHash ?? tx.btc?.txid
+    default:
+      return tx.ckbTransaction.outputs[0].txHash
   }
 }

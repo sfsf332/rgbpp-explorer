@@ -245,8 +245,8 @@ msgid "Charts"
 msgstr "图表"
 
 #: src/components/coin-info.tsx:119
-#: src/components/coin-list.tsx:99
-#: src/components/coin-list.tsx:209
+#: src/components/coin-list.tsx:100
+#: src/components/coin-list.tsx:211
 msgid "Circulating Supply"
 msgstr "流通量"
 
@@ -455,8 +455,8 @@ msgstr "高优先级"
 #: src/app/[lang]/assets/coins/[typeHash]/layout.tsx:19
 #: src/components/coin-list-v0.tsx:65
 #: src/components/coin-list-v0.tsx:164
-#: src/components/coin-list.tsx:87
-#: src/components/coin-list.tsx:193
+#: src/components/coin-list.tsx:90
+#: src/components/coin-list.tsx:195
 msgid "Holders"
 msgstr "持有者"
 
@@ -533,8 +533,8 @@ msgstr "主网"
 #: src/components/coin-info.tsx:97
 #: src/components/coin-list-v0.tsx:81
 #: src/components/coin-list-v0.tsx:181
-#: src/components/coin-list.tsx:105
-#: src/components/coin-list.tsx:217
+#: src/components/coin-list.tsx:106
+#: src/components/coin-list.tsx:219
 msgid "Market Cap"
 msgstr "市值"
 
@@ -614,8 +614,8 @@ msgstr "持有比例"
 #: src/components/coin-info.tsx:83
 #: src/components/coin-list-v0.tsx:68
 #: src/components/coin-list-v0.tsx:168
-#: src/components/coin-list.tsx:90
-#: src/components/coin-list.tsx:197
+#: src/components/coin-list.tsx:93
+#: src/components/coin-list.tsx:199
 msgid "Price"
 msgstr "价格"
 
@@ -812,8 +812,8 @@ msgid "Total RGB++ Transactions"
 msgstr "RGB++ 交易总数"
 
 #: src/components/coin-info.tsx:127
-#: src/components/coin-list.tsx:102
-#: src/components/coin-list.tsx:213
+#: src/components/coin-list.tsx:103
+#: src/components/coin-list.tsx:215
 msgid "Total Supply"
 msgstr "发行量"
 
@@ -870,8 +870,8 @@ msgstr "交易"
 
 #: src/components/coin-list-v0.tsx:71
 #: src/components/coin-list-v0.tsx:172
-#: src/components/coin-list.tsx:93
-#: src/components/coin-list.tsx:201
+#: src/components/coin-list.tsx:87
+#: src/components/coin-list.tsx:203
 #: src/components/network-cards.tsx:64
 #: src/components/network-cards.tsx:97
 msgid "Txns(24H)"
@@ -926,8 +926,8 @@ msgstr "在 Mempool 中查看详情"
 
 #: src/components/coin-list-v0.tsx:74
 #: src/components/coin-list-v0.tsx:176
-#: src/components/coin-list.tsx:96
-#: src/components/coin-list.tsx:205
+#: src/components/coin-list.tsx:97
+#: src/components/coin-list.tsx:207
 msgid "Volume(24H)"
 msgstr "24小时成交额"
 

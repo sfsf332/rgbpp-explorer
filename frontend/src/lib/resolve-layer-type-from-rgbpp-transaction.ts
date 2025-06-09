@@ -25,17 +25,4 @@ export function resolveLayerTypeFromRGBppTransaction<
   }
 }
 
-export function resolveLayerTypeFromRGBppTransactionNew(
- txType: string,
-) {
-  switch (txType) {
-    case 'in':
-      return 'l2'
-    case 'out':
-      return 'l2-l1'
-    case 'withinBTC':
-      return 'l1'
-    default:
-      return 'l2'
-  }
-}
+
