@@ -69,7 +69,7 @@ export default function Page({
     <VStack w="100%" maxW="content" flex={1} gap="32px">
       <Box bg="bg.card" w="100%" rounded="8px" pb="10px" overflow={'hidden'}>
         <Text fontSize={{ base: '18px', lg: '20px' }} fontWeight="semibold" p={{ base: '20px', lg: '30px' }}>
-          {t(i18n)`Total: ${formatNumber(assetList.total)} Coins`}
+          {t(i18n)`Total: ${formatNumber(assetList.pagination.total)} Coins`}
         </Text>
       {/* {assetList.result.length} */}
         <CoinList coins={assetList.data} />
