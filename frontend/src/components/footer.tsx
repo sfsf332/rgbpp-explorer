@@ -118,6 +118,9 @@ export function Footer({ lang }: { lang: string }) {
                 <Link href={env.public.UTXO_STACK_URL} _hover={{ textDecoration: 'underline' }}>
                   {t(i18n)`UTXO Stack`}
                 </Link>
+                <Link href={`https://www.rgbppfans.com`} _hover={{ textDecoration: 'underline' }}>
+                  RGB++fans
+                </Link>
               </VStack>
             </VStack>
           </HStack>
