@@ -1,3 +1,4 @@
+'use client'
 import {  Trans } from '@lingui/macro'
 import { PropsWithChildren } from 'react'
 
