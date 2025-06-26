@@ -1,14 +1,13 @@
 'use client'
 
-import { Trans } from '@lingui/macro'
 import { VStack } from 'styled-system/jsx'
 
 import { CkbCellTables } from '@/components/ckb/ckb-cell-tables'
 import { CkbTransactionInViewQuery } from '@/components/ckb/ckb-transaction-in-view-query'
-// import { TransactionHeaderInAddress } from '@/components/transaction-header-in-address'
-import { UtxoOrCellFooter } from '@/components/utxo-or-cell-footer'
-import { TransactionHeaderInAddress } from '../transaction-header-in-address'
 import { CkbTransaction } from '@/types/graphql'
+
+// import { TransactionHeaderInAddress } from '@/components/transaction-header-in-address'
+import { TransactionHeaderInAddress } from '../transaction-header-in-address'
 
 export function CkbTransactionCardWithQueryInAddress({ hash, address }: { address: string; hash: string }) {
   return (
