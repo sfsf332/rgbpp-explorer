@@ -135,11 +135,10 @@ export function Footer({ lang }: { lang: string }) {
           }}
         >
           <Text opacity="0.4">Powered by</Text>
-          <Image
+
+          <img
             src="https://p.magickbase.com/favicon.ico"
             alt="magickabse"
-            width={16}
-            height={16}
             style={{
               width: '16px',
               height: '16px',
