@@ -3,10 +3,10 @@
 import { VStack } from 'styled-system/jsx'
 
 import { BtcTransactionCardWithQueryInAddress } from '@/components/btc/btc-transaction-card-with-query-in-address'
-import { useAddressTransactions } from '@/hooks/useRgbppData'
+import { useBtcAddressTransactions } from '@/hooks/useRgbppData'
 
 export default function BtcTxList({ address }: { address: string }) {
-  const { addressTransactions, isLoading, error } = useAddressTransactions(address,1,1)
+  const { addressTransactions, isLoading, error } = useBtcAddressTransactions(address)
 
   if (isLoading || error || !addressTransactions?.data) {
     return null

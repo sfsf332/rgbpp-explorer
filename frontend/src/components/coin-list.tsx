@@ -83,16 +83,15 @@ export function CoinList<T extends CoinType>({ coins }: { coins: T[] | undefined
             <Table.Header w="200px">
               <Trans>Coin</Trans>
             </Table.Header>
-            <Table.Header w="120px">
-              <Trans>Txns(24H)</Trans>
-            </Table.Header>
             <Table.Header w="100px">
               <Trans>Holders</Trans>
             </Table.Header>
             <Table.Header w="100px">
               <Trans>Price</Trans>
             </Table.Header>
-           
+            <Table.Header w="120px">
+              <Trans>Txns(24H)</Trans>
+            </Table.Header>
             <Table.Header w="120px">
               <Trans>Volume(24H)</Trans>
             </Table.Header>
@@ -132,7 +131,6 @@ export function CoinList<T extends CoinType>({ coins }: { coins: T[] | undefined
                     </TextOverflowTooltip>
                   </Link>
                 </Table.Cell>
-                <Table.Cell>{formatNumber(coin.quote.txCount24h)}</Table.Cell>
                 <Table.Cell>{formatNumber(coin.quote.holderCount.reduce((sum, holder) => sum + holder.count, 0))}</Table.Cell>
                 <Table.Cell overflow={'hidden'} textOverflow={'ellipsis'}>
                   <AppTooltip 
@@ -140,7 +138,7 @@ export function CoinList<T extends CoinType>({ coins }: { coins: T[] | undefined
                     content={formatNumber(coin.quote.price)}
                    />
                 </Table.Cell>
-               
+                <Table.Cell>{formatNumber(coin.quote.txCount24h)}</Table.Cell>
                 <Table.Cell>${formatNumber(coin.quote.volume24h)}</Table.Cell>
                 <Table.Cell overflow={'hidden'} textOverflow={'ellipsis'}>
                   {formatNumber(coin.quote.totalSupply, coin.info.decimals||1)}

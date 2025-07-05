@@ -7,16 +7,14 @@ import { Skeleton, SkeletonProps } from '@/components/ui/primitives/skeleton'
 import { useCkbTxDetail } from '@/hooks/useRgbppData'
 import { CkbTransaction } from '@/types/graphql'
 
-interface Props extends Omit<SkeletonProps, 'children'> {
-  hash: string
-  children: (tx: CkbTransaction) => ReactNode
-}
-
 export function CkbTransactionInViewQuery({
   hash,
   children,
   ...props
-}: Props) {
+}: {
+  hash: string
+  children: (tx: CkbTransaction) => ReactNode
+} & SkeletonProps) {
   const { data: tx, isLoading } = useCkbTxDetail(hash)
 console.log(tx)
   if (isLoading) {
@@ -27,5 +25,5 @@ console.log(tx)
     return null
   }
 
-  return <>{children(tx as unknown as CkbTransaction)}</>
+  return children(tx as unknown as CkbTransaction)
 }

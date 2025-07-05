@@ -1,11 +1,8 @@
 'use client'
 
-import { Trans } from '@lingui/macro'
-import { useEffect, useRef, useState } from 'react'
-
-import { CkbTransactionCardWithQueryInAddress } from '@/components/ckb/ckb-transaction-card-with-query-in-address'
+// import { CkbTransactionCardWithQueryInAddress } from '@/components/ckb/ckb-transaction-card-with-query-in-address'
 import { Loading } from '@/components/loading'
-import { useAddressTransactions } from '@/hooks/useRgbppData'
+import { useBtcAddressTransactions } from '@/hooks/useRgbppData'
 
 interface TransactionItem {
   txHash: string;
@@ -13,70 +10,57 @@ interface TransactionItem {
 }
 
 export function CKBTxList({ address }: { address: string }) {
-  const [page, setPage] = useState(1)
-  const [allTransactions, setAllTransactions] = useState<TransactionItem[]>([])
-  const [error, setError] = useState<string | null>(null)
-  const { addressTransactions: data, isLoading } = useAddressTransactions(address, page, 1)
-  const loadMoreRef = useRef<HTMLDivElement>(null)
+  const { addressTransactions: data, isLoading } = useBtcAddressTransactions(address)
+  console.log(data)
+  // const { data, isLoading, ...query } = useInfiniteQuery({
+  //   queryKey: [QueryKey.CkbTransactionCardInAddressList, address],
+  //   async queryFn({ pageParam }) {
+  //     const { ckbAddress } = await graphQLClient.request(ckbAddressTxsQuery, {
+  //       address,
+  //       page: pageParam,
+  //       pageSize: 10,
+  //     })
+  //     return ckbAddress
+  //   },
+  //   select(data) {
+  //     return compact(data.pages.flatMap((page) => page?.transactions))
+  //   },
+  //   getNextPageParam(lastPage, _, pageParam) {
+  //     if (lastPage?.transactionsCount && pageParam * 10 >= lastPage?.transactionsCount) return
+  //     return pageParam + 1
+  //   },
+  //   initialData: undefined,
+  //   initialPageParam: 1,
+  // })
 
-  useEffect(() => {
-    if (data?.data) {
-      setAllTransactions(prev => {
-        const existingTxHashes = new Set(prev.map((tx: TransactionItem) => tx.txHash))
-        const newTransactions = data.data.filter((tx: TransactionItem) => !existingTxHashes.has(tx.txHash))
-        return [...prev, ...newTransactions]
-      })
-      setError(null)
-    }
-  }, [data?.data])
+  // if (isLoading) {
+  //   return <Loading my="80px" />
+  // }
 
-  if (isLoading && page === 1) {
-    return <Loading my="80px" />
-  }
-
-  if (error) {
-    return <div className="text-red-500 text-center my-4">{error}</div>
-  }
-
-  if (allTransactions.length === 0) {
-    return null
-  }
+  // if (!query.hasNextPage && !data?.length) {
+  //   return (
+  //     <Center w="100%" bg="bg.card" pt="80px" pb="120px" rounded="8px">
+  //       <NoData>
+  //         <Trans>No Transaction</Trans>
+  //       </NoData>
+  //     </Center>
+  //   )
+  // }
 
   return (
     <>
-      {allTransactions.map((item: TransactionItem) => (
-        <CkbTransactionCardWithQueryInAddress 
-          address={address} 
-          hash={item.txHash} 
-          key={item.txHash} 
-        />
-      ))}
-      <div 
-        ref={loadMoreRef} 
-        style={{ 
-          height: '100px',
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: '20px',
-          cursor: 'pointer'
-        }}
-        onClick={() => {
-          if (!isLoading) {
-            console.log('Loading more data, current page:', page)
-            setPage(prev => prev + 1)
-          }
-        }}
-      >
-        {isLoading ? (
-          <Loading my="20px" />
-        ) : (
-          <span className="text-blue-500 hover:text-blue-700">
-            <Trans>Load more</Trans>
-          </span>
-        )}
-      </div>
+    {isLoading ? <Loading my="80px" /> : (
+      data?.data.map((item: TransactionItem) => (
+        <div key={item.txHash}>
+        {item.txHash}
+        </div>
+        // <CkbTransactionCardWithQueryInAddress 
+        //   address={address} 
+        //   hash={item.txHash} 
+        //   key={item.txHash} 
+        // />
+      ))
+    )}
     </>
   )
 }

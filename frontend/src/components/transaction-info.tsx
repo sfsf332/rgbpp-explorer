@@ -5,11 +5,13 @@ import { Grid, HStack, VStack } from 'styled-system/jsx'
 
 import { OverviewInfo, OverviewInfoItem } from '@/components/overview-info'
 import { Heading } from '@/components/ui'
-import { RgbppTransaction } from '@/types/graphql'
+import { RGBTransaction } from '@/services/fecthcer'
 
 interface TxDataType {
-  data: RgbppTransaction[]
-  pagination: {
+  data: {
+    ckbTransactions: RGBTransaction[]
+  }
+  meta: {
     total: number
     pageSize: number
   }
@@ -26,7 +28,7 @@ export function TransactionInfo({ txData }: { txData: TxDataType }) {
       <Grid w="100%" gridTemplateColumns={{ base: '1fr', lg: 'repeat(2, 1fr)' }} gap={{ base: '20px', md: '30px' }}>
         <OverviewInfo>
           <OverviewInfoItem label={t(i18n)`Total Transactions`} formatNumber>
-            {txData?.pagination.total}
+            {txData?.meta.total}
           </OverviewInfoItem>
           <OverviewInfoItem label={t(i18n)`24H Transactions`} formatNumber>
             20000
