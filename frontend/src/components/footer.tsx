@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { Center, Flex, Grid, HStack, VStack } from 'styled-system/jsx'
 
 import { getI18nInstance } from '@/app/[lang]/appRouterI18n'
