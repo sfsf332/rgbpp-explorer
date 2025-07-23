@@ -29,7 +29,7 @@ const getCacheTTL = () => {
 
 // 生成缓存键
 const generateCacheKey = (method: string, path: string, body?: string, searchParams?: URLSearchParams) => {
-  const params = searchParams ? Array.from(searchParams.entries()).sort().join('&') : ''
+  const params = searchParams ? Array.from(searchParams.entries()).sort((a, b) => a[0].localeCompare(b[0])).join('&') : ''
   const bodyHash = body ? Buffer.from(body).toString('base64').slice(0, 16) : ''
   return `${method}:${path}:${params}:${bodyHash}`
 }
@@ -71,7 +71,7 @@ const cleanupExpiredCache = () => {
   for (const [key, entry] of cache.entries()) {
     if (!isCacheValid(entry)) {
       cache.delete(key)
-      cleanedCount++
+      cleanedCount+=1
     }
   }
   if (cleanedCount > 0) {

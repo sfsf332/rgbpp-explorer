@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect,useState } from 'react'
 
 interface ProxyStatus {
   status: string
@@ -97,8 +97,8 @@ export function ProxyStatus() {
     return (
       <div className="p-4 border rounded-lg bg-gray-50">
         <div className="animate-pulse">
-          <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
-          <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/4 mb-2" />
+          <div className="h-3 bg-gray-200 rounded w-1/2" />
         </div>
       </div>
     )
